@@ -105,6 +105,8 @@ CaseGrid embraces a **warm, tactile, editorial mystery-board aesthetic**. It sho
 | `public/og/case-00N.png` | PNG | 1200x630 | One per published case. Shows the case number, difficulty, title, subtitle, and "Can you solve this case?". Built from catalog copy only; the board motif is generic, not the case's layout. | ✓ Generated placeholder |
 | Share card (runtime) | PNG | 1080x1080 | Drawn in the browser by `src/services/shareCard.ts`: CASE CLOSED rubber stamp, the player's time, mistakes, and nudges. No names or board. | ✓ Code-drawn |
 
+**Discovery minis (`docs/discovery/`):** the storyboards use shaded rooms and labelled blocked cells as placeholders. **Wanted:** three small original illustrated floor plans for The Stopped Clock (a law office with a study and hall), The Night Ferry (a cabin and a foggy open deck), and The Keeper's Stairs (a lamp room above a stairwell). Keep the grid legible, show no characters, and use the warm editorial style.
+
 **Artwork wanted:** an original illustrated scene per case, without characters or clue-revealing details, to replace the generic board motif in the link previews. Also a hand-inked CASE CLOSED stamp texture for the share card.
 
 ---

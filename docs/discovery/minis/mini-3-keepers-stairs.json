@@ -1,0 +1,197 @@
+{
+  "id": "mini-3",
+  "linkedCaseId": "case-004",
+  "title": "The Keeper's Stairs",
+  "subtitle": "A mini-mystery at the top of a tower",
+  "description": "Old Hesper Grayle was found on the stairwell landing of the harbour light. Three visitors had climbed the tower that evening. Who was alone with her?",
+  "difficulty": "beginner",
+  "grid": {
+    "width": 3,
+    "height": 2
+  },
+  "areas": [
+    {
+      "id": "lamp_room",
+      "name": "Lamp Room",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "stairwell",
+      "name": "Stairwell",
+      "cells": [
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "lens",
+      "type": "lens",
+      "label": "Great Lens",
+      "position": {
+        "row": 0,
+        "column": 1
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "hesper",
+      "name": "Hesper Grayle",
+      "description": "The harbour light's last keeper.",
+      "role": "victim"
+    },
+    {
+      "id": "otis",
+      "name": "Otis Penhale",
+      "description": "A painter sketching the view.",
+      "role": "suspect"
+    },
+    {
+      "id": "bryony",
+      "name": "Bryony Fenn",
+      "description": "A council surveyor.",
+      "role": "suspect"
+    },
+    {
+      "id": "caspar",
+      "name": "Caspar Lowe",
+      "description": "Hesper's estranged nephew.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "m3-1",
+      "text": "Hesper was at row 2, column 3.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "hesper",
+        "position": {
+          "row": 1,
+          "column": 2
+        }
+      }
+    },
+    {
+      "id": "m3-2",
+      "text": "Otis stood beside the great lens.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "otis",
+        "objectId": "lens"
+      }
+    },
+    {
+      "id": "m3-3",
+      "text": "Otis was in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "otis",
+        "column": 2
+      }
+    },
+    {
+      "id": "m3-4",
+      "text": "Caspar was in row 1.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "caspar",
+        "row": 0
+      }
+    },
+    {
+      "id": "m3-5",
+      "text": "Otis and Bryony were in different rooms.",
+      "constraint": {
+        "type": "characters_different_area",
+        "characterId": "otis",
+        "targetCharacterId": "bryony"
+      }
+    },
+    {
+      "id": "m3-6",
+      "text": "Bryony was not beside the great lens.",
+      "constraint": {
+        "type": "character_not_adjacent_to_object",
+        "characterId": "bryony",
+        "objectId": "lens"
+      }
+    }
+  ],
+  "victimId": "hesper",
+  "solution": {
+    "placements": {
+      "hesper": {
+        "row": 1,
+        "column": 2
+      },
+      "otis": {
+        "row": 0,
+        "column": 2
+      },
+      "caspar": {
+        "row": 0,
+        "column": 0
+      },
+      "bryony": {
+        "row": 1,
+        "column": 0
+      }
+    },
+    "murdererId": "bryony"
+  },
+  "deductions": [
+    {
+      "text": "Hesper is fixed at row 2, column 3, in the stairwell.",
+      "clueIds": [
+        "m3-1"
+      ]
+    },
+    {
+      "text": "The lens touches row 1, column 1, row 1, column 3, and row 2, column 2. Only row 1, column 3 is in column 3, so Otis is in the lamp room.",
+      "clueIds": [
+        "m3-2",
+        "m3-3"
+      ]
+    },
+    {
+      "text": "Caspar is in row 1. Otis and the lens fill the rest of that row, leaving row 1, column 1.",
+      "clueIds": [
+        "m3-4"
+      ]
+    },
+    {
+      "text": "Bryony is in a different room from Otis, so she is in the stairwell. She is not beside the lens, which rules out row 2, column 2 and leaves row 2, column 1.",
+      "clueIds": [
+        "m3-5",
+        "m3-6"
+      ]
+    }
+  ],
+  "resolution": "Bryony Fenn was the only visitor in the stairwell with Hesper."
+}

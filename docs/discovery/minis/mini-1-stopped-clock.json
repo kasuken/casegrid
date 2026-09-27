@@ -1,0 +1,187 @@
+{
+  "id": "mini-1",
+  "linkedCaseId": "case-001",
+  "title": "The Stopped Clock",
+  "subtitle": "A mini-mystery in two rooms",
+  "description": "Ambrose Quill was found slumped at his desk in the study of his small law office. Three clerks were still in the building. Who was alone with him?",
+  "difficulty": "beginner",
+  "grid": {
+    "width": 3,
+    "height": 2
+  },
+  "areas": [
+    {
+      "id": "study",
+      "name": "Study",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 0
+        }
+      ]
+    },
+    {
+      "id": "hall",
+      "name": "Hall",
+      "cells": [
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "clock",
+      "type": "clock",
+      "label": "Stopped Clock",
+      "position": {
+        "row": 0,
+        "column": 2
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "ambrose",
+      "name": "Ambrose Quill",
+      "description": "The office's elderly solicitor.",
+      "role": "victim"
+    },
+    {
+      "id": "winnie",
+      "name": "Winnie Hart",
+      "description": "The junior clerk.",
+      "role": "suspect"
+    },
+    {
+      "id": "hugo",
+      "name": "Hugo Lark",
+      "description": "The bookkeeper.",
+      "role": "suspect"
+    },
+    {
+      "id": "iris",
+      "name": "Iris Moss",
+      "description": "The office's archivist.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "m1-1",
+      "text": "Ambrose was at row 1, column 1.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "ambrose",
+        "position": {
+          "row": 0,
+          "column": 0
+        }
+      }
+    },
+    {
+      "id": "m1-2",
+      "text": "Winnie stood beside the stopped clock.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "winnie",
+        "objectId": "clock"
+      }
+    },
+    {
+      "id": "m1-3",
+      "text": "Winnie was in row 2.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "winnie",
+        "row": 1
+      }
+    },
+    {
+      "id": "m1-4",
+      "text": "Hugo stood beside Winnie.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "hugo",
+        "targetCharacterId": "winnie"
+      }
+    },
+    {
+      "id": "m1-5",
+      "text": "Iris was not in the hall.",
+      "constraint": {
+        "type": "character_not_in_area",
+        "characterId": "iris",
+        "areaId": "hall"
+      }
+    }
+  ],
+  "victimId": "ambrose",
+  "solution": {
+    "placements": {
+      "ambrose": {
+        "row": 0,
+        "column": 0
+      },
+      "winnie": {
+        "row": 1,
+        "column": 2
+      },
+      "hugo": {
+        "row": 1,
+        "column": 1
+      },
+      "iris": {
+        "row": 1,
+        "column": 0
+      }
+    },
+    "murdererId": "iris"
+  },
+  "deductions": [
+    {
+      "text": "Ambrose is fixed at row 1, column 1, in the study.",
+      "clueIds": [
+        "m1-1"
+      ]
+    },
+    {
+      "text": "The clock fills its own cell, so the open cells beside it are row 1, column 2 and row 2, column 3. Only the second is in row 2, so that is where Winnie stood.",
+      "clueIds": [
+        "m1-2",
+        "m1-3"
+      ]
+    },
+    {
+      "text": "Hugo stands beside Winnie. The cell above her is the clock, so he is at row 2, column 2.",
+      "clueIds": [
+        "m1-4"
+      ]
+    },
+    {
+      "text": "Iris is not in the hall, so she is in the study. The only free study cell is row 2, column 1.",
+      "clueIds": [
+        "m1-5"
+      ]
+    }
+  ],
+  "resolution": "Iris Moss was the only other person in the study, so she was alone with Ambrose."
+}
