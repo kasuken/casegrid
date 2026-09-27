@@ -1,0 +1,311 @@
+{
+  "id": "case-003",
+  "title": "The Midnight Express",
+  "subtitle": "A luxury train stranded in alpine snowfall",
+  "description": "The Alpine Express was stranded overnight in a remote mountain pass. Baroness von Brandt was found dead inside her private sleeper cabin. Five passengers and train crew were nearby across the train cars. Deduce everyone's location and discover who was alone with the Baroness.",
+  "difficulty": "easy",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "saloon_car",
+      "name": "Saloon Car",
+      "cells": [
+        { "row": 0, "column": 0 },
+        { "row": 0, "column": 1 },
+        { "row": 0, "column": 2 },
+        { "row": 1, "column": 0 },
+        { "row": 1, "column": 1 },
+        { "row": 1, "column": 2 },
+        { "row": 2, "column": 0 },
+        { "row": 2, "column": 1 },
+        { "row": 2, "column": 2 }
+      ]
+    },
+    {
+      "id": "dining_car",
+      "name": "Dining Car",
+      "cells": [
+        { "row": 0, "column": 3 },
+        { "row": 0, "column": 4 },
+        { "row": 0, "column": 5 },
+        { "row": 1, "column": 3 },
+        { "row": 1, "column": 4 },
+        { "row": 1, "column": 5 },
+        { "row": 2, "column": 3 },
+        { "row": 2, "column": 4 },
+        { "row": 2, "column": 5 }
+      ]
+    },
+    {
+      "id": "sleeper_cabin",
+      "name": "Sleeper Cabin",
+      "cells": [
+        { "row": 3, "column": 0 },
+        { "row": 3, "column": 1 },
+        { "row": 3, "column": 2 },
+        { "row": 4, "column": 0 },
+        { "row": 4, "column": 1 },
+        { "row": 4, "column": 2 },
+        { "row": 5, "column": 0 },
+        { "row": 5, "column": 1 },
+        { "row": 5, "column": 2 }
+      ]
+    },
+    {
+      "id": "baggage_car",
+      "name": "Baggage Car",
+      "cells": [
+        { "row": 3, "column": 3 },
+        { "row": 3, "column": 4 },
+        { "row": 3, "column": 5 },
+        { "row": 4, "column": 3 },
+        { "row": 4, "column": 4 },
+        { "row": 4, "column": 5 },
+        { "row": 5, "column": 3 },
+        { "row": 5, "column": 4 },
+        { "row": 5, "column": 5 }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "piano",
+      "type": "piano",
+      "label": "Grand Piano",
+      "position": { "row": 1, "column": 1 }
+    },
+    {
+      "id": "bar_counter",
+      "type": "couch",
+      "label": "Dining Bar Counter",
+      "position": { "row": 1, "column": 4 }
+    },
+    {
+      "id": "berth_bed",
+      "type": "desk",
+      "label": "Velvet Berth Bed",
+      "position": { "row": 4, "column": 1 }
+    },
+    {
+      "id": "freight_crate",
+      "type": "prop_trunk",
+      "label": "Heavy Freight Crate",
+      "position": { "row": 4, "column": 4 }
+    }
+  ],
+  "characters": [
+    {
+      "id": "baroness",
+      "name": "Baroness von Brandt",
+      "description": "Wealthy industrial heiress traveling to Zurich.",
+      "role": "victim"
+    },
+    {
+      "id": "dimitri",
+      "name": "Dimitri Petrov",
+      "description": "Disgraced financier with deep gambling debts.",
+      "role": "suspect"
+    },
+    {
+      "id": "viktor",
+      "name": "Viktor Kroll",
+      "description": "Veteran train conductor on his final voyage.",
+      "role": "suspect"
+    },
+    {
+      "id": "charlotte",
+      "name": "Charlotte Dubois",
+      "description": "Investigative journalist pursuing an exclusive scoop.",
+      "role": "suspect"
+    },
+    {
+      "id": "gwen",
+      "name": "Gwen Montgomery",
+      "description": "Private traveling companion to the Baroness.",
+      "role": "suspect"
+    },
+    {
+      "id": "otto",
+      "name": "Otto Becker",
+      "description": "Luggage steward assigned to the baggage car.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "c3-1",
+      "text": "Baroness von Brandt was in row 4, column 0 of her sleeper cabin.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "baroness",
+        "position": { "row": 4, "column": 0 }
+      }
+    },
+    {
+      "id": "c3-2",
+      "text": "Dimitri Petrov was in the Sleeper Cabin.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "dimitri",
+        "areaId": "sleeper_cabin"
+      }
+    },
+    {
+      "id": "c3-3",
+      "text": "Dimitri was standing directly adjacent to the Baroness.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "dimitri",
+        "targetCharacterId": "baroness"
+      }
+    },
+    {
+      "id": "c3-4",
+      "text": "Dimitri was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "dimitri",
+        "row": 3
+      }
+    },
+    {
+      "id": "c3-5",
+      "text": "Viktor Kroll and Charlotte Dubois were both in the Saloon Car.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "viktor",
+        "targetCharacterId": "charlotte"
+      }
+    },
+    {
+      "id": "c3-6",
+      "text": "Viktor was in the Saloon Car.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "viktor",
+        "areaId": "saloon_car"
+      }
+    },
+    {
+      "id": "c3-7",
+      "text": "Viktor was directly beside the grand piano.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "viktor",
+        "objectId": "piano"
+      }
+    },
+    {
+      "id": "c3-8",
+      "text": "Viktor was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "viktor",
+        "row": 0
+      }
+    },
+    {
+      "id": "c3-9",
+      "text": "Charlotte was also adjacent to the grand piano.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "charlotte",
+        "objectId": "piano"
+      }
+    },
+    {
+      "id": "c3-10",
+      "text": "Charlotte was in column 2.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "charlotte",
+        "column": 2
+      }
+    },
+    {
+      "id": "c3-11",
+      "text": "Gwen Montgomery was the only person in the Dining Car.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "gwen",
+        "areaId": "dining_car"
+      }
+    },
+    {
+      "id": "c3-12",
+      "text": "Gwen was completely alone in her car.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "gwen"
+      }
+    },
+    {
+      "id": "c3-13",
+      "text": "Gwen was adjacent to the dining bar counter.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "gwen",
+        "objectId": "bar_counter"
+      }
+    },
+    {
+      "id": "c3-14",
+      "text": "Gwen was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "gwen",
+        "column": 5
+      }
+    },
+    {
+      "id": "c3-15",
+      "text": "Otto Becker was working in the Baggage Car.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "otto",
+        "areaId": "baggage_car"
+      }
+    },
+    {
+      "id": "c3-16",
+      "text": "Otto was alone in the Baggage Car.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "otto"
+      }
+    },
+    {
+      "id": "c3-17",
+      "text": "Otto was standing beside the heavy freight crate.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "otto",
+        "objectId": "freight_crate"
+      }
+    },
+    {
+      "id": "c3-18",
+      "text": "Otto was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "otto",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "baroness",
+  "solution": {
+    "placements": {
+      "baroness": { "row": 4, "column": 0 },
+      "dimitri": { "row": 3, "column": 0 },
+      "viktor": { "row": 0, "column": 1 },
+      "charlotte": { "row": 1, "column": 2 },
+      "gwen": { "row": 1, "column": 5 },
+      "otto": { "row": 4, "column": 5 }
+    },
+    "murdererId": "dimitri"
+  }
+}

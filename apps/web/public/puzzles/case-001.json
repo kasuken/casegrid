@@ -1,0 +1,297 @@
+{
+  "id": "case-001",
+  "title": "The Rosewood Parlor",
+  "subtitle": "A peaceful manor interrupted by poison",
+  "description": "Lord Reginald Rosewood was found dead in the estate conservatory before evening tea. Five guests and staff were scattered across the manor's east wing. Deduce everyone's location and discover who was alone with Lord Reginald.",
+  "difficulty": "beginner",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "conservatory",
+      "name": "Conservatory",
+      "cells": [
+        { "row": 0, "column": 0 },
+        { "row": 0, "column": 1 },
+        { "row": 0, "column": 2 },
+        { "row": 1, "column": 0 },
+        { "row": 1, "column": 1 },
+        { "row": 1, "column": 2 },
+        { "row": 2, "column": 0 },
+        { "row": 2, "column": 1 },
+        { "row": 2, "column": 2 }
+      ]
+    },
+    {
+      "id": "library",
+      "name": "Library",
+      "cells": [
+        { "row": 0, "column": 3 },
+        { "row": 0, "column": 4 },
+        { "row": 0, "column": 5 },
+        { "row": 1, "column": 3 },
+        { "row": 1, "column": 4 },
+        { "row": 1, "column": 5 },
+        { "row": 2, "column": 3 },
+        { "row": 2, "column": 4 },
+        { "row": 2, "column": 5 }
+      ]
+    },
+    {
+      "id": "billiard_room",
+      "name": "Billiard Room",
+      "cells": [
+        { "row": 3, "column": 0 },
+        { "row": 3, "column": 1 },
+        { "row": 3, "column": 2 },
+        { "row": 4, "column": 0 },
+        { "row": 4, "column": 1 },
+        { "row": 4, "column": 2 },
+        { "row": 5, "column": 0 },
+        { "row": 5, "column": 1 },
+        { "row": 5, "column": 2 }
+      ]
+    },
+    {
+      "id": "parlor",
+      "name": "Parlor",
+      "cells": [
+        { "row": 3, "column": 3 },
+        { "row": 3, "column": 4 },
+        { "row": 3, "column": 5 },
+        { "row": 4, "column": 3 },
+        { "row": 4, "column": 4 },
+        { "row": 4, "column": 5 },
+        { "row": 5, "column": 3 },
+        { "row": 5, "column": 4 },
+        { "row": 5, "column": 5 }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "fountain",
+      "type": "fountain",
+      "label": "Stone Fountain",
+      "position": { "row": 1, "column": 1 }
+    },
+    {
+      "id": "globe",
+      "type": "globe",
+      "label": "Antique Globe",
+      "position": { "row": 1, "column": 4 }
+    },
+    {
+      "id": "bookshelf",
+      "type": "bookshelf",
+      "label": "Oak Bookshelf",
+      "position": { "row": 0, "column": 5 }
+    },
+    {
+      "id": "billiard_table",
+      "type": "billiard_table",
+      "label": "Billiard Table",
+      "position": { "row": 4, "column": 1 }
+    },
+    {
+      "id": "fireplace",
+      "type": "fireplace",
+      "label": "Marble Fireplace",
+      "position": { "row": 4, "column": 5 }
+    },
+    {
+      "id": "clock",
+      "type": "clock",
+      "label": "Grandfather Clock",
+      "position": { "row": 3, "column": 3 }
+    }
+  ],
+  "characters": [
+    {
+      "id": "reginald",
+      "name": "Lord Reginald",
+      "description": "The wealthy master of Rosewood Manor.",
+      "role": "victim"
+    },
+    {
+      "id": "evelyn",
+      "name": "Evelyn Rosewood",
+      "description": "Reginald's ambitious younger sister.",
+      "role": "suspect"
+    },
+    {
+      "id": "arthur",
+      "name": "Arthur Vance",
+      "description": "The estate's cautious family solicitor.",
+      "role": "suspect"
+    },
+    {
+      "id": "clara",
+      "name": "Clara Mercer",
+      "description": "An avid collector of rare literature.",
+      "role": "suspect"
+    },
+    {
+      "id": "julian",
+      "name": "Dr. Julian Sterling",
+      "description": "The family physician visiting for the weekend.",
+      "role": "suspect"
+    },
+    {
+      "id": "beatrice",
+      "name": "Beatrice Finch",
+      "description": "The observant head housekeeper.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "clue-1",
+      "text": "Lord Reginald was seated at row 0, column 1 near the garden doors.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "reginald",
+        "position": { "row": 0, "column": 1 }
+      }
+    },
+    {
+      "id": "clue-2",
+      "text": "Evelyn was standing directly beside Lord Reginald.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "evelyn",
+        "targetCharacterId": "reginald"
+      }
+    },
+    {
+      "id": "clue-3",
+      "text": "Evelyn was standing along column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "evelyn",
+        "column": 0
+      }
+    },
+    {
+      "id": "clue-4",
+      "text": "Dr. Julian Sterling was the only person in the billiard room.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "julian",
+        "areaId": "billiard_room"
+      }
+    },
+    {
+      "id": "clue-5",
+      "text": "Julian was entirely alone in his room.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "julian"
+      }
+    },
+    {
+      "id": "clue-6",
+      "text": "Julian was standing directly beside the billiard table.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "julian",
+        "objectId": "billiard_table"
+      }
+    },
+    {
+      "id": "clue-7",
+      "text": "Julian was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "julian",
+        "row": 3
+      }
+    },
+    {
+      "id": "clue-8",
+      "text": "Arthur Vance was in the library.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "arthur",
+        "areaId": "library"
+      }
+    },
+    {
+      "id": "clue-9",
+      "text": "Arthur was inspecting the antique globe.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "arthur",
+        "objectId": "globe"
+      }
+    },
+    {
+      "id": "clue-10",
+      "text": "Arthur was located in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "arthur",
+        "column": 3
+      }
+    },
+    {
+      "id": "clue-11",
+      "text": "Clara was browsing books in the library with Arthur.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "clara",
+        "targetCharacterId": "arthur"
+      }
+    },
+    {
+      "id": "clue-12",
+      "text": "Clara stood right beside the oak bookshelf.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "clara",
+        "objectId": "bookshelf"
+      }
+    },
+    {
+      "id": "clue-13",
+      "text": "Clara was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "clara",
+        "row": 0
+      }
+    },
+    {
+      "id": "clue-14",
+      "text": "Beatrice was warming herself by the parlor fireplace.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "beatrice",
+        "objectId": "fireplace"
+      }
+    },
+    {
+      "id": "clue-15",
+      "text": "Beatrice was in column 4.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "beatrice",
+        "column": 4
+      }
+    }
+  ],
+  "victimId": "reginald",
+  "solution": {
+    "placements": {
+      "reginald": { "row": 0, "column": 1 },
+      "evelyn": { "row": 0, "column": 0 },
+      "julian": { "row": 3, "column": 1 },
+      "arthur": { "row": 1, "column": 3 },
+      "clara": { "row": 0, "column": 4 },
+      "beatrice": { "row": 4, "column": 4 }
+    },
+    "murdererId": "evelyn"
+  }
+}

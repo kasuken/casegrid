@@ -1,15 +1,61 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { fetchPuzzleIndex } from '../services/puzzleLoader'
+import { loadProgress } from '../services/progressStorage'
 import { CaseGridMark } from '../components/CaseGridMark'
+import type { PuzzleMetadata } from '@casegrid/puzzle-engine'
+
+interface CaseCardData extends PuzzleMetadata {
+  readonly status: 'not-started' | 'in-progress' | 'completed'
+  readonly bestTime?: number
+}
+
+function formatBestTime(secs?: number): string {
+  if (secs === undefined) return '--:--'
+  const mins = Math.floor(secs / 60)
+  const rem = secs % 60
+  return `${mins.toString().padStart(2, '0')}:${rem.toString().padStart(2, '0')}`
+}
 
 export function HomePage() {
+  const [cases, setCases] = useState<CaseCardData[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    let mounted = true
+    fetchPuzzleIndex()
+      .then((index) => {
+        if (!mounted) return
+        const withProgress: CaseCardData[] = index.map((item) => {
+          const progress = loadProgress(item.id)
+          return {
+            ...item,
+            status: progress?.status ?? 'not-started',
+            bestTime: progress?.bestTime,
+          }
+        })
+        setCases(withProgress)
+        setLoading(false)
+      })
+      .catch((err) => {
+        if (!mounted) return
+        console.error('Error loading cases catalog:', err)
+        setLoading(false)
+      })
+
+    return () => {
+      mounted = false
+    }
+  }, [])
+
   return (
-    <main className="site-shell">
+    <main className="site-shell" data-testid="home-page">
       <header className="site-header">
         <Link className="brand" to="/" aria-label="CaseGrid home">
           <CaseGridMark />
           <span>CaseGrid</span>
         </Link>
-        <span className="edition">MVP foundation</span>
+        <span className="edition">Spatial Murder-Mystery Logic Game</span>
       </header>
 
       <section className="intro" aria-labelledby="intro-title">
@@ -20,16 +66,68 @@ export function HomePage() {
           Find the killer.
         </h1>
         <p className="intro__summary">
-          Place every suspect, follow the evidence, and discover who was alone
-          with the victim. Five original cases are being prepared.
+          Inspect the crime scene, place every suspect according to witness testimony,
+          and discover who was alone with the victim.
         </p>
 
-        <div className="build-note" role="status">
-          <span className="build-note__pin" aria-hidden="true" />
-          <div>
-            <strong>Investigation setup is ready.</strong>
-            <span>The first playable case comes next.</span>
-          </div>
+        <div className="cases-section">
+          <h2 className="cases-section__title">Case Files</h2>
+
+          {loading ? (
+            <p className="loading-note">Gathering case records...</p>
+          ) : (
+            <div className="cases-grid" role="list">
+              {cases.map((caseItem, idx) => {
+                const caseNum = (idx + 1).toString().padStart(2, '0')
+                const isCompleted = caseItem.status === 'completed'
+                const isInProgress = caseItem.status === 'in-progress'
+
+                return (
+                  <Link
+                    key={caseItem.id}
+                    to={`/case/${caseItem.id}`}
+                    className={`case-card ${isCompleted ? 'case-card--completed' : ''}`}
+                    role="listitem"
+                    aria-label={`Case ${caseNum}: ${caseItem.title}. Difficulty: ${
+                      caseItem.difficulty
+                    }. Status: ${
+                      isCompleted ? `Solved in ${formatBestTime(caseItem.bestTime)}` : isInProgress ? 'In Progress' : 'Unopened'
+                    }`}
+                    data-testid={`case-card-${caseItem.id}`}
+                  >
+                    <div className="case-card__header">
+                      <span className="case-card__number">CASE {caseNum}</span>
+                      <span className="case-card__difficulty">{caseItem.difficulty}</span>
+                    </div>
+
+                    <h3 className="case-card__title">{caseItem.title}</h3>
+                    {caseItem.subtitle && (
+                      <p className="case-card__subtitle">{caseItem.subtitle}</p>
+                    )}
+
+                    <div className="case-card__footer">
+                      {isCompleted ? (
+                        <div className="case-card__status case-card__status--solved">
+                          <span className="status-badge status-badge--solved">✓ Solved</span>
+                          <span className="case-card__best-time" data-testid="card-best-time">
+                            ⏱ {formatBestTime(caseItem.bestTime)}
+                          </span>
+                        </div>
+                      ) : isInProgress ? (
+                        <div className="case-card__status case-card__status--in-progress">
+                          <span className="status-badge status-badge--active">● In Progress</span>
+                        </div>
+                      ) : (
+                        <div className="case-card__status">
+                          <span className="status-badge">Unopened</span>
+                        </div>
+                      )}
+                    </div>
+                  </Link>
+                )
+              })}
+            </div>
+          )}
         </div>
       </section>
 
@@ -43,7 +141,7 @@ export function HomePage() {
 
       <footer className="site-footer">
         <span>CaseGrid</span>
-        <span>Static web application</span>
+        <span>Static web application • No account required</span>
       </footer>
     </main>
   )

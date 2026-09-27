@@ -1,0 +1,337 @@
+{
+  "id": "case-004",
+  "title": "The Saltmarsh Beacon",
+  "subtitle": "A storm-swept coastal watchtower with nowhere to run",
+  "description": "A fierce storm severed Saltmarsh Island from the mainland. Veteran lighthouse keeper Captain Thaddeus Ward was discovered dead on the high lantern gallery. Six mariners and station staff were trapped inside. Trace everyone's position and deduce who was alone with Captain Ward.",
+  "difficulty": "medium",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "lantern_gallery",
+      "name": "Lantern Gallery",
+      "cells": [
+        { "row": 0, "column": 0 },
+        { "row": 0, "column": 1 },
+        { "row": 0, "column": 2 },
+        { "row": 0, "column": 3 },
+        { "row": 0, "column": 4 },
+        { "row": 0, "column": 5 },
+        { "row": 1, "column": 0 },
+        { "row": 1, "column": 1 },
+        { "row": 1, "column": 2 },
+        { "row": 1, "column": 3 },
+        { "row": 1, "column": 4 },
+        { "row": 1, "column": 5 }
+      ]
+    },
+    {
+      "id": "radio_shack",
+      "name": "Radio Shack",
+      "cells": [
+        { "row": 2, "column": 0 },
+        { "row": 2, "column": 1 },
+        { "row": 2, "column": 2 },
+        { "row": 3, "column": 0 },
+        { "row": 3, "column": 1 },
+        { "row": 3, "column": 2 }
+      ]
+    },
+    {
+      "id": "living_quarters",
+      "name": "Living Quarters",
+      "cells": [
+        { "row": 2, "column": 3 },
+        { "row": 2, "column": 4 },
+        { "row": 2, "column": 5 },
+        { "row": 3, "column": 3 },
+        { "row": 3, "column": 4 },
+        { "row": 3, "column": 5 }
+      ]
+    },
+    {
+      "id": "engine_room",
+      "name": "Engine Room",
+      "cells": [
+        { "row": 4, "column": 0 },
+        { "row": 4, "column": 1 },
+        { "row": 4, "column": 2 },
+        { "row": 4, "column": 3 },
+        { "row": 4, "column": 4 },
+        { "row": 4, "column": 5 },
+        { "row": 5, "column": 0 },
+        { "row": 5, "column": 1 },
+        { "row": 5, "column": 2 },
+        { "row": 5, "column": 3 },
+        { "row": 5, "column": 4 },
+        { "row": 5, "column": 5 }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "beacon_lens",
+      "type": "lighthouse_lamp",
+      "label": "Fresnel Beacon Lens",
+      "position": { "row": 0, "column": 2 }
+    },
+    {
+      "id": "telegraph",
+      "type": "telegraph",
+      "label": "Emergency Radio Unit",
+      "position": { "row": 3, "column": 1 }
+    },
+    {
+      "id": "hearth",
+      "type": "fireplace",
+      "label": "Cast-Iron Stove",
+      "position": { "row": 3, "column": 4 }
+    },
+    {
+      "id": "generator",
+      "type": "steam_engine",
+      "label": "Diesel Generator",
+      "position": { "row": 5, "column": 2 }
+    }
+  ],
+  "characters": [
+    {
+      "id": "thaddeus",
+      "name": "Capt. Thaddeus Ward",
+      "description": "Gruff veteran keeper of Saltmarsh Beacon.",
+      "role": "victim"
+    },
+    {
+      "id": "mira",
+      "name": "Mira Gable",
+      "description": "Apprentice keeper scheduled for relief.",
+      "role": "suspect"
+    },
+    {
+      "id": "lydia",
+      "name": "Lydia Cross",
+      "description": "Radio operator attempting SOS contact.",
+      "role": "suspect"
+    },
+    {
+      "id": "caleb",
+      "name": "Caleb Finch",
+      "description": "Lobster fisherman whose skiff broke mooring.",
+      "role": "suspect"
+    },
+    {
+      "id": "jonas",
+      "name": "Jonas Vane",
+      "description": "Naval surveyor updating marine tide charts.",
+      "role": "suspect"
+    },
+    {
+      "id": "samuel",
+      "name": "Samuel Drake",
+      "description": "Harbor inspector trapped by the squall.",
+      "role": "suspect"
+    },
+    {
+      "id": "eleanor",
+      "name": "Eleanor Rigby",
+      "description": "Naturalist studying migratory seabirds.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "c4-1",
+      "text": "Captain Thaddeus Ward was at row 0, column 1 inspecting the lantern.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "thaddeus",
+        "position": { "row": 0, "column": 1 }
+      }
+    },
+    {
+      "id": "c4-2",
+      "text": "Mira Gable was in the Lantern Gallery.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "mira",
+        "areaId": "lantern_gallery"
+      }
+    },
+    {
+      "id": "c4-3",
+      "text": "Mira was standing directly beside Captain Ward.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "mira",
+        "targetCharacterId": "thaddeus"
+      }
+    },
+    {
+      "id": "c4-4",
+      "text": "Mira was standing in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "mira",
+        "column": 0
+      }
+    },
+    {
+      "id": "c4-5",
+      "text": "Lydia Cross and Caleb Finch were both inside the Radio Shack.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "lydia",
+        "targetCharacterId": "caleb"
+      }
+    },
+    {
+      "id": "c4-6",
+      "text": "Lydia Cross was in the Radio Shack.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "lydia",
+        "areaId": "radio_shack"
+      }
+    },
+    {
+      "id": "c4-7",
+      "text": "Lydia stood right beside the emergency radio unit.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "lydia",
+        "objectId": "telegraph"
+      }
+    },
+    {
+      "id": "c4-8",
+      "text": "Lydia was in row 2.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "lydia",
+        "row": 2
+      }
+    },
+    {
+      "id": "c4-9",
+      "text": "Caleb stood directly beside Lydia.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "caleb",
+        "targetCharacterId": "lydia"
+      }
+    },
+    {
+      "id": "c4-10",
+      "text": "Caleb was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "caleb",
+        "column": 0
+      }
+    },
+    {
+      "id": "c4-11",
+      "text": "Jonas Vane and Samuel Drake were sheltering in the Living Quarters.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "jonas",
+        "targetCharacterId": "samuel"
+      }
+    },
+    {
+      "id": "c4-12",
+      "text": "Jonas was in the Living Quarters.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "jonas",
+        "areaId": "living_quarters"
+      }
+    },
+    {
+      "id": "c4-13",
+      "text": "Jonas was standing beside the cast-iron stove.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "jonas",
+        "objectId": "hearth"
+      }
+    },
+    {
+      "id": "c4-14",
+      "text": "Jonas was in row 2.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "jonas",
+        "row": 2
+      }
+    },
+    {
+      "id": "c4-15",
+      "text": "Samuel stood directly beside Jonas.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "samuel",
+        "targetCharacterId": "jonas"
+      }
+    },
+    {
+      "id": "c4-16",
+      "text": "Samuel was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "samuel",
+        "column": 5
+      }
+    },
+    {
+      "id": "c4-17",
+      "text": "Eleanor Rigby was the only person in the Engine Room.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "eleanor",
+        "areaId": "engine_room"
+      }
+    },
+    {
+      "id": "c4-18",
+      "text": "Eleanor was entirely alone in her room.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "eleanor"
+      }
+    },
+    {
+      "id": "c4-19",
+      "text": "Eleanor stood beside the diesel generator.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "eleanor",
+        "objectId": "generator"
+      }
+    },
+    {
+      "id": "c4-20",
+      "text": "Eleanor was in row 4.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "eleanor",
+        "row": 4
+      }
+    }
+  ],
+  "victimId": "thaddeus",
+  "solution": {
+    "placements": {
+      "thaddeus": { "row": 0, "column": 1 },
+      "mira": { "row": 0, "column": 0 },
+      "lydia": { "row": 2, "column": 1 },
+      "caleb": { "row": 2, "column": 0 },
+      "jonas": { "row": 2, "column": 4 },
+      "samuel": { "row": 2, "column": 5 },
+      "eleanor": { "row": 4, "column": 2 }
+    },
+    "murdererId": "mira"
+  }
+}

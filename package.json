@@ -8,6 +8,8 @@
     "build": "pnpm -r --if-present run build",
     "lint": "pnpm -r --if-present run lint",
     "test": "pnpm -r --if-present run test",
-    "typecheck": "pnpm -r --if-present run typecheck"
+    "test:e2e": "pnpm --filter @casegrid/web test:e2e",
+    "typecheck": "pnpm -r --if-present run typecheck",
+    "validate:puzzles": "pnpm --filter @casegrid/puzzle-engine validate:puzzles"
   }
 }

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "case-001",
+    "title": "The Rosewood Parlor",
+    "subtitle": "A peaceful manor interrupted by poison",
+    "description": "Lord Reginald Rosewood was found dead in the estate conservatory before evening tea. Five guests and staff were scattered across the manor's east wing.",
+    "difficulty": "beginner",
+    "suspectCount": 5,
+    "victimName": "Lord Reginald"
+  },
+  {
+    "id": "case-002",
+    "title": "The Grand Antiquary",
+    "subtitle": "A silent museum exhibition turned crime scene",
+    "description": "Curator Professor Alistair Finch was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing.",
+    "difficulty": "easy",
+    "suspectCount": 5,
+    "victimName": "Prof. Alistair Finch"
+  },
+  {
+    "id": "case-003",
+    "title": "The Midnight Express",
+    "subtitle": "A luxury train stranded in alpine snowfall",
+    "description": "The Alpine Express was stranded overnight in a remote mountain pass. Baroness von Brandt was found dead inside her private sleeper cabin. Five passengers and train crew were nearby across the train cars.",
+    "difficulty": "easy",
+    "suspectCount": 5,
+    "victimName": "Baroness von Brandt"
+  },
+  {
+    "id": "case-004",
+    "title": "The Saltmarsh Beacon",
+    "subtitle": "A storm-swept coastal watchtower with nowhere to run",
+    "description": "A fierce storm severed Saltmarsh Island from the mainland. Veteran lighthouse keeper Captain Thaddeus Ward was discovered dead on the high lantern gallery. Six mariners and station staff were trapped inside.",
+    "difficulty": "medium",
+    "suspectCount": 6,
+    "victimName": "Capt. Thaddeus Ward"
+  },
+  {
+    "id": "case-005",
+    "title": "The Blackwood Playhouse",
+    "subtitle": "A final dress rehearsal silenced by tragedy",
+    "description": "On the eve of opening night, tyrannical artistic director Vincent Sterling was discovered poisoned in his private dressing quarters at Blackwood Playhouse. Six members of the company were scattered across the stage and wings.",
+    "difficulty": "medium",
+    "suspectCount": 6,
+    "victimName": "Vincent Sterling"
+  }
+]

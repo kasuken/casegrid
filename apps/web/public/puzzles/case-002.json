@@ -1,0 +1,303 @@
+{
+  "id": "case-002",
+  "title": "The Grand Antiquary",
+  "subtitle": "A silent museum exhibition turned crime scene",
+  "description": "Curator Professor Alistair Finch was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Finch.",
+  "difficulty": "easy",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "fossil_hall",
+      "name": "Fossil Hall",
+      "cells": [
+        { "row": 0, "column": 0 },
+        { "row": 0, "column": 1 },
+        { "row": 0, "column": 2 },
+        { "row": 1, "column": 0 },
+        { "row": 1, "column": 1 },
+        { "row": 1, "column": 2 },
+        { "row": 2, "column": 0 },
+        { "row": 2, "column": 1 },
+        { "row": 2, "column": 2 }
+      ]
+    },
+    {
+      "id": "gem_vault",
+      "name": "Gem Vault",
+      "cells": [
+        { "row": 0, "column": 3 },
+        { "row": 0, "column": 4 },
+        { "row": 0, "column": 5 },
+        { "row": 1, "column": 3 },
+        { "row": 1, "column": 4 },
+        { "row": 1, "column": 5 },
+        { "row": 2, "column": 3 },
+        { "row": 2, "column": 4 },
+        { "row": 2, "column": 5 }
+      ]
+    },
+    {
+      "id": "relic_gallery",
+      "name": "Relic Gallery",
+      "cells": [
+        { "row": 3, "column": 0 },
+        { "row": 3, "column": 1 },
+        { "row": 3, "column": 2 },
+        { "row": 4, "column": 0 },
+        { "row": 4, "column": 1 },
+        { "row": 4, "column": 2 },
+        { "row": 5, "column": 0 },
+        { "row": 5, "column": 1 },
+        { "row": 5, "column": 2 }
+      ]
+    },
+    {
+      "id": "restoration_lab",
+      "name": "Restoration Lab",
+      "cells": [
+        { "row": 3, "column": 3 },
+        { "row": 3, "column": 4 },
+        { "row": 3, "column": 5 },
+        { "row": 4, "column": 3 },
+        { "row": 4, "column": 4 },
+        { "row": 4, "column": 5 },
+        { "row": 5, "column": 3 },
+        { "row": 5, "column": 4 },
+        { "row": 5, "column": 5 }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "t_rex_skull",
+      "type": "t_rex_skull",
+      "label": "T-Rex Skull",
+      "position": { "row": 1, "column": 1 }
+    },
+    {
+      "id": "diamond_case",
+      "type": "display_case",
+      "label": "Diamond Showcase",
+      "position": { "row": 1, "column": 4 }
+    },
+    {
+      "id": "sarcophagus",
+      "type": "sarcophagus",
+      "label": "Gilded Sarcophagus",
+      "position": { "row": 4, "column": 1 }
+    },
+    {
+      "id": "microscope_bench",
+      "type": "desk",
+      "label": "Microscope Bench",
+      "position": { "row": 4, "column": 4 }
+    }
+  ],
+  "characters": [
+    {
+      "id": "alistair",
+      "name": "Prof. Alistair Finch",
+      "description": "Chief curator of antiquities.",
+      "role": "victim"
+    },
+    {
+      "id": "nadia",
+      "name": "Dr. Nadia Rostova",
+      "description": "Visiting paleontologist with disputed claims.",
+      "role": "suspect"
+    },
+    {
+      "id": "marcus",
+      "name": "Marcus Bennett",
+      "description": "Head of museum nocturnal security.",
+      "role": "suspect"
+    },
+    {
+      "id": "elena",
+      "name": "Elena Cruz",
+      "description": "Private antiquities broker seeking appraisal.",
+      "role": "suspect"
+    },
+    {
+      "id": "henry",
+      "name": "Henry Thorpe",
+      "description": "Board trustee reviewing museum finances.",
+      "role": "suspect"
+    },
+    {
+      "id": "sylvia",
+      "name": "Sylvia Chen",
+      "description": "Master conservator working late on restorations.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "c2-1",
+      "text": "Professor Alistair Finch was at row 0, column 1 inspecting the fossil display.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "alistair",
+        "position": { "row": 0, "column": 1 }
+      }
+    },
+    {
+      "id": "c2-2",
+      "text": "Dr. Nadia Rostova was in the Fossil Hall.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "nadia",
+        "areaId": "fossil_hall"
+      }
+    },
+    {
+      "id": "c2-3",
+      "text": "Nadia was standing directly adjacent to Professor Finch.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "nadia",
+        "targetCharacterId": "alistair"
+      }
+    },
+    {
+      "id": "c2-4",
+      "text": "Nadia was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "nadia",
+        "column": 0
+      }
+    },
+    {
+      "id": "c2-5",
+      "text": "Henry Thorpe was the only person in the Relic Gallery.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "henry"
+      }
+    },
+    {
+      "id": "c2-6",
+      "text": "Henry Thorpe was standing in the Relic Gallery.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "henry",
+        "areaId": "relic_gallery"
+      }
+    },
+    {
+      "id": "c2-7",
+      "text": "Henry was directly beside the gilded sarcophagus.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "henry",
+        "objectId": "sarcophagus"
+      }
+    },
+    {
+      "id": "c2-8",
+      "text": "Henry was standing in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "henry",
+        "row": 3
+      }
+    },
+    {
+      "id": "c2-9",
+      "text": "Marcus Bennett and Elena Cruz were both in the Gem Vault.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "marcus",
+        "targetCharacterId": "elena"
+      }
+    },
+    {
+      "id": "c2-10",
+      "text": "Marcus was inside the Gem Vault.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "marcus",
+        "areaId": "gem_vault"
+      }
+    },
+    {
+      "id": "c2-11",
+      "text": "Marcus stood directly beside the diamond showcase.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "marcus",
+        "objectId": "diamond_case"
+      }
+    },
+    {
+      "id": "c2-12",
+      "text": "Marcus was in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "marcus",
+        "column": 3
+      }
+    },
+    {
+      "id": "c2-13",
+      "text": "Elena Cruz was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "elena",
+        "row": 0
+      }
+    },
+    {
+      "id": "c2-14",
+      "text": "Elena was standing adjacent to the diamond showcase.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "elena",
+        "objectId": "diamond_case"
+      }
+    },
+    {
+      "id": "c2-15",
+      "text": "Sylvia Chen was working alone in the Restoration Lab.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "sylvia",
+        "areaId": "restoration_lab"
+      }
+    },
+    {
+      "id": "c2-16",
+      "text": "Sylvia was directly beside the microscope bench.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "sylvia",
+        "objectId": "microscope_bench"
+      }
+    },
+    {
+      "id": "c2-17",
+      "text": "Sylvia stood in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "sylvia",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "alistair",
+  "solution": {
+    "placements": {
+      "alistair": { "row": 0, "column": 1 },
+      "nadia": { "row": 0, "column": 0 },
+      "henry": { "row": 3, "column": 1 },
+      "marcus": { "row": 1, "column": 3 },
+      "elena": { "row": 0, "column": 4 },
+      "sylvia": { "row": 4, "column": 5 }
+    },
+    "murdererId": "nadia"
+  }
+}
