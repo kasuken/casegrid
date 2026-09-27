@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest'
-import { useGameStore } from './gameStore'
+import { canUndo, MAX_UNDO_HISTORY, useGameStore } from './gameStore'
 import type { Puzzle } from '@casegrid/puzzle-engine'
 
 describe('gameStore', () => {
@@ -94,6 +94,7 @@ describe('gameStore', () => {
       mistakes: 0,
       bestTime: undefined,
       feedback: null,
+      history: [],
     })
   })
 
@@ -228,5 +229,146 @@ describe('gameStore', () => {
 
     // Best time remains 40, not replaced by 60
     expect(useGameStore.getState().bestTime).toBe(40)
+  })
+
+  describe('undo', () => {
+    const start = () => {
+      useGameStore.getState().loadCase(mockPuzzle)
+      useGameStore.getState().startInvestigation()
+    }
+    const s = () => useGameStore.getState()
+
+    it('starts with nothing to undo', () => {
+      start()
+      expect(canUndo(s())).toBe(false)
+      s().undo()
+      expect(s().placements).toEqual({})
+      expect(s().feedback).toBeNull()
+    })
+
+    it('restores the exact board before a placement, a move, and a removal', () => {
+      start()
+      s().placeCharacter('sus1', { row: 0, column: 0 })
+      s().placeCharacter('sus1', { row: 1, column: 1 })
+      s().unplaceCharacter('sus1')
+      expect(s().placements.sus1).toBeUndefined()
+
+      s().undo()
+      expect(s().placements.sus1).toEqual({ row: 1, column: 1 })
+      s().undo()
+      expect(s().placements.sus1).toEqual({ row: 0, column: 0 })
+      s().undo()
+      expect(s().placements).toEqual({})
+      expect(canUndo(s())).toBe(false)
+    })
+
+    it('brings back a character displaced by placing someone on their cell', () => {
+      start()
+      s().placeCharacter('sus1', { row: 0, column: 0 })
+      s().placeCharacter('sus2', { row: 0, column: 0 })
+      expect(s().placements).toEqual({ sus2: { row: 0, column: 0 } })
+
+      s().undo()
+      expect(s().placements).toEqual({ sus1: { row: 0, column: 0 } })
+    })
+
+    it('undoes exclusion notes and clue marks separately from placements', () => {
+      start()
+      s().placeCharacter('vic', { row: 0, column: 0 })
+      s().toggleExclusion('sus1', { row: 1, column: 1 })
+      s().toggleClueSolved('c1')
+
+      s().undo()
+      expect(s().solvedClueIds).toEqual([])
+      expect(s().exclusions.sus1).toEqual([{ row: 1, column: 1 }])
+
+      s().undo()
+      expect(s().exclusions.sus1).toBeUndefined()
+      expect(s().placements.vic).toEqual({ row: 0, column: 0 })
+    })
+
+    it('ignores rejected and unchanged actions', () => {
+      start()
+      s().placeCharacter('sus1', { row: 2, column: 2 }) // object cell
+      s().unplaceCharacter('sus2') // not placed
+      expect(s().history).toHaveLength(0)
+
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().placeCharacter('sus1', { row: 0, column: 1 }) // same cell
+      expect(s().history).toHaveLength(1)
+    })
+
+    it('never changes mistakes, time, stage, or best time', () => {
+      useGameStore.getState().loadCase(mockPuzzle, {
+        puzzleId: 'case-test',
+        status: 'in-progress',
+        placements: {},
+        exclusions: {},
+        solvedClueIds: [],
+        elapsedSeconds: 30,
+        mistakes: 2,
+        bestTime: 90,
+      })
+      s().placeCharacter('vic', { row: 0, column: 0 })
+      s().placeCharacter('sus1', { row: 1, column: 1 })
+      s().placeCharacter('sus2', { row: 1, column: 0 })
+      s().checkSolution()
+      expect(s().mistakes).toBe(3)
+
+      useGameStore.setState({ elapsedSeconds: 55 })
+      s().undo()
+      expect(s().placements.sus2).toBeUndefined()
+      expect(s().mistakes).toBe(3)
+      expect(s().elapsedSeconds).toBe(55)
+      expect(s().stage).toBe('investigating')
+      expect(s().bestTime).toBe(90)
+    })
+
+    it('cannot undo a successful submission', () => {
+      start()
+      s().placeCharacter('vic', { row: 0, column: 0 })
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().placeCharacter('sus2', { row: 1, column: 0 })
+      s().checkSolution()
+      expect(s().stage).toBe('accusing')
+      expect(canUndo(s())).toBe(false)
+
+      s().undo()
+      expect(s().placements.sus2).toEqual({ row: 1, column: 0 })
+    })
+
+    it('clears history on reset, replay, and loading a case', () => {
+      start()
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().resetCase()
+      expect(s().history).toHaveLength(0)
+
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().replayCase()
+      expect(s().history).toHaveLength(0)
+
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().loadCase(mockPuzzle)
+      expect(s().history).toHaveLength(0)
+    })
+
+    it('persists the restored board, not the history', () => {
+      start()
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().placeCharacter('sus2', { row: 1, column: 0 })
+      s().undo()
+
+      const saved = JSON.parse(localStorage.getItem('casegrid_progress_v1_case-test') ?? '{}')
+      expect(saved.placements).toEqual({ sus1: { row: 0, column: 1 } })
+      expect(saved.history).toBeUndefined()
+    })
+
+    it('keeps a bounded history', () => {
+      start()
+      for (let i = 0; i < MAX_UNDO_HISTORY + 20; i++) {
+        s().toggleClueSolved('c1')
+      }
+      expect(s().history).toHaveLength(MAX_UNDO_HISTORY)
+    })
   })
 })

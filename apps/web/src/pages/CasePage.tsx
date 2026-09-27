@@ -21,6 +21,7 @@ import { CluePanel } from '../components/clues/CluePanel'
 import { AccusationView } from '../components/game/AccusationView'
 import { ResultView } from '../components/game/ResultView'
 import { FeedbackBanner } from '../components/game/FeedbackBanner'
+import { useUndoShortcut } from '../hooks/useUndoShortcut'
 
 export function CasePage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
@@ -33,7 +34,10 @@ export function CasePage() {
     loadCase,
     placeCharacter,
     clearFeedback,
+    undo,
   } = useGameStore()
+
+  useUndoShortcut(stage === 'investigating', undo)
 
   const sensors = useSensors(
     useSensor(PointerSensor, {

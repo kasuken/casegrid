@@ -372,17 +372,18 @@ div[tabindex="0"]:focus-visible {
   text-decoration: none;
 }
 
-.btn:hover:not(:disabled) {
+.btn:hover:not(:disabled, [aria-disabled='true']) {
   transform: translate(-1px, -1px);
   box-shadow: 3px 3px 0 var(--ink);
 }
 
-.btn:active:not(:disabled) {
+.btn:active:not(:disabled, [aria-disabled='true']) {
   transform: translate(1px, 1px);
   box-shadow: 1px 1px 0 var(--ink);
 }
 
-.btn:disabled {
+.btn:disabled,
+.btn[aria-disabled='true'] {
   opacity: 0.5;
   cursor: not-allowed;
   box-shadow: none;
@@ -923,6 +924,17 @@ div[tabindex="0"]:focus-visible {
   color: rgb(24 39 45 / 80%);
 }
 
+.board-actions__buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn--undo {
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+}
+
 .btn--check {
   font-size: 1.05rem;
   padding: 0.65rem 1.5rem;
@@ -1403,7 +1415,7 @@ div[tabindex="0"]:focus-visible {
     text-align: center;
   }
   .btn--check {
-    width: 100%;
+    flex: 1;
   }
 }
 

@@ -59,6 +59,17 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 
 ---
 
+## Player Controls
+
+| Control | Behaviour |
+|---|---|
+| Place | Select a person, then tap an open cell, or drag them. Placing on an occupied cell sends its occupant back to the tray. |
+| Exclude Note | Marks cells where the selected person cannot be. Notes are for the player only. |
+| Clue marks | Tap a clue to tick it off. Also a note only. |
+| Undo (`Ctrl`/`⌘`+`Z`) | Reverts the last successful placement, move, removal, exclusion, or clue mark. Rejected actions (for example, placing on an object) are not recorded. Undo never touches submissions, accusations, mistakes, time, completion, or best times. History is **session-only**: it holds up to 100 steps, is cleared on case change, reset, replay, or a successful check, and is lost on refresh. The restored board itself is saved normally. The shortcut is ignored while typing in a text field. |
+
+---
+
 ## Requirements
 
 - **Node.js**: v22+ (tested on Node 26.8.1)

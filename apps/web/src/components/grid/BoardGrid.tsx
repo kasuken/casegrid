@@ -6,6 +6,7 @@ import {
 } from '@casegrid/puzzle-engine'
 import { useGameStore } from '../../stores/gameStore'
 import { Cell } from './Cell'
+import { UndoButton } from '../game/UndoButton'
 
 export function BoardGrid() {
   const {
@@ -117,16 +118,19 @@ export function BoardGrid() {
         <span className="board-actions__count">
           Placed: <strong>{placedCount}</strong> of <strong>{totalCount}</strong> characters
         </span>
-        <button
-          type="button"
-          className="btn btn--primary btn--check"
-          onClick={() => checkSolution()}
-          disabled={!allPlaced}
-          data-testid="check-solution-btn"
-          title={allPlaced ? 'Check your solution' : 'Place all suspects first'}
-        >
-          Check Solution
-        </button>
+        <div className="board-actions__buttons">
+          <UndoButton />
+          <button
+            type="button"
+            className="btn btn--primary btn--check"
+            onClick={() => checkSolution()}
+            disabled={!allPlaced}
+            data-testid="check-solution-btn"
+            title={allPlaced ? 'Check your solution' : 'Place all suspects first'}
+          >
+            Check Solution
+          </button>
+        </div>
       </div>
     </section>
   )

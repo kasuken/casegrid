@@ -23,6 +23,15 @@ export interface GameFeedback {
   readonly type: 'info' | 'error' | 'success'
 }
 
+/** Player-authored board state that undo can restore. Never includes stats or stage. */
+export interface PlayerSnapshot {
+  readonly placements: Record<string, Position>
+  readonly exclusions: Record<string, readonly Position[]>
+  readonly solvedClueIds: string[]
+}
+
+export const MAX_UNDO_HISTORY = 100
+
 interface GameState {
   readonly puzzle: Puzzle | null
   readonly stage: GameStage
@@ -36,6 +45,8 @@ interface GameState {
   readonly mistakes: number
   readonly bestTime?: number
   readonly feedback: GameFeedback | null
+  /** Session-only; cleared on case change, reset, replay, and submission. */
+  readonly history: readonly PlayerSnapshot[]
 
   // Actions
   loadCase: (puzzle: Puzzle, savedProgress?: PuzzleProgress | null) => void
@@ -46,6 +57,7 @@ interface GameState {
   unplaceCharacter: (characterId: string) => void
   toggleExclusion: (characterId: string, position: Position) => void
   toggleClueSolved: (clueId: string) => void
+  undo: () => void
   tickTimer: () => void
   setTimerRunning: (running: boolean) => void
   checkSolution: () => { success: boolean; conflicts: number }
@@ -77,6 +89,19 @@ function syncProgress(state: GameState): void {
   })
 }
 
+function withSnapshot(state: GameState): readonly PlayerSnapshot[] {
+  const snapshot: PlayerSnapshot = {
+    placements: state.placements,
+    exclusions: state.exclusions,
+    solvedClueIds: state.solvedClueIds,
+  }
+  return [...state.history, snapshot].slice(-MAX_UNDO_HISTORY)
+}
+
+export function canUndo(state: Pick<GameState, 'stage' | 'history'>): boolean {
+  return state.stage === 'investigating' && state.history.length > 0
+}
+
 export const useGameStore = create<GameState>((set, get) => ({
   puzzle: null,
   stage: 'intro',
@@ -90,6 +115,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   mistakes: 0,
   bestTime: undefined,
   feedback: null,
+  history: [],
 
   loadCase: (puzzle, savedProgress) => {
     if (savedProgress && savedProgress.status === 'in-progress') {
@@ -106,6 +132,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         mistakes: savedProgress.mistakes,
         bestTime: savedProgress.bestTime,
         feedback: null,
+        history: [],
       })
     } else if (savedProgress && savedProgress.status === 'completed') {
       set({
@@ -121,6 +148,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         mistakes: savedProgress.mistakes,
         bestTime: savedProgress.bestTime,
         feedback: null,
+        history: [],
       })
     } else {
       set({
@@ -136,6 +164,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         mistakes: 0,
         bestTime: savedProgress?.bestTime,
         feedback: null,
+        history: [],
       })
     }
   },
@@ -145,6 +174,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       stage: 'investigating',
       isTimerRunning: true,
       feedback: null,
+      history: [],
     })
     syncProgress(get())
   },
@@ -172,9 +202,15 @@ export const useGameStore = create<GameState>((set, get) => ({
       return
     }
 
+    const current = placements[characterId]
+    if (current && isPositionEqual(current, position)) {
+      set({ feedback: null })
+      return
+    }
+
     const nextPlacements = { ...placements }
 
-    // If another character is already in this cell, remove or swap them
+    // Placing onto an occupied cell sends its occupant back to the tray
     for (const [existingCharId, pos] of Object.entries(nextPlacements)) {
       if (existingCharId !== characterId && isPositionEqual(pos, position)) {
         delete nextPlacements[existingCharId]
@@ -184,6 +220,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     nextPlacements[characterId] = position
 
     set({
+      history: withSnapshot(get()),
       placements: nextPlacements,
       feedback: null,
     })
@@ -197,7 +234,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const next = { ...placements }
     delete next[characterId]
 
-    set({ placements: next, feedback: null })
+    set({ history: withSnapshot(get()), placements: next, feedback: null })
     syncProgress(get())
   },
 
@@ -213,6 +250,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     }
 
     set({
+      history: withSnapshot(get()),
       exclusions: {
         ...exclusions,
         [characterId]: charExclusions,
@@ -227,7 +265,22 @@ export const useGameStore = create<GameState>((set, get) => ({
       ? solvedClueIds.filter((id) => id !== clueId)
       : [...solvedClueIds, clueId]
 
-    set({ solvedClueIds: next })
+    set({ history: withSnapshot(get()), solvedClueIds: next })
+    syncProgress(get())
+  },
+
+  undo: () => {
+    const state = get()
+    if (!canUndo(state)) return
+
+    const previous = state.history[state.history.length - 1]
+    set({
+      history: state.history.slice(0, -1),
+      placements: previous.placements,
+      exclusions: previous.exclusions,
+      solvedClueIds: previous.solvedClueIds,
+      feedback: { message: 'Last action undone.', type: 'info' },
+    })
     syncProgress(get())
   },
 
@@ -272,6 +325,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (conflicts === 0) {
       set({
         stage: 'accusing',
+        history: [],
         feedback: {
           message: 'All characters are placed correctly! Now, identify the murderer.',
           type: 'success',
@@ -359,6 +413,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       mistakes: 0,
       bestTime,
       feedback: null,
+      history: [],
     })
     syncProgress(get())
   },
@@ -379,6 +434,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       mistakes: 0,
       bestTime,
       feedback: null,
+      history: [],
     })
     syncProgress(get())
   },
