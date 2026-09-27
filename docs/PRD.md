@@ -1660,6 +1660,8 @@ Native mobile apps
 
 Do not create infrastructure for hypothetical future requirements unless it naturally falls out of good architecture.
 
+Section 62 authorizes a bounded post-MVP exception for spoiler-free result sharing and a weekly editorial Case of the Week. Every other exclusion above still applies, including daily puzzle scheduling.
+
 ---
 
 # 56. Important Architecture Rule
@@ -1917,3 +1919,53 @@ README
 After the first puzzle is fully playable, implement the remaining four cases.
 
 Do not build future product features before the complete MVP described here is working.
+
+---
+
+# 62. Post-MVP Growth Scope (Epic 2)
+
+This section amends the MVP scope for the second product milestone: make CaseGrid inviting, shareable, and worth returning to. It is authorized only within the bounds below. Sections 3, 19–24, and 55 otherwise remain in force.
+
+## Authorized additions
+
+```text
+First-case onboarding coach and a "Solve your first mystery" entry point
+Resume entry point for an active investigation
+Authored case resolutions and deduction walkthroughs shown after completion
+"Open the next case" navigation
+Session-only undo for player actions
+Optional authored reasoning prompts ("nudges")
+Spoiler-free result sharing and direct case links
+Static per-case link-preview pages generated at build time
+A weekly editorial Case of the Week driven by a checked-in schedule
+```
+
+## Bounds
+
+- Everything remains a static React application with authored JSON content and `localStorage`. No backend, accounts, database, analytics vendor, identifiers, notifications, or scheduling service.
+- Sharing uses the Web Share API when available, with copy and download fallbacks. Shared text, images, URLs, and link previews must never reveal the murderer, placements, or deduction explanations. A share interaction is not evidence of delivery, recipient play, or a verified competitive score.
+- The Case of the Week is weekly, not daily. It uses a schema-validated schedule that maps week starts (Monday 00:00 UTC) to already-published, validated case IDs. It never generates puzzles and never presents an existing case as newly authored.
+- Undo restores player actions only: placements, exclusions, and clue notes. It never undoes submissions, accusations, mistakes, elapsed time, completion status, or best times, and it never consults the hidden solution.
+- Nudges are hand-authored text tied to clue IDs. They never identify a wrong placement, reveal an answer cell, or change the board or notes. The number of distinct nudges revealed is recorded honestly.
+- Resolutions and walkthroughs are authored content stored in puzzle JSON and shown only after the case is closed. Motive and backstory may add flavour, but the logical deduction must rest on the clues.
+- External publishing, creator outreach, and any new analytics service need a separate decision. Preparing reviewable campaign material and a measurement plan is in scope.
+
+## Content format additions
+
+Puzzle JSON may include these optional fields, all validated by the engine:
+
+```text
+resolution    Authored ending text shown after CASE CLOSED
+deductions    Ordered walkthrough steps, each with text and referenced clue IDs
+helpPrompts   Ordered nudges, each with an id, text, and referenced clue IDs
+tutorial      Ordered onboarding steps for a tutorial case
+```
+
+The Case of the Week schedule lives in `apps/web/public/puzzles/schedule.json`.
+
+## Guardrails
+
+- The MVP acceptance gate in Epic 1 must pass before the growth release ships.
+- Every bundled puzzle keeps exactly one independently verified, deduction-solvable solution.
+- Player notes never become engine constraints, and correctness is never checked after a move.
+- Mobile support from 320 px, keyboard access, visible focus, and reduced-motion preferences are preserved.
