@@ -86,6 +86,7 @@ function syncProgress(state: GameState): void {
     elapsedSeconds: state.elapsedSeconds,
     mistakes: state.mistakes,
     bestTime: state.bestTime,
+    updatedAt: Date.now(),
   })
 }
 

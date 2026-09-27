@@ -1,14 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchPuzzleIndex } from '../services/puzzleLoader'
-import { loadProgress } from '../services/progressStorage'
+import { withProgress, type CatalogEntry } from '../services/caseProgress'
 import { AssetIcon } from '../components/AssetIcon'
-import type { PuzzleMetadata } from '@casegrid/puzzle-engine'
-
-interface CaseCardData extends PuzzleMetadata {
-  readonly status: 'not-started' | 'in-progress' | 'completed'
-  readonly bestTime?: number
-}
+import { StartPanel } from '../components/home/StartPanel'
 
 function formatBestTime(secs?: number): string {
   if (secs === undefined) return '--:--'
@@ -18,7 +13,7 @@ function formatBestTime(secs?: number): string {
 }
 
 export function HomePage() {
-  const [cases, setCases] = useState<CaseCardData[]>([])
+  const [cases, setCases] = useState<CatalogEntry[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -26,15 +21,7 @@ export function HomePage() {
     fetchPuzzleIndex()
       .then((index) => {
         if (!mounted) return
-        const withProgress: CaseCardData[] = index.map((item) => {
-          const progress = loadProgress(item.id)
-          return {
-            ...item,
-            status: progress?.status ?? 'not-started',
-            bestTime: progress?.bestTime,
-          }
-        })
-        setCases(withProgress)
+        setCases(withProgress(index))
         setLoading(false)
       })
       .catch((err) => {
@@ -68,6 +55,8 @@ export function HomePage() {
           Inspect the crime scene, place every suspect according to witness testimony,
           and discover who was alone with the victim.
         </p>
+
+        {!loading && <StartPanel entries={cases} />}
 
         <div className="cases-section">
           <h2 className="cases-section__title">Case Files</h2>

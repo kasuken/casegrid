@@ -63,6 +63,10 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 
 | Control | Behaviour |
 |---|---|
+| Home entry point | New players see "Solve your first mystery". Players with an active investigation see "Resume investigation" for the most recently saved case. Players who have only finished cases see their next unsolved case. The full catalog stays below. |
+| Onboarding guide | Shown on the first case (authored `tutorial` steps) after Start Investigation. It advances as the player selects, places, takes notes, and marks clues, or with Next, and it never highlights answers. Skip or finish is remembered per case in `localStorage` (`casegrid_onboarding_v1`); corrupt data falls back to showing the skippable guide. Reopen it from Case File → "Show the guide again". |
+| Case File | Re-read the briefing and How to play at any time during an investigation. |
+| Keyboard | Tab to a portrait or cell. Enter selects a portrait or places the selected person. Space picks a portrait up for keyboard dragging (arrow keys, then Space or Enter to drop). |
 | Place | Select a person, then tap an open cell, or drag them. Placing on an occupied cell sends its occupant back to the tray. |
 | Exclude Note | Marks cells where the selected person cannot be. Notes are for the player only. |
 | Clue marks | Tap a clue to tick it off. Also a note only. |

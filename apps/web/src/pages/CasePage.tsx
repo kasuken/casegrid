@@ -22,6 +22,8 @@ import { AccusationView } from '../components/game/AccusationView'
 import { ResultView } from '../components/game/ResultView'
 import { FeedbackBanner } from '../components/game/FeedbackBanner'
 import { useUndoShortcut } from '../hooks/useUndoShortcut'
+import { useGuideStore } from '../stores/guideStore'
+import { CaseGuide } from '../components/game/CaseGuide'
 
 export function CasePage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
@@ -37,6 +39,7 @@ export function CasePage() {
     undo,
   } = useGameStore()
 
+  const initGuide = useGuideStore((s) => s.init)
   useUndoShortcut(stage === 'investigating', undo)
 
   const sensors = useSensors(
@@ -45,7 +48,10 @@ export function CasePage() {
         distance: 4, // Prevents accidental drag on click/tap
       },
     }),
-    useSensor(KeyboardSensor),
+    // Space picks up for keyboard dragging; Enter stays a normal button press that selects.
+    useSensor(KeyboardSensor, {
+      keyboardCodes: { start: ['Space'], cancel: ['Escape'], end: ['Space', 'Enter'] },
+    }),
   )
 
   useEffect(() => {
@@ -56,6 +62,7 @@ export function CasePage() {
         if (!mounted) return
         const saved = loadProgress(caseId)
         loadCase(puzzle, saved)
+        initGuide(puzzle.id, puzzle.tutorial ?? [])
         setLoading(false)
       })
       .catch((err) => {
@@ -68,7 +75,7 @@ export function CasePage() {
     return () => {
       mounted = false
     }
-  }, [caseId, loadCase])
+  }, [caseId, loadCase, initGuide])
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
@@ -141,6 +148,7 @@ export function CasePage() {
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <div className="investigation-layout">
               <div className="investigation-layout__main">
+                <CaseGuide />
                 <BoardGrid />
                 <CharacterTray />
               </div>

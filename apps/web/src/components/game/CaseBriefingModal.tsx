@@ -1,4 +1,6 @@
 import { useGameStore } from '../../stores/gameStore'
+import { useGuideStore } from '../../stores/guideStore'
+import { HowToPlay } from './HowToPlay'
 
 interface CaseBriefingModalProps {
   readonly isOpen: boolean
@@ -7,9 +9,11 @@ interface CaseBriefingModalProps {
 
 export function CaseBriefingModal({ isOpen, onClose }: CaseBriefingModalProps) {
   const { puzzle } = useGameStore()
+  const reopenGuide = useGuideStore((s) => s.reopen)
 
   if (!isOpen || !puzzle) return null
 
+  const hasGuide = (puzzle.tutorial?.length ?? 0) > 0
   const victim = puzzle.characters.find((c) => c.role === 'victim')
   const suspects = puzzle.characters.filter((c) => c.role === 'suspect')
 
@@ -49,7 +53,23 @@ export function CaseBriefingModal({ isOpen, onClose }: CaseBriefingModalProps) {
           </div>
         </section>
 
+        <h3 className="modal-subtitle">How to play</h3>
+        <HowToPlay victimName={victim?.name} />
+
         <div className="modal-actions">
+          {hasGuide && (
+            <button
+              type="button"
+              className="btn btn--outline"
+              onClick={() => {
+                reopenGuide()
+                onClose()
+              }}
+              data-testid="reopen-guide-btn"
+            >
+              Show the guide again
+            </button>
+          )}
           <button
             type="button"
             className="btn btn--primary"

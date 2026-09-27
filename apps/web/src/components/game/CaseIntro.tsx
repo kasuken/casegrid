@@ -1,4 +1,5 @@
 import { useGameStore } from '../../stores/gameStore'
+import { HowToPlay } from './HowToPlay'
 
 export function CaseIntro() {
   const { puzzle, startInvestigation, bestTime } = useGameStore()
@@ -55,23 +56,22 @@ export function CaseIntro() {
           )}
         </section>
 
-        <div className="case-intro__rules">
-          <p>
-            <strong>Investigation objective:</strong> Use the witness clues to place every character on the map.
-            Once all characters are placed, accuse the suspect who was alone in the room with {victim?.name ?? 'the victim'}.
+        <HowToPlay victimName={victim?.name} />
+
+        {puzzle.tutorial && puzzle.tutorial.length > 0 && (
+          <p className="case-intro__guide-note">
+            New to CaseGrid? A short, skippable guide will walk you through this board once you start.
           </p>
-          <p>
-            Select a character, then tap a cell, or drag them onto the map. Rows run from top to bottom;
-            columns run from left to right, both starting at 1. “Beside” means sharing an edge, never a diagonal.
-            Objects block their cells. Clue checks and exclusion marks are your notes; check your arrangement when you are ready.
-          </p>
-        </div>
+        )}
 
         <div className="case-intro__actions">
           <button
             type="button"
             className="btn btn--primary btn--large"
-            onClick={startInvestigation}
+            onClick={() => {
+              startInvestigation()
+              window.scrollTo({ top: 0 })
+            }}
             data-testid="start-investigation-btn"
           >
             Start Investigation

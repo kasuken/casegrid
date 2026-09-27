@@ -1364,6 +1364,96 @@ div[tabindex="0"]:focus-visible {
   gap: 0.75rem;
 }
 
+.modal-subtitle {
+  margin: 1.5rem 0 0.5rem;
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+}
+
+/* Home entry point */
+.start-panel {
+  max-width: 36rem;
+  margin: 0 0 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--paper-card);
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--evidence);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.start-panel__eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--evidence);
+}
+
+.start-panel__title {
+  margin: 0.35rem 0 0.5rem;
+  font-family: Georgia, serif;
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  line-height: 1.2;
+}
+
+.start-panel__text {
+  margin: 0 0 1rem;
+  color: rgb(24 39 45 / 82%);
+  line-height: 1.5;
+}
+
+/* Onboarding guide: a pinned note above the board */
+.case-guide {
+  position: relative;
+  padding: 1rem 1.25rem;
+  background: #fff8e6;
+  border: 2px dashed var(--brass);
+  box-shadow: 3px 3px 0 rgb(24 39 45 / 25%);
+}
+
+.case-guide__meta {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7a5a1c;
+}
+
+.case-guide__title {
+  margin: 0.25rem 0 0.35rem;
+  font-family: Georgia, serif;
+  font-size: 1.15rem;
+}
+
+.case-guide__text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.case-guide__hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgb(24 39 45 / 75%);
+}
+
+.case-guide__actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.case-intro__guide-note {
+  margin: -1rem 0 2rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgb(24 39 45 / 78%);
+}
+
 /* Loading and Spinners */
 .loading-state {
   display: flex;
