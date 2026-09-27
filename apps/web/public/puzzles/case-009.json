@@ -1,0 +1,461 @@
+{
+  "id": "case-009",
+  "title": "The Clockwork Workshop",
+  "subtitle": "Chimes at midnight, silence at dawn",
+  "description": "Master Horologist Elias Vance was found dead inside his private Gear Vault. Five associates and apprentices were scattered across the workshop floors. Deduce everyone's location and discover who was alone with Master Vance.",
+  "difficulty": "easy",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "gear_vault",
+      "name": "Gear Vault",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "assembly_hall",
+      "name": "Assembly Hall",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "furnace_room",
+      "name": "Furnace Room",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "drafting_studio",
+      "name": "Drafting Studio",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "master_clock",
+      "type": "clock",
+      "label": "Grand Astronomical Clock",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "workbench",
+      "type": "desk",
+      "label": "Jeweler Workbench",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "smelting_kiln",
+      "type": "fireplace",
+      "label": "Brass Furnace",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "drafting_table",
+      "type": "bookshelf",
+      "label": "Blueprint Table",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "elias",
+      "name": "Elias Vance",
+      "role": "victim",
+      "description": "Master clockmaker renowned across the continent."
+    },
+    {
+      "id": "tobias",
+      "name": "Tobias Webb",
+      "role": "suspect",
+      "description": "A disgruntled rival horologist."
+    },
+    {
+      "id": "nora",
+      "name": "Nora Sterling",
+      "role": "suspect",
+      "description": "Elias's gifted but overlooked daughter."
+    },
+    {
+      "id": "leo",
+      "name": "Leo Baxter",
+      "role": "suspect",
+      "description": "The nervous first-year apprentice."
+    },
+    {
+      "id": "croft",
+      "name": "Inspector Croft",
+      "role": "suspect",
+      "description": "A city official inquiring about municipal contracts."
+    },
+    {
+      "id": "brigitte",
+      "name": "Madame Brigitte",
+      "role": "suspect",
+      "description": "A wealthy patron awaiting her bespoke chronometer."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c9-1",
+      "text": "Elias Vance was inspecting gears at row 0, column 1.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "elias",
+        "position": {
+          "row": 0,
+          "column": 1
+        }
+      }
+    },
+    {
+      "id": "c9-2",
+      "text": "Tobias Webb was in the Gear Vault.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "tobias",
+        "areaId": "gear_vault"
+      }
+    },
+    {
+      "id": "c9-3",
+      "text": "Tobias Webb stood directly adjacent to the Grand Astronomical Clock.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "tobias",
+        "objectId": "master_clock"
+      }
+    },
+    {
+      "id": "c9-4",
+      "text": "Tobias was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "tobias",
+        "column": 0
+      }
+    },
+    {
+      "id": "c9-5",
+      "text": "Nora Sterling and Leo Baxter were both working in the Assembly Hall.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "nora",
+        "targetCharacterId": "leo"
+      }
+    },
+    {
+      "id": "c9-6",
+      "text": "Nora was in the Assembly Hall.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "nora",
+        "areaId": "assembly_hall"
+      }
+    },
+    {
+      "id": "c9-7",
+      "text": "Nora stood directly beside the Jeweler Workbench.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "nora",
+        "objectId": "workbench"
+      }
+    },
+    {
+      "id": "c9-8",
+      "text": "Nora was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "nora",
+        "row": 0
+      }
+    },
+    {
+      "id": "c9-9",
+      "text": "Leo Baxter was in the Assembly Hall.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "leo",
+        "areaId": "assembly_hall"
+      }
+    },
+    {
+      "id": "c9-10",
+      "text": "Leo stood directly beside the Jeweler Workbench.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "leo",
+        "objectId": "workbench"
+      }
+    },
+    {
+      "id": "c9-11",
+      "text": "Leo was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "leo",
+        "column": 5
+      }
+    },
+    {
+      "id": "c9-12",
+      "text": "Inspector Croft was the only person in the Furnace Room.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "croft"
+      }
+    },
+    {
+      "id": "c9-13",
+      "text": "Inspector Croft was in the Furnace Room.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "croft",
+        "areaId": "furnace_room"
+      }
+    },
+    {
+      "id": "c9-14",
+      "text": "Inspector Croft stood directly beside the Brass Furnace.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "croft",
+        "objectId": "smelting_kiln"
+      }
+    },
+    {
+      "id": "c9-15",
+      "text": "Inspector Croft was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "croft",
+        "row": 3
+      }
+    },
+    {
+      "id": "c9-16",
+      "text": "Madame Brigitte was the only person in the Drafting Studio.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "brigitte"
+      }
+    },
+    {
+      "id": "c9-17",
+      "text": "Madame Brigitte was in the Drafting Studio.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "brigitte",
+        "areaId": "drafting_studio"
+      }
+    },
+    {
+      "id": "c9-18",
+      "text": "Madame Brigitte stood directly beside the Blueprint Table.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "brigitte",
+        "objectId": "drafting_table"
+      }
+    },
+    {
+      "id": "c9-19",
+      "text": "Madame Brigitte was in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "brigitte",
+        "column": 3
+      }
+    }
+  ],
+  "victimId": "elias",
+  "solution": {
+    "placements": {
+      "elias": {
+        "row": 0,
+        "column": 1
+      },
+      "tobias": {
+        "row": 1,
+        "column": 0
+      },
+      "nora": {
+        "row": 0,
+        "column": 4
+      },
+      "leo": {
+        "row": 1,
+        "column": 5
+      },
+      "croft": {
+        "row": 3,
+        "column": 1
+      },
+      "brigitte": {
+        "row": 4,
+        "column": 3
+      }
+    },
+    "murdererId": "tobias"
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "id": "case-006",
+  "title": "The Whispering Cloister",
+  "subtitle": "A silent abbey broken by a midnight confession",
+  "description": "Abbot Augustine was found poisoned in the Chapter House of Saint Jude's Abbey. Five monks and visitors were scattered across the cloister quadrangle. Deduce everyone's location and discover who was alone with Abbot Augustine.",
+  "difficulty": "beginner",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "chapter_house",
+      "name": "Chapter House",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "scriptorium",
+      "name": "Scriptorium",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "herb_garden",
+      "name": "Herb Garden",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "refectory",
+      "name": "Refectory",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "altar",
+      "type": "desk",
+      "label": "Stone Altar",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "lectern",
+      "type": "bookshelf",
+      "label": "Illuminated Lectern",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "well",
+      "type": "fountain",
+      "label": "Abbey Well",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "hearth",
+      "type": "fireplace",
+      "label": "Refectory Hearth",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "augustine",
+      "name": "Abbot Augustine",
+      "role": "victim",
+      "description": "The strict abbot of Saint Jude's."
+    },
+    {
+      "id": "bernard",
+      "name": "Brother Bernard",
+      "role": "suspect",
+      "description": "The ambitious cellarer managing finances."
+    },
+    {
+      "id": "thomas",
+      "name": "Brother Thomas",
+      "role": "suspect",
+      "description": "A quiet manuscript illuminator."
+    },
+    {
+      "id": "beatrice",
+      "name": "Sister Beatrice",
+      "role": "suspect",
+      "description": "A visiting herbalist from the convent."
+    },
+    {
+      "id": "anselm",
+      "name": "Father Anselm",
+      "role": "suspect",
+      "description": "An elderly Latin translator."
+    },
+    {
+      "id": "stephen",
+      "name": "Prior Stephen",
+      "role": "suspect",
+      "description": "The second-in-command awaiting succession."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c6-1",
+      "text": "Abbot Augustine was seated at row 0, column 1 near the altar.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "augustine",
+        "position": {
+          "row": 0,
+          "column": 1
+        }
+      }
+    },
+    {
+      "id": "c6-2",
+      "text": "Brother Bernard was in the Chapter House.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "bernard",
+        "areaId": "chapter_house"
+      }
+    },
+    {
+      "id": "c6-3",
+      "text": "Brother Bernard was standing directly beside Abbot Augustine.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "bernard",
+        "targetCharacterId": "augustine"
+      }
+    },
+    {
+      "id": "c6-4",
+      "text": "Brother Bernard was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "bernard",
+        "column": 0
+      }
+    },
+    {
+      "id": "c6-5",
+      "text": "Brother Thomas and Father Anselm were both working in the Scriptorium.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "thomas",
+        "targetCharacterId": "anselm"
+      }
+    },
+    {
+      "id": "c6-6",
+      "text": "Brother Thomas was in the Scriptorium.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "thomas",
+        "areaId": "scriptorium"
+      }
+    },
+    {
+      "id": "c6-7",
+      "text": "Brother Thomas stood directly beside the Illuminated Lectern.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "thomas",
+        "objectId": "lectern"
+      }
+    },
+    {
+      "id": "c6-8",
+      "text": "Brother Thomas was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "thomas",
+        "row": 0
+      }
+    },
+    {
+      "id": "c6-9",
+      "text": "Father Anselm stood directly beside the Illuminated Lectern.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "anselm",
+        "objectId": "lectern"
+      }
+    },
+    {
+      "id": "c6-10",
+      "text": "Father Anselm was in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "anselm",
+        "column": 3
+      }
+    },
+    {
+      "id": "c6-11",
+      "text": "Sister Beatrice was the only person in the Herb Garden.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "beatrice"
+      }
+    },
+    {
+      "id": "c6-12",
+      "text": "Sister Beatrice was in the Herb Garden.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "beatrice",
+        "areaId": "herb_garden"
+      }
+    },
+    {
+      "id": "c6-13",
+      "text": "Sister Beatrice stood directly beside the Abbey Well.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "beatrice",
+        "objectId": "well"
+      }
+    },
+    {
+      "id": "c6-14",
+      "text": "Sister Beatrice was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "beatrice",
+        "column": 0
+      }
+    },
+    {
+      "id": "c6-15",
+      "text": "Prior Stephen was the only person in the Refectory.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "stephen"
+      }
+    },
+    {
+      "id": "c6-16",
+      "text": "Prior Stephen was in the Refectory.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "stephen",
+        "areaId": "refectory"
+      }
+    },
+    {
+      "id": "c6-17",
+      "text": "Prior Stephen stood directly beside the Refectory Hearth.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "stephen",
+        "objectId": "hearth"
+      }
+    },
+    {
+      "id": "c6-18",
+      "text": "Prior Stephen was in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "stephen",
+        "column": 3
+      }
+    }
+  ],
+  "victimId": "augustine",
+  "solution": {
+    "placements": {
+      "augustine": {
+        "row": 0,
+        "column": 1
+      },
+      "bernard": {
+        "row": 0,
+        "column": 0
+      },
+      "thomas": {
+        "row": 0,
+        "column": 4
+      },
+      "anselm": {
+        "row": 1,
+        "column": 3
+      },
+      "beatrice": {
+        "row": 4,
+        "column": 0
+      },
+      "stephen": {
+        "row": 4,
+        "column": 3
+      }
+    },
+    "murdererId": "bernard"
+  }
+}

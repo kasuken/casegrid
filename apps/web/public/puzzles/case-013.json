@@ -1,0 +1,478 @@
+{
+  "id": "case-013",
+  "title": "The Highclere Observatory",
+  "subtitle": "A midnight gaze silenced forever",
+  "description": "Royal Astronomer Dr. Thaddeus Vance was discovered dead beside the Great Refractor telescope. Six visiting scholars and technicians were scattered across the mountaintop dome. Deduce everyone's location and discover who was alone with Dr. Vance.",
+  "difficulty": "medium",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "celestial_rotunda",
+      "name": "Celestial Rotunda",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "spectroscopy_lab",
+      "name": "Spectroscopy Lab",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "chronometer_room",
+      "name": "Chronometer Room",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "transit_circle",
+      "name": "Transit Circle",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "refractor",
+      "type": "steam_engine",
+      "label": "Great Refractor",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "prism_spectroscope",
+      "type": "display_case",
+      "label": "Quartz Spectrograph",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "pendulum_regulator",
+      "type": "clock",
+      "label": "Master Sidereal Clock",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "celestial_globe",
+      "type": "globe",
+      "label": "Brass Star Globe",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "thaddeus",
+      "name": "Dr. Thaddeus Vance",
+      "role": "victim",
+      "description": "The pioneering astronomer discovering a new comet."
+    },
+    {
+      "id": "lyra",
+      "name": "Lyra Sterling",
+      "role": "suspect",
+      "description": "His brilliant calculating assistant denied credit."
+    },
+    {
+      "id": "brandt_prof",
+      "name": "Professor Brandt",
+      "role": "suspect",
+      "description": "A visiting German astrophysicist."
+    },
+    {
+      "id": "clive",
+      "name": "Clive Hawkins",
+      "role": "suspect",
+      "description": "The dome mechanical technician."
+    },
+    {
+      "id": "iris",
+      "name": "Iris Finch",
+      "role": "suspect",
+      "description": "A star cartographer recording photographic plates."
+    },
+    {
+      "id": "roland",
+      "name": "Roland Cross",
+      "role": "suspect",
+      "description": "The royal society auditor."
+    },
+    {
+      "id": "aris",
+      "name": "Dr. Aris Thorne",
+      "role": "suspect",
+      "description": "The meteorological officer."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c13-1",
+      "text": "Dr. Thaddeus Vance was in the Celestial Rotunda.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "thaddeus",
+        "areaId": "celestial_rotunda"
+      }
+    },
+    {
+      "id": "c13-2",
+      "text": "Dr. Thaddeus Vance stood directly adjacent to the Great Refractor.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "thaddeus",
+        "objectId": "refractor"
+      }
+    },
+    {
+      "id": "c13-3",
+      "text": "Dr. Thaddeus Vance was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "thaddeus",
+        "row": 0
+      }
+    },
+    {
+      "id": "c13-4",
+      "text": "Lyra Sterling was in the Celestial Rotunda.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "lyra",
+        "areaId": "celestial_rotunda"
+      }
+    },
+    {
+      "id": "c13-5",
+      "text": "Lyra Sterling stood directly adjacent to the Great Refractor.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "lyra",
+        "objectId": "refractor"
+      }
+    },
+    {
+      "id": "c13-6",
+      "text": "Lyra Sterling was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "lyra",
+        "column": 0
+      }
+    },
+    {
+      "id": "c13-7",
+      "text": "Professor Brandt and Iris Finch were both in the Spectroscopy Lab.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "brandt_prof",
+        "targetCharacterId": "iris"
+      }
+    },
+    {
+      "id": "c13-8",
+      "text": "Professor Brandt was in row 0 and stood directly adjacent to the Quartz Spectrograph.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "brandt_prof",
+        "objectId": "prism_spectroscope"
+      }
+    },
+    {
+      "id": "c13-9",
+      "text": "Professor Brandt was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "brandt_prof",
+        "row": 0
+      }
+    },
+    {
+      "id": "c13-10",
+      "text": "Iris Finch was in column 5 and stood directly adjacent to the Quartz Spectrograph.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "iris",
+        "objectId": "prism_spectroscope"
+      }
+    },
+    {
+      "id": "c13-11",
+      "text": "Iris Finch was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "iris",
+        "column": 5
+      }
+    },
+    {
+      "id": "c13-12",
+      "text": "Clive Hawkins and Roland Cross were both in the Chronometer Room.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "clive",
+        "targetCharacterId": "roland"
+      }
+    },
+    {
+      "id": "c13-13",
+      "text": "Clive Hawkins was in row 3 and stood directly adjacent to the Master Sidereal Clock.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "clive",
+        "objectId": "pendulum_regulator"
+      }
+    },
+    {
+      "id": "c13-14",
+      "text": "Clive Hawkins was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "clive",
+        "row": 3
+      }
+    },
+    {
+      "id": "c13-15",
+      "text": "Roland Cross was in column 0 and stood directly adjacent to the Master Sidereal Clock.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "roland",
+        "objectId": "pendulum_regulator"
+      }
+    },
+    {
+      "id": "c13-16",
+      "text": "Roland Cross was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "roland",
+        "column": 0
+      }
+    },
+    {
+      "id": "c13-17",
+      "text": "Dr. Aris Thorne was the only person in the Transit Circle.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "aris"
+      }
+    },
+    {
+      "id": "c13-18",
+      "text": "Dr. Aris Thorne was in the Transit Circle.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "aris",
+        "areaId": "transit_circle"
+      }
+    },
+    {
+      "id": "c13-19",
+      "text": "Dr. Aris Thorne was in column 5 and stood directly adjacent to the Brass Star Globe.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "aris",
+        "objectId": "celestial_globe"
+      }
+    },
+    {
+      "id": "c13-20",
+      "text": "Dr. Aris Thorne was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "aris",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "thaddeus",
+  "solution": {
+    "placements": {
+      "thaddeus": {
+        "row": 0,
+        "column": 1
+      },
+      "lyra": {
+        "row": 1,
+        "column": 0
+      },
+      "brandt_prof": {
+        "row": 0,
+        "column": 4
+      },
+      "iris": {
+        "row": 1,
+        "column": 5
+      },
+      "clive": {
+        "row": 3,
+        "column": 1
+      },
+      "roland": {
+        "row": 4,
+        "column": 0
+      },
+      "aris": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "lyra"
+  }
+}

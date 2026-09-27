@@ -1,0 +1,478 @@
+{
+  "id": "case-018",
+  "title": "The High-Alpine Sanitarium",
+  "subtitle": "Clean mountain air, cold-blooded murder",
+  "description": "Sanitarium Director Dr. Victor Klaus was found poisoned in the Hydrotherapy Suite of Berghof Clavadel. Six doctors, staff, and patients were isolated by an overnight avalanche. Deduce everyone's location and discover who was alone with Dr. Klaus.",
+  "difficulty": "hard",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "hydrotherapy",
+      "name": "Hydrotherapy Suite",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "sun_terrace",
+      "name": "Sun Terrace",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "apothecary_store",
+      "name": "Apothecary Store",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "library_salon",
+      "name": "Library Salon",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "mineral_bath",
+      "type": "fountain",
+      "label": "Thermal Mineral Bath",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "deck_lounger",
+      "type": "couch",
+      "label": "Cure Lounger",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "medicine_safe",
+      "type": "safe",
+      "label": "Locked Narcotic Cabinet",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "tiled_stove",
+      "type": "fireplace",
+      "label": "Swiss Porcelain Stove",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "victor",
+      "name": "Dr. Victor Klaus",
+      "role": "victim",
+      "description": "Director of Berghof Clavadel Sanitarium."
+    },
+    {
+      "id": "gretchen",
+      "name": "Nurse Gretchen",
+      "role": "suspect",
+      "description": "The head nurse privy to the clinic's experimental records."
+    },
+    {
+      "id": "hans",
+      "name": "Dr. Hans Meyer",
+      "role": "suspect",
+      "description": "A junior physician conducting unauthorized research."
+    },
+    {
+      "id": "sonja",
+      "name": "Baroness Sonja",
+      "role": "suspect",
+      "description": "A long-term patient withholding substantial donations."
+    },
+    {
+      "id": "lucas",
+      "name": "Lucas Vance",
+      "role": "suspect",
+      "description": "A restless convalescent roaming the corridors."
+    },
+    {
+      "id": "karl",
+      "name": "Karl the Pharmacist",
+      "role": "suspect",
+      "description": "The dispensary keeper who mislaid toxic tinctures."
+    },
+    {
+      "id": "bruno",
+      "name": "Bruno the Orderly",
+      "role": "suspect",
+      "description": "The night orderly guarding the exits."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c18-1",
+      "text": "Dr. Victor Klaus was in the Hydrotherapy Suite.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "victor",
+        "areaId": "hydrotherapy"
+      }
+    },
+    {
+      "id": "c18-2",
+      "text": "Dr. Victor Klaus stood directly adjacent to the Thermal Mineral Bath.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "victor",
+        "objectId": "mineral_bath"
+      }
+    },
+    {
+      "id": "c18-3",
+      "text": "Dr. Victor Klaus was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "victor",
+        "row": 0
+      }
+    },
+    {
+      "id": "c18-4",
+      "text": "Nurse Gretchen was in the Hydrotherapy Suite.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "gretchen",
+        "areaId": "hydrotherapy"
+      }
+    },
+    {
+      "id": "c18-5",
+      "text": "Nurse Gretchen was directly adjacent to Dr. Klaus.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "gretchen",
+        "targetCharacterId": "victor"
+      }
+    },
+    {
+      "id": "c18-6",
+      "text": "Nurse Gretchen was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "gretchen",
+        "column": 0
+      }
+    },
+    {
+      "id": "c18-7",
+      "text": "Dr. Hans Meyer and Baroness Sonja were both resting on the Sun Terrace.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "hans",
+        "targetCharacterId": "sonja"
+      }
+    },
+    {
+      "id": "c18-8",
+      "text": "Dr. Hans Meyer was in row 0 and stood directly adjacent to the Cure Lounger.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "hans",
+        "objectId": "deck_lounger"
+      }
+    },
+    {
+      "id": "c18-9",
+      "text": "Dr. Hans Meyer was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "hans",
+        "row": 0
+      }
+    },
+    {
+      "id": "c18-10",
+      "text": "Baroness Sonja was in column 5 and stood directly adjacent to the Cure Lounger.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "sonja",
+        "objectId": "deck_lounger"
+      }
+    },
+    {
+      "id": "c18-11",
+      "text": "Baroness Sonja was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "sonja",
+        "column": 5
+      }
+    },
+    {
+      "id": "c18-12",
+      "text": "Karl the Pharmacist and Lucas Vance were both in the Apothecary Store.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "karl",
+        "targetCharacterId": "lucas"
+      }
+    },
+    {
+      "id": "c18-13",
+      "text": "Karl was in row 3 and stood directly adjacent to the Locked Narcotic Cabinet.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "karl",
+        "objectId": "medicine_safe"
+      }
+    },
+    {
+      "id": "c18-14",
+      "text": "Karl was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "karl",
+        "row": 3
+      }
+    },
+    {
+      "id": "c18-15",
+      "text": "Lucas Vance was in column 0 and stood directly adjacent to the Locked Narcotic Cabinet.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "lucas",
+        "objectId": "medicine_safe"
+      }
+    },
+    {
+      "id": "c18-16",
+      "text": "Lucas Vance was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "lucas",
+        "column": 0
+      }
+    },
+    {
+      "id": "c18-17",
+      "text": "Bruno the Orderly was the only person in the Library Salon.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "bruno"
+      }
+    },
+    {
+      "id": "c18-18",
+      "text": "Bruno was in the Library Salon.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "bruno",
+        "areaId": "library_salon"
+      }
+    },
+    {
+      "id": "c18-19",
+      "text": "Bruno was in column 5 and stood directly adjacent to the Swiss Porcelain Stove.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "bruno",
+        "objectId": "tiled_stove"
+      }
+    },
+    {
+      "id": "c18-20",
+      "text": "Bruno was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "bruno",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "victor",
+  "solution": {
+    "placements": {
+      "victor": {
+        "row": 0,
+        "column": 1
+      },
+      "gretchen": {
+        "row": 0,
+        "column": 0
+      },
+      "hans": {
+        "row": 0,
+        "column": 4
+      },
+      "sonja": {
+        "row": 1,
+        "column": 5
+      },
+      "karl": {
+        "row": 3,
+        "column": 1
+      },
+      "lucas": {
+        "row": 4,
+        "column": 0
+      },
+      "bruno": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "gretchen"
+  }
+}

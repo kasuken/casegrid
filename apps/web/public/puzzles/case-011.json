@@ -1,0 +1,467 @@
+{
+  "id": "case-011",
+  "title": "The Alchemist's Laboratory",
+  "subtitle": "Secrets turned to ashes in the crucible",
+  "description": "Master Alchemist Paracelsus Kane was found poisoned in the Transmutation Chamber. Five guild members and scholars were trapped inside the fortified laboratory. Deduce everyone's location and discover who was alone with Master Kane.",
+  "difficulty": "medium",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "transmutation",
+      "name": "Transmutation Chamber",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "distillery",
+      "name": "Distillery Wing",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "arcane_library",
+      "name": "Arcane Library",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "furnace_vault",
+      "name": "Furnace Vault",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "great_athanor",
+      "type": "fireplace",
+      "label": "Athanor Furnace",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "alembic",
+      "type": "display_case",
+      "label": "Glass Alembic",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "grimoire_shelf",
+      "type": "bookshelf",
+      "label": "Locked Grimoire Shelf",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "mercury_vat",
+      "type": "fountain",
+      "label": "Mercury Vat",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "paracelsus",
+      "name": "Paracelsus Kane",
+      "role": "victim",
+      "description": "The enigmatic Master Alchemist."
+    },
+    {
+      "id": "cornelius",
+      "name": "Cornelius Blackwood",
+      "role": "suspect",
+      "description": "Kane's jealous former apprentice."
+    },
+    {
+      "id": "ursula",
+      "name": "Ursula Vance",
+      "role": "suspect",
+      "description": "A botanical toxicologist seeking the formula."
+    },
+    {
+      "id": "silas_a",
+      "name": "Silas Drake",
+      "role": "suspect",
+      "description": "The silent laboratory assistant."
+    },
+    {
+      "id": "hawke",
+      "name": "Guildmaster Hawke",
+      "role": "suspect",
+      "description": "The guild inspector auditing the gold registers."
+    },
+    {
+      "id": "genevieve",
+      "name": "Lady Genevieve",
+      "role": "suspect",
+      "description": "A royal patron demanding her philosopher's stone."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c11-1",
+      "text": "Paracelsus was in the Transmutation Chamber.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "paracelsus",
+        "areaId": "transmutation"
+      }
+    },
+    {
+      "id": "c11-2",
+      "text": "Paracelsus was standing directly adjacent to the Athanor Furnace.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "paracelsus",
+        "objectId": "great_athanor"
+      }
+    },
+    {
+      "id": "c11-3",
+      "text": "Paracelsus was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "paracelsus",
+        "row": 0
+      }
+    },
+    {
+      "id": "c11-4",
+      "text": "Cornelius was in the Transmutation Chamber.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "cornelius",
+        "areaId": "transmutation"
+      }
+    },
+    {
+      "id": "c11-5",
+      "text": "Cornelius was standing directly adjacent to the Athanor Furnace.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "cornelius",
+        "objectId": "great_athanor"
+      }
+    },
+    {
+      "id": "c11-6",
+      "text": "Cornelius was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "cornelius",
+        "column": 0
+      }
+    },
+    {
+      "id": "c11-7",
+      "text": "Ursula and Lady Genevieve were both inside the Distillery Wing.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "ursula",
+        "targetCharacterId": "genevieve"
+      }
+    },
+    {
+      "id": "c11-8",
+      "text": "Ursula was in the Distillery Wing.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "ursula",
+        "areaId": "distillery"
+      }
+    },
+    {
+      "id": "c11-9",
+      "text": "Ursula stood directly adjacent to the Glass Alembic.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "ursula",
+        "objectId": "alembic"
+      }
+    },
+    {
+      "id": "c11-10",
+      "text": "Ursula was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "ursula",
+        "row": 0
+      }
+    },
+    {
+      "id": "c11-11",
+      "text": "Lady Genevieve was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "genevieve",
+        "column": 5
+      }
+    },
+    {
+      "id": "c11-12",
+      "text": "Lady Genevieve stood directly adjacent to the Glass Alembic.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "genevieve",
+        "objectId": "alembic"
+      }
+    },
+    {
+      "id": "c11-13",
+      "text": "Silas Drake was the only person in the Arcane Library.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "silas_a"
+      }
+    },
+    {
+      "id": "c11-14",
+      "text": "Silas was in the Arcane Library.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "silas_a",
+        "areaId": "arcane_library"
+      }
+    },
+    {
+      "id": "c11-15",
+      "text": "Silas stood directly adjacent to the Locked Grimoire Shelf.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "silas_a",
+        "objectId": "grimoire_shelf"
+      }
+    },
+    {
+      "id": "c11-16",
+      "text": "Silas was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "silas_a",
+        "column": 0
+      }
+    },
+    {
+      "id": "c11-17",
+      "text": "Guildmaster Hawke was the only person in the Furnace Vault.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "hawke"
+      }
+    },
+    {
+      "id": "c11-18",
+      "text": "Guildmaster Hawke was in the Furnace Vault.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "hawke",
+        "areaId": "furnace_vault"
+      }
+    },
+    {
+      "id": "c11-19",
+      "text": "Guildmaster Hawke was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "hawke",
+        "row": 3
+      }
+    },
+    {
+      "id": "c11-20",
+      "text": "Guildmaster Hawke stood directly adjacent to the Mercury Vat.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "hawke",
+        "objectId": "mercury_vat"
+      }
+    }
+  ],
+  "victimId": "paracelsus",
+  "solution": {
+    "placements": {
+      "paracelsus": {
+        "row": 0,
+        "column": 1
+      },
+      "cornelius": {
+        "row": 1,
+        "column": 0
+      },
+      "ursula": {
+        "row": 0,
+        "column": 4
+      },
+      "genevieve": {
+        "row": 1,
+        "column": 5
+      },
+      "silas_a": {
+        "row": 4,
+        "column": 0
+      },
+      "hawke": {
+        "row": 3,
+        "column": 4
+      }
+    },
+    "murdererId": "cornelius"
+  }
+}

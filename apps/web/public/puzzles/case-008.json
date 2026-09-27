@@ -1,0 +1,452 @@
+{
+  "id": "case-008",
+  "title": "The Gilded Casino",
+  "subtitle": "A high-stakes gamble that ended in murder",
+  "description": "Baron Montefiore collapsed over his champagne in the High Limit Salon. Five players and staff were scattered across the private gaming floor. Deduce everyone's location and discover who was alone with the Baron.",
+  "difficulty": "easy",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "high_limit",
+      "name": "High Limit Salon",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "roulette_wing",
+      "name": "Roulette Wing",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "baccarat_lounge",
+      "name": "Baccarat Lounge",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "cashier_vault",
+      "name": "Cashier Vault",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "poker_table",
+      "type": "billiard_table",
+      "label": "Velvet Poker Table",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "roulette_wheel",
+      "type": "clock",
+      "label": "Mahogany Wheel",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "bar_counter",
+      "type": "desk",
+      "label": "Marble Bar",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "iron_safe",
+      "type": "safe",
+      "label": "Reinforced Safe",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "montefiore",
+      "name": "Baron Montefiore",
+      "role": "victim",
+      "description": "A lavish nobleman burdened with clandestine debts."
+    },
+    {
+      "id": "nadia_c",
+      "name": "Countess Nadia",
+      "role": "suspect",
+      "description": "A sharp-witted card counter who lost a fortune to the Baron."
+    },
+    {
+      "id": "luc",
+      "name": "Luc Duvall",
+      "role": "suspect",
+      "description": "The discreet head croupier."
+    },
+    {
+      "id": "orlov",
+      "name": "General Orlov",
+      "role": "suspect",
+      "description": "A decorated officer nursing his cognac."
+    },
+    {
+      "id": "vanessa",
+      "name": "Vanessa Valmont",
+      "role": "suspect",
+      "description": "A glamorous lounge singer with eagle eyes."
+    },
+    {
+      "id": "vance_det",
+      "name": "Inspector Vance",
+      "role": "suspect",
+      "description": "An off-duty detective watching the tables."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c8-1",
+      "text": "Baron Montefiore was sitting at row 0, column 1.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "montefiore",
+        "position": {
+          "row": 0,
+          "column": 1
+        }
+      }
+    },
+    {
+      "id": "c8-2",
+      "text": "Countess Nadia was in the High Limit Salon.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "nadia_c",
+        "areaId": "high_limit"
+      }
+    },
+    {
+      "id": "c8-3",
+      "text": "Countess Nadia was directly adjacent to Baron Montefiore.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "nadia_c",
+        "targetCharacterId": "montefiore"
+      }
+    },
+    {
+      "id": "c8-4",
+      "text": "Countess Nadia was in column 2.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "nadia_c",
+        "column": 2
+      }
+    },
+    {
+      "id": "c8-5",
+      "text": "Luc Duvall and General Orlov were both in the Roulette Wing.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "luc",
+        "targetCharacterId": "orlov"
+      }
+    },
+    {
+      "id": "c8-6",
+      "text": "Luc Duvall was in the Roulette Wing.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "luc",
+        "areaId": "roulette_wing"
+      }
+    },
+    {
+      "id": "c8-7",
+      "text": "Luc stood directly beside the Mahogany Wheel.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "luc",
+        "objectId": "roulette_wheel"
+      }
+    },
+    {
+      "id": "c8-8",
+      "text": "Luc was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "luc",
+        "row": 0
+      }
+    },
+    {
+      "id": "c8-9",
+      "text": "General Orlov stood directly beside the Mahogany Wheel.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "orlov",
+        "objectId": "roulette_wheel"
+      }
+    },
+    {
+      "id": "c8-10",
+      "text": "General Orlov was in column 3.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "orlov",
+        "column": 3
+      }
+    },
+    {
+      "id": "c8-11",
+      "text": "Vanessa Valmont was the only person in the Baccarat Lounge.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "vanessa"
+      }
+    },
+    {
+      "id": "c8-12",
+      "text": "Vanessa was in the Baccarat Lounge.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "vanessa",
+        "areaId": "baccarat_lounge"
+      }
+    },
+    {
+      "id": "c8-13",
+      "text": "Vanessa stood directly beside the Marble Bar.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "vanessa",
+        "objectId": "bar_counter"
+      }
+    },
+    {
+      "id": "c8-14",
+      "text": "Vanessa was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "vanessa",
+        "column": 0
+      }
+    },
+    {
+      "id": "c8-15",
+      "text": "Inspector Vance was the only person in the Cashier Vault.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "vance_det"
+      }
+    },
+    {
+      "id": "c8-16",
+      "text": "Inspector Vance was in the Cashier Vault.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "vance_det",
+        "areaId": "cashier_vault"
+      }
+    },
+    {
+      "id": "c8-17",
+      "text": "Inspector Vance stood directly beside the Reinforced Safe.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "vance_det",
+        "objectId": "iron_safe"
+      }
+    },
+    {
+      "id": "c8-18",
+      "text": "Inspector Vance was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "vance_det",
+        "row": 3
+      }
+    }
+  ],
+  "victimId": "montefiore",
+  "solution": {
+    "placements": {
+      "montefiore": {
+        "row": 0,
+        "column": 1
+      },
+      "nadia_c": {
+        "row": 0,
+        "column": 2
+      },
+      "luc": {
+        "row": 0,
+        "column": 4
+      },
+      "orlov": {
+        "row": 1,
+        "column": 3
+      },
+      "vanessa": {
+        "row": 4,
+        "column": 0
+      },
+      "vance_det": {
+        "row": 3,
+        "column": 4
+      }
+    },
+    "murdererId": "nadia_c"
+  }
+}

@@ -1,0 +1,452 @@
+{
+  "id": "case-007",
+  "title": "The Botanical Conservatory",
+  "subtitle": "Poison among the rare orchids",
+  "description": "Sir Humphrey Vance was found dead in the tropical palm house before the royal exhibition. Five botanists and patrons were exploring the botanical gardens. Deduce everyone's location and discover who was alone with Sir Humphrey.",
+  "difficulty": "beginner",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "palm_house",
+      "name": "Palm House",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "fern_grotto",
+      "name": "Fern Grotto",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "rose_parterre",
+      "name": "Rose Parterre",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "bonsai_pavilion",
+      "name": "Bonsai Pavilion",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "iron_fountain",
+      "type": "fountain",
+      "label": "Cast Iron Fountain",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "waterfall",
+      "type": "display_case",
+      "label": "Grotto Pool",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "stone_sundial",
+      "type": "clock",
+      "label": "Stone Sundial",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "marble_bench",
+      "type": "couch",
+      "label": "Marble Bench",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "humphrey",
+      "name": "Sir Humphrey Vance",
+      "role": "victim",
+      "description": "Director of the Royal Botanic Gardens."
+    },
+    {
+      "id": "florence",
+      "name": "Florence Croft",
+      "role": "suspect",
+      "description": "An ambitious orchid specialist passed over for promotion."
+    },
+    {
+      "id": "basil",
+      "name": "Dr. Basil Thorn",
+      "role": "suspect",
+      "description": "A poisonous plant researcher with secretive habits."
+    },
+    {
+      "id": "dahlia",
+      "name": "Lady Dahlia Sterling",
+      "role": "suspect",
+      "description": "A wealthy patron of exotic flora."
+    },
+    {
+      "id": "arthur_b",
+      "name": "Arthur Finch",
+      "role": "suspect",
+      "description": "The senior landscape designer."
+    },
+    {
+      "id": "clara_h",
+      "name": "Clara Hayes",
+      "role": "suspect",
+      "description": "The head greenhouse caretaker."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c7-1",
+      "text": "Sir Humphrey was seated at row 0, column 1 admiring the imperial orchids.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "humphrey",
+        "position": {
+          "row": 0,
+          "column": 1
+        }
+      }
+    },
+    {
+      "id": "c7-2",
+      "text": "Florence was in the Palm House.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "florence",
+        "areaId": "palm_house"
+      }
+    },
+    {
+      "id": "c7-3",
+      "text": "Florence was directly adjacent to Sir Humphrey.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "florence",
+        "targetCharacterId": "humphrey"
+      }
+    },
+    {
+      "id": "c7-4",
+      "text": "Florence was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "florence",
+        "column": 0
+      }
+    },
+    {
+      "id": "c7-5",
+      "text": "Dr. Basil Thorn and Lady Dahlia were both exploring the Fern Grotto.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "basil",
+        "targetCharacterId": "dahlia"
+      }
+    },
+    {
+      "id": "c7-6",
+      "text": "Dr. Basil Thorn was in the Fern Grotto.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "basil",
+        "areaId": "fern_grotto"
+      }
+    },
+    {
+      "id": "c7-7",
+      "text": "Basil stood directly beside the Grotto Pool.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "basil",
+        "objectId": "waterfall"
+      }
+    },
+    {
+      "id": "c7-8",
+      "text": "Basil was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "basil",
+        "row": 0
+      }
+    },
+    {
+      "id": "c7-9",
+      "text": "Lady Dahlia stood directly beside the Grotto Pool.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "dahlia",
+        "objectId": "waterfall"
+      }
+    },
+    {
+      "id": "c7-10",
+      "text": "Lady Dahlia was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "dahlia",
+        "column": 5
+      }
+    },
+    {
+      "id": "c7-11",
+      "text": "Arthur Finch was the only person in the Rose Parterre.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "arthur_b"
+      }
+    },
+    {
+      "id": "c7-12",
+      "text": "Arthur Finch was in the Rose Parterre.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "arthur_b",
+        "areaId": "rose_parterre"
+      }
+    },
+    {
+      "id": "c7-13",
+      "text": "Arthur stood directly beside the Stone Sundial.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "arthur_b",
+        "objectId": "stone_sundial"
+      }
+    },
+    {
+      "id": "c7-14",
+      "text": "Arthur was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "arthur_b",
+        "column": 0
+      }
+    },
+    {
+      "id": "c7-15",
+      "text": "Clara Hayes was the only person in the Bonsai Pavilion.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "clara_h"
+      }
+    },
+    {
+      "id": "c7-16",
+      "text": "Clara Hayes was in the Bonsai Pavilion.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "clara_h",
+        "areaId": "bonsai_pavilion"
+      }
+    },
+    {
+      "id": "c7-17",
+      "text": "Clara stood directly beside the Marble Bench.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "clara_h",
+        "objectId": "marble_bench"
+      }
+    },
+    {
+      "id": "c7-18",
+      "text": "Clara was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "clara_h",
+        "row": 3
+      }
+    }
+  ],
+  "victimId": "humphrey",
+  "solution": {
+    "placements": {
+      "humphrey": {
+        "row": 0,
+        "column": 1
+      },
+      "florence": {
+        "row": 0,
+        "column": 0
+      },
+      "basil": {
+        "row": 0,
+        "column": 4
+      },
+      "dahlia": {
+        "row": 1,
+        "column": 5
+      },
+      "arthur_b": {
+        "row": 4,
+        "column": 0
+      },
+      "clara_h": {
+        "row": 3,
+        "column": 4
+      }
+    },
+    "murdererId": "florence"
+  }
+}

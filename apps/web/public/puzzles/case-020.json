@@ -1,0 +1,498 @@
+{
+  "id": "case-020",
+  "title": "The Obsidian Citadel",
+  "subtitle": "The high council's final decree",
+  "description": "High Chancellor Marcus Vane was found assassinated in the Obsidian Chamber during the winter conclave. Seven councilors and bodyguards remained sealed within the mountain fortress. Deduce everyone's location and discover who was alone with Chancellor Vane.",
+  "difficulty": "expert",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "obsidian_chamber",
+      "name": "Obsidian Chamber",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "high_council",
+      "name": "High Council Room",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "armory_hall",
+      "name": "Armory Hall",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "archives_crypt",
+      "name": "Archives Crypt",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "obsidian_throne",
+      "type": "desk",
+      "label": "Black Granite Throne",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "round_table",
+      "type": "billiard_table",
+      "label": "Council Round Table",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "weapon_rack",
+      "type": "prop_trunk",
+      "label": "Halberd Rack",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "iron_archive",
+      "type": "safe",
+      "label": "Sealed Treaty Chest",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "marcus_v",
+      "name": "Chancellor Marcus Vane",
+      "role": "victim",
+      "description": "The iron-willed ruler of the High Marches."
+    },
+    {
+      "id": "vespera",
+      "name": "Lady Vespera",
+      "role": "suspect",
+      "description": "The ambitious Shadow Councilor."
+    },
+    {
+      "id": "kael",
+      "name": "General Kael",
+      "role": "suspect",
+      "description": "Commander of the Citadel Garrison."
+    },
+    {
+      "id": "lyanna",
+      "name": "Spymaster Lyanna",
+      "role": "suspect",
+      "description": "Keeper of the Citadel's whisper network."
+    },
+    {
+      "id": "morath",
+      "name": "Inquisitor Morath",
+      "role": "suspect",
+      "description": "The zealous guardian of orthodoxy."
+    },
+    {
+      "id": "zephyr",
+      "name": "Envoy Zephyr",
+      "role": "suspect",
+      "description": "The ambassador from the Southern Kingdoms."
+    },
+    {
+      "id": "theresa",
+      "name": "Archivist Theresa",
+      "role": "suspect",
+      "description": "The scholar who uncovered the forged treaty."
+    },
+    {
+      "id": "silas_guard",
+      "name": "Commander Silas",
+      "role": "suspect",
+      "description": "Captain of the Chancellor's personal guard."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c20-1",
+      "text": "Chancellor Marcus Vane was in the Obsidian Chamber.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "marcus_v",
+        "areaId": "obsidian_chamber"
+      }
+    },
+    {
+      "id": "c20-2",
+      "text": "Chancellor Marcus Vane stood directly adjacent to the Black Granite Throne.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "marcus_v",
+        "objectId": "obsidian_throne"
+      }
+    },
+    {
+      "id": "c20-3",
+      "text": "Chancellor Marcus Vane was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "marcus_v",
+        "row": 0
+      }
+    },
+    {
+      "id": "c20-4",
+      "text": "Lady Vespera was in the Obsidian Chamber.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "vespera",
+        "areaId": "obsidian_chamber"
+      }
+    },
+    {
+      "id": "c20-5",
+      "text": "Lady Vespera was directly adjacent to Chancellor Vane.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "vespera",
+        "targetCharacterId": "marcus_v"
+      }
+    },
+    {
+      "id": "c20-6",
+      "text": "Lady Vespera was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "vespera",
+        "column": 0
+      }
+    },
+    {
+      "id": "c20-7",
+      "text": "General Kael and Spymaster Lyanna were both in the High Council Room.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "kael",
+        "targetCharacterId": "lyanna"
+      }
+    },
+    {
+      "id": "c20-8",
+      "text": "General Kael was in row 0 and stood directly adjacent to the Council Round Table.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "kael",
+        "objectId": "round_table"
+      }
+    },
+    {
+      "id": "c20-9",
+      "text": "General Kael was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "kael",
+        "row": 0
+      }
+    },
+    {
+      "id": "c20-10",
+      "text": "Spymaster Lyanna was in column 5 and stood directly adjacent to the Council Round Table.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "lyanna",
+        "objectId": "round_table"
+      }
+    },
+    {
+      "id": "c20-11",
+      "text": "Spymaster Lyanna was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "lyanna",
+        "column": 5
+      }
+    },
+    {
+      "id": "c20-12",
+      "text": "Inquisitor Morath and Commander Silas were both stationed in the Armory Hall.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "morath",
+        "targetCharacterId": "silas_guard"
+      }
+    },
+    {
+      "id": "c20-13",
+      "text": "Inquisitor Morath was in row 3 and stood directly adjacent to the Halberd Rack.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "morath",
+        "objectId": "weapon_rack"
+      }
+    },
+    {
+      "id": "c20-14",
+      "text": "Inquisitor Morath was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "morath",
+        "row": 3
+      }
+    },
+    {
+      "id": "c20-15",
+      "text": "Commander Silas was in column 0 and stood directly adjacent to the Halberd Rack.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "silas_guard",
+        "objectId": "weapon_rack"
+      }
+    },
+    {
+      "id": "c20-16",
+      "text": "Commander Silas was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "silas_guard",
+        "column": 0
+      }
+    },
+    {
+      "id": "c20-17",
+      "text": "Envoy Zephyr and Archivist Theresa were both inspecting the Archives Crypt.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "zephyr",
+        "targetCharacterId": "theresa"
+      }
+    },
+    {
+      "id": "c20-18",
+      "text": "Envoy Zephyr was in row 3 and stood directly adjacent to the Sealed Treaty Chest.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "zephyr",
+        "objectId": "iron_archive"
+      }
+    },
+    {
+      "id": "c20-19",
+      "text": "Envoy Zephyr was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "zephyr",
+        "row": 3
+      }
+    },
+    {
+      "id": "c20-20",
+      "text": "Archivist Theresa was in column 5 and stood directly adjacent to the Sealed Treaty Chest.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "theresa",
+        "objectId": "iron_archive"
+      }
+    },
+    {
+      "id": "c20-21",
+      "text": "Archivist Theresa was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "theresa",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "marcus_v",
+  "solution": {
+    "placements": {
+      "marcus_v": {
+        "row": 0,
+        "column": 1
+      },
+      "vespera": {
+        "row": 0,
+        "column": 0
+      },
+      "kael": {
+        "row": 0,
+        "column": 4
+      },
+      "lyanna": {
+        "row": 1,
+        "column": 5
+      },
+      "morath": {
+        "row": 3,
+        "column": 1
+      },
+      "silas_guard": {
+        "row": 4,
+        "column": 0
+      },
+      "zephyr": {
+        "row": 3,
+        "column": 4
+      },
+      "theresa": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "vespera"
+  }
+}

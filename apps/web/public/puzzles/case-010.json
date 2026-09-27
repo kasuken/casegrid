@@ -1,0 +1,461 @@
+{
+  "id": "case-010",
+  "title": "The Nile Steamer",
+  "subtitle": "A royal cruise shadowed by murder",
+  "description": "Antiquarian Lord Sterling was discovered poisoned in the Pharaoh Suite aboard the S.S. Karnak. Five passengers and crew were scattered across the riverboat deck. Deduce everyone's location and discover who was alone with Lord Sterling.",
+  "difficulty": "easy",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "pharaoh_suite",
+      "name": "Pharaoh Suite",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "observation_deck",
+      "name": "Observation Deck",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "engine_casing",
+      "name": "Engine Casing",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "saloon_lounge",
+      "name": "Saloon Lounge",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "canopy_bed",
+      "type": "couch",
+      "label": "Gilded Divan",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "telescope",
+      "type": "globe",
+      "label": "Brass Telescope",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "paddle_shaft",
+      "type": "steam_engine",
+      "label": "Steam Boiler",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "gramophone",
+      "type": "display_case",
+      "label": "Mahogany Bar",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "sterling_lord",
+      "name": "Lord Sterling",
+      "role": "victim",
+      "description": "Eccentric British collector of ancient relics."
+    },
+    {
+      "id": "farouk",
+      "name": "Captain Farouk",
+      "role": "suspect",
+      "description": "The stern river captain harboring a family secret."
+    },
+    {
+      "id": "lady_margaret",
+      "name": "Lady Margaret",
+      "role": "suspect",
+      "description": "A high-society traveler with a keen ear for gossip."
+    },
+    {
+      "id": "carter",
+      "name": "Dr. Howard Carter",
+      "role": "suspect",
+      "description": "A rival archaeologist eyeing Sterling's papyri."
+    },
+    {
+      "id": "davies",
+      "name": "Miss Evelyn Davies",
+      "role": "suspect",
+      "description": "Lord Sterling's private secretary."
+    },
+    {
+      "id": "tariq",
+      "name": "Steward Tariq",
+      "role": "suspect",
+      "description": "The attentive cabin steward who served the evening tea."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c10-1",
+      "text": "Lord Sterling was resting at row 1, column 0 in the Pharaoh Suite.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "sterling_lord",
+        "position": {
+          "row": 1,
+          "column": 0
+        }
+      }
+    },
+    {
+      "id": "c10-2",
+      "text": "Captain Farouk was in the Pharaoh Suite.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "farouk",
+        "areaId": "pharaoh_suite"
+      }
+    },
+    {
+      "id": "c10-3",
+      "text": "Captain Farouk was directly adjacent to Lord Sterling.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "farouk",
+        "targetCharacterId": "sterling_lord"
+      }
+    },
+    {
+      "id": "c10-4",
+      "text": "Captain Farouk was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "farouk",
+        "row": 0
+      }
+    },
+    {
+      "id": "c10-5",
+      "text": "Lady Margaret and Dr. Carter were both on the Observation Deck.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "lady_margaret",
+        "targetCharacterId": "carter"
+      }
+    },
+    {
+      "id": "c10-6",
+      "text": "Lady Margaret was on the Observation Deck.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "lady_margaret",
+        "areaId": "observation_deck"
+      }
+    },
+    {
+      "id": "c10-7",
+      "text": "Lady Margaret stood directly beside the Brass Telescope.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "lady_margaret",
+        "objectId": "telescope"
+      }
+    },
+    {
+      "id": "c10-8",
+      "text": "Lady Margaret was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "lady_margaret",
+        "row": 0
+      }
+    },
+    {
+      "id": "c10-9",
+      "text": "Dr. Carter was on the Observation Deck.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "carter",
+        "areaId": "observation_deck"
+      }
+    },
+    {
+      "id": "c10-10",
+      "text": "Dr. Carter stood directly beside the Brass Telescope.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "carter",
+        "objectId": "telescope"
+      }
+    },
+    {
+      "id": "c10-11",
+      "text": "Dr. Carter was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "carter",
+        "column": 5
+      }
+    },
+    {
+      "id": "c10-12",
+      "text": "Steward Tariq was the only person in the Engine Casing.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "tariq"
+      }
+    },
+    {
+      "id": "c10-13",
+      "text": "Steward Tariq was in the Engine Casing.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "tariq",
+        "areaId": "engine_casing"
+      }
+    },
+    {
+      "id": "c10-14",
+      "text": "Steward Tariq stood directly beside the Steam Boiler.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "tariq",
+        "objectId": "paddle_shaft"
+      }
+    },
+    {
+      "id": "c10-15",
+      "text": "Steward Tariq was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "tariq",
+        "row": 3
+      }
+    },
+    {
+      "id": "c10-16",
+      "text": "Miss Davies was the only person in the Saloon Lounge.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "davies"
+      }
+    },
+    {
+      "id": "c10-17",
+      "text": "Miss Davies was in the Saloon Lounge.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "davies",
+        "areaId": "saloon_lounge"
+      }
+    },
+    {
+      "id": "c10-18",
+      "text": "Miss Davies stood directly beside the Mahogany Bar.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "davies",
+        "objectId": "gramophone"
+      }
+    },
+    {
+      "id": "c10-19",
+      "text": "Miss Davies was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "davies",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "sterling_lord",
+  "solution": {
+    "placements": {
+      "sterling_lord": {
+        "row": 1,
+        "column": 0
+      },
+      "farouk": {
+        "row": 0,
+        "column": 0
+      },
+      "lady_margaret": {
+        "row": 0,
+        "column": 4
+      },
+      "carter": {
+        "row": 1,
+        "column": 5
+      },
+      "tariq": {
+        "row": 3,
+        "column": 1
+      },
+      "davies": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "farouk"
+  }
+}

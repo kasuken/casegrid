@@ -1,0 +1,496 @@
+{
+  "id": "case-012",
+  "title": "The Imperial Opera House",
+  "subtitle": "The final curtain for Maestro Leopold",
+  "description": "Maestro Leopold Weiss was found dead in the Conductor's Dressing Room just before the third act. Six singers and stagehands were in the theater wings. Trace everyone's location and deduce who was alone with the Maestro.",
+  "difficulty": "medium",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "dressing_room",
+      "name": "Conductor's Dressing Room",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "royal_box",
+      "name": "Royal Box",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "stage_wings",
+      "name": "Stage Wings",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "prop_vault",
+      "name": "Prop Vault",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "grand_piano",
+      "type": "billiard_table",
+      "label": "Grand Piano",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "velvet_curtain",
+      "type": "curtain",
+      "label": "Velvet Drapery",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "costume_rack",
+      "type": "prop_trunk",
+      "label": "Costume Trunk",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "iron_chandelier",
+      "type": "clock",
+      "label": "Stage Winch",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "leopold",
+      "name": "Maestro Leopold",
+      "role": "victim",
+      "description": "The autocratic chief conductor."
+    },
+    {
+      "id": "rosa",
+      "name": "Prima Donna Rosa",
+      "role": "suspect",
+      "description": "The temperamental soprano whom Leopold threatened to replace."
+    },
+    {
+      "id": "antonio",
+      "name": "Tenor Antonio",
+      "role": "suspect",
+      "description": "A rising star fighting for the lead role."
+    },
+    {
+      "id": "otto",
+      "name": "Otto the Stage Manager",
+      "role": "suspect",
+      "description": "The meticulous overseer of backstage logistics."
+    },
+    {
+      "id": "helena",
+      "name": "Baroness Helena",
+      "role": "suspect",
+      "description": "The opera's chief benefactress."
+    },
+    {
+      "id": "giselle",
+      "name": "Giselle Moreau",
+      "role": "suspect",
+      "description": "The ambitious understudy waiting in the wings."
+    },
+    {
+      "id": "meyer",
+      "name": "Herr Meyer",
+      "role": "suspect",
+      "description": "The union representative locked in contract disputes."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c12-1",
+      "text": "Maestro Leopold was in the Conductor's Dressing Room.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "leopold",
+        "areaId": "dressing_room"
+      }
+    },
+    {
+      "id": "c12-2",
+      "text": "Maestro Leopold was standing directly adjacent to the Grand Piano.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "leopold",
+        "objectId": "grand_piano"
+      }
+    },
+    {
+      "id": "c12-3",
+      "text": "Maestro Leopold was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "leopold",
+        "row": 0
+      }
+    },
+    {
+      "id": "c12-4",
+      "text": "Rosa was in the Conductor's Dressing Room.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "rosa",
+        "areaId": "dressing_room"
+      }
+    },
+    {
+      "id": "c12-5",
+      "text": "Rosa was standing directly adjacent to Maestro Leopold.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "rosa",
+        "targetCharacterId": "leopold"
+      }
+    },
+    {
+      "id": "c12-6",
+      "text": "Rosa was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "rosa",
+        "column": 0
+      }
+    },
+    {
+      "id": "c12-7",
+      "text": "Antonio and Baroness Helena were both seated in the Royal Box.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "antonio",
+        "targetCharacterId": "helena"
+      }
+    },
+    {
+      "id": "c12-8",
+      "text": "Antonio was in the Royal Box.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "antonio",
+        "areaId": "royal_box"
+      }
+    },
+    {
+      "id": "c12-9",
+      "text": "Antonio was in row 0 and stood directly adjacent to the Velvet Drapery.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "antonio",
+        "objectId": "velvet_curtain"
+      }
+    },
+    {
+      "id": "c12-10",
+      "text": "Antonio was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "antonio",
+        "row": 0
+      }
+    },
+    {
+      "id": "c12-11",
+      "text": "Baroness Helena was in column 5 and stood directly adjacent to the Velvet Drapery.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "helena",
+        "objectId": "velvet_curtain"
+      }
+    },
+    {
+      "id": "c12-12",
+      "text": "Baroness Helena was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "helena",
+        "column": 5
+      }
+    },
+    {
+      "id": "c12-13",
+      "text": "Otto and Giselle were both working in the Stage Wings.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "otto",
+        "targetCharacterId": "giselle"
+      }
+    },
+    {
+      "id": "c12-14",
+      "text": "Otto was in the Stage Wings.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "otto",
+        "areaId": "stage_wings"
+      }
+    },
+    {
+      "id": "c12-15",
+      "text": "Otto was in row 3 and stood directly adjacent to the Costume Trunk.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "otto",
+        "objectId": "costume_rack"
+      }
+    },
+    {
+      "id": "c12-16",
+      "text": "Otto was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "otto",
+        "row": 3
+      }
+    },
+    {
+      "id": "c12-17",
+      "text": "Giselle was in column 0 and stood directly adjacent to the Costume Trunk.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "giselle",
+        "objectId": "costume_rack"
+      }
+    },
+    {
+      "id": "c12-18",
+      "text": "Giselle was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "giselle",
+        "column": 0
+      }
+    },
+    {
+      "id": "c12-19",
+      "text": "Herr Meyer was the only person in the Prop Vault.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "meyer"
+      }
+    },
+    {
+      "id": "c12-20",
+      "text": "Herr Meyer was in the Prop Vault.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "meyer",
+        "areaId": "prop_vault"
+      }
+    },
+    {
+      "id": "c12-21",
+      "text": "Herr Meyer stood directly adjacent to the Stage Winch.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "meyer",
+        "objectId": "iron_chandelier"
+      }
+    },
+    {
+      "id": "c12-22",
+      "text": "Herr Meyer was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "meyer",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "leopold",
+  "solution": {
+    "placements": {
+      "leopold": {
+        "row": 0,
+        "column": 1
+      },
+      "rosa": {
+        "row": 0,
+        "column": 0
+      },
+      "antonio": {
+        "row": 0,
+        "column": 4
+      },
+      "helena": {
+        "row": 1,
+        "column": 5
+      },
+      "otto": {
+        "row": 3,
+        "column": 1
+      },
+      "giselle": {
+        "row": 4,
+        "column": 0
+      },
+      "meyer": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "rosa"
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "id": "case-017",
+  "title": "The Fogbound Depot",
+  "subtitle": "A midnight whistle silenced by murder",
+  "description": "Yardmaster Archibald Reed was discovered dead in the Signal Tower at Blackfriars Depot under a dense London smog. Six railway workers and inspectors were scattered across the switching yards. Deduce everyone's location and discover who was alone with Archibald Reed.",
+  "difficulty": "hard",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "signal_tower",
+      "name": "Signal Tower",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "freight_shed",
+      "name": "Freight Shed",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "turntable_bay",
+      "name": "Turntable Bay",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "lamp_room",
+      "name": "Lamp Room",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "signal_interlock",
+      "type": "telegraph",
+      "label": "Mechanical Interlock",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "cargo_scales",
+      "type": "desk",
+      "label": "Heavy Freight Scales",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "locomotive_boiler",
+      "type": "steam_engine",
+      "label": "Shunting Locomotive",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "paraffin_station",
+      "type": "fireplace",
+      "label": "Lantern Test Bench",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "archibald",
+      "name": "Archibald Reed",
+      "role": "victim",
+      "description": "The uncompromising depot yardmaster."
+    },
+    {
+      "id": "sean",
+      "name": "Switchman Sean",
+      "role": "suspect",
+      "description": "A veteran switchman threatened with dismissal."
+    },
+    {
+      "id": "clara_d",
+      "name": "Clara Briggs",
+      "role": "suspect",
+      "description": "The nighttime telegraph dispatcher."
+    },
+    {
+      "id": "hank",
+      "name": "Hank Miller",
+      "role": "suspect",
+      "description": "A coal stoker with a fiery temper."
+    },
+    {
+      "id": "inspector_m",
+      "name": "Inspector Miller",
+      "role": "suspect",
+      "description": "The railway police detective checking manifests."
+    },
+    {
+      "id": "donald",
+      "name": "Donald Pike",
+      "role": "suspect",
+      "description": "A warehouse porter suspected of pilfering goods."
+    },
+    {
+      "id": "greg",
+      "name": "Foreman Greg",
+      "role": "suspect",
+      "description": "The engine house foreman."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c17-1",
+      "text": "Archibald Reed was in the Signal Tower.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "archibald",
+        "areaId": "signal_tower"
+      }
+    },
+    {
+      "id": "c17-2",
+      "text": "Archibald Reed stood directly adjacent to the Mechanical Interlock.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "archibald",
+        "objectId": "signal_interlock"
+      }
+    },
+    {
+      "id": "c17-3",
+      "text": "Archibald Reed was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "archibald",
+        "row": 0
+      }
+    },
+    {
+      "id": "c17-4",
+      "text": "Switchman Sean was in the Signal Tower.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "sean",
+        "areaId": "signal_tower"
+      }
+    },
+    {
+      "id": "c17-5",
+      "text": "Switchman Sean stood directly adjacent to the Mechanical Interlock.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "sean",
+        "objectId": "signal_interlock"
+      }
+    },
+    {
+      "id": "c17-6",
+      "text": "Switchman Sean was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "sean",
+        "column": 0
+      }
+    },
+    {
+      "id": "c17-7",
+      "text": "Clara Briggs and Donald Pike were both in the Freight Shed.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "clara_d",
+        "targetCharacterId": "donald"
+      }
+    },
+    {
+      "id": "c17-8",
+      "text": "Clara Briggs was in row 0 and stood directly adjacent to the Heavy Freight Scales.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "clara_d",
+        "objectId": "cargo_scales"
+      }
+    },
+    {
+      "id": "c17-9",
+      "text": "Clara Briggs was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "clara_d",
+        "row": 0
+      }
+    },
+    {
+      "id": "c17-10",
+      "text": "Donald Pike was in column 5 and stood directly adjacent to the Heavy Freight Scales.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "donald",
+        "objectId": "cargo_scales"
+      }
+    },
+    {
+      "id": "c17-11",
+      "text": "Donald Pike was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "donald",
+        "column": 5
+      }
+    },
+    {
+      "id": "c17-12",
+      "text": "Hank Miller and Foreman Greg were both stationed in the Turntable Bay.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "hank",
+        "targetCharacterId": "greg"
+      }
+    },
+    {
+      "id": "c17-13",
+      "text": "Hank Miller was in row 3 and stood directly adjacent to the Shunting Locomotive.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "hank",
+        "objectId": "locomotive_boiler"
+      }
+    },
+    {
+      "id": "c17-14",
+      "text": "Hank Miller was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "hank",
+        "row": 3
+      }
+    },
+    {
+      "id": "c17-15",
+      "text": "Foreman Greg was in column 0 and stood directly adjacent to the Shunting Locomotive.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "greg",
+        "objectId": "locomotive_boiler"
+      }
+    },
+    {
+      "id": "c17-16",
+      "text": "Foreman Greg was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "greg",
+        "column": 0
+      }
+    },
+    {
+      "id": "c17-17",
+      "text": "Inspector Miller was the only person in the Lamp Room.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "inspector_m"
+      }
+    },
+    {
+      "id": "c17-18",
+      "text": "Inspector Miller was in the Lamp Room.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "inspector_m",
+        "areaId": "lamp_room"
+      }
+    },
+    {
+      "id": "c17-19",
+      "text": "Inspector Miller was in column 5 and stood directly adjacent to the Lantern Test Bench.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "inspector_m",
+        "objectId": "paraffin_station"
+      }
+    },
+    {
+      "id": "c17-20",
+      "text": "Inspector Miller was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "inspector_m",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "archibald",
+  "solution": {
+    "placements": {
+      "archibald": {
+        "row": 0,
+        "column": 1
+      },
+      "sean": {
+        "row": 1,
+        "column": 0
+      },
+      "clara_d": {
+        "row": 0,
+        "column": 4
+      },
+      "donald": {
+        "row": 1,
+        "column": 5
+      },
+      "hank": {
+        "row": 3,
+        "column": 1
+      },
+      "greg": {
+        "row": 4,
+        "column": 0
+      },
+      "inspector_m": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "sean"
+  }
+}

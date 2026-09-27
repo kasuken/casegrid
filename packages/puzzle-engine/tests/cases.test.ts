@@ -9,13 +9,10 @@ const __dirname = path.dirname(__filename)
 const puzzlesDir = path.resolve(__dirname, '../../../apps/web/public/puzzles')
 
 describe('bundled cases validation', () => {
-  const caseFiles = [
-    'case-001.json',
-    'case-002.json',
-    'case-003.json',
-    'case-004.json',
-    'case-005.json',
-  ]
+  const caseFiles = fs
+    .readdirSync(puzzlesDir)
+    .filter((f) => f.startsWith('case-') && f.endsWith('.json'))
+    .sort()
 
   for (const caseFile of caseFiles) {
     const caseId = path.basename(caseFile, '.json')

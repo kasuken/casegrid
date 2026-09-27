@@ -1,0 +1,478 @@
+{
+  "id": "case-019",
+  "title": "The Sovereign Airship",
+  "subtitle": "Murder at ten thousand feet",
+  "description": "Sky Marshall Alistair Thorne was discovered stabbed in the Navigation Bridge of the imperial zephyr Valkyrie over the North Sea. Six flight officers and passengers were trapped aloft. Trace everyone's position and discover who was alone with Marshall Thorne.",
+  "difficulty": "expert",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "nav_bridge",
+      "name": "Navigation Bridge",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "chart_room",
+      "name": "Chart Room",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "radiotelegraph",
+      "name": "Radiotelegraph Cabin",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "promenade_deck",
+      "name": "Promenade Deck",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "helm_wheel",
+      "type": "nautical_wheel",
+      "label": "Master Gyro-Helm",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "drafting_table",
+      "type": "desk",
+      "label": "Aeronautical Table",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "spark_transmitter",
+      "type": "telegraph",
+      "label": "Marconi Transmitter",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "panoramic_window",
+      "type": "window",
+      "label": "Observation Bay",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "thorne",
+      "name": "Marshall Thorne",
+      "role": "victim",
+      "description": "Commander of the imperial air fleet."
+    },
+    {
+      "id": "victoria",
+      "name": "First Officer Victoria",
+      "role": "suspect",
+      "description": "The senior navigator plotting an unsanctioned course."
+    },
+    {
+      "id": "baxter",
+      "name": "Chief Engineer Baxter",
+      "role": "suspect",
+      "description": "The veteran engineer in charge of the gasbags."
+    },
+    {
+      "id": "ilona",
+      "name": "Countess Ilona",
+      "role": "suspect",
+      "description": "An enigmatic foreign diplomat traveling incognito."
+    },
+    {
+      "id": "vance_pilot",
+      "name": "Flight Lieutenant Vance",
+      "role": "suspect",
+      "description": "The junior pilot relieved of duty after an altercation."
+    },
+    {
+      "id": "knox",
+      "name": "Radio Officer Knox",
+      "role": "suspect",
+      "description": "The operator decoding intercepted military cables."
+    },
+    {
+      "id": "jean",
+      "name": "Steward Jean",
+      "role": "suspect",
+      "description": "The chief purser who served the command crew's dinner."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c19-1",
+      "text": "Marshall Thorne was in the Navigation Bridge.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "thorne",
+        "areaId": "nav_bridge"
+      }
+    },
+    {
+      "id": "c19-2",
+      "text": "Marshall Thorne stood directly adjacent to the Master Gyro-Helm.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "thorne",
+        "objectId": "helm_wheel"
+      }
+    },
+    {
+      "id": "c19-3",
+      "text": "Marshall Thorne was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "thorne",
+        "row": 0
+      }
+    },
+    {
+      "id": "c19-4",
+      "text": "First Officer Victoria was in the Navigation Bridge.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "victoria",
+        "areaId": "nav_bridge"
+      }
+    },
+    {
+      "id": "c19-5",
+      "text": "First Officer Victoria stood directly adjacent to the Master Gyro-Helm.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "victoria",
+        "objectId": "helm_wheel"
+      }
+    },
+    {
+      "id": "c19-6",
+      "text": "First Officer Victoria was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "victoria",
+        "column": 0
+      }
+    },
+    {
+      "id": "c19-7",
+      "text": "Chief Engineer Baxter and Countess Ilona were both in the Chart Room.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "baxter",
+        "targetCharacterId": "ilona"
+      }
+    },
+    {
+      "id": "c19-8",
+      "text": "Chief Engineer Baxter was in row 0 and stood directly adjacent to the Aeronautical Table.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "baxter",
+        "objectId": "drafting_table"
+      }
+    },
+    {
+      "id": "c19-9",
+      "text": "Chief Engineer Baxter was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "baxter",
+        "row": 0
+      }
+    },
+    {
+      "id": "c19-10",
+      "text": "Countess Ilona was in column 5 and stood directly adjacent to the Aeronautical Table.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "ilona",
+        "objectId": "drafting_table"
+      }
+    },
+    {
+      "id": "c19-11",
+      "text": "Countess Ilona was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "ilona",
+        "column": 5
+      }
+    },
+    {
+      "id": "c19-12",
+      "text": "Radio Officer Knox and Lieutenant Vance were both in the Radiotelegraph Cabin.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "knox",
+        "targetCharacterId": "vance_pilot"
+      }
+    },
+    {
+      "id": "c19-13",
+      "text": "Knox was in row 3 and stood directly adjacent to the Marconi Transmitter.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "knox",
+        "objectId": "spark_transmitter"
+      }
+    },
+    {
+      "id": "c19-14",
+      "text": "Knox was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "knox",
+        "row": 3
+      }
+    },
+    {
+      "id": "c19-15",
+      "text": "Lieutenant Vance was in column 0 and stood directly adjacent to the Marconi Transmitter.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "vance_pilot",
+        "objectId": "spark_transmitter"
+      }
+    },
+    {
+      "id": "c19-16",
+      "text": "Lieutenant Vance was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "vance_pilot",
+        "column": 0
+      }
+    },
+    {
+      "id": "c19-17",
+      "text": "Steward Jean was the only person on the Promenade Deck.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "jean"
+      }
+    },
+    {
+      "id": "c19-18",
+      "text": "Steward Jean was on the Promenade Deck.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "jean",
+        "areaId": "promenade_deck"
+      }
+    },
+    {
+      "id": "c19-19",
+      "text": "Steward Jean was in column 5 and stood directly adjacent to the Observation Bay.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "jean",
+        "objectId": "panoramic_window"
+      }
+    },
+    {
+      "id": "c19-20",
+      "text": "Steward Jean was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "jean",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "thorne",
+  "solution": {
+    "placements": {
+      "thorne": {
+        "row": 0,
+        "column": 1
+      },
+      "victoria": {
+        "row": 1,
+        "column": 0
+      },
+      "baxter": {
+        "row": 0,
+        "column": 4
+      },
+      "ilona": {
+        "row": 1,
+        "column": 5
+      },
+      "knox": {
+        "row": 3,
+        "column": 1
+      },
+      "vance_pilot": {
+        "row": 4,
+        "column": 0
+      },
+      "jean": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "victoria"
+  }
+}

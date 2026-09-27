@@ -1,0 +1,478 @@
+{
+  "id": "case-016",
+  "title": "The Venice Masquerade",
+  "subtitle": "Masks and daggers along the Grand Canal",
+  "description": "Duca Bernardo Contarini was discovered poisoned in the Mirror Gallery of Palazzo Bellini during the Carnevale gala. Six masked guests and attendants were in the adjoining halls. Deduce everyone's location and discover who was alone with the Duca.",
+  "difficulty": "hard",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "mirror_gallery",
+      "name": "Mirror Gallery",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "music_salon",
+      "name": "Music Salon",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "gondola_terrace",
+      "name": "Gondola Terrace",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "casanova_lounge",
+      "name": "Casanova Lounge",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "venetian_chandelier",
+      "type": "clock",
+      "label": "Murano Chandelier",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "harpsichord",
+      "type": "billiard_table",
+      "label": "Gilded Harpsichord",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "terrace_fountain",
+      "type": "fountain",
+      "label": "Lion Head Fountain",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "velvet_canopy",
+      "type": "couch",
+      "label": "Carnival Divan",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "bernardo",
+      "name": "Duca Bernardo",
+      "role": "victim",
+      "description": "The ruthless Venetian patriarch of Palazzo Bellini."
+    },
+    {
+      "id": "francesca",
+      "name": "Contessa Francesca",
+      "role": "suspect",
+      "description": "His estranged cousin seeking restoration of family estates."
+    },
+    {
+      "id": "matteo_g",
+      "name": "Gondolier Matteo",
+      "role": "suspect",
+      "description": "A private boatman carrying secret letters."
+    },
+    {
+      "id": "armand",
+      "name": "Diplomat Armand",
+      "role": "suspect",
+      "description": "A French ambassador embroiled in sovereign espionage."
+    },
+    {
+      "id": "lucia",
+      "name": "Lucia the Maskmaker",
+      "role": "suspect",
+      "description": "Artisan who crafted the carnival costumes."
+    },
+    {
+      "id": "silvio",
+      "name": "Silvio Moretti",
+      "role": "suspect",
+      "description": "A wealthy merchant who bet heavily on spice shipments."
+    },
+    {
+      "id": "cosima",
+      "name": "Cosima Bellini",
+      "role": "suspect",
+      "description": "The prima ballerina scheduled to perform the midnight dance."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c16-1",
+      "text": "Duca Bernardo was standing in the Mirror Gallery.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "bernardo",
+        "areaId": "mirror_gallery"
+      }
+    },
+    {
+      "id": "c16-2",
+      "text": "Duca Bernardo stood directly adjacent to the Murano Chandelier.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "bernardo",
+        "objectId": "venetian_chandelier"
+      }
+    },
+    {
+      "id": "c16-3",
+      "text": "Duca Bernardo was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "bernardo",
+        "row": 0
+      }
+    },
+    {
+      "id": "c16-4",
+      "text": "Contessa Francesca was in the Mirror Gallery.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "francesca",
+        "areaId": "mirror_gallery"
+      }
+    },
+    {
+      "id": "c16-5",
+      "text": "Contessa Francesca was directly adjacent to Duca Bernardo.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "francesca",
+        "targetCharacterId": "bernardo"
+      }
+    },
+    {
+      "id": "c16-6",
+      "text": "Contessa Francesca was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "francesca",
+        "column": 0
+      }
+    },
+    {
+      "id": "c16-7",
+      "text": "Diplomat Armand and Cosima Bellini were both in the Music Salon.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "armand",
+        "targetCharacterId": "cosima"
+      }
+    },
+    {
+      "id": "c16-8",
+      "text": "Diplomat Armand was in row 0 and stood directly adjacent to the Gilded Harpsichord.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "armand",
+        "objectId": "harpsichord"
+      }
+    },
+    {
+      "id": "c16-9",
+      "text": "Diplomat Armand was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "armand",
+        "row": 0
+      }
+    },
+    {
+      "id": "c16-10",
+      "text": "Cosima Bellini was in column 5 and stood directly adjacent to the Gilded Harpsichord.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "cosima",
+        "objectId": "harpsichord"
+      }
+    },
+    {
+      "id": "c16-11",
+      "text": "Cosima Bellini was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "cosima",
+        "column": 5
+      }
+    },
+    {
+      "id": "c16-12",
+      "text": "Gondolier Matteo and Lucia the Maskmaker were both on the Gondola Terrace.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "matteo_g",
+        "targetCharacterId": "lucia"
+      }
+    },
+    {
+      "id": "c16-13",
+      "text": "Gondolier Matteo was in row 3 and stood directly adjacent to the Lion Head Fountain.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "matteo_g",
+        "objectId": "terrace_fountain"
+      }
+    },
+    {
+      "id": "c16-14",
+      "text": "Gondolier Matteo was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "matteo_g",
+        "row": 3
+      }
+    },
+    {
+      "id": "c16-15",
+      "text": "Lucia the Maskmaker was in column 0 and stood directly adjacent to the Lion Head Fountain.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "lucia",
+        "objectId": "terrace_fountain"
+      }
+    },
+    {
+      "id": "c16-16",
+      "text": "Lucia the Maskmaker was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "lucia",
+        "column": 0
+      }
+    },
+    {
+      "id": "c16-17",
+      "text": "Silvio Moretti was the only person in the Casanova Lounge.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "silvio"
+      }
+    },
+    {
+      "id": "c16-18",
+      "text": "Silvio Moretti was in the Casanova Lounge.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "silvio",
+        "areaId": "casanova_lounge"
+      }
+    },
+    {
+      "id": "c16-19",
+      "text": "Silvio Moretti was in column 5 and stood directly adjacent to the Carnival Divan.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "silvio",
+        "objectId": "velvet_canopy"
+      }
+    },
+    {
+      "id": "c16-20",
+      "text": "Silvio Moretti was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "silvio",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "bernardo",
+  "solution": {
+    "placements": {
+      "bernardo": {
+        "row": 0,
+        "column": 1
+      },
+      "francesca": {
+        "row": 0,
+        "column": 0
+      },
+      "armand": {
+        "row": 0,
+        "column": 4
+      },
+      "cosima": {
+        "row": 1,
+        "column": 5
+      },
+      "matteo_g": {
+        "row": 3,
+        "column": 1
+      },
+      "lucia": {
+        "row": 4,
+        "column": 0
+      },
+      "silvio": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "francesca"
+  }
+}

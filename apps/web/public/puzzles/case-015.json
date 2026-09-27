@@ -1,0 +1,478 @@
+{
+  "id": "case-015",
+  "title": "The Royal Antiquities Vault",
+  "subtitle": "A subterranean heist sealed in blood",
+  "description": "Chief Archivist Percival Graves was found dead inside the Gold Reliquary Vault deep beneath the museum. Six experts and guards were trapped behind the pneumatic blast doors. Deduce everyone's location and discover who was alone with Percival Graves.",
+  "difficulty": "hard",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "gold_reliquary",
+      "name": "Gold Reliquary",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "papyrus_archive",
+      "name": "Papyrus Archive",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "lapidary_vault",
+      "name": "Lapidary Vault",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "guard_post",
+      "name": "Guard Post",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "pharaoh_coffin",
+      "type": "sarcophagus",
+      "label": "Golden Sarcophagus",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "scroll_rack",
+      "type": "bookshelf",
+      "label": "Cedar Scroll Rack",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "gem_cabinet",
+      "type": "display_case",
+      "label": "Ruby Display Cabinet",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "alarm_console",
+      "type": "telegraph",
+      "label": "Pneumatic Console",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "percival",
+      "name": "Percival Graves",
+      "role": "victim",
+      "description": "The venerable Chief Archivist guarding the museum's secrets."
+    },
+    {
+      "id": "morgan",
+      "name": "Dr. Morgan Blake",
+      "role": "suspect",
+      "description": "The senior conservator secretly forging provenance papers."
+    },
+    {
+      "id": "drake_sec",
+      "name": "Drake Holloway",
+      "role": "suspect",
+      "description": "The head of museum security holding the master keys."
+    },
+    {
+      "id": "vivienne",
+      "name": "Lady Vivienne",
+      "role": "suspect",
+      "description": "A wealthy patron claiming an heirloom inside the vault."
+    },
+    {
+      "id": "kenneth",
+      "name": "Kenneth Shaw",
+      "role": "suspect",
+      "description": "The gemological appraiser assessing the crown rubies."
+    },
+    {
+      "id": "maeve",
+      "name": "Maeve Sinclair",
+      "role": "suspect",
+      "description": "The assistant scribe cataloging ancient scrolls."
+    },
+    {
+      "id": "silas_j",
+      "name": "Silas Vance",
+      "role": "suspect",
+      "description": "The vault custodian."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c15-1",
+      "text": "Percival Graves was in the Gold Reliquary.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "percival",
+        "areaId": "gold_reliquary"
+      }
+    },
+    {
+      "id": "c15-2",
+      "text": "Percival was standing directly adjacent to the Golden Sarcophagus.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "percival",
+        "objectId": "pharaoh_coffin"
+      }
+    },
+    {
+      "id": "c15-3",
+      "text": "Percival was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "percival",
+        "row": 0
+      }
+    },
+    {
+      "id": "c15-4",
+      "text": "Dr. Morgan Blake was in the Gold Reliquary.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "morgan",
+        "areaId": "gold_reliquary"
+      }
+    },
+    {
+      "id": "c15-5",
+      "text": "Morgan was standing directly adjacent to the Golden Sarcophagus.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "morgan",
+        "objectId": "pharaoh_coffin"
+      }
+    },
+    {
+      "id": "c15-6",
+      "text": "Morgan was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "morgan",
+        "column": 0
+      }
+    },
+    {
+      "id": "c15-7",
+      "text": "Maeve Sinclair and Lady Vivienne were both inside the Papyrus Archive.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "maeve",
+        "targetCharacterId": "vivienne"
+      }
+    },
+    {
+      "id": "c15-8",
+      "text": "Maeve was in row 0 and stood directly adjacent to the Cedar Scroll Rack.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "maeve",
+        "objectId": "scroll_rack"
+      }
+    },
+    {
+      "id": "c15-9",
+      "text": "Maeve was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "maeve",
+        "row": 0
+      }
+    },
+    {
+      "id": "c15-10",
+      "text": "Lady Vivienne was in column 5 and stood directly adjacent to the Cedar Scroll Rack.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "vivienne",
+        "objectId": "scroll_rack"
+      }
+    },
+    {
+      "id": "c15-11",
+      "text": "Lady Vivienne was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "vivienne",
+        "column": 5
+      }
+    },
+    {
+      "id": "c15-12",
+      "text": "Kenneth Shaw and Silas Vance were both inside the Lapidary Vault.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "kenneth",
+        "targetCharacterId": "silas_j"
+      }
+    },
+    {
+      "id": "c15-13",
+      "text": "Kenneth was in row 3 and stood directly adjacent to the Ruby Display Cabinet.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "kenneth",
+        "objectId": "gem_cabinet"
+      }
+    },
+    {
+      "id": "c15-14",
+      "text": "Kenneth was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "kenneth",
+        "row": 3
+      }
+    },
+    {
+      "id": "c15-15",
+      "text": "Silas Vance was in column 0 and stood directly adjacent to the Ruby Display Cabinet.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "silas_j",
+        "objectId": "gem_cabinet"
+      }
+    },
+    {
+      "id": "c15-16",
+      "text": "Silas Vance was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "silas_j",
+        "column": 0
+      }
+    },
+    {
+      "id": "c15-17",
+      "text": "Security Chief Drake Holloway was the only person in the Guard Post.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "drake_sec"
+      }
+    },
+    {
+      "id": "c15-18",
+      "text": "Drake was in the Guard Post.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "drake_sec",
+        "areaId": "guard_post"
+      }
+    },
+    {
+      "id": "c15-19",
+      "text": "Drake was in column 5 and stood directly adjacent to the Pneumatic Console.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "drake_sec",
+        "objectId": "alarm_console"
+      }
+    },
+    {
+      "id": "c15-20",
+      "text": "Drake was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "drake_sec",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "percival",
+  "solution": {
+    "placements": {
+      "percival": {
+        "row": 0,
+        "column": 1
+      },
+      "morgan": {
+        "row": 1,
+        "column": 0
+      },
+      "maeve": {
+        "row": 0,
+        "column": 4
+      },
+      "vivienne": {
+        "row": 1,
+        "column": 5
+      },
+      "kenneth": {
+        "row": 3,
+        "column": 1
+      },
+      "silas_j": {
+        "row": 4,
+        "column": 0
+      },
+      "drake_sec": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "morgan"
+  }
+}

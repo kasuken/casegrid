@@ -1,0 +1,478 @@
+{
+  "id": "case-014",
+  "title": "The Sunken Galleon Salvage",
+  "subtitle": "A pirate's treasure claimed by blood",
+  "description": "Expedition Leader Captain Hawke was found strangled inside the Captain's Cabin aboard the salvage vessel Neptune. Six crew members were at their diving posts. Deduce everyone's location and discover who was alone with Captain Hawke.",
+  "difficulty": "medium",
+  "grid": {
+    "width": 6,
+    "height": 6
+  },
+  "areas": [
+    {
+      "id": "captains_cabin",
+      "name": "Captain's Cabin",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 2,
+          "column": 0
+        },
+        {
+          "row": 2,
+          "column": 1
+        },
+        {
+          "row": 2,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "dive_deck",
+      "name": "Dive Deck",
+      "cells": [
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 0,
+          "column": 4
+        },
+        {
+          "row": 0,
+          "column": 5
+        },
+        {
+          "row": 1,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 4
+        },
+        {
+          "row": 1,
+          "column": 5
+        },
+        {
+          "row": 2,
+          "column": 3
+        },
+        {
+          "row": 2,
+          "column": 4
+        },
+        {
+          "row": 2,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "id": "pump_hold",
+      "name": "Pump Hold",
+      "cells": [
+        {
+          "row": 3,
+          "column": 0
+        },
+        {
+          "row": 3,
+          "column": 1
+        },
+        {
+          "row": 3,
+          "column": 2
+        },
+        {
+          "row": 4,
+          "column": 0
+        },
+        {
+          "row": 4,
+          "column": 1
+        },
+        {
+          "row": 4,
+          "column": 2
+        },
+        {
+          "row": 5,
+          "column": 0
+        },
+        {
+          "row": 5,
+          "column": 1
+        },
+        {
+          "row": 5,
+          "column": 2
+        }
+      ]
+    },
+    {
+      "id": "winch_station",
+      "name": "Winch Station",
+      "cells": [
+        {
+          "row": 3,
+          "column": 3
+        },
+        {
+          "row": 3,
+          "column": 4
+        },
+        {
+          "row": 3,
+          "column": 5
+        },
+        {
+          "row": 4,
+          "column": 3
+        },
+        {
+          "row": 4,
+          "column": 4
+        },
+        {
+          "row": 4,
+          "column": 5
+        },
+        {
+          "row": 5,
+          "column": 3
+        },
+        {
+          "row": 5,
+          "column": 4
+        },
+        {
+          "row": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "chart_desk",
+      "type": "desk",
+      "label": "Navigation Chart Desk",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "diving_suit",
+      "type": "display_case",
+      "label": "Brass Diving Helmet",
+      "position": {
+        "row": 1,
+        "column": 4
+      }
+    },
+    {
+      "id": "bilge_pump",
+      "type": "steam_engine",
+      "label": "Steam Bilge Pump",
+      "position": {
+        "row": 4,
+        "column": 1
+      }
+    },
+    {
+      "id": "iron_capstan",
+      "type": "nautical_wheel",
+      "label": "Heavy Iron Capstan",
+      "position": {
+        "row": 4,
+        "column": 4
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "hawke_capt",
+      "name": "Captain Hawke",
+      "role": "victim",
+      "description": "Ruthless salvage captain obsessed with gold doubloons."
+    },
+    {
+      "id": "mateo",
+      "name": "Mateo Cruz",
+      "role": "suspect",
+      "description": "The deep diver who found the Spanish chest."
+    },
+    {
+      "id": "silas_q",
+      "name": "Silas Drake",
+      "role": "suspect",
+      "description": "The grizzled quartermaster."
+    },
+    {
+      "id": "eleanor",
+      "name": "Eleanor Vance",
+      "role": "suspect",
+      "description": "The maritime historian deciphering the wreck map."
+    },
+    {
+      "id": "rory",
+      "name": "Rory Quinn",
+      "role": "suspect",
+      "description": "The young deckhand anxious for his cut."
+    },
+    {
+      "id": "greta",
+      "name": "Greta Lind",
+      "role": "suspect",
+      "description": "The ship's chief mechanic."
+    },
+    {
+      "id": "bram",
+      "name": "Bram Thorne",
+      "role": "suspect",
+      "description": "The crane operator guarding the cargo."
+    }
+  ],
+  "clues": [
+    {
+      "id": "c14-1",
+      "text": "Captain Hawke was in the Captain's Cabin.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "hawke_capt",
+        "areaId": "captains_cabin"
+      }
+    },
+    {
+      "id": "c14-2",
+      "text": "Captain Hawke stood directly adjacent to the Navigation Chart Desk.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "hawke_capt",
+        "objectId": "chart_desk"
+      }
+    },
+    {
+      "id": "c14-3",
+      "text": "Captain Hawke was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "hawke_capt",
+        "row": 0
+      }
+    },
+    {
+      "id": "c14-4",
+      "text": "Mateo Cruz was in the Captain's Cabin.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "mateo",
+        "areaId": "captains_cabin"
+      }
+    },
+    {
+      "id": "c14-5",
+      "text": "Mateo Cruz stood directly adjacent to Captain Hawke.",
+      "constraint": {
+        "type": "character_adjacent_to_character",
+        "characterId": "mateo",
+        "targetCharacterId": "hawke_capt"
+      }
+    },
+    {
+      "id": "c14-6",
+      "text": "Mateo Cruz was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "mateo",
+        "column": 0
+      }
+    },
+    {
+      "id": "c14-7",
+      "text": "Silas Drake and Eleanor Vance were both stationed on the Dive Deck.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "silas_q",
+        "targetCharacterId": "eleanor"
+      }
+    },
+    {
+      "id": "c14-8",
+      "text": "Silas Drake was in row 0 and stood directly adjacent to the Brass Diving Helmet.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "silas_q",
+        "objectId": "diving_suit"
+      }
+    },
+    {
+      "id": "c14-9",
+      "text": "Silas Drake was in row 0.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "silas_q",
+        "row": 0
+      }
+    },
+    {
+      "id": "c14-10",
+      "text": "Eleanor Vance was in column 5 and stood directly adjacent to the Brass Diving Helmet.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "eleanor",
+        "objectId": "diving_suit"
+      }
+    },
+    {
+      "id": "c14-11",
+      "text": "Eleanor Vance was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "eleanor",
+        "column": 5
+      }
+    },
+    {
+      "id": "c14-12",
+      "text": "Greta Lind and Rory Quinn were both working in the Pump Hold.",
+      "constraint": {
+        "type": "characters_same_area",
+        "characterId": "greta",
+        "targetCharacterId": "rory"
+      }
+    },
+    {
+      "id": "c14-13",
+      "text": "Greta Lind was in row 3 and stood directly adjacent to the Steam Bilge Pump.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "greta",
+        "objectId": "bilge_pump"
+      }
+    },
+    {
+      "id": "c14-14",
+      "text": "Greta Lind was in row 3.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "greta",
+        "row": 3
+      }
+    },
+    {
+      "id": "c14-15",
+      "text": "Rory Quinn was in column 0 and stood directly adjacent to the Steam Bilge Pump.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "rory",
+        "objectId": "bilge_pump"
+      }
+    },
+    {
+      "id": "c14-16",
+      "text": "Rory Quinn was in column 0.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "rory",
+        "column": 0
+      }
+    },
+    {
+      "id": "c14-17",
+      "text": "Bram Thorne was the only person at the Winch Station.",
+      "constraint": {
+        "type": "character_alone_in_area",
+        "characterId": "bram"
+      }
+    },
+    {
+      "id": "c14-18",
+      "text": "Bram Thorne was at the Winch Station.",
+      "constraint": {
+        "type": "character_in_area",
+        "characterId": "bram",
+        "areaId": "winch_station"
+      }
+    },
+    {
+      "id": "c14-19",
+      "text": "Bram Thorne was in column 5 and stood directly adjacent to the Heavy Iron Capstan.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "bram",
+        "objectId": "iron_capstan"
+      }
+    },
+    {
+      "id": "c14-20",
+      "text": "Bram Thorne was in column 5.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "bram",
+        "column": 5
+      }
+    }
+  ],
+  "victimId": "hawke_capt",
+  "solution": {
+    "placements": {
+      "hawke_capt": {
+        "row": 0,
+        "column": 1
+      },
+      "mateo": {
+        "row": 0,
+        "column": 0
+      },
+      "silas_q": {
+        "row": 0,
+        "column": 4
+      },
+      "eleanor": {
+        "row": 1,
+        "column": 5
+      },
+      "greta": {
+        "row": 3,
+        "column": 1
+      },
+      "rory": {
+        "row": 4,
+        "column": 0
+      },
+      "bram": {
+        "row": 4,
+        "column": 5
+      }
+    },
+    "murdererId": "mateo"
+  }
+}
