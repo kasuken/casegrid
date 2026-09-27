@@ -27,8 +27,9 @@ import { CaseGuide } from '../components/game/CaseGuide'
 
 export function CasePage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
-  const [loading, setLoading] = useState(true)
-  const [loadError, setLoadError] = useState<Error | null>(null)
+  const [settled, setSettled] = useState<{ caseId: string; error: Error | null } | null>(null)
+  const loading = settled?.caseId !== caseId
+  const loadError = loading ? null : (settled?.error ?? null)
 
   const {
     stage,
@@ -63,13 +64,12 @@ export function CasePage() {
         const saved = loadProgress(caseId)
         loadCase(puzzle, saved)
         initGuide(puzzle.id, puzzle.tutorial ?? [])
-        setLoading(false)
+        setSettled({ caseId, error: null })
       })
       .catch((err) => {
         if (!mounted) return
         if (!(err instanceof CaseComingSoonError)) console.error('Error loading case:', err)
-        setLoadError(err instanceof Error ? err : new Error('Failed to load case'))
-        setLoading(false)
+        setSettled({ caseId, error: err instanceof Error ? err : new Error('Failed to load case') })
       })
 
     return () => {

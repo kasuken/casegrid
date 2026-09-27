@@ -10,8 +10,9 @@ import { ResultView } from '../components/game/ResultView'
 
 export function ResultPage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<Error | null>(null)
+  const [settled, setSettled] = useState<{ caseId: string; error: Error | null } | null>(null)
+  const loading = settled?.caseId !== caseId
+  const error = loading ? null : (settled?.error ?? null)
   const { stage, loadCase } = useGameStore()
 
   useEffect(() => {
@@ -21,12 +22,11 @@ export function ResultPage() {
         if (!mounted) return
         const saved = loadProgress(caseId)
         loadCase(puzzle, saved)
-        setLoading(false)
+        setSettled({ caseId, error: null })
       })
       .catch((err) => {
         if (!mounted) return
-        setError(err instanceof Error ? err : new Error('Failed to load case'))
-        setLoading(false)
+        setSettled({ caseId, error: err instanceof Error ? err : new Error('Failed to load case') })
       })
 
     return () => {

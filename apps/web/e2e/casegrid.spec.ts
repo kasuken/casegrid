@@ -86,8 +86,22 @@ test.describe('CaseGrid Critical Journeys', () => {
     await expect(resultView).toBeVisible()
     await expect(resultView.getByText('CASE CLOSED')).toBeVisible()
     await expect(resultView.getByText(/Evelyn Rosewood was alone with Lord Reginald/i)).toBeVisible()
+    await expect(page.getByTestId('result-resolution')).toBeVisible()
     await expect(page.getByTestId('replay-btn')).toBeVisible()
     await expect(page.getByTestId('back-to-cases-btn')).toBeVisible()
+
+    // 8. The walkthrough is available on request
+    await page.getByTestId('see-deductions-btn').click()
+    await expect(page.getByTestId('deduction-steps')).toBeVisible()
+
+    // 9. Continue straight into the next case
+    const next = page.getByTestId('open-next-case-btn')
+    await expect(next).toHaveText('Open the next case')
+    await next.click()
+    await expect(page).toHaveURL(/\/case\/case-002$/)
+    await expect(page.locator('#case-intro-title')).toHaveText('The Grand Antiquary')
+    await expect(page.getByTestId('start-investigation-btn')).toBeVisible()
+    await expect(page.getByTestId('result-view')).toHaveCount(0)
   })
 
   test('Flow 2: Active investigation state persists across page refresh', async ({

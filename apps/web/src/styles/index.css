@@ -1220,19 +1220,30 @@ div[tabindex="0"]:focus-visible {
 }
 
 .result-badge {
+  position: relative;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   animation: seal-reveal 240ms ease-out both;
 }
 
-.result-badge__stamp {
+/* A rubber stamp pressed across the seal */
+.result-stamp {
+  position: relative;
+  margin: -1.75rem 0 0;
+  padding: 0.35rem 1rem;
+  border: 4px double var(--evidence);
+  border-radius: 4px;
+  background: rgb(251 248 240 / 85%);
   color: var(--evidence);
   font-family: Georgia, serif;
-  font-size: 0.85rem;
+  font-size: clamp(1.05rem, 5vw, 2rem);
   font-weight: 900;
   letter-spacing: 0.12em;
+  white-space: nowrap;
+  transform: rotate(-7deg);
+  animation: stamp-press 420ms cubic-bezier(0.2, 1.4, 0.4, 1) 160ms both;
 }
 
 @keyframes seal-reveal {
@@ -1240,8 +1251,91 @@ div[tabindex="0"]:focus-visible {
   to { opacity: 1; transform: scale(1) rotate(0); }
 }
 
+@keyframes stamp-press {
+  from { opacity: 0; transform: scale(1.8) rotate(-12deg); }
+  to { opacity: 1; transform: scale(1) rotate(-7deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .result-badge { animation: none; }
+  .result-badge,
+  .result-stamp { animation: none; }
+}
+
+.result-view__resolution {
+  margin: 0.75rem 0 0;
+  font-size: 1rem;
+  color: rgb(24 39 45 / 85%);
+}
+
+/* Focus moves here for screen readers on arrival; the heading is not interactive. */
+.result-view__title:focus,
+.result-view__title:focus-visible {
+  outline: none;
+}
+
+/* Deduction walkthrough */
+.walkthrough {
+  margin: -1rem 0 2rem;
+  text-align: left;
+}
+
+.walkthrough__steps {
+  margin: 1rem 0 0;
+  padding: 1rem 1.25rem 1rem 2.5rem;
+  background: var(--paper);
+  border: 1px solid rgb(24 39 45 / 18%);
+  line-height: 1.55;
+}
+
+.walkthrough__step + .walkthrough__step {
+  margin-top: 0.6rem;
+}
+
+.walkthrough__clues {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--evidence);
+}
+
+/* Next case */
+.next-case {
+  margin: 0 0 2rem;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--brass);
+}
+
+.next-case__eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7a5a1c;
+}
+
+.next-case__difficulty {
+  text-transform: capitalize;
+}
+
+.next-case__title {
+  margin: 0.35rem 0 0.35rem;
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.next-case__text {
+  margin: 0 0 1rem;
+  color: rgb(24 39 45 / 80%);
+}
+
+.next-case--done .next-case__text {
+  margin-bottom: 0;
 }
 
 .result-view__title {
