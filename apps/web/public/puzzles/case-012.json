@@ -281,7 +281,7 @@
     },
     {
       "id": "c12-3",
-      "text": "Maestro Leopold was in row 0.",
+      "text": "Maestro Leopold was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "leopold",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c12-6",
-      "text": "Rosa was in column 0.",
+      "text": "Rosa was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "rosa",
@@ -344,7 +344,7 @@
     },
     {
       "id": "c12-10",
-      "text": "Antonio was in row 0.",
+      "text": "Antonio was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "antonio",
@@ -362,7 +362,7 @@
     },
     {
       "id": "c12-12",
-      "text": "Baroness Helena was in column 5.",
+      "text": "Baroness Helena was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "helena",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c12-16",
-      "text": "Otto was in row 3.",
+      "text": "Otto was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "otto",
@@ -416,7 +416,7 @@
     },
     {
       "id": "c12-18",
-      "text": "Giselle was in column 0.",
+      "text": "Giselle was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "giselle",
@@ -451,7 +451,7 @@
     },
     {
       "id": "c12-22",
-      "text": "Herr Meyer was in column 5.",
+      "text": "Herr Meyer was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "meyer",

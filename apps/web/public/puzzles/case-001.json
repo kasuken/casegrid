@@ -182,7 +182,7 @@
     },
     {
       "id": "clue-4",
-      "text": "Dr. Julian Sterling was the only person in the billiard room.",
+      "text": "Dr. Julian Sterling was in the billiard room.",
       "constraint": {
         "type": "character_in_area",
         "characterId": "julian",
@@ -299,5 +299,101 @@
       "beatrice": { "row": 4, "column": 4 }
     },
     "murdererId": "evelyn"
-  }
+  },
+  "resolution": "Evelyn Rosewood was the only person in the conservatory with Lord Reginald. Julian had the billiard room to himself, Arthur and Clara were browsing the library, and Beatrice was tending the parlor fire. Her ambition for the estate gives the story its motive, but it was the placements that proved she was alone with him.",
+  "deductions": [
+    {
+      "text": "Lord Reginald is fixed at row 1, column 2 in the conservatory.",
+      "clueIds": ["clue-1"]
+    },
+    {
+      "text": "Evelyn must share an edge with him. The stone fountain blocks the cell below him, leaving row 1, column 1 or row 1, column 3. Only the first is in column 1.",
+      "clueIds": ["clue-2", "clue-3"]
+    },
+    {
+      "text": "Julian is in the billiard room beside the billiard table. Its only open neighbour in row 4 is row 4, column 2, and he has the room to himself.",
+      "clueIds": ["clue-4", "clue-5", "clue-6", "clue-7"]
+    },
+    {
+      "text": "Arthur is in the library beside the antique globe. The globe’s neighbour in column 4 is row 2, column 4.",
+      "clueIds": ["clue-8", "clue-9", "clue-10"]
+    },
+    {
+      "text": "Clara joins Arthur in the library beside the oak bookshelf. The bookshelf’s open neighbours are row 1, column 5 and row 2, column 6; only the first is in row 1.",
+      "clueIds": ["clue-11", "clue-12", "clue-13"]
+    },
+    {
+      "text": "Beatrice stands beside the parlor fireplace in column 5, which leaves row 5, column 5.",
+      "clueIds": ["clue-14", "clue-15"]
+    },
+    {
+      "text": "With everyone placed, Evelyn is the only suspect sharing the conservatory with Lord Reginald.",
+      "clueIds": []
+    }
+  ],
+  "helpPrompts": [
+    {
+      "id": "nudge-1",
+      "text": "Begin with the clue that fixes someone to an exact cell. Everything else can be built around that person.",
+      "clueIds": ["clue-1"]
+    },
+    {
+      "id": "nudge-2",
+      "text": "A “beside” clue allows only the open cells directly above, below, left, or right. Diagonals never count, and object cells are blocked.",
+      "clueIds": ["clue-2", "clue-6"]
+    },
+    {
+      "id": "nudge-3",
+      "text": "For each person, combine their “beside” clue with their row or column clue. Which cells satisfy both?",
+      "clueIds": ["clue-2", "clue-3"]
+    },
+    {
+      "id": "nudge-4",
+      "text": "Clara is in the same room as Arthur. Settle Arthur first, then use Clara’s other clues inside that room.",
+      "clueIds": ["clue-11", "clue-12", "clue-13"]
+    },
+    {
+      "id": "nudge-5",
+      "text": "When everyone is placed, look at the victim’s room. Which suspect is the only one sharing it?",
+      "clueIds": []
+    }
+  ],
+  "tutorial": [
+    {
+      "id": "select",
+      "title": "Pick a person",
+      "text": "Tap a portrait under Persons of Interest to select someone. You can also drag a portrait straight onto the map.",
+      "advanceOn": "select"
+    },
+    {
+      "id": "place",
+      "title": "Place them on the map",
+      "text": "With someone selected, tap an open cell. Rows count from the top and columns from the left, both starting at 1. Tap another cell to move them; nothing is checked until you ask.",
+      "advanceOn": "place"
+    },
+    {
+      "id": "beside",
+      "title": "“Beside” means sharing an edge",
+      "text": "A person beside someone or something is directly above, below, left, or right of it. Diagonal cells never count.",
+      "advanceOn": "manual"
+    },
+    {
+      "id": "objects",
+      "title": "Objects block cells",
+      "text": "Furniture such as the stone fountain fills its cell, so nobody can stand there. Use that to rule out neighbours quickly.",
+      "advanceOn": "manual"
+    },
+    {
+      "id": "exclude",
+      "title": "Take notes",
+      "text": "Switch to Exclude Note, select a person, and tap a cell where they cannot be. Notes are only for you; they never affect checking.",
+      "advanceOn": "exclude"
+    },
+    {
+      "id": "clues",
+      "title": "Tick off clues",
+      "text": "Tap a clue to mark it as used. When everyone is placed, press Check Solution.",
+      "advanceOn": "clue"
+    }
+  ]
 }

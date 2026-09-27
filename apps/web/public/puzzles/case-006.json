@@ -257,7 +257,7 @@
   "clues": [
     {
       "id": "c6-1",
-      "text": "Abbot Augustine was seated at row 0, column 1 near the altar.",
+      "text": "Abbot Augustine was seated at row 1, column 2 near the altar.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "augustine",
@@ -287,7 +287,7 @@
     },
     {
       "id": "c6-4",
-      "text": "Brother Bernard was in column 0.",
+      "text": "Brother Bernard was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "bernard",
@@ -323,7 +323,7 @@
     },
     {
       "id": "c6-8",
-      "text": "Brother Thomas was in row 0.",
+      "text": "Brother Thomas was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "thomas",
@@ -341,7 +341,7 @@
     },
     {
       "id": "c6-10",
-      "text": "Father Anselm was in column 3.",
+      "text": "Father Anselm was in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "anselm",
@@ -376,7 +376,7 @@
     },
     {
       "id": "c6-14",
-      "text": "Sister Beatrice was in column 0.",
+      "text": "Sister Beatrice was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "beatrice",
@@ -411,7 +411,7 @@
     },
     {
       "id": "c6-18",
-      "text": "Prior Stephen was in column 3.",
+      "text": "Prior Stephen was in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "stephen",

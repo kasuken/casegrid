@@ -150,6 +150,24 @@ export const puzzleSolutionSchema = z.object({
   murdererId: z.string().min(1),
 })
 
+export const deductionStepSchema = z.object({
+  text: z.string().min(1),
+  clueIds: z.array(z.string().min(1)),
+})
+
+export const helpPromptSchema = z.object({
+  id: z.string().min(1),
+  text: z.string().min(1),
+  clueIds: z.array(z.string().min(1)),
+})
+
+export const tutorialStepSchema = z.object({
+  id: z.string().min(1),
+  title: z.string().min(1),
+  text: z.string().min(1),
+  advanceOn: z.enum(['manual', 'select', 'place', 'exclude', 'clue']),
+})
+
 export const puzzleSchema = z.object({
   id: z.string().min(1),
   title: z.string().min(1),
@@ -163,6 +181,10 @@ export const puzzleSchema = z.object({
   clues: z.array(clueSchema),
   victimId: z.string().min(1),
   solution: puzzleSolutionSchema,
+  resolution: z.string().min(1).optional(),
+  deductions: z.array(deductionStepSchema).optional(),
+  helpPrompts: z.array(helpPromptSchema).optional(),
+  tutorial: z.array(tutorialStepSchema).optional(),
 })
 
 export const puzzleMetadataSchema = z.object({
@@ -189,4 +211,6 @@ export const puzzleProgressSchema = z.object({
   elapsedSeconds: z.number().min(0),
   mistakes: z.number().int().min(0),
   bestTime: z.number().min(0).optional(),
+  revealedHelpIds: z.array(z.string()).optional(),
+  updatedAt: z.number().min(0).optional(),
 })

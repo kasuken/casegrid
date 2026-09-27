@@ -12,7 +12,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "oxlint",
-    "validate:puzzles": "node --experimental-strip-types scripts/validate-puzzles.ts"
+    "validate:puzzles": "node --experimental-strip-types scripts/validate-puzzles.ts",
+    "audit:cases": "node --experimental-strip-types scripts/audit-cases.ts"
   },
   "dependencies": {
     "zod": "^4.6.5"

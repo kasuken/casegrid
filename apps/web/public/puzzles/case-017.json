@@ -281,7 +281,7 @@
     },
     {
       "id": "c17-3",
-      "text": "Archibald Reed was in row 0.",
+      "text": "Archibald Reed was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "archibald",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c17-6",
-      "text": "Switchman Sean was in column 0.",
+      "text": "Switchman Sean was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "sean",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c17-9",
-      "text": "Clara Briggs was in row 0.",
+      "text": "Clara Briggs was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "clara_d",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c17-11",
-      "text": "Donald Pike was in column 5.",
+      "text": "Donald Pike was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "donald",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c17-14",
-      "text": "Hank Miller was in row 3.",
+      "text": "Hank Miller was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "hank",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c17-16",
-      "text": "Foreman Greg was in column 0.",
+      "text": "Foreman Greg was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "greg",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c17-20",
-      "text": "Inspector Miller was in column 5.",
+      "text": "Inspector Miller was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "inspector_m",

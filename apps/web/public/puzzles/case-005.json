@@ -2,7 +2,7 @@
   "id": "case-005",
   "title": "The Blackwood Playhouse",
   "subtitle": "A final dress rehearsal silenced by tragedy",
-  "description": "On the eve of opening night, tyrannical artistic director Vincent Sterling was discovered poisoned in his private dressing quarters at Blackwood Playhouse. Six members of the company were scattered across the stage and wings. Untangle everyone's movements and uncover who was alone with the maestro.",
+  "description": "On the eve of opening night, tyrannical artistic director Vincent Harrow was discovered poisoned in his private dressing quarters at Blackwood Playhouse. Six members of the company were scattered across the stage and wings. Untangle everyone's movements and uncover who was alone with the maestro.",
   "difficulty": "medium",
   "grid": {
     "width": 6,
@@ -99,7 +99,7 @@
   "characters": [
     {
       "id": "vincent",
-      "name": "Vincent Sterling",
+      "name": "Vincent Harrow",
       "description": "Demanding director and composer of the production.",
       "role": "victim",
       "avatar": "/assets/characters/case-005/avatar-vincent.svg"
@@ -113,7 +113,7 @@
     },
     {
       "id": "julian_v",
-      "name": "Julian Vance",
+      "name": "Julian Marsh",
       "description": "Ambitious young tenor debuting tomorrow.",
       "role": "suspect",
       "avatar": "/assets/characters/case-005/avatar-julian_v.svg"
@@ -134,14 +134,14 @@
     },
     {
       "id": "dorian",
-      "name": "Dorian Gray",
+      "name": "Dorian Hale",
       "description": "Acerbic theater critic granted backstage access.",
       "role": "suspect",
       "avatar": "/assets/characters/case-005/avatar-dorian.svg"
     },
     {
       "id": "seraphina",
-      "name": "Seraphina Cross",
+      "name": "Seraphina Lane",
       "description": "Concertmaster tuning instruments late in the pit.",
       "role": "suspect",
       "avatar": "/assets/characters/case-005/avatar-seraphina.svg"
@@ -150,7 +150,7 @@
   "clues": [
     {
       "id": "c5-1",
-      "text": "Vincent Sterling was seated at row 5, column 6 in the Dressing Rooms.",
+      "text": "Vincent Harrow was seated at row 5, column 6 in the Dressing Rooms.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "vincent",
@@ -186,7 +186,7 @@
     },
     {
       "id": "c5-5",
-      "text": "Julian Vance and Rowan Shaw were both rehearsing on the Main Stage.",
+      "text": "Julian Marsh and Rowan Shaw were both rehearsing on the Main Stage.",
       "constraint": {
         "type": "characters_same_area",
         "characterId": "julian_v",
@@ -195,7 +195,7 @@
     },
     {
       "id": "c5-6",
-      "text": "Julian Vance was on the Main Stage.",
+      "text": "Julian Marsh was on the Main Stage.",
       "constraint": {
         "type": "character_in_area",
         "characterId": "julian_v",
@@ -240,7 +240,7 @@
     },
     {
       "id": "c5-11",
-      "text": "Seraphina Cross and Dorian Gray were both down in the Orchestra Pit.",
+      "text": "Seraphina Lane and Dorian Hale were both down in the Orchestra Pit.",
       "constraint": {
         "type": "characters_same_area",
         "characterId": "seraphina",
@@ -276,7 +276,7 @@
     },
     {
       "id": "c5-15",
-      "text": "Dorian Gray was also standing beside the concert grand piano.",
+      "text": "Dorian Hale was also standing beside the concert grand piano.",
       "constraint": {
         "type": "character_adjacent_to_object",
         "characterId": "dorian",
@@ -294,7 +294,7 @@
     },
     {
       "id": "c5-17",
-      "text": "Vivian Cole was the only person in Backstage.",
+      "text": "Vivian Cole was in Backstage.",
       "constraint": {
         "type": "character_in_area",
         "characterId": "vivian",
@@ -340,5 +340,62 @@
       "vivian": { "row": 4, "column": 0 }
     },
     "murdererId": "camilla"
-  }
+  },
+  "resolution": "Camilla Fontaine was the only member of the company in the Dressing Rooms with Vincent Harrow. Julian and Rowan were at the trapdoor, Seraphina and Dorian were by the piano, and Vivian was alone with the costume trunk. The threat of being recast gives the story its motive, but it was the rehearsal positions that closed the case.",
+  "deductions": [
+    {
+      "text": "Vincent is fixed at row 5, column 6 in the Dressing Rooms.",
+      "clueIds": ["c5-1"]
+    },
+    {
+      "text": "Camilla is beside him in the Dressing Rooms. The vanity mirror blocks the cell to his left, so she is directly above or below him. Row 4 settles it.",
+      "clueIds": ["c5-2", "c5-3", "c5-4"]
+    },
+    {
+      "text": "Julian is on the Main Stage beside the trapdoor. Its only neighbour in row 1 is row 1, column 2.",
+      "clueIds": ["c5-6", "c5-7", "c5-8"]
+    },
+    {
+      "text": "Rowan shares the stage and the trapdoor. In column 3 that leaves row 2, column 3.",
+      "clueIds": ["c5-5", "c5-9", "c5-10"]
+    },
+    {
+      "text": "Seraphina is in the Orchestra Pit beside the concert grand piano, in column 6: row 2, column 6.",
+      "clueIds": ["c5-12", "c5-13", "c5-14"]
+    },
+    {
+      "text": "Dorian joins her beside the piano, in row 1: row 1, column 5.",
+      "clueIds": ["c5-11", "c5-15", "c5-16"]
+    },
+    {
+      "text": "Vivian is alone backstage beside the costume trunk, in column 1: row 5, column 1.",
+      "clueIds": ["c5-17", "c5-18", "c5-19", "c5-20"]
+    },
+    {
+      "text": "With everyone placed, Camilla is the only suspect sharing the Dressing Rooms with Vincent.",
+      "clueIds": []
+    }
+  ],
+  "helpPrompts": [
+    {
+      "id": "nudge-1",
+      "text": "Begin with the person fixed to an exact cell.",
+      "clueIds": ["c5-1"]
+    },
+    {
+      "id": "nudge-2",
+      "text": "Pairs of people share the stage and the pit. Place whichever one has a row or column clue that leaves a single neighbour.",
+      "clueIds": ["c5-5", "c5-11"]
+    },
+    {
+      "id": "nudge-3",
+      "text": "Vivian is alone backstage, so nobody else can stand anywhere in that room.",
+      "clueIds": ["c5-18"]
+    },
+    {
+      "id": "nudge-4",
+      "text": "Once everyone is placed, count who is in the Dressing Rooms with Vincent.",
+      "clueIds": []
+    }
+  ]
 }

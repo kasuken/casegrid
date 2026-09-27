@@ -13,10 +13,10 @@
     "id": "case-002",
     "title": "The Grand Antiquary",
     "subtitle": "A silent museum exhibition turned crime scene",
-    "description": "Curator Professor Alistair Finch was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Finch.",
+    "description": "Curator Professor Alistair Pembroke was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Pembroke.",
     "difficulty": "easy",
     "suspectCount": 5,
-    "victimName": "Prof. Alistair Finch",
+    "victimName": "Prof. Alistair Pembroke",
     "availability": "available"
   },
   {
@@ -43,10 +43,10 @@
     "id": "case-005",
     "title": "The Blackwood Playhouse",
     "subtitle": "A final dress rehearsal silenced by tragedy",
-    "description": "On the eve of opening night, tyrannical artistic director Vincent Sterling was discovered poisoned in his private dressing quarters at Blackwood Playhouse. Six members of the company were scattered across the stage and wings. Untangle everyone's movements and uncover who was alone with the maestro.",
+    "description": "On the eve of opening night, tyrannical artistic director Vincent Harrow was discovered poisoned in his private dressing quarters at Blackwood Playhouse. Six members of the company were scattered across the stage and wings. Untangle everyone's movements and uncover who was alone with the maestro.",
     "difficulty": "medium",
     "suspectCount": 6,
-    "victimName": "Vincent Sterling",
+    "victimName": "Vincent Harrow",
     "availability": "available"
   },
   {

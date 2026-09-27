@@ -281,7 +281,7 @@
     },
     {
       "id": "c13-3",
-      "text": "Dr. Thaddeus Vance was in row 0.",
+      "text": "Dr. Thaddeus Vance was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "thaddeus",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c13-6",
-      "text": "Lyra Sterling was in column 0.",
+      "text": "Lyra Sterling was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "lyra",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c13-9",
-      "text": "Professor Brandt was in row 0.",
+      "text": "Professor Brandt was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "brandt_prof",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c13-11",
-      "text": "Iris Finch was in column 5.",
+      "text": "Iris Finch was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "iris",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c13-14",
-      "text": "Clive Hawkins was in row 3.",
+      "text": "Clive Hawkins was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "clive",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c13-16",
-      "text": "Roland Cross was in column 0.",
+      "text": "Roland Cross was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "roland",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c13-20",
-      "text": "Dr. Aris Thorne was in column 5.",
+      "text": "Dr. Aris Thorne was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "aris",

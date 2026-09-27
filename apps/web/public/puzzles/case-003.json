@@ -233,7 +233,7 @@
     },
     {
       "id": "c3-11",
-      "text": "Gwen Montgomery was the only person in the Dining Car.",
+      "text": "Gwen Montgomery was in the Dining Car.",
       "constraint": {
         "type": "character_in_area",
         "characterId": "gwen",
@@ -313,5 +313,58 @@
       "otto": { "row": 4, "column": 5 }
     },
     "murdererId": "dimitri"
-  }
+  },
+  "resolution": "Dimitri Petrov was the only passenger in the sleeper cabin with the Baroness. Viktor and Charlotte were at the saloon piano, Gwen was alone at the dining bar, and Otto never left the baggage car. His gambling debts give the story its motive, but it was the snowbound seating chart that proved he was alone with her.",
+  "deductions": [
+    {
+      "text": "The Baroness is fixed at row 5, column 1 in her sleeper cabin.",
+      "clueIds": ["c3-1"]
+    },
+    {
+      "text": "Dimitri is in the Sleeper Cabin beside her. The berth bed blocks the cell to her right, so he is directly above or below her. Row 4 settles it.",
+      "clueIds": ["c3-2", "c3-3", "c3-4"]
+    },
+    {
+      "text": "Viktor stands beside the grand piano in the Saloon Car. Its only neighbour in row 1 is row 1, column 2.",
+      "clueIds": ["c3-6", "c3-7", "c3-8"]
+    },
+    {
+      "text": "Charlotte shares the Saloon Car and is also beside the piano, in column 3: row 2, column 3.",
+      "clueIds": ["c3-5", "c3-9", "c3-10"]
+    },
+    {
+      "text": "Gwen has the Dining Car to herself, beside the bar counter in column 6: row 2, column 6.",
+      "clueIds": ["c3-11", "c3-12", "c3-13", "c3-14"]
+    },
+    {
+      "text": "Otto is alone in the Baggage Car beside the freight crate in column 6: row 5, column 6.",
+      "clueIds": ["c3-15", "c3-16", "c3-17", "c3-18"]
+    },
+    {
+      "text": "With everyone placed, Dimitri is the only suspect sharing the sleeper cabin with the Baroness.",
+      "clueIds": []
+    }
+  ],
+  "helpPrompts": [
+    {
+      "id": "nudge-1",
+      "text": "Begin with the person fixed to an exact cell.",
+      "clueIds": ["c3-1"]
+    },
+    {
+      "id": "nudge-2",
+      "text": "When a clue says someone was alone, nobody else can be placed anywhere in their car.",
+      "clueIds": ["c3-12", "c3-16"]
+    },
+    {
+      "id": "nudge-3",
+      "text": "Two passengers stand beside the grand piano. List its open neighbours, then use each person’s row or column clue to tell them apart.",
+      "clueIds": ["c3-7", "c3-8", "c3-9", "c3-10"]
+    },
+    {
+      "id": "nudge-4",
+      "text": "With everyone placed, who shares the Baroness’s cabin?",
+      "clueIds": []
+    }
+  ]
 }

@@ -281,7 +281,7 @@
     },
     {
       "id": "c19-3",
-      "text": "Marshall Thorne was in row 0.",
+      "text": "Marshall Thorne was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "thorne",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c19-6",
-      "text": "First Officer Victoria was in column 0.",
+      "text": "First Officer Victoria was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "victoria",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c19-9",
-      "text": "Chief Engineer Baxter was in row 0.",
+      "text": "Chief Engineer Baxter was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "baxter",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c19-11",
-      "text": "Countess Ilona was in column 5.",
+      "text": "Countess Ilona was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "ilona",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c19-14",
-      "text": "Knox was in row 3.",
+      "text": "Knox was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "knox",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c19-16",
-      "text": "Lieutenant Vance was in column 0.",
+      "text": "Lieutenant Vance was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "vance_pilot",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c19-20",
-      "text": "Steward Jean was in column 5.",
+      "text": "Steward Jean was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "jean",

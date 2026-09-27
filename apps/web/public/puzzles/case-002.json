@@ -2,7 +2,7 @@
   "id": "case-002",
   "title": "The Grand Antiquary",
   "subtitle": "A silent museum exhibition turned crime scene",
-  "description": "Curator Professor Alistair Finch was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Finch.",
+  "description": "Curator Professor Alistair Pembroke was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Pembroke.",
   "difficulty": "easy",
   "grid": {
     "width": 6,
@@ -99,7 +99,7 @@
   "characters": [
     {
       "id": "alistair",
-      "name": "Prof. Alistair Finch",
+      "name": "Prof. Alistair Pembroke",
       "description": "Chief curator of antiquities.",
       "role": "victim",
       "avatar": "/assets/characters/case-002/avatar-alistair.svg"
@@ -143,7 +143,7 @@
   "clues": [
     {
       "id": "c2-1",
-      "text": "Professor Alistair Finch was at row 1, column 2 inspecting the fossil display.",
+      "text": "Professor Alistair Pembroke was at row 1, column 2 inspecting the fossil display.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "alistair",
@@ -161,7 +161,7 @@
     },
     {
       "id": "c2-3",
-      "text": "Nadia was standing directly adjacent to Professor Finch.",
+      "text": "Nadia was standing directly adjacent to Professor Pembroke.",
       "constraint": {
         "type": "character_adjacent_to_character",
         "characterId": "nadia",
@@ -268,7 +268,7 @@
     },
     {
       "id": "c2-15",
-      "text": "Sylvia Chen was working alone in the Restoration Lab.",
+      "text": "Sylvia Chen was working in the Restoration Lab.",
       "constraint": {
         "type": "character_in_area",
         "characterId": "sylvia",
@@ -305,5 +305,58 @@
       "sylvia": { "row": 4, "column": 5 }
     },
     "murdererId": "nadia"
-  }
+  },
+  "resolution": "Dr. Nadia Rostova was the only person in the Fossil Hall with Professor Pembroke. Marcus and Elena were together at the diamond showcase, Henry was alone with the sarcophagus, and Sylvia never left her microscope bench. Her disputed fossil claims give the story its motive, but it was the placements that proved she was alone with him.",
+  "deductions": [
+    {
+      "text": "Professor Pembroke is fixed at row 1, column 2 in the Fossil Hall.",
+      "clueIds": ["c2-1"]
+    },
+    {
+      "text": "Nadia is in the Fossil Hall beside him. The T-Rex skull blocks the cell below him, leaving row 1, column 1 or row 1, column 3. Column 1 settles it.",
+      "clueIds": ["c2-2", "c2-3", "c2-4"]
+    },
+    {
+      "text": "Henry is in the Relic Gallery beside the sarcophagus. Its only neighbour in row 4 is row 4, column 2, and he has the gallery to himself.",
+      "clueIds": ["c2-5", "c2-6", "c2-7", "c2-8"]
+    },
+    {
+      "text": "Marcus is in the Gem Vault beside the diamond showcase. Its neighbour in column 4 is row 2, column 4.",
+      "clueIds": ["c2-10", "c2-11", "c2-12"]
+    },
+    {
+      "text": "Elena shares the Gem Vault with Marcus and also stands beside the showcase. The only such cell in row 1 is row 1, column 5.",
+      "clueIds": ["c2-9", "c2-13", "c2-14"]
+    },
+    {
+      "text": "Sylvia is in the Restoration Lab beside the microscope bench, in column 6: row 5, column 6.",
+      "clueIds": ["c2-15", "c2-16", "c2-17"]
+    },
+    {
+      "text": "With everyone placed, Nadia is the only suspect sharing the Fossil Hall with the professor.",
+      "clueIds": []
+    }
+  ],
+  "helpPrompts": [
+    {
+      "id": "nudge-1",
+      "text": "Begin with the clue that pins someone to an exact cell, then work outward from them.",
+      "clueIds": ["c2-1"]
+    },
+    {
+      "id": "nudge-2",
+      "text": "Each “beside” clue allows only the open cells directly above, below, left, or right. Cross that list with the same person’s row or column clue.",
+      "clueIds": ["c2-3", "c2-4"]
+    },
+    {
+      "id": "nudge-3",
+      "text": "Two people share the Gem Vault. Place the one with a column clue first; the other’s row clue then chooses between the remaining showcase neighbours.",
+      "clueIds": ["c2-9", "c2-12", "c2-13"]
+    },
+    {
+      "id": "nudge-4",
+      "text": "When everyone is placed, count the suspects in the professor’s room.",
+      "clueIds": []
+    }
+  ]
 }

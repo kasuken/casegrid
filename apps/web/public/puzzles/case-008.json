@@ -257,7 +257,7 @@
   "clues": [
     {
       "id": "c8-1",
-      "text": "Baron Montefiore was sitting at row 0, column 1.",
+      "text": "Baron Montefiore was sitting at row 1, column 2.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "montefiore",
@@ -287,7 +287,7 @@
     },
     {
       "id": "c8-4",
-      "text": "Countess Nadia was in column 2.",
+      "text": "Countess Nadia was in column 3.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "nadia_c",
@@ -323,7 +323,7 @@
     },
     {
       "id": "c8-8",
-      "text": "Luc was in row 0.",
+      "text": "Luc was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "luc",
@@ -341,7 +341,7 @@
     },
     {
       "id": "c8-10",
-      "text": "General Orlov was in column 3.",
+      "text": "General Orlov was in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "orlov",
@@ -376,7 +376,7 @@
     },
     {
       "id": "c8-14",
-      "text": "Vanessa was in column 0.",
+      "text": "Vanessa was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "vanessa",
@@ -411,7 +411,7 @@
     },
     {
       "id": "c8-18",
-      "text": "Inspector Vance was in row 3.",
+      "text": "Inspector Vance was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "vance_det",

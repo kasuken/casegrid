@@ -179,7 +179,7 @@ Every character token in CaseGrid is rendered as an 80x80 circle or rounded squi
 
 | ID | Filename | Role | Name | Visual Brief | Status |
 |---|---|---|---|---|---|
-| `alistair` | `avatar-alistair.svg` | **Victim** | Prof. Alistair Finch | Chief curator, disheveled white hair, spectacles slipping down nose, tweed jacket with leather elbow patches. | ✓ Done |
+| `alistair` | `avatar-alistair.svg` | **Victim** | Prof. Alistair Pembroke | Chief curator, disheveled white hair, spectacles slipping down nose, tweed jacket with leather elbow patches. | ✓ Done |
 | `nadia` | `avatar-nadia.svg` | **Suspect** | Dr. Nadia Rostova | Visiting paleontologist, sharp jawline, short bobbed hair, safari field vest with specimen pen clips. | ✓ Done |
 | `marcus` | `avatar-marcus.svg` | **Suspect** | Marcus Bennett | Night security guard, peaked navy visor cap, firm square jaw, brass flashlight strap across shoulder. | ✓ Done |
 | `elena` | `avatar-elena.svg` | **Suspect** | Elena Cruz | Antiquities dealer, glamorous silk headscarf, dark sunglasses resting on brow, tailored charcoal trench coat. | ✓ Done |
@@ -210,10 +210,10 @@ Every character token in CaseGrid is rendered as an 80x80 circle or rounded squi
 | `thaddeus` | `avatar-thaddeus.svg` | **Victim** | Capt. Thaddeus Ward | Veteran lighthouse keeper, bushy white sea-captain beard, heavy knit cable sweater, squinting weathered eyes. | ✓ Done |
 | `mira` | `avatar-mira.svg` | **Suspect** | Mira Gable | Apprentice keeper, windblown braided red hair, heavy oilskin sou'wester coat with brass snap buttons. | ✓ Done |
 | `lydia` | `avatar-lydia.svg` | **Suspect** | Lydia Cross | Radio operator, bakelite headphones clamped over short curls, wool cardigan, pencil gripped in hand. | ✓ Done |
-| `caleb` | `avatar-caleb.svg` | **Suspect** | Caleb Finch | Lobster fisherman, faded yellow slicker, knit watch cap, scarred cheek, calloused forearms. | ✓ Done |
+| `caleb` | `avatar-caleb.svg` | **Suspect** | Caleb Morrow | Lobster fisherman, faded yellow slicker, knit watch cap, scarred cheek, calloused forearms. | ✓ Done |
 | `jonas` | `avatar-jonas.svg` | **Suspect** | Jonas Vane | Naval surveyor, brass navigational dividers in hand, pea coat with naval buttons, rolled parchment chart under arm. | ✓ Done |
 | `samuel` | `avatar-samuel.svg` | **Suspect** | Samuel Drake | Harbor inspector, tailored navy reefer coat, clipboard with harbor stamps, stern bureaucratic frown. | ✓ Done |
-| `eleanor` | `avatar-eleanor.svg` | **Suspect** | Eleanor Rigby | Naturalist, field binoculars around neck, tweed field jacket, sketchpad with feather specimen tucked into page. | ✓ Done |
+| `eleanor` | `avatar-eleanor.svg` | **Suspect** | Eleanor Ashby | Naturalist, field binoculars around neck, tweed field jacket, sketchpad with feather specimen tucked into page. | ✓ Done |
 
 ---
 
@@ -222,13 +222,13 @@ Every character token in CaseGrid is rendered as an 80x80 circle or rounded squi
 
 | ID | Filename | Role | Name | Visual Brief | Status |
 |---|---|---|---|---|---|
-| `vincent` | `avatar-vincent.svg` | **Victim** | Vincent Sterling | Tyrannical director, flamboyant silk cravat, swept-back graying mane, sharp eagle nose, velvet capelet. | ✓ Done |
+| `vincent` | `avatar-vincent.svg` | **Victim** | Vincent Harrow | Tyrannical director, flamboyant silk cravat, swept-back graying mane, sharp eagle nose, velvet capelet. | ✓ Done |
 | `camilla` | `avatar-camilla.svg` | **Suspect** | Camilla Fontaine | Prima donna soprano, extravagant feathered headdress, theatrical stage makeup, dramatic haughty gaze. | ✓ Done |
-| `julian_v` | `avatar-julian_v.svg` | **Suspect** | Julian Vance | Young tenor, youthful cleft chin, ruffled poetic shirt open at throat, wavy romantic locks. | ✓ Done |
+| `julian_v` | `avatar-julian_v.svg` | **Suspect** | Julian Marsh | Young tenor, youthful cleft chin, ruffled poetic shirt open at throat, wavy romantic locks. | ✓ Done |
 | `rowan` | `avatar-rowan.svg` | **Suspect** | Rowan Shaw | Rigging flyman, bandana tied over hair, muscular build, coiled hemp rope slung over shoulder. | ✓ Done |
 | `vivian` | `avatar-vivian.svg` | **Suspect** | Vivian Cole | Wardrobe designer, measuring tape draped around neck, pincushion wristband, tortoiseshell cat-eye glasses. | ✓ Done |
-| `dorian` | `avatar-dorian.svg` | **Suspect** | Dorian Gray | Acerbic theater critic, silver-topped cane, monocle, sharp satirical smirk, silk opera scarf. | ✓ Done |
-| `seraphina` | `avatar-seraphina.svg` | **Suspect** | Seraphina Cross | Concertmaster violinist, sleek black concert gown, rosin dust on lapel, violin bow held poised. | ✓ Done |
+| `dorian` | `avatar-dorian.svg` | **Suspect** | Dorian Hale | Acerbic theater critic, silver-topped cane, monocle, sharp satirical smirk, silk opera scarf. | ✓ Done |
+| `seraphina` | `avatar-seraphina.svg` | **Suspect** | Seraphina Lane | Concertmaster violinist, sleek black concert gown, rosin dust on lapel, violin bow held poised. | ✓ Done |
 
 ---
 
@@ -296,7 +296,7 @@ Every character token in CaseGrid is rendered as an 80x80 circle or rounded squi
 | `sterling_lord` | `avatar-sterling_lord.svg` | **Victim** | Lord Sterling | British antiquarian, linen suit with Panama hat, gold-headed walking cane, sun-bronzed skin. |
 | `farouk` | `avatar-farouk.svg` | **Suspect** | Captain Farouk | River steamer captain, crisp white naval tunic with brass buttons, gold braided captain cap, stern dignified gaze. |
 | `lady_margaret` | `avatar-lady_margaret.svg` | **Suspect** | Lady Margaret | Aristocratic traveler, cream linen motoring coat, large straw sun hat tied with silk scarf, ivory fan. |
-| `carter` | `avatar-carter.svg` | **Suspect** | Dr. Howard Carter | Archaeologist, khaki field shirt, dust-covered spectacles, notebook filled with Egyptian hieroglyphs. |
+| `carter` | `avatar-carter.svg` | **Suspect** | Dr. Howard Callow | Archaeologist, khaki field shirt, dust-covered spectacles, notebook filled with Egyptian hieroglyphs. |
 | `davies` | `avatar-davies.svg` | **Suspect** | Miss Evelyn Davies | Private secretary, modest tailored blouse, leather stenographer pad and fountain pen, sharp observant eyes. |
 | `tariq` | `avatar-tariq.svg` | **Suspect** | Steward Tariq | Head cabin steward, embroidered traditional Egyptian gallabeya with gold trim, brass serving tray. |
 

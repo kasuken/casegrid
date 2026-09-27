@@ -36,7 +36,8 @@ casegrid/
 │       │   ├── grid.ts       # Orthogonal adjacency, bounds, area lookups
 │       │   ├── constraints.ts# Constraint evaluation & partial pruning
 │       │   ├── solver.ts     # Deterministic backtracking solver with MRV
-│       │   └── validator.ts  # Rigorous schema, domain, and uniqueness validator
+│       │   ├── validator.ts  # Rigorous schema, domain, and uniqueness validator
+│       │   └── deduction.ts  # Authoring aid: step-by-step deduction path analysis
 │       ├── scripts/          # CLI puzzle validation tool
 │       └── tests/            # Vitest unit & integration tests
 │
@@ -91,6 +92,7 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 | `pnpm test` | Runs Vitest unit & component test suites |
 | `pnpm test:e2e` | Runs Playwright critical journeys (desktop & mobile) |
 | `pnpm validate:puzzles` | Validates all bundled case JSON files and proves unique solutions |
+| `pnpm audit:cases` | Prints per-case metrics and whether each case yields to step-by-step deduction (`-- --trace case-001` for one case) |
 
 ---
 
@@ -108,6 +110,23 @@ Case files are stored under `apps/web/public/puzzles/case-*.json`. Each case spe
 - `clues`: Structured clues with display `text` and engine `constraint`
 - `victimId`: ID of the victim
 - `solution`: Declared placements and `murdererId`
+
+Optional authored content (PRD section 62), validated by the engine:
+
+- `resolution`: Ending text shown only after CASE CLOSED
+- `deductions`: Ordered walkthrough steps (`text`, `clueIds`) shown behind "See the deductions" after completion
+- `helpPrompts`: Ordered nudges (`id`, `text`, `clueIds`). They explain what evidence to combine and never name an answer cell
+- `tutorial`: Onboarding steps (`id`, `title`, `text`, `advanceOn`), where `advanceOn` is `manual`, `select`, `place`, `exclude`, or `clue`
+
+Clue text is presentation only, but it must quote coordinates 1-based (row 1 is the top row) to match what players see. A test enforces this.
+
+### Authoring workflow
+
+1. Edit or add `apps/web/public/puzzles/case-*.json` and its `index.json` entry.
+2. Run `pnpm validate:puzzles` for schema, references, and uniqueness.
+3. Run `pnpm audit:cases -- --trace <case-id>` to confirm the case yields to step-by-step deduction, then write its `deductions` walkthrough from the trace.
+4. Run `pnpm test` to check deduction, uniqueness, and clue-text consistency for every case.
+5. Record the case in `docs/content/case-audit.md` and playtest it before publishing.
 
 ### Supported Constraint Types
 
@@ -135,7 +154,8 @@ The validator checks:
 4. Area cell exclusivity (no overlapping rooms)
 5. Satisfaction of every clue by the declared solution
 6. Murderer logic rule (alone with the victim in the victim's area)
-7. Independent backtracking solver verification proving **exactly 1 unique solution** matching the declared solution.
+7. Authored walkthroughs and nudges reference real clue IDs; nudge and tutorial IDs are unique
+8. Independent backtracking solver verification proving **exactly 1 unique solution** matching the declared solution.
 
 ---
 

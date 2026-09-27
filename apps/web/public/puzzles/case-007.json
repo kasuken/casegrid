@@ -257,7 +257,7 @@
   "clues": [
     {
       "id": "c7-1",
-      "text": "Sir Humphrey was seated at row 0, column 1 admiring the imperial orchids.",
+      "text": "Sir Humphrey was seated at row 1, column 2 admiring the imperial orchids.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "humphrey",
@@ -287,7 +287,7 @@
     },
     {
       "id": "c7-4",
-      "text": "Florence was in column 0.",
+      "text": "Florence was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "florence",
@@ -323,7 +323,7 @@
     },
     {
       "id": "c7-8",
-      "text": "Basil was in row 0.",
+      "text": "Basil was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "basil",
@@ -341,7 +341,7 @@
     },
     {
       "id": "c7-10",
-      "text": "Lady Dahlia was in column 5.",
+      "text": "Lady Dahlia was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "dahlia",
@@ -376,7 +376,7 @@
     },
     {
       "id": "c7-14",
-      "text": "Arthur was in column 0.",
+      "text": "Arthur was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "arthur_b",
@@ -411,7 +411,7 @@
     },
     {
       "id": "c7-18",
-      "text": "Clara was in row 3.",
+      "text": "Clara was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "clara_h",

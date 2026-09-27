@@ -275,7 +275,7 @@
     },
     {
       "id": "c11-3",
-      "text": "Paracelsus was in row 0.",
+      "text": "Paracelsus was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "paracelsus",
@@ -302,7 +302,7 @@
     },
     {
       "id": "c11-6",
-      "text": "Cornelius was in column 0.",
+      "text": "Cornelius was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "cornelius",
@@ -338,7 +338,7 @@
     },
     {
       "id": "c11-10",
-      "text": "Ursula was in row 0.",
+      "text": "Ursula was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "ursula",
@@ -347,7 +347,7 @@
     },
     {
       "id": "c11-11",
-      "text": "Lady Genevieve was in column 5.",
+      "text": "Lady Genevieve was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "genevieve",
@@ -391,7 +391,7 @@
     },
     {
       "id": "c11-16",
-      "text": "Silas was in column 0.",
+      "text": "Silas was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "silas_a",
@@ -417,7 +417,7 @@
     },
     {
       "id": "c11-19",
-      "text": "Guildmaster Hawke was in row 3.",
+      "text": "Guildmaster Hawke was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "hawke",

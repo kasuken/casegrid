@@ -87,6 +87,45 @@ export function validatePuzzle(rawPuzzle: unknown): ValidationResult {
     clueIds.add(clue.id)
   }
 
+  // 2b. Authored content must reference real clues and use unique IDs
+  const checkClueRefs = (clueRefs: readonly string[], owner: string) => {
+    for (const ref of clueRefs) {
+      if (!clueIds.has(ref)) {
+        errors.push({
+          code: 'UNKNOWN_CLUE_REFERENCE',
+          message: `${owner} references unknown clue "${ref}"`,
+        })
+      }
+    }
+  }
+
+  puzzle.deductions?.forEach((step, index) => {
+    checkClueRefs(step.clueIds, `Deduction step ${index + 1}`)
+  })
+
+  const helpIds = new Set<string>()
+  for (const prompt of puzzle.helpPrompts ?? []) {
+    if (helpIds.has(prompt.id)) {
+      errors.push({
+        code: 'DUPLICATE_HELP_PROMPT_ID',
+        message: `Duplicate help prompt ID: "${prompt.id}"`,
+      })
+    }
+    helpIds.add(prompt.id)
+    checkClueRefs(prompt.clueIds, `Help prompt "${prompt.id}"`)
+  }
+
+  const tutorialIds = new Set<string>()
+  for (const step of puzzle.tutorial ?? []) {
+    if (tutorialIds.has(step.id)) {
+      errors.push({
+        code: 'DUPLICATE_TUTORIAL_STEP_ID',
+        message: `Duplicate tutorial step ID: "${step.id}"`,
+      })
+    }
+    tutorialIds.add(step.id)
+  }
+
   // 3. Victim and Murderer verification
   const victim = puzzle.characters.find((c) => c.id === puzzle.victimId)
   if (!victim) {
