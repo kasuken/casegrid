@@ -123,6 +123,43 @@ test.describe('Sharing', () => {
   })
 })
 
+test.describe('Case of the Week', () => {
+  test('features the scheduled case, links to it canonically, and resumes it with true progress', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-09-30T12:00:00Z'))
+    await page.goto('/')
+    const weekly = page.getByTestId('weekly-panel')
+    await expect(weekly.getByRole('heading', { name: 'Case 03: The Midnight Express' })).toBeVisible()
+    await expect(page.getByTestId('case-card-case-003')).toContainText('Case of the Week')
+    await expect(page.getByTestId('first-mystery-btn')).toBeVisible()
+
+    await weekly.getByTestId('weekly-case-btn').click()
+    await expect(page).toHaveURL(/\/case\/case-003$/)
+    await page.getByTestId('start-investigation-btn').click()
+    await page.getByTestId('character-token-dimitri').click()
+    await page.getByTestId('cell-3-0').click()
+
+    await page.goto('/')
+    await expect(weekly.getByTestId('weekly-case-btn')).toHaveText('Resume this week’s case')
+    await weekly.getByTestId('weekly-case-btn').click()
+    await expect(page.getByTestId('cell-3-0').getByTestId('character-token-dimitri')).toBeVisible()
+  })
+
+  test('changes at Monday 00:00 UTC and falls back once the schedule runs out', async ({ page }) => {
+    await page.clock.setFixedTime(new Date('2026-09-27T23:59:59Z'))
+    await page.goto('/')
+    await expect(page.getByTestId('weekly-panel').getByRole('heading')).toHaveText('Case 02: The Grand Antiquary')
+
+    await page.clock.setFixedTime(new Date('2026-09-28T00:00:00Z'))
+    await page.reload()
+    await expect(page.getByTestId('weekly-panel').getByRole('heading')).toHaveText('Case 03: The Midnight Express')
+
+    await page.clock.setFixedTime(new Date('2026-11-02T09:00:00Z'))
+    await page.reload()
+    await expect(page.getByTestId('weekly-panel')).toContainText('No Case of the Week is scheduled right now')
+    await expect(page.getByTestId('case-card-case-002')).toBeVisible()
+  })
+})
+
 test.describe('First visit onboarding', () => {
   test('a new player follows the guide on a phone, and refresh keeps both progress and dismissal', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 740 })

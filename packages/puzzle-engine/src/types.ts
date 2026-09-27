@@ -212,6 +212,16 @@ export interface PuzzleMetadata {
   readonly availability?: 'available' | 'coming-soon'
 }
 
+export interface ScheduledWeek {
+  /** Monday of the week, as YYYY-MM-DD. The week runs from 00:00 UTC that Monday for seven days. */
+  readonly weekStart: string
+  readonly caseId: string
+}
+
+export interface WeeklySchedule {
+  readonly weeks: readonly ScheduledWeek[]
+}
+
 export type PuzzleStatus = 'not-started' | 'in-progress' | 'completed'
 
 export interface PuzzleProgress {

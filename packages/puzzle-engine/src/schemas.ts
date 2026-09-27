@@ -200,6 +200,17 @@ export const puzzleMetadataSchema = z.object({
 
 export const puzzleIndexSchema = z.array(puzzleMetadataSchema)
 
+const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, { message: 'Week start must be YYYY-MM-DD' })
+
+export const weeklyScheduleSchema = z.object({
+  weeks: z.array(
+    z.object({
+      weekStart: isoDate,
+      caseId: z.string().min(1),
+    }),
+  ),
+})
+
 export const puzzleStatusSchema = z.enum(['not-started', 'in-progress', 'completed'])
 
 export const puzzleProgressSchema = z.object({

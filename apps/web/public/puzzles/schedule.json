@@ -1,0 +1,8 @@
+{
+  "weeks": [
+    { "weekStart": "2026-09-21", "caseId": "case-002" },
+    { "weekStart": "2026-09-28", "caseId": "case-003" },
+    { "weekStart": "2026-10-05", "caseId": "case-004" },
+    { "weekStart": "2026-10-12", "caseId": "case-005" }
+  ]
+}

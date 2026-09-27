@@ -6,8 +6,11 @@
 import {
   puzzleIndexSchema,
   puzzleSchema,
+  validateWeeklySchedule,
+  weeklyScheduleSchema,
   type Puzzle,
   type PuzzleMetadata,
+  type WeeklySchedule,
 } from '@casegrid/puzzle-engine'
 
 const puzzleCache = new Map<string, Puzzle>()
@@ -41,6 +44,19 @@ export async function fetchPuzzleIndex(): Promise<PuzzleMetadata[]> {
 
   indexCache = parsed.data
   return parsed.data
+}
+
+/** Returns null when the schedule is missing, malformed, or references unpublished cases. */
+export async function fetchWeeklySchedule(catalog: readonly PuzzleMetadata[]): Promise<WeeklySchedule | null> {
+  try {
+    const response = await fetch('/puzzles/schedule.json')
+    if (!response.ok) return null
+    const data: unknown = await response.json()
+    if (validateWeeklySchedule(data, catalog).length > 0) return null
+    return weeklyScheduleSchema.parse(data)
+  } catch {
+    return null
+  }
 }
 
 export async function fetchPuzzle(caseId: string): Promise<Puzzle> {

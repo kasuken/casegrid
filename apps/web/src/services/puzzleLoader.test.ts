@@ -32,6 +32,28 @@ describe('case availability', () => {
     expect(fetchMock).toHaveBeenCalledWith('/puzzles/index.json')
   })
 
+  describe('weekly schedule', () => {
+    const catalog = [{ id: 'case-002', title: 'B', difficulty: 'easy' as const, suspectCount: 5, availability: 'available' as const }]
+    const stub = (response: { ok: boolean; body?: unknown }) =>
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: response.ok, status: response.ok ? 200 : 404, json: async () => response.body })))
+
+    it('loads a valid schedule', async () => {
+      stub({ ok: true, body: { weeks: [{ weekStart: '2026-09-21', caseId: 'case-002' }] } })
+      const { fetchWeeklySchedule } = await import('./puzzleLoader')
+      expect(await fetchWeeklySchedule(catalog)).toEqual({ weeks: [{ weekStart: '2026-09-21', caseId: 'case-002' }] })
+    })
+
+    it('treats a missing, malformed, or unpublished schedule as no featured case', async () => {
+      const { fetchWeeklySchedule } = await import('./puzzleLoader')
+      stub({ ok: false })
+      expect(await fetchWeeklySchedule(catalog)).toBeNull()
+      stub({ ok: true, body: { weeks: [{ weekStart: 'soon', caseId: 'case-002' }] } })
+      expect(await fetchWeeklySchedule(catalog)).toBeNull()
+      stub({ ok: true, body: { weeks: [{ weekStart: '2026-09-21', caseId: 'case-099' }] } })
+      expect(await fetchWeeklySchedule(catalog)).toBeNull()
+    })
+  })
+
   it('rejects unknown case IDs without requesting arbitrary files', async () => {
     const fetchMock = mockCatalog('available')
     const { fetchPuzzle } = await import('./puzzleLoader')

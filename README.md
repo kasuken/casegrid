@@ -66,6 +66,7 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 | Home entry point | New players see "Solve your first mystery". Players with an active investigation see "Resume investigation" for the most recently saved case. Players who have only finished cases see their next unsolved case. The full catalog stays below. |
 | Onboarding guide | Shown on the first case (authored `tutorial` steps) after Start Investigation. It advances as the player selects, places, takes notes, and marks clues, or with Next, and it never highlights answers. Skip or finish is remembered per case in `localStorage` (`casegrid_onboarding_v1`); corrupt data falls back to showing the skippable guide. Reopen it from Case File → "Show the guide again". |
 | Result screen | Shown only once the case is closed. It shows the CASE CLOSED stamp, the authored `resolution`, and "See the deductions" (the authored walkthrough with clue numbers). "Open the next case" picks the next unsolved published case in catalog order, or "Resume case NN" if that case is already in progress; nothing is overwritten. Replay, browsing, time, mistakes, and best time remain. A direct visit to `/case/:id/result` for an unsolved case reveals nothing. |
+| Case of the Week | Home shows the case scheduled in `public/puzzles/schedule.json` for the current week. Weeks switch at Monday 00:00 UTC. It uses the normal `/case/<id>` link and progress, and shows a fallback message when nothing is scheduled. See `docs/content/weekly-schedule.md` for the format, validation, and editorial checklist. |
 | Challenge a friend | On a closed case, builds a spoiler-free share: case number and title, CASE CLOSED, time, mistakes, the nudge count when the case has nudges, "Can you solve this case?", and the canonical `/case/<id>` link with no parameters. A 1080×1080 card image is drawn on demand (the renderer is lazy-loaded) and has a text alternative. The Web Share API is used when available (with the image where supported). Copy and download are fallbacks. A cancelled share reports neither success nor error. A share is only a hand-off to the device's share sheet; it is **not** evidence of delivery, recipient play, or a verified score. |
 | Case File | Re-read the briefing and How to play at any time during an investigation. |
 | Keyboard | Tab to a portrait or cell. Enter selects a portrait or places the selected person. Space picks a portrait up for keyboard dragging (arrow keys, then Space or Enter to drop). |
@@ -174,6 +175,7 @@ The validator checks:
 6. Murderer logic rule (alone with the victim in the victim's area)
 7. Authored walkthroughs and nudges reference real clue IDs; nudge and tutorial IDs are unique
 8. Independent backtracking solver verification proving **exactly 1 unique solution** matching the declared solution.
+9. `schedule.json`: Monday-aligned, ascending weeks that feature only published cases.
 
 ---
 
