@@ -71,6 +71,7 @@ export function HomePage() {
 
         <div className="cases-section">
           <h2 className="cases-section__title">Case Files</h2>
+          <p>Start with the first five cases. More investigations are coming soon.</p>
 
           {loading ? (
             <p className="loading-note">Gathering case records...</p>
@@ -80,6 +81,27 @@ export function HomePage() {
                 const caseNum = (idx + 1).toString().padStart(2, '0')
                 const isCompleted = caseItem.status === 'completed'
                 const isInProgress = caseItem.status === 'in-progress'
+
+                if (caseItem.availability === 'coming-soon') {
+                  return (
+                    <article
+                      key={caseItem.id}
+                      className="case-card case-card--coming-soon"
+                      role="listitem"
+                      aria-label={`Case ${caseNum}: ${caseItem.title}. Coming soon`}
+                      data-testid={`case-card-${caseItem.id}`}
+                    >
+                      <div className="case-card__header">
+                        <span className="case-card__number">CASE {caseNum}</span>
+                      </div>
+                      <h3 className="case-card__title">{caseItem.title}</h3>
+                      <p className="case-card__subtitle">{caseItem.subtitle}</p>
+                      <div className="case-card__footer">
+                        <span className="status-badge">Coming soon</span>
+                      </div>
+                    </article>
+                  )
+                }
 
                 return (
                   <Link

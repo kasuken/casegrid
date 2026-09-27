@@ -155,7 +155,7 @@
   "clues": [
     {
       "id": "clue-1",
-      "text": "Lord Reginald was seated at row 0, column 1 near the garden doors.",
+      "text": "Lord Reginald was seated at row 1, column 2 near the garden doors.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "reginald",
@@ -173,7 +173,7 @@
     },
     {
       "id": "clue-3",
-      "text": "Evelyn was standing along column 0.",
+      "text": "Evelyn was standing along column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "evelyn",
@@ -208,7 +208,7 @@
     },
     {
       "id": "clue-7",
-      "text": "Julian was in row 3.",
+      "text": "Julian was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "julian",
@@ -235,7 +235,7 @@
     },
     {
       "id": "clue-10",
-      "text": "Arthur was located in column 3.",
+      "text": "Arthur was located in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "arthur",
@@ -262,7 +262,7 @@
     },
     {
       "id": "clue-13",
-      "text": "Clara was in row 0.",
+      "text": "Clara was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "clara",
@@ -280,7 +280,7 @@
     },
     {
       "id": "clue-15",
-      "text": "Beatrice was in column 4.",
+      "text": "Beatrice was in column 5.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "beatrice",

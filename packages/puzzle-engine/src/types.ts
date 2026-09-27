@@ -185,6 +185,7 @@ export interface PuzzleMetadata {
   readonly difficulty: PuzzleDifficulty
   readonly suspectCount: number
   readonly victimName?: string
+  readonly availability?: 'available' | 'coming-soon'
 }
 
 export type PuzzleStatus = 'not-started' | 'in-progress' | 'completed'

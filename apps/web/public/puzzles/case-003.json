@@ -101,43 +101,49 @@
       "id": "baroness",
       "name": "Baroness von Brandt",
       "description": "Wealthy industrial heiress traveling to Zurich.",
-      "role": "victim"
+      "role": "victim",
+      "avatar": "/assets/characters/case-003/avatar-baroness.svg"
     },
     {
       "id": "dimitri",
       "name": "Dimitri Petrov",
       "description": "Disgraced financier with deep gambling debts.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-003/avatar-dimitri.svg"
     },
     {
       "id": "viktor",
       "name": "Viktor Kroll",
       "description": "Veteran train conductor on his final voyage.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-003/avatar-viktor.svg"
     },
     {
       "id": "charlotte",
       "name": "Charlotte Dubois",
       "description": "Investigative journalist pursuing an exclusive scoop.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-003/avatar-charlotte.svg"
     },
     {
       "id": "gwen",
       "name": "Gwen Montgomery",
       "description": "Private traveling companion to the Baroness.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-003/avatar-gwen.svg"
     },
     {
       "id": "otto",
       "name": "Otto Becker",
       "description": "Luggage steward assigned to the baggage car.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-003/avatar-otto.svg"
     }
   ],
   "clues": [
     {
       "id": "c3-1",
-      "text": "Baroness von Brandt was in row 4, column 0 of her sleeper cabin.",
+      "text": "Baroness von Brandt was in row 5, column 1 of her sleeper cabin.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "baroness",
@@ -164,7 +170,7 @@
     },
     {
       "id": "c3-4",
-      "text": "Dimitri was in row 3.",
+      "text": "Dimitri was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "dimitri",
@@ -200,7 +206,7 @@
     },
     {
       "id": "c3-8",
-      "text": "Viktor was in row 0.",
+      "text": "Viktor was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "viktor",
@@ -218,7 +224,7 @@
     },
     {
       "id": "c3-10",
-      "text": "Charlotte was in column 2.",
+      "text": "Charlotte was in column 3.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "charlotte",
@@ -253,7 +259,7 @@
     },
     {
       "id": "c3-14",
-      "text": "Gwen was in column 5.",
+      "text": "Gwen was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "gwen",
@@ -288,7 +294,7 @@
     },
     {
       "id": "c3-18",
-      "text": "Otto was in column 5.",
+      "text": "Otto was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "otto",

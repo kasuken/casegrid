@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Prof. Alistair Finch, the white-haired curator with slipping spectacles</title>
+  <defs>
+    <clipPath id="portrait">
+    <circle cx="40" cy="40" r="37"/>
+    </clipPath>
+    </defs>
+  <g clip-path="url(#portrait)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0h80v80H0Z" fill="#dfd6be" stroke="none" stroke-width="1.5"/>
+    <path d="M10 18v45m5-51v57m50-57v57m5-51v45" fill="none" stroke="#8f2d20" stroke-width="0.45"/>
+    
+    <path d="M9 83 14 66 30 56 40 61 50 56 65 65 72 83Z" fill="#827557" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m31 55 9 7 9-7 2 8-11 17-11-17Z" fill="#faf6ee" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m28 57 12 24H23l-3-10 6-4-5-5Zm24 0-12 24h17l3-10-6-4 5-5Z" fill="#9b8b69" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m17 69 3 10m43-10-3 10" fill="none" stroke="#faf6ee" stroke-width="0.6"/>
+    <path d="m32 44-1 14 9 8 10-9-3-14Z" fill="#bf906e" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M26 30q-7-5-5 6 0 6 6 5m27-11q7-5 5 6 0 6-6 5" fill="#dfb68f" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M27 23Q27 10 40 11 53 10 53 24L52 42 46 53 39 56 31 49 27 39Z" fill="#dfb68f" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m47 17 7 9-2 13-6 10-7 4 2-7 6-5-2-8Z" fill="#bf906e" stroke="none" stroke-width="1.5"/>
+    <path d="M25 35 20 29 21 23 16 20 23 16 22 9 30 10 35 4 40 9 48 4 51 10 59 10 57 17 63 22 57 27 56 35 51 31 52 23 43 20 38 15 32 22 26 24 28 34Z" fill="#dcded3" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M26 19q4-7 11-7m8 1q6 1 9 8m-30 5 2 4m28-5-1 5" fill="none" stroke="#999e91" stroke-width="0.8"/>
+    <path d="m29 30 6-3m9 0 6 3" fill="none" stroke="#594737" stroke-width="2"/>
+    <path d="m29 34 6 1m9 0 6-1" fill="none" stroke="#1b2228" stroke-width="1.1"/>
+    <circle cx="33" cy="35" r="1.15" fill="#1b2228" stroke="none" stroke-width="1.5"/>
+    <circle cx="46" cy="34.7" r="1.15" fill="#1b2228" stroke="none" stroke-width="1.5"/>
+    <path d="m40 34-3 7 4 1" fill="none" stroke="#1b2228" stroke-width="1.1"/>
+    <path d="M35 47q5-3 9 0" fill="none" stroke="#793f36" stroke-width="1.3"/>
+    <path d="m30 24 7-1m6 0 5 1m-20 15 5 2m14-2 4-2m-20 6-1 3m15-4 2 3m-12 4 5 1" fill="none" stroke="#987b62" stroke-width="0.8"/>
+    <circle cx="32" cy="36" r="6" fill="none" stroke="#8e783f" stroke-width="1.1"/>
+    <circle cx="47" cy="36" r="6" fill="none" stroke="#8e783f" stroke-width="1.1"/>
+    <path d="M38 35h3m-16-1-3-2m31 2 3-2" fill="none" stroke="#8e783f" stroke-width="1.1"/>
+    <path d="m36 61 8 0-1 5 4 12-7 4-5-4 3-12Z" fill="#914e3a" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m17 66 3 10m-7-6 8-3m35-2 6 10m-9-5 9-3" fill="none" stroke="#c0af87" stroke-width="0.75"/>
+    <path d="m13 72 8-3 4 8-9 4Z" fill="#66503b" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m49 64 7-2 1 5-7 1Z" fill="#faf6ee" stroke="#1b2228" stroke-width="1.5"/>
+  </g>
+  <circle cx="40" cy="40" r="37.5" stroke="#8f2d20" stroke-width="3"/>
+  <circle cx="40" cy="40" r="35" stroke="#faf6ee" stroke-opacity=".7" stroke-width=".7"/>
+</svg>

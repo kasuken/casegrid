@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Elena Cruz, the antiquities broker in a patterned silk headscarf</title>
+  <defs>
+    <clipPath id="portrait">
+    <circle cx="40" cy="40" r="37"/>
+    </clipPath>
+    </defs>
+  <g clip-path="url(#portrait)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0h80v80H0Z" fill="#d7c8ca" stroke="none" stroke-width="1.5"/>
+    <path d="M10 18v45m5-51v57m50-57v57m5-51v45" fill="none" stroke="#58436e" stroke-width="0.45"/>
+    
+    <path d="M9 83 14 66 30 56 40 61 50 56 65 65 72 83Z" fill="#454950" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m31 55 9 7 9-7 2 8-11 17-11-17Z" fill="#faf6ee" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m28 57 12 24H23l-3-10 6-4-5-5Zm24 0-12 24h17l3-10-6-4 5-5Z" fill="#636770" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m17 69 3 10m43-10-3 10" fill="none" stroke="#faf6ee" stroke-width="0.6"/>
+    <path d="m32 44-1 14 9 8 10-9-3-14Z" fill="#9a674d" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M26 30q-7-5-5 6 0 6 6 5m27-11q7-5 5 6 0 6-6 5" fill="#c18e6a" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M25 24Q27 10 40 11 55 11 55 25L53 38 47 48 39 54 30 46 25 36Z" fill="#c18e6a" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m47 17 7 9-2 13-6 10-7 4 2-7 6-5-2-8Z" fill="#9a674d" stroke="none" stroke-width="1.5"/>
+    
+    <path d="M28 29q3-4 7-1m9 0q3-4 7 0" fill="none" stroke="#594737" stroke-width="2"/>
+    <path d="m29 34 6 1m9 0 6-1" fill="none" stroke="#1b2228" stroke-width="1.1"/>
+    <circle cx="33" cy="35" r="1.15" fill="#1b2228" stroke="none" stroke-width="1.5"/>
+    <circle cx="46" cy="34.7" r="1.15" fill="#1b2228" stroke="none" stroke-width="1.5"/>
+    <path d="m40 34-3 7 4 1" fill="none" stroke="#1b2228" stroke-width="1.1"/>
+    <path d="m35 46 10-2" fill="none" stroke="#793f36" stroke-width="1.3"/>
+    <path d="M23 36Q12 12 35 5 58 1 62 27L57 44 52 37 54 22Q40 24 29 16L26 35Z" fill="#977259" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M23 22q12-18 31-10m-33 8 8 3m19-15-2 8m11 5-8-1" fill="none" stroke="#dfbc8a" stroke-width="1.5"/>
+    <path d="m54 36 7 5-4 23-8-7Z" fill="#977259" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m56 44-2 12" fill="none" stroke="#dfbc8a" stroke-width="1.5"/>
+    <path d="m27 18 11 2-1 6-8-1Zm16 2 11-2-2 7-8 1Z" fill="#253039" stroke="#b7955d" stroke-width="1.5"/>
+    <path d="M38 22h5" fill="none" stroke="#bd994e" stroke-width="1.3"/>
+    <circle cx="26" cy="42" r="2" fill="#bd994e" stroke="#1b2228" stroke-width="1.5"/>
+    <circle cx="54" cy="42" r="2" fill="#bd994e" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m28 54 11 7-11 11-7-11Zm22 1-10 6 9 11 9-9Z" fill="#73747a" stroke="#1b2228" stroke-width="1.5"/>
+  </g>
+  <circle cx="40" cy="40" r="37.5" stroke="#58436e" stroke-width="2"/>
+  <circle cx="40" cy="40" r="35" stroke="#faf6ee" stroke-opacity=".7" stroke-width=".7"/>
+</svg>

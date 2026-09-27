@@ -8,7 +8,8 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import { fetchPuzzle } from '../services/puzzleLoader'
+import { CaseComingSoonError, fetchPuzzle } from '../services/puzzleLoader'
+import { ComingSoonView } from '../components/game/ComingSoonView'
 import { loadProgress } from '../services/progressStorage'
 import { useGameStore } from '../stores/gameStore'
 import { CaseGridMark } from '../components/CaseGridMark'
@@ -24,7 +25,7 @@ import { FeedbackBanner } from '../components/game/FeedbackBanner'
 export function CasePage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
   const [loading, setLoading] = useState(true)
-  const [loadError, setLoadError] = useState<string | null>(null)
+  const [loadError, setLoadError] = useState<Error | null>(null)
 
   const {
     stage,
@@ -55,8 +56,8 @@ export function CasePage() {
       })
       .catch((err) => {
         if (!mounted) return
-        console.error('Error loading case:', err)
-        setLoadError(err instanceof Error ? err.message : 'Failed to load case')
+        if (!(err instanceof CaseComingSoonError)) console.error('Error loading case:', err)
+        setLoadError(err instanceof Error ? err : new Error('Failed to load case'))
         setLoading(false)
       })
 
@@ -95,6 +96,10 @@ export function CasePage() {
     )
   }
 
+  if (loadError instanceof CaseComingSoonError) {
+    return <ComingSoonView metadata={loadError.metadata} />
+  }
+
   if (loadError) {
     return (
       <main className="site-shell not-found" data-testid="case-page-error">
@@ -108,7 +113,7 @@ export function CasePage() {
         <section className="intro">
           <p className="intro__context">Case File Not Found</p>
           <h1>Unable to open file</h1>
-          <p className="intro__summary">{loadError}</p>
+          <p className="intro__summary">{loadError.message}</p>
           <div className="mt-8">
             <Link to="/" className="btn btn--primary">
               Return to Case Selection

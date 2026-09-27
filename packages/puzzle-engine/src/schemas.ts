@@ -173,6 +173,7 @@ export const puzzleMetadataSchema = z.object({
   difficulty: puzzleDifficultySchema,
   suspectCount: z.number().int().min(1),
   victimName: z.string().optional(),
+  availability: z.enum(['available', 'coming-soon']).optional(),
 })
 
 export const puzzleIndexSchema = z.array(puzzleMetadataSchema)

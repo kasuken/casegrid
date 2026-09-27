@@ -13,6 +13,16 @@ import {
 const puzzleCache = new Map<string, Puzzle>()
 let indexCache: PuzzleMetadata[] | null = null
 
+export class CaseComingSoonError extends Error {
+  readonly metadata: PuzzleMetadata
+
+  constructor(metadata: PuzzleMetadata) {
+    super(`${metadata.title} is coming soon.`)
+    this.name = 'CaseComingSoonError'
+    this.metadata = metadata
+  }
+}
+
 export async function fetchPuzzleIndex(): Promise<PuzzleMetadata[]> {
   if (indexCache) {
     return indexCache
@@ -34,6 +44,10 @@ export async function fetchPuzzleIndex(): Promise<PuzzleMetadata[]> {
 }
 
 export async function fetchPuzzle(caseId: string): Promise<Puzzle> {
+  const metadata = (await fetchPuzzleIndex()).find((item) => item.id === caseId)
+  if (!metadata) throw new Error(`Case "${caseId}" was not found`)
+  if (metadata.availability === 'coming-soon') throw new CaseComingSoonError(metadata)
+
   const cached = puzzleCache.get(caseId)
   if (cached) {
     return cached

@@ -18,9 +18,8 @@ test.describe('CaseGrid Critical Journeys', () => {
     await expect(page.getByTestId('cell-3-1').locator('.character-portrait')).toBeVisible()
 
     await page.goto('/case/case-006')
-    await page.getByTestId('start-investigation-btn').click()
-    await expect(page.getByTestId('character-token-beatrice')).toHaveAccessibleName('Sister Beatrice (suspect) unplaced')
-    await expect(page.getByTestId('character-token-beatrice').locator('img')).toHaveCount(0)
+    await expect(page.getByTestId('case-coming-soon')).toBeVisible()
+    await expect(page.getByTestId('start-investigation-btn')).toHaveCount(0)
   })
 
   test('Flow 1: Complete Case 1, submit solution, accuse murderer, and reach CASE CLOSED', async ({

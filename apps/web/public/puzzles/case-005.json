@@ -101,49 +101,56 @@
       "id": "vincent",
       "name": "Vincent Sterling",
       "description": "Demanding director and composer of the production.",
-      "role": "victim"
+      "role": "victim",
+      "avatar": "/assets/characters/case-005/avatar-vincent.svg"
     },
     {
       "id": "camilla",
       "name": "Camilla Fontaine",
       "description": "Renowned prima donna threatened with recast.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-005/avatar-camilla.svg"
     },
     {
       "id": "julian_v",
       "name": "Julian Vance",
       "description": "Ambitious young tenor debuting tomorrow.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-005/avatar-julian_v.svg"
     },
     {
       "id": "rowan",
       "name": "Rowan Shaw",
       "description": "Veteran master flyman operating the rigging.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-005/avatar-rowan.svg"
     },
     {
       "id": "vivian",
       "name": "Vivian Cole",
       "description": "Wardrobe designer frantic about missing costumes.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-005/avatar-vivian.svg"
     },
     {
       "id": "dorian",
       "name": "Dorian Gray",
       "description": "Acerbic theater critic granted backstage access.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-005/avatar-dorian.svg"
     },
     {
       "id": "seraphina",
       "name": "Seraphina Cross",
       "description": "Concertmaster tuning instruments late in the pit.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-005/avatar-seraphina.svg"
     }
   ],
   "clues": [
     {
       "id": "c5-1",
-      "text": "Vincent Sterling was seated at row 4, column 5 in the Dressing Rooms.",
+      "text": "Vincent Sterling was seated at row 5, column 6 in the Dressing Rooms.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "vincent",
@@ -170,7 +177,7 @@
     },
     {
       "id": "c5-4",
-      "text": "Camilla was in row 3.",
+      "text": "Camilla was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "camilla",
@@ -206,7 +213,7 @@
     },
     {
       "id": "c5-8",
-      "text": "Julian was in row 0.",
+      "text": "Julian was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "julian_v",
@@ -224,7 +231,7 @@
     },
     {
       "id": "c5-10",
-      "text": "Rowan was standing in column 2.",
+      "text": "Rowan was standing in column 3.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "rowan",
@@ -260,7 +267,7 @@
     },
     {
       "id": "c5-14",
-      "text": "Seraphina was in column 5.",
+      "text": "Seraphina was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "seraphina",
@@ -278,7 +285,7 @@
     },
     {
       "id": "c5-16",
-      "text": "Dorian was in row 0.",
+      "text": "Dorian was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "dorian",
@@ -313,7 +320,7 @@
     },
     {
       "id": "c5-20",
-      "text": "Vivian was in column 0.",
+      "text": "Vivian was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "vivian",

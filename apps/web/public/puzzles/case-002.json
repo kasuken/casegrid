@@ -101,43 +101,49 @@
       "id": "alistair",
       "name": "Prof. Alistair Finch",
       "description": "Chief curator of antiquities.",
-      "role": "victim"
+      "role": "victim",
+      "avatar": "/assets/characters/case-002/avatar-alistair.svg"
     },
     {
       "id": "nadia",
       "name": "Dr. Nadia Rostova",
       "description": "Visiting paleontologist with disputed claims.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-nadia.svg"
     },
     {
       "id": "marcus",
       "name": "Marcus Bennett",
       "description": "Head of museum nocturnal security.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-marcus.svg"
     },
     {
       "id": "elena",
       "name": "Elena Cruz",
       "description": "Private antiquities broker seeking appraisal.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-elena.svg"
     },
     {
       "id": "henry",
       "name": "Henry Thorpe",
       "description": "Board trustee reviewing museum finances.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-henry.svg"
     },
     {
       "id": "sylvia",
       "name": "Sylvia Chen",
       "description": "Master conservator working late on restorations.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-sylvia.svg"
     }
   ],
   "clues": [
     {
       "id": "c2-1",
-      "text": "Professor Alistair Finch was at row 0, column 1 inspecting the fossil display.",
+      "text": "Professor Alistair Finch was at row 1, column 2 inspecting the fossil display.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "alistair",
@@ -164,7 +170,7 @@
     },
     {
       "id": "c2-4",
-      "text": "Nadia was in column 0.",
+      "text": "Nadia was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "nadia",
@@ -199,7 +205,7 @@
     },
     {
       "id": "c2-8",
-      "text": "Henry was standing in row 3.",
+      "text": "Henry was standing in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "henry",
@@ -235,7 +241,7 @@
     },
     {
       "id": "c2-12",
-      "text": "Marcus was in column 3.",
+      "text": "Marcus was in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "marcus",
@@ -244,7 +250,7 @@
     },
     {
       "id": "c2-13",
-      "text": "Elena Cruz was in row 0.",
+      "text": "Elena Cruz was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "elena",
@@ -280,7 +286,7 @@
     },
     {
       "id": "c2-17",
-      "text": "Sylvia stood in column 5.",
+      "text": "Sylvia stood in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "sylvia",

@@ -6,7 +6,8 @@
     "description": "Lord Reginald Rosewood was found dead in the estate conservatory before evening tea. Five guests and staff were scattered across the manor's east wing. Deduce everyone's location and discover who was alone with Lord Reginald.",
     "difficulty": "beginner",
     "suspectCount": 5,
-    "victimName": "Lord Reginald"
+    "victimName": "Lord Reginald",
+    "availability": "available"
   },
   {
     "id": "case-002",
@@ -15,7 +16,8 @@
     "description": "Curator Professor Alistair Finch was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Finch.",
     "difficulty": "easy",
     "suspectCount": 5,
-    "victimName": "Prof. Alistair Finch"
+    "victimName": "Prof. Alistair Finch",
+    "availability": "available"
   },
   {
     "id": "case-003",
@@ -24,7 +26,8 @@
     "description": "The Alpine Express was stranded overnight in a remote mountain pass. Baroness von Brandt was found dead inside her private sleeper cabin. Five passengers and train crew were nearby across the train cars. Deduce everyone's location and discover who was alone with the Baroness.",
     "difficulty": "easy",
     "suspectCount": 5,
-    "victimName": "Baroness von Brandt"
+    "victimName": "Baroness von Brandt",
+    "availability": "available"
   },
   {
     "id": "case-004",
@@ -33,7 +36,8 @@
     "description": "A fierce storm severed Saltmarsh Island from the mainland. Veteran lighthouse keeper Captain Thaddeus Ward was discovered dead on the high lantern gallery. Six mariners and station staff were trapped inside. Trace everyone's position and deduce who was alone with Captain Ward.",
     "difficulty": "medium",
     "suspectCount": 6,
-    "victimName": "Capt. Thaddeus Ward"
+    "victimName": "Capt. Thaddeus Ward",
+    "availability": "available"
   },
   {
     "id": "case-005",
@@ -42,7 +46,8 @@
     "description": "On the eve of opening night, tyrannical artistic director Vincent Sterling was discovered poisoned in his private dressing quarters at Blackwood Playhouse. Six members of the company were scattered across the stage and wings. Untangle everyone's movements and uncover who was alone with the maestro.",
     "difficulty": "medium",
     "suspectCount": 6,
-    "victimName": "Vincent Sterling"
+    "victimName": "Vincent Sterling",
+    "availability": "available"
   },
   {
     "id": "case-006",
@@ -51,7 +56,8 @@
     "description": "Abbot Augustine was found poisoned in the Chapter House of Saint Jude's Abbey. Five monks and visitors were scattered across the cloister quadrangle. Deduce everyone's location and discover who was alone with Abbot Augustine.",
     "difficulty": "beginner",
     "suspectCount": 5,
-    "victimName": "Abbot Augustine"
+    "victimName": "Abbot Augustine",
+    "availability": "coming-soon"
   },
   {
     "id": "case-007",
@@ -60,7 +66,8 @@
     "description": "Sir Humphrey Vance was found dead in the tropical palm house before the royal exhibition. Five botanists and patrons were exploring the botanical gardens. Deduce everyone's location and discover who was alone with Sir Humphrey.",
     "difficulty": "beginner",
     "suspectCount": 5,
-    "victimName": "Sir Humphrey Vance"
+    "victimName": "Sir Humphrey Vance",
+    "availability": "coming-soon"
   },
   {
     "id": "case-008",
@@ -69,7 +76,8 @@
     "description": "Baron Montefiore collapsed over his champagne in the High Limit Salon. Five players and staff were scattered across the private gaming floor. Deduce everyone's location and discover who was alone with the Baron.",
     "difficulty": "easy",
     "suspectCount": 5,
-    "victimName": "Baron Montefiore"
+    "victimName": "Baron Montefiore",
+    "availability": "coming-soon"
   },
   {
     "id": "case-009",
@@ -78,7 +86,8 @@
     "description": "Master Horologist Elias Vance was found dead inside his private Gear Vault. Five associates and apprentices were scattered across the workshop floors. Deduce everyone's location and discover who was alone with Master Vance.",
     "difficulty": "easy",
     "suspectCount": 5,
-    "victimName": "Elias Vance"
+    "victimName": "Elias Vance",
+    "availability": "coming-soon"
   },
   {
     "id": "case-010",
@@ -87,7 +96,8 @@
     "description": "Antiquarian Lord Sterling was discovered poisoned in the Pharaoh Suite aboard the S.S. Karnak. Five passengers and crew were scattered across the riverboat deck. Deduce everyone's location and discover who was alone with Lord Sterling.",
     "difficulty": "easy",
     "suspectCount": 5,
-    "victimName": "Lord Sterling"
+    "victimName": "Lord Sterling",
+    "availability": "coming-soon"
   },
   {
     "id": "case-011",
@@ -96,7 +106,8 @@
     "description": "Master Alchemist Paracelsus Kane was found poisoned in the Transmutation Chamber. Five guild members and scholars were trapped inside the fortified laboratory. Deduce everyone's location and discover who was alone with Master Kane.",
     "difficulty": "medium",
     "suspectCount": 5,
-    "victimName": "Paracelsus Kane"
+    "victimName": "Paracelsus Kane",
+    "availability": "coming-soon"
   },
   {
     "id": "case-012",
@@ -105,7 +116,8 @@
     "description": "Maestro Leopold Weiss was found dead in the Conductor's Dressing Room just before the third act. Six singers and stagehands were in the theater wings. Trace everyone's location and deduce who was alone with the Maestro.",
     "difficulty": "medium",
     "suspectCount": 6,
-    "victimName": "Maestro Leopold"
+    "victimName": "Maestro Leopold",
+    "availability": "coming-soon"
   },
   {
     "id": "case-013",
@@ -114,7 +126,8 @@
     "description": "Royal Astronomer Dr. Thaddeus Vance was discovered dead beside the Great Refractor telescope. Six visiting scholars and technicians were scattered across the mountaintop dome. Deduce everyone's location and discover who was alone with Dr. Vance.",
     "difficulty": "medium",
     "suspectCount": 6,
-    "victimName": "Dr. Thaddeus Vance"
+    "victimName": "Dr. Thaddeus Vance",
+    "availability": "coming-soon"
   },
   {
     "id": "case-014",
@@ -123,7 +136,8 @@
     "description": "Expedition Leader Captain Hawke was found strangled inside the Captain's Cabin aboard the salvage vessel Neptune. Six crew members were at their diving posts. Deduce everyone's location and discover who was alone with Captain Hawke.",
     "difficulty": "medium",
     "suspectCount": 6,
-    "victimName": "Captain Hawke"
+    "victimName": "Captain Hawke",
+    "availability": "coming-soon"
   },
   {
     "id": "case-015",
@@ -132,7 +146,8 @@
     "description": "Chief Archivist Percival Graves was found dead inside the Gold Reliquary Vault deep beneath the museum. Six experts and guards were trapped behind the pneumatic blast doors. Deduce everyone's location and discover who was alone with Percival Graves.",
     "difficulty": "hard",
     "suspectCount": 6,
-    "victimName": "Percival Graves"
+    "victimName": "Percival Graves",
+    "availability": "coming-soon"
   },
   {
     "id": "case-016",
@@ -141,7 +156,8 @@
     "description": "Duca Bernardo Contarini was discovered poisoned in the Mirror Gallery of Palazzo Bellini during the Carnevale gala. Six masked guests and attendants were in the adjoining halls. Deduce everyone's location and discover who was alone with the Duca.",
     "difficulty": "hard",
     "suspectCount": 6,
-    "victimName": "Duca Bernardo"
+    "victimName": "Duca Bernardo",
+    "availability": "coming-soon"
   },
   {
     "id": "case-017",
@@ -150,7 +166,8 @@
     "description": "Yardmaster Archibald Reed was discovered dead in the Signal Tower at Blackfriars Depot under a dense London smog. Six railway workers and inspectors were scattered across the switching yards. Deduce everyone's location and discover who was alone with Archibald Reed.",
     "difficulty": "hard",
     "suspectCount": 6,
-    "victimName": "Archibald Reed"
+    "victimName": "Archibald Reed",
+    "availability": "coming-soon"
   },
   {
     "id": "case-018",
@@ -159,7 +176,8 @@
     "description": "Sanitarium Director Dr. Victor Klaus was found poisoned in the Hydrotherapy Suite of Berghof Clavadel. Six doctors, staff, and patients were isolated by an overnight avalanche. Deduce everyone's location and discover who was alone with Dr. Klaus.",
     "difficulty": "hard",
     "suspectCount": 6,
-    "victimName": "Dr. Victor Klaus"
+    "victimName": "Dr. Victor Klaus",
+    "availability": "coming-soon"
   },
   {
     "id": "case-019",
@@ -168,7 +186,8 @@
     "description": "Sky Marshall Alistair Thorne was discovered stabbed in the Navigation Bridge of the imperial zephyr Valkyrie over the North Sea. Six flight officers and passengers were trapped aloft. Trace everyone's position and discover who was alone with Marshall Thorne.",
     "difficulty": "expert",
     "suspectCount": 6,
-    "victimName": "Marshall Thorne"
+    "victimName": "Marshall Thorne",
+    "availability": "coming-soon"
   },
   {
     "id": "case-020",
@@ -177,6 +196,7 @@
     "description": "High Chancellor Marcus Vane was found assassinated in the Obsidian Chamber during the winter conclave. Seven councilors and bodyguards remained sealed within the mountain fortress. Deduce everyone's location and discover who was alone with Chancellor Vane.",
     "difficulty": "expert",
     "suspectCount": 7,
-    "victimName": "Chancellor Marcus Vane"
+    "victimName": "Chancellor Marcus Vane",
+    "availability": "coming-soon"
   }
 ]
