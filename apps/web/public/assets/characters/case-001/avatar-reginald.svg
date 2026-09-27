@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Lord Reginald, the silver-haired patriarch</title>
+  <defs><clipPath id="portrait"><circle cx="40" cy="40" r="36.5"/></clipPath></defs>
+  <g clip-path="url(#portrait)" stroke="#1b2228" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#dfcdb3" stroke="none" d="M0 0h80v80H0z"/>
+    <path stroke="#c4ac8e" stroke-width="1" d="M10 17v46m5-51v53M64 13v52m5-46v44"/>
+    <path fill="#692e2b" d="M9 81l4-15q1-6 15-9l12-3 13 3q14 3 16 9l4 15"/>
+    <path fill="#b16a51" d="M32 46v13l8 7 9-8V44"/>
+    <path fill="#faf6ee" d="m29 58 7-5 4 9 5-9 7 5-12 20Z"/>
+    <path fill="#c7b49b" d="m36 55 4 7 5-7-1 11-4 5-4-5Z"/>
+    <path fill="#8f453c" d="m26 58 8 21H22l-4-7 7-6-5-3Zm28 0-9 21h13l4-7-7-6 5-3Z"/>
+    <path fill="#d1a17e" d="M26 28q-7-3-5 8 1 6 6 5m27-13q7-3 5 8-1 6-6 5"/>
+    <path fill="#dfbb97" d="M26 22q13-12 28 0l-1 19-5 10-8 4-9-5-4-10Z"/>
+    <path fill="#c79877" stroke="none" d="m47 24 6 4-1 13-5 10-7 3 3-8 3-3-1-11Z"/>
+    <path fill="#d8d6c8" d="M25 33q-4-5-3-13 1-9 13-9l5 2q12-6 18 7l-3 13-4-5-1-9q-5 2-10-3-6 6-13 5Z"/>
+    <path stroke="#8d958e" stroke-width="1" d="m38 14-7 4-6 1m18-4 7 2 4 5M24 25l2 6m28-6-1 6"/>
+    <path stroke="#81766a" stroke-width="1" d="m30 24 6-1m7 0 5 1m-17 3 4-1m9 0 4 1M29 40l3 2m16-1 2-2"/>
+    <path stroke="#e4dfce" stroke-width="2.5" d="m29 30 6-1m9 0 6 1"/>
+    <path d="m30 33 5 1m10 0 4-1m-10 0-2 7 4 1"/>
+    <circle cx="33" cy="34" r="1" fill="#1b2228" stroke="none"/>
+    <circle cx="46" cy="34" r="1" fill="#1b2228" stroke="none"/>
+    <path fill="#d8d6c8" d="m39 41-4-1-5 4q6 3 9-1 4 4 9 1l-4-4Z"/>
+    <path d="M36 47h7"/>
+    <circle cx="47" cy="34" r="6.5" stroke="#ad813e"/>
+    <path stroke="#e7c986" stroke-width=".8" d="M44 29.5q3-2 5 .5"/>
+    <path stroke="#ad813e" stroke-width="1" d="M53 37q7 15 3 27t3 12"/>
+    <path stroke="#c39063" stroke-width="1" d="m15 71-2 7m52-7 2 7m-43-4 6 3m21 0 5-3"/>
+  </g>
+  <circle cx="40" cy="40" r="37.5" stroke="#8f2d20" stroke-width="3"/>
+  <circle cx="40" cy="40" r="34.8" stroke="#faf6ee" stroke-opacity=".65" stroke-width=".7"/>
+</svg>

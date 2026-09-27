@@ -1,5 +1,6 @@
 import { useDraggable } from '@dnd-kit/core'
 import type { Character } from '@casegrid/puzzle-engine'
+import { CharacterPortrait } from './CharacterPortrait'
 
 interface CharacterTokenProps {
   readonly character: Character
@@ -45,12 +46,6 @@ export function CharacterToken({
     border: '#18272d',
   }
 
-  const initials = character.name
-    .split(' ')
-    .map((w) => w[0])
-    .join('')
-    .slice(0, 2)
-
   return (
     <button
       ref={setNodeRef}
@@ -70,9 +65,7 @@ export function CharacterToken({
       aria-label={`${character.name} (${character.role})${isPlaced ? ' placed' : ' unplaced'}`}
       data-testid={`character-token-${character.id}`}
     >
-      <span className="character-token__initials" aria-hidden="true">
-        {initials}
-      </span>
+      <CharacterPortrait character={character} />
       <span className="character-token__name">{character.name}</span>
       {character.role === 'victim' && (
         <span className="character-token__role-tag" aria-hidden="true">

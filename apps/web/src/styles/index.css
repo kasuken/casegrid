@@ -108,24 +108,27 @@ div[tabindex="0"]:focus-visible {
   text-decoration: none;
 }
 
+.brand__wordmark {
+  width: 12rem;
+  height: 3rem;
+}
+
 .case-grid-mark {
-  display: grid;
-  width: 2rem;
-  aspect-ratio: 1;
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid var(--ink);
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
-.case-grid-mark__cell {
-  border: 0.5px solid rgb(24 39 45 / 42%);
+.asset-icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  vertical-align: middle;
 }
 
-.case-grid-mark__cell--victim {
-  background: var(--evidence);
-}
-
-.case-grid-mark__cell--suspect {
-  background: var(--brass);
+.stat-pill__label, .btn-back, .status-badge--solved, .case-card__best-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .edition {
@@ -649,6 +652,7 @@ div[tabindex="0"]:focus-visible {
 }
 
 .investigation-layout__main {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -656,12 +660,14 @@ div[tabindex="0"]:focus-visible {
 
 /* Board Container & Grid */
 .board-container {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
 .board-frame {
+  min-width: 0;
   padding: clamp(0.5rem, 1.5vw, 1.25rem);
   background: var(--paper-card);
   border: 3px solid var(--ink);
@@ -676,6 +682,7 @@ div[tabindex="0"]:focus-visible {
   border: 2px solid var(--ink);
   padding: 4px;
   width: 100%;
+  min-width: 420px;
   max-width: 680px;
   margin: 0 auto;
 }
@@ -703,7 +710,7 @@ div[tabindex="0"]:focus-visible {
 .grid-cell--drop-over {
   background: #fdf5d6 !important;
   border-color: var(--brass) !important;
-  box-shadow: inset 0 0 0 2px var(--brass);
+
 }
 
 .grid-cell--blocked {
@@ -775,9 +782,12 @@ div[tabindex="0"]:focus-visible {
   height: 100%;
 }
 
-.object-token__icon {
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  line-height: 1;
+.object-token__art {
+  display: block;
+  width: min(100%, 64px);
+  height: auto;
+  aspect-ratio: 1;
+  pointer-events: none;
 }
 
 .object-token__label {
@@ -799,7 +809,7 @@ div[tabindex="0"]:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem 0.5rem;
+  padding: 0.2rem;
   border: 2px solid;
   border-radius: 4px;
   font-weight: 700;
@@ -1026,21 +1036,6 @@ div[tabindex="0"]:focus-visible {
   cursor: pointer;
 }
 
-.clue-item__checkbox {
-  width: 1.1rem;
-  height: 1.1rem;
-  flex: 0 0 auto;
-  border: 1px solid var(--ink);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 900;
-  color: var(--patina);
-  background: #ffffff;
-}
-
 .clue-item__number {
   font-family: monospace;
   font-size: 0.75rem;
@@ -1181,20 +1176,28 @@ div[tabindex="0"]:focus-visible {
 }
 
 .result-badge {
-  display: inline-block;
-  margin-bottom: 1.5rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  animation: seal-reveal 240ms ease-out both;
 }
 
 .result-badge__stamp {
-  display: inline-block;
-  padding: 0.4rem 1.4rem;
-  border: 3px dashed var(--evidence);
   color: var(--evidence);
   font-family: Georgia, serif;
-  font-size: 1.5rem;
+  font-size: 0.85rem;
   font-weight: 900;
-  letter-spacing: 0.15em;
-  transform: rotate(-3deg);
+  letter-spacing: 0.12em;
+}
+
+@keyframes seal-reveal {
+  from { opacity: 0; transform: scale(1.08) rotate(-4deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result-badge { animation: none; }
 }
 
 .result-view__title {
@@ -1349,6 +1352,7 @@ div[tabindex="0"]:focus-visible {
   .game-header__stats {
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
   .board-actions {
     flex-direction: column;
@@ -1370,4 +1374,46 @@ div[tabindex="0"]:focus-visible {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Vector art remains decorative; controls retain their labels and focus outlines. */
+.character-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.character-token .character-portrait { max-width: 64px; }
+.suspect-card__avatar { width: 3.5rem; height: 3.5rem; }
+.accusation-card__emblem { margin: 0 auto 0.75rem; }
+
+.grid-cell--drop-over::after,
+.grid-cell--target::after,
+.grid-cell--selected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: url('/assets/ui/frame-cell-active.svg') center / 100% 100% no-repeat;
+  pointer-events: none;
+}
+
+.grid-cell--selected::after {
+  background-image: url('/assets/ui/frame-cell-selected.svg');
+}
+
+.grid-cell .character-token {
+  max-width: 64px;
+  min-width: 0;
+}
+
+.grid-cell__content { min-height: 0; }
+.grid-cell .character-portrait { max-height: 48px; object-fit: contain; }
+
+@media (max-width: 600px) {
+  .grid-cell .character-portrait { max-height: 30px; }
+  .object-token__art { max-height: 36px; object-fit: contain; }
 }

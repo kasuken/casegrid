@@ -1,5 +1,6 @@
 import { useGameStore } from '../../stores/gameStore'
 import { CharacterToken } from './CharacterToken'
+import { AssetIcon } from '../AssetIcon'
 
 export function CharacterTray() {
   const {
@@ -36,7 +37,7 @@ export function CharacterTray() {
             onClick={() => setInteractionMode('place')}
             data-testid="mode-place-btn"
           >
-            📍 Place
+            Place
           </button>
           <button
             type="button"
@@ -48,7 +49,7 @@ export function CharacterTray() {
             onClick={() => setInteractionMode('exclude')}
             data-testid="mode-exclude-btn"
           >
-            🚫 Exclude Note
+            <AssetIcon name="cell-excluded" /> Exclude Note
           </button>
         </div>
       </div>

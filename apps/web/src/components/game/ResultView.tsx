@@ -22,7 +22,8 @@ export function ResultView() {
   return (
     <article className="result-view" aria-labelledby="result-title" data-testid="result-view">
       <div className="result-view__card">
-        <div className="result-badge" aria-hidden="true">
+        <div className="result-badge">
+          <img src="/assets/brand/badge-case-closed.svg" width={160} height={160} alt="" />
           <span className="result-badge__stamp">CASE CLOSED</span>
         </div>
 

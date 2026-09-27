@@ -2,7 +2,25 @@
 
 This document provides the complete, authoritative inventory and art direction guide for all visual assets in CaseGrid.
 
-Currently, the application uses accessible semantic SVG and styled token placeholders (initials badges, palette borders, emoji glyphs, and CSS outlines). This specification defines every visual asset required to replace all placeholders with bespoke, production-quality artwork.
+This specification tracks the replacement of the original initials badges, emoji glyphs, and CSS outlines with original SVG artwork. The first delivery includes shared brand and gameplay assets, all 20 environmental object types, and all six Case 001 portraits. Portraits for Cases 002–020 and scene textures remain pending.
+
+---
+
+## Delivery status — 2026-09-27
+
+- [x] 6 brand assets: wordmark, compact mark, favicon, closed seal, accused emblem, solved star.
+- [x] 10 gameplay assets integrated: exclusions, active/selected cell frames, clue notes, conflict shield, timer, mistakes, restart, back.
+- [x] `icon-hint.svg` artwork created; reserved and **not shown** because the game has no hint feature.
+- [x] All 20 environmental object illustrations integrated by object type across the catalog.
+- [x] All 6 Case 001 portraits integrated in the character tray, occupied cells, and accusation choices.
+- [ ] Case 002–020 portraits.
+- [ ] All 10 scene/background textures.
+
+**43 distinct assets created, 42 integrated.** SVGs live in `apps/web/public/assets/{brand,ui,objects,characters/case-001}/`; the favicon is also copied to `apps/web/public/favicon.svg`. All are original, editable vector artwork. Lettering in the logo and seal is outlined and requires no font download.
+
+Portraits use the existing optional `Character.avatar` field in puzzle JSON, with case-specific paths such as `/assets/characters/case-001/avatar-beatrice.svg`. IDs repeat across cases: Beatrice Finch's portrait must never become Sister Beatrice's portrait. Missing or failed portrait images retain initials; object and character names remain readable control labels. Puzzle rules and saved progress formats are unchanged.
+
+**Table legend:** ✓ Done = created and integrated; ✓ Created = artwork available but unused; unmarked = pending.
 
 ---
 
@@ -67,14 +85,14 @@ CaseGrid embraces a **warm, tactile, editorial mystery-board aesthetic**. It sho
 
 ## 2. Brand & Global UI Assets
 
-| Asset Filename | Format | Target Dimensions | Visual Art Brief |
-|---|---|---|---|
-| `logo-casegrid.svg` | SVG | 320x80 | Full wordmark with integrated mark: an architectural floor grid perspective interwoven with a brass magnifying loupe. Serif lettering with subtle ink trap details. |
-| `logo-mark.svg` | SVG | 64x64 | Compact standalone icon: four interlocking grid squares where one square reveals a detective loupe silhouette. |
-| `favicon.svg` | SVG | 32x32 | High-contrast version of `logo-mark.svg` optimized for browser tabs down to 16px. |
-| `badge-case-closed.svg` | SVG | 200x200 | Circular vintage rubber-stamp or embossed wax seal. Distressed outer ring, text reading `CASE CLOSED` in bold serif, centered scales of justice or crossed skeleton keys. |
-| `badge-accused.svg` | SVG | 120x120 | Dramatic spotlight emblem with silhouette of an accused suspect in profile, framed by a vintage magnifying bezel. |
-| `badge-solved-star.svg` | SVG | 32x32 | Eight-pointed archival star used for completed case cards on the catalog list. |
+| Asset Filename | Format | Target Dimensions | Visual Art Brief | Status |
+|---|---|---|---|---|
+| `logo-casegrid.svg` | SVG | 320x80 | Full wordmark with integrated mark: an architectural floor grid perspective interwoven with a brass magnifying loupe. Serif lettering with subtle ink trap details. | ✓ Done |
+| `logo-mark.svg` | SVG | 64x64 | Compact standalone icon: four interlocking grid squares where one square reveals a detective loupe silhouette. | ✓ Done |
+| `favicon.svg` | SVG | 32x32 | High-contrast version of `logo-mark.svg` optimized for browser tabs down to 16px. | ✓ Done |
+| `badge-case-closed.svg` | SVG | 200x200 | Circular vintage rubber-stamp or embossed wax seal. Distressed outer ring, text reading `CASE CLOSED` in bold serif, centered scales of justice or crossed skeleton keys. | ✓ Done |
+| `badge-accused.svg` | SVG | 120x120 | Dramatic spotlight emblem with silhouette of an accused suspect in profile, framed by a vintage magnifying bezel. | ✓ Done |
+| `badge-solved-star.svg` | SVG | 32x32 | Eight-pointed archival star used for completed case cards on the catalog list. | ✓ Done |
 
 ---
 
@@ -82,19 +100,19 @@ CaseGrid embraces a **warm, tactile, editorial mystery-board aesthetic**. It sho
 
 These assets replace in-line ASCII, emoji, and CSS-generated indicators in the game loop.
 
-| Asset Filename | Current Placeholder | Target Size | Visual Description |
-|---|---|---|---|
-| `icon-cell-excluded.svg` | Text `✕` in red badge | 24x24 | Hand-stamped red wax cross with subtle ink bleed, signifying the player has excluded a suspect from that cell. |
-| `frame-cell-active.svg` | CSS dashed green outline | 80x80 | Vintage brass-corner drafting brackets with a warm golden highlight, indicating the cell is a valid drop/tap target. |
-| `frame-cell-selected.svg` | CSS solid ring | 80x80 | Thick dual-line ink border with diamond corner pips marking the currently focused grid cell. |
-| `icon-clue-unresolved.svg` | Plain HTML checkbox | 20x20 | Square parchment checkbox with deckled ink border and empty center. |
-| `icon-clue-resolved.svg` | Checked HTML checkbox | 20x20 | Parchment checkbox with a bold crimson quill checkmark striking through. |
-| `badge-clue-conflict.svg` | Orange alert banner | 28x28 | Embossed brass shield with an exclamation mark, indicating conflicting suspect arrangements. |
-| `icon-timer.svg` | Text "Time:" | 20x20 | Ornate brass pocket watch with ticking Roman numeral markers. |
-| `icon-mistakes.svg` | Text "Mistakes:" | 20x20 | Red ink smudge / quill blot indicating deduction errors. |
-| `icon-hint.svg` | Text "Hints" | 20x20 | Antique gas lamp or flickering candle emblem. |
-| `icon-restart.svg` | Text "Restart" | 24x24 | Ouroboros-style brass arrow loop for case reset. |
-| `icon-back.svg` | Text "← Cases" | 24x24 | Hand-drawn ink arrow pointing left with feathered tail. |
+| Asset Filename | Current Placeholder | Target Size | Visual Description | Status |
+|---|---|---|---|---|
+| `icon-cell-excluded.svg` | Text `✕` in red badge | 24x24 | Hand-stamped red wax cross with subtle ink bleed, signifying the player has excluded a suspect from that cell. | ✓ Done |
+| `frame-cell-active.svg` | CSS dashed green outline | 80x80 | Vintage brass-corner drafting brackets with a warm golden highlight, indicating the cell is a valid drop/tap target. | ✓ Done |
+| `frame-cell-selected.svg` | CSS solid ring | 80x80 | Thick dual-line ink border with diamond corner pips marking the currently focused grid cell. | ✓ Done |
+| `icon-clue-unresolved.svg` | Plain HTML checkbox | 20x20 | Square parchment checkbox with deckled ink border and empty center. | ✓ Done |
+| `icon-clue-resolved.svg` | Checked HTML checkbox | 20x20 | Parchment checkbox with a bold crimson quill checkmark striking through. | ✓ Done |
+| `badge-clue-conflict.svg` | Orange alert banner | 28x28 | Embossed brass shield with an exclamation mark, indicating conflicting suspect arrangements. | ✓ Done |
+| `icon-timer.svg` | Text "Time:" | 20x20 | Ornate brass pocket watch with ticking Roman numeral markers. | ✓ Done |
+| `icon-mistakes.svg` | Text "Mistakes:" | 20x20 | Red ink smudge / quill blot indicating deduction errors. | ✓ Done |
+| `icon-hint.svg` | Text "Hints" | 20x20 | Antique gas lamp or flickering candle emblem. | ✓ Created |
+| `icon-restart.svg` | Text "Restart" | 24x24 | Ouroboros-style brass arrow loop for case reset. | ✓ Done |
+| `icon-back.svg` | Text "← Cases" | 24x24 | Hand-drawn ink arrow pointing left with feathered tail. | ✓ Done |
 
 ---
 
@@ -102,28 +120,28 @@ These assets replace in-line ASCII, emoji, and CSS-generated indicators in the g
 
 Environmental objects block character placement and anchor spatial clues (`character_adjacent_to_object`). All object tokens should be crafted in **isometric or 2.5D top-down perspective** (30° isometric projection), enclosed within an unplaced 64x64 or 80x80 bounding box so they fit neatly inside square grid cells.
 
-| Object ID / Type | Filename | Used in Cases | Visual Description |
-|---|---|---|---|
-| `fountain` | `obj-fountain.svg` | Cases 1, 6, 7, 11, 16, 18 | Carved stone garden fountain with tiered basins, gentle concentric water ripples, and weathered moss. |
-| `globe` | `obj-globe.svg` | Cases 1, 10, 13 | Antique brass armillary sphere and mahogany floor globe with engraved celestial longitude rings. |
-| `bookshelf` | `obj-bookshelf.svg` | Cases 1, 6, 9, 11, 15 | Heavy dark oak bookcase filled with variegated leather-bound tomes, rolled scrolls, and bookends. |
-| `billiard_table` | `obj-billiard-table.svg` | Cases 1, 8, 12, 16, 20 | Felt-topped gaming table (green felt for billiards, burgundy velvet for high-stakes casino poker). |
-| `fireplace` | `obj-fireplace.svg` | Cases 1, 4, 6, 9, 11, 17, 18 | Carved marble hearth or cast-iron stove with glowing orange embers, iron grate, and carved mantle. |
-| `clock` | `obj-clock.svg` | Cases 1, 7, 8, 9, 12, 13, 16 | Freestanding grandfather clock with glass door, brass pendulum, and ornamental filigree crest. |
-| `t_rex_skull` | `obj-t-rex-skull.svg` | Case 2 | Enormous fossilized tyrannosaur skull mounted on a brass museum pedestal with museum plaque. |
-| `display_case` | `obj-display-case.svg` | Cases 2, 7, 10, 11, 13, 14, 15 | Glass and brass museum vitrine exhibiting glittering gemstones, rare relics, or antiquities. |
-| `sarcophagus` | `obj-sarcophagus.svg` | Cases 2, 15 | Gilded Egyptian pharaonic sarcophagus with turquoise and lapis lazuli inlays and crossed flail and crook. |
-| `desk` | `obj-desk.svg` | Cases 2, 3, 5, 6, 8, 9, 14, 17, 19, 20 | Heavy rolltop executive desk or scholar workbench with papers, magnifying glass, and inkwell. |
-| `piano` | `obj-piano.svg` | Cases 3, 5, 12 | Lacquered black concert grand piano with propped lid, visible gold harp strings, and ivory keyboard. |
-| `couch` | `obj-couch.svg` | Cases 3, 7, 10, 16, 18 | Tufted Chesterfield leather sofa or ornate velvet divan with carved mahogany legs. |
-| `prop_trunk` | `obj-prop-trunk.svg` | Cases 3, 5, 12, 20 | Reinforced brass-banded traveling trunk with luggage tags, theater stickers, or halberd weapons. |
-| `lighthouse_lamp` | `obj-lighthouse-lamp.svg` | Case 4 | Enormous tiered Fresnel glass beacon lens radiating a soft amber beam. |
-| `telegraph` | `obj-telegraph.svg` | Cases 4, 15, 17, 19 | Brass telegraph key and ticker-tape receiver on oak mount with copper coil relays. |
-| `steam_engine` | `obj-steam-engine.svg` | Cases 4, 10, 13, 14, 17 | Riveted iron boiler with brass pressure gauges, steam escape valves, and turning drive shafts. |
-| `window` | `obj-window.svg` | Cases 5, 19 | Arched multi-pane bay window overlooking rain-swept grounds or cloud banks aloft. |
-| `safe` | `obj-safe.svg` | Cases 8, 18, 20 | Heavy black cast-iron vault safe with polished brass combination dial and spoke handle. |
-| `curtain` | `obj-curtain.svg` | Case 12 | Heavy draped crimson velvet theatrical stage curtain tied back with braided gold rope. |
-| `nautical_wheel` | `obj-nautical-wheel.svg` | Cases 14, 19 | Brass-hubbed ship's helm with eight turned wood spokes, mounted on steering binnacle. |
+| Object ID / Type | Filename | Used in Cases | Visual Description | Status |
+|---|---|---|---|---|
+| `fountain` | `obj-fountain.svg` | Cases 1, 6, 7, 11, 16, 18 | Carved stone garden fountain with tiered basins, gentle concentric water ripples, and weathered moss. | ✓ Done |
+| `globe` | `obj-globe.svg` | Cases 1, 10, 13 | Antique brass armillary sphere and mahogany floor globe with engraved celestial longitude rings. | ✓ Done |
+| `bookshelf` | `obj-bookshelf.svg` | Cases 1, 6, 9, 11, 15 | Heavy dark oak bookcase filled with variegated leather-bound tomes, rolled scrolls, and bookends. | ✓ Done |
+| `billiard_table` | `obj-billiard-table.svg` | Cases 1, 8, 12, 16, 20 | Felt-topped gaming table (green felt for billiards, burgundy velvet for high-stakes casino poker). | ✓ Done |
+| `fireplace` | `obj-fireplace.svg` | Cases 1, 4, 6, 9, 11, 17, 18 | Carved marble hearth or cast-iron stove with glowing orange embers, iron grate, and carved mantle. | ✓ Done |
+| `clock` | `obj-clock.svg` | Cases 1, 7, 8, 9, 12, 13, 16 | Freestanding grandfather clock with glass door, brass pendulum, and ornamental filigree crest. | ✓ Done |
+| `t_rex_skull` | `obj-t-rex-skull.svg` | Case 2 | Enormous fossilized tyrannosaur skull mounted on a brass museum pedestal with museum plaque. | ✓ Done |
+| `display_case` | `obj-display-case.svg` | Cases 2, 7, 10, 11, 13, 14, 15 | Glass and brass museum vitrine exhibiting glittering gemstones, rare relics, or antiquities. | ✓ Done |
+| `sarcophagus` | `obj-sarcophagus.svg` | Cases 2, 15 | Gilded Egyptian pharaonic sarcophagus with turquoise and lapis lazuli inlays and crossed flail and crook. | ✓ Done |
+| `desk` | `obj-desk.svg` | Cases 2, 3, 5, 6, 8, 9, 14, 17, 19, 20 | Heavy rolltop executive desk or scholar workbench with papers, magnifying glass, and inkwell. | ✓ Done |
+| `piano` | `obj-piano.svg` | Cases 3, 5, 12 | Lacquered black concert grand piano with propped lid, visible gold harp strings, and ivory keyboard. | ✓ Done |
+| `couch` | `obj-couch.svg` | Cases 3, 7, 10, 16, 18 | Tufted Chesterfield leather sofa or ornate velvet divan with carved mahogany legs. | ✓ Done |
+| `prop_trunk` | `obj-prop-trunk.svg` | Cases 3, 5, 12, 20 | Reinforced brass-banded traveling trunk with luggage tags, theater stickers, or halberd weapons. | ✓ Done |
+| `lighthouse_lamp` | `obj-lighthouse-lamp.svg` | Case 4 | Enormous tiered Fresnel glass beacon lens radiating a soft amber beam. | ✓ Done |
+| `telegraph` | `obj-telegraph.svg` | Cases 4, 15, 17, 19 | Brass telegraph key and ticker-tape receiver on oak mount with copper coil relays. | ✓ Done |
+| `steam_engine` | `obj-steam-engine.svg` | Cases 4, 10, 13, 14, 17 | Riveted iron boiler with brass pressure gauges, steam escape valves, and turning drive shafts. | ✓ Done |
+| `window` | `obj-window.svg` | Cases 5, 19 | Arched multi-pane bay window overlooking rain-swept grounds or cloud banks aloft. | ✓ Done |
+| `safe` | `obj-safe.svg` | Cases 8, 18, 20 | Heavy black cast-iron vault safe with polished brass combination dial and spoke handle. | ✓ Done |
+| `curtain` | `obj-curtain.svg` | Case 12 | Heavy draped crimson velvet theatrical stage curtain tied back with braided gold rope. | ✓ Done |
+| `nautical_wheel` | `obj-nautical-wheel.svg` | Cases 14, 19 | Brass-hubbed ship's helm with eight turned wood spokes, mounted on steering binnacle. | ✓ Done |
 
 ---
 
@@ -142,14 +160,14 @@ Every character token in CaseGrid is rendered as an 80x80 circle or rounded squi
 ### Case 001: The Rosewood Parlor
 *Setting: English Country Estate Conservatory & Library*
 
-| ID | Filename | Role | Name | Visual Brief |
-|---|---|---|---|---|
-| `reginald` | `avatar-reginald.svg` | **Victim** | Lord Reginald | Elderly patriarch with parted silver hair, neat mustache, gold monocle on cord, and deep burgundy velvet smoking jacket. |
-| `evelyn` | `avatar-evelyn.svg` | **Suspect** | Evelyn Rosewood | Ambitious younger sister, arched dark eyebrows, high-collared emerald Edwardian dress, double pearl necklace. |
-| `arthur` | `avatar-arthur.svg` | **Suspect** | Arthur Vance | Cautious solicitor, wireframe spectacles, receding brown hair, stiff white collar, holding leather document folder. |
-| `clara` | `avatar-clara.svg` | **Suspect** | Clara Mercer | Literature collector with curly auburn hair pinned into a Gibson roll, warm amber scarf, holding brass reading loupe. |
-| `julian` | `avatar-julian.svg` | **Suspect** | Dr. Julian Sterling | Family physician, sideburns, focused gaze, herringbone tweed vest over rolled sleeves, holding doctor bag strap. |
-| `beatrice` | `avatar-beatrice.svg` | **Suspect** | Beatrice Finch | Observant head housekeeper, silver hair under lace cap, crisp charcoal dress, ring of heavy brass keys on collar. |
+| ID | Filename | Role | Name | Visual Brief | Status |
+|---|---|---|---|---|---|
+| `reginald` | `avatar-reginald.svg` | **Victim** | Lord Reginald | Elderly patriarch with parted silver hair, neat mustache, gold monocle on cord, and deep burgundy velvet smoking jacket. | ✓ Done |
+| `evelyn` | `avatar-evelyn.svg` | **Suspect** | Evelyn Rosewood | Ambitious younger sister, arched dark eyebrows, high-collared emerald Edwardian dress, double pearl necklace. | ✓ Done |
+| `arthur` | `avatar-arthur.svg` | **Suspect** | Arthur Vance | Cautious solicitor, wireframe spectacles, receding brown hair, stiff white collar, holding leather document folder. | ✓ Done |
+| `clara` | `avatar-clara.svg` | **Suspect** | Clara Mercer | Literature collector with curly auburn hair pinned into a Gibson roll, warm amber scarf, holding brass reading loupe. | ✓ Done |
+| `julian` | `avatar-julian.svg` | **Suspect** | Dr. Julian Sterling | Family physician, sideburns, focused gaze, herringbone tweed vest over rolled sleeves, holding doctor bag strap. | ✓ Done |
+| `beatrice` | `avatar-beatrice.svg` | **Suspect** | Beatrice Finch | Observant head housekeeper, silver hair under lace cap, crisp charcoal dress, ring of heavy brass keys on collar. | ✓ Done |
 
 ---
 
@@ -450,17 +468,21 @@ To enhance visual atmosphere without cluttering gameplay, each case setting util
 
 ## 7. Code Component Replacement Mapping
 
-The table below connects every existing code placeholder in the web frontend with its target SVG asset:
+The table below records the current integration. All images are decorative alongside named controls or visible labels; SVG artwork does not alter puzzle constraints.
 
-| Component | Code Location | Current Placeholder | Target SVG Asset |
-|---|---|---|---|
-| `CharacterToken.tsx` | Lines 42–53 | Fallback circle with character initials (`JD`, `EV`) and role hex background | `avatar-[characterId].svg` embedded in `<img />` with fallback |
-| `ObjectToken.tsx` | Lines 7–27 | Emoji mapping in `OBJECT_ICONS` (`🏛️`, `📚`, `🔥`, `🎱`, `📦`) | `obj-[objectType].svg` inside `<img />` with SVG sprite |
-| `CaseGridMark.tsx` | Line 10 | Basic inline geometric SVG paths | `logo-casegrid.svg` / `logo-mark.svg` |
-| `Cell.tsx` | Lines 64–72 | Text `✕` character exclusion badge | `icon-cell-excluded.svg` |
-| `Cell.tsx` | Lines 48–56 | CSS `border-emerald-600` drop target glow | `frame-cell-active.svg` corner brackets |
-| `CluePanel.tsx` | Lines 30–42 | Standard HTML `<input type="checkbox">` | `icon-clue-unresolved.svg` / `icon-clue-resolved.svg` |
-| `ResultView.tsx` | Line 58 | CSS bordered text block `CASE CLOSED` | `badge-case-closed.svg` rubber stamp with reveal animation |
-| `FeedbackBanner.tsx` | Line 15 | Text alert badges | `badge-clue-conflict.svg` |
-| `GameHeader.tsx` | Lines 45–60 | Plain text "Time:", "Mistakes:" labels | `icon-timer.svg`, `icon-mistakes.svg` |
-| `HomePage.tsx` | Line 85 | CSS card borders | Subtle scene pattern background (`pat-*.svg`) |
+| Component | Replacement | Status |
+|---|---|---|
+| `CharacterPortrait.tsx`, `CharacterToken.tsx`, `AccusationView.tsx` | `Character.avatar` from puzzle JSON, shared portrait display with initials fallback | Case 001 done; Cases 002–020 pending |
+| `ObjectToken.tsx` | Explicit object-type mapping to `/assets/objects/obj-*.svg`; object labels retained | All 20 types done |
+| `HomePage.tsx`, `CaseGridMark.tsx`, `favicon.svg` | Full wordmark, compact loupe mark, tab icon | Done |
+| `HomePage.tsx` | Solved star and timer icon in completed case entries | Done |
+| `Cell.tsx`, `index.css` | Exclusion stamp, brass drop brackets, selected-cell ink frame | Done |
+| `CluePanel.tsx` | Unresolved/resolved note icons; existing button semantics retained | Done |
+| `ResultView.tsx` | Closed seal with reduced-motion-aware reveal and text caption | Done |
+| `AccusationView.tsx` | Accused emblem and conflict shield | Done |
+| `FeedbackBanner.tsx` | Conflict shield and success check | Done |
+| `GameHeader.tsx`, `CharacterTray.tsx` | Timer, mistakes, reset, back, exclusion-note icons | Done |
+| `HomePage.tsx`, board textures | Scene pattern backgrounds | Pending |
+| No consuming component | `icon-hint.svg` | Created; reserved |
+
+Validation for this delivery: lint, typecheck, 63 unit tests, 20 puzzle validations, eight desktop/mobile Playwright checks, production build, SVG XML/path checks, and rendered desktop/320px visual review. The existing solver lint warning about an unnecessary spread is unrelated to these assets.

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Evelyn Rosewood, in emerald silk and pearls</title>
+  <defs><clipPath id="portrait"><circle cx="40" cy="40" r="37"/></clipPath></defs>
+  <g clip-path="url(#portrait)" stroke="#1b2228" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#d4d9c2" stroke="none" d="M0 0h80v80H0z"/>
+    <path stroke="#b9c4ab" stroke-width="1" d="M7 61 28 7M5 43 20 6m44 62L52 7m20 43L60 7"/>
+    <path fill="#343630" d="M24 36q-6-9-2-16 1-8 10-9 1-8 11-7 13-1 13 12 8 8 0 23l-7 8H30Z"/>
+    <path stroke="#71684e" stroke-width="1" d="M34 10q8-4 15 0m-10 3q8-2 13 4m-27 5q-2 7 1 11m27-12q4 6 0 12"/>
+    <path fill="#23594e" d="M8 81q0-14 7-19l16-7h17l14 6q9 3 11 20"/>
+    <path fill="#377667" stroke="none" d="M19 62q-8 6-7 18h13l-1-15m31-3 5 18h10q-1-13-8-17Z"/>
+    <path fill="#c69777" d="m34 43-1 13 8 9 9-9-4-15"/>
+    <path fill="#e1b991" d="M26 27q4-3 8-10 5 6 18 5l-1 15-5 10-7 4-9-7-3-10Z"/>
+    <path fill="#c69777" stroke="none" d="M47 23h5l-1 14-5 10-7 4 1-6 6-5Z"/>
+    <path fill="#343630" d="M26 31q-4-9 3-15 4-4 9-3 7 7 16 7v6q-12 0-19-8-2 8-9 13Z"/>
+    <path stroke="#1b2228" stroke-width="2" d="m30 29 6-2m7 0 5 2"/>
+    <path d="m30 32 6 1m7-1h5m-9 0-2 7h4"/>
+    <path fill="#1b2228" stroke="none" d="M33 32h2v3h-2zm11 0h2v3h-2Z"/>
+    <path stroke="#964b40" d="m35 43 7-1"/>
+    <path stroke="#b68164" stroke-width="1" d="m29 37 4 1m13-1 3-1"/>
+    <circle cx="27" cy="37" r="2" fill="#faf6ee" stroke="#b99c62" stroke-width="1"/>
+    <circle cx="51" cy="36" r="2" fill="#faf6ee" stroke="#b99c62" stroke-width="1"/>
+    <path fill="#174c43" d="m29 49 10 6 12-7-1 10-10 9-10-9Z"/>
+    <path stroke="#80a38a" stroke-width="1" d="m31 52 8 5 10-6M21 63l7 13m31-13-6 14"/>
+    <path stroke="#ebe2c9" stroke-width="3" stroke-dasharray=".2 4.1" d="M24 61q15 16 32-1M22 66q17 17 36-1"/>
+    <path d="m40 66-1 14"/>
+    <circle cx="41" cy="60" r="1.4" fill="#b9a165" stroke="none"/>
+    <path fill="#e3bd97" d="m52 81-4-8-5-2q-4-3-1-4l9 4 1-6q1-3 3 0l1 10 5 6"/>
+  </g>
+  <circle cx="40" cy="40" r="38" stroke="#23594e" stroke-width="2"/>
+  <circle cx="40" cy="40" r="35.4" stroke="#faf6ee" stroke-opacity=".7" stroke-width=".7"/>
+</svg>

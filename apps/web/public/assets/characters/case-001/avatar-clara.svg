@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Clara Mercer, the auburn-haired collector with a reading loupe</title>
+  <defs><clipPath id="portrait"><circle cx="40" cy="40" r="37"/></clipPath></defs>
+  <g clip-path="url(#portrait)" stroke="#1b2228" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#e3cfad" stroke="none" d="M0 0h80v80H0z"/>
+    <path stroke="#cdbb98" stroke-width="1" d="M7 21q33-21 66 0M6 26q33-22 68 0"/>
+    <path fill="#793f2b" d="M21 43q-10-3-5-12-8-6 0-13-1-8 7-9 4-7 12-3 8-5 14 1 10-1 12 8 8 5 3 13 5 8-3 13l-9 8Z"/>
+    <path fill="#aa6740" stroke="none" d="M20 30q-8-2-1-9-2-7 6-8 4-8 12-4 10-5 14 4-13-5-23 5-5 5-8 12Z"/>
+    <path stroke="#c28651" stroke-width="1" d="M23 10q-8 7 0 10m9-12q-8 1-5 9m18-8q-7-2-8 6m16-3q-1 6 5 7m-37 7q-6 1-1 8m40-11q4 7-3 8"/>
+    <path fill="#665f61" d="M7 81q0-15 13-19l13-7 18 2 13 7 8 17"/>
+    <path fill="#ad7351" d="M31 43v17l10 9 11-11-6-15"/>
+    <path fill="#d7a37d" d="M24 25q9-3 15-11 6 8 15 9l1 12-6 11-10 7-9-5-6-10Z"/>
+    <path fill="#bb835f" stroke="none" d="m48 23 6 1 1 11-6 11-10 7-1-5 9-7Z"/>
+    <path fill="#793f2b" d="M22 35q-6-6 2-14 4-3 9-3-1 10-8 10l1 9Zm28-16q9 0 9 10l-5 9-2-3 1-9Z"/>
+    <path stroke="#4c322a" stroke-width="2" d="m28 30 6-2m8 0 7 2"/>
+    <path d="m28 33 6 1m8 0 6-1m-10 0-2 7 4 1"/>
+    <circle cx="31" cy="34" r="1.3" fill="#1b2228" stroke="none"/>
+    <circle cx="45" cy="34" r="1.3" fill="#1b2228" stroke="none"/>
+    <path stroke="#864431" d="M34 45q4 2 8-1"/>
+    <path fill="#ad6445" stroke="none" d="M28 38h1v1h-1zm4 1h1v1h-1zm-3 2h1v1h-1zm17-3h1v1h-1zm3 1h1v1h-1Z"/>
+    <path fill="#c18a3d" d="m27 51 12 9 13-11 4 9-12 11-14-8Z"/>
+    <path fill="#a66d30" d="m44 64 8 6-7 13-11-5 3-12Z"/>
+    <path stroke="#e3b565" stroke-width="1" d="m31 56 8 7 13-9m-12 17-3 7m6-5-3 7"/>
+    <path d="m17 66 5 10m39-12-3 15"/>
+    <path stroke="#483c30" stroke-width="4" d="m57 58-5 17"/>
+    <circle cx="60" cy="49" r="10" fill="#d8e0d1" fill-opacity=".65" stroke="#a57c37" stroke-width="3"/>
+    <path stroke="#faf6ee" stroke-width="1.5" d="M55 47q1-4 6-4"/>
+    <path fill="#d7a37d" d="m50 82-3-9 2-8q2-4 4-1l-1 4 4-1q4 2 0 9l2 6"/>
+    <path d="m50 70 5 1m-5 3 4 1"/>
+    <path fill="#665f61" d="m46 79 13-1 2 7H46Z"/>
+  </g>
+  <circle cx="40" cy="40" r="38" stroke="#9e5927" stroke-width="2"/>
+  <circle cx="40" cy="40" r="35.4" stroke="#faf6ee" stroke-opacity=".7" stroke-width=".7"/>
+</svg>

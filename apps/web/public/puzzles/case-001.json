@@ -113,37 +113,43 @@
       "id": "reginald",
       "name": "Lord Reginald",
       "description": "The wealthy master of Rosewood Manor.",
-      "role": "victim"
+      "role": "victim",
+      "avatar": "/assets/characters/case-001/avatar-reginald.svg"
     },
     {
       "id": "evelyn",
       "name": "Evelyn Rosewood",
       "description": "Reginald's ambitious younger sister.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-001/avatar-evelyn.svg"
     },
     {
       "id": "arthur",
       "name": "Arthur Vance",
       "description": "The estate's cautious family solicitor.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-001/avatar-arthur.svg"
     },
     {
       "id": "clara",
       "name": "Clara Mercer",
       "description": "An avid collector of rare literature.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-001/avatar-clara.svg"
     },
     {
       "id": "julian",
       "name": "Dr. Julian Sterling",
       "description": "The family physician visiting for the weekend.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-001/avatar-julian.svg"
     },
     {
       "id": "beatrice",
       "name": "Beatrice Finch",
       "description": "The observant head housekeeper.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-001/avatar-beatrice.svg"
     }
   ],
   "clues": [

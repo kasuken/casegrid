@@ -1,6 +1,28 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('CaseGrid Critical Journeys', () => {
+  test('Artwork loads at 320px without widening the page or leaking portraits between cases', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 850 })
+    await page.goto('/case/case-001')
+    await page.getByTestId('start-investigation-btn').click()
+
+    await expect(page.locator('.character-tray .character-portrait')).toHaveCount(6)
+    await expect(page.locator('.object-token__art')).toHaveCount(6)
+    await expect.poll(() => page.locator('img').evaluateAll((images) =>
+      images.every((image) => image.complete && image.naturalWidth > 0),
+    )).toBe(true)
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320)
+
+    await page.getByTestId('character-token-julian').click()
+    await page.getByTestId('cell-3-1').click()
+    await expect(page.getByTestId('cell-3-1').locator('.character-portrait')).toBeVisible()
+
+    await page.goto('/case/case-006')
+    await page.getByTestId('start-investigation-btn').click()
+    await expect(page.getByTestId('character-token-beatrice')).toHaveAccessibleName('Sister Beatrice (suspect) unplaced')
+    await expect(page.getByTestId('character-token-beatrice').locator('img')).toHaveCount(0)
+  })
+
   test('Flow 1: Complete Case 1, submit solution, accuse murderer, and reach CASE CLOSED', async ({
     page,
   }) => {

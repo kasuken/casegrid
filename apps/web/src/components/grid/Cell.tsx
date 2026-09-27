@@ -8,6 +8,7 @@ import {
 import { useGameStore } from '../../stores/gameStore'
 import { CharacterToken } from '../characters/CharacterToken'
 import { ObjectToken } from './ObjectToken'
+import { AssetIcon } from '../AssetIcon'
 
 interface CellProps {
   readonly position: Position
@@ -80,7 +81,7 @@ export function Cell({
       ref={setNodeRef}
       className={`grid-cell ${area ? `grid-cell--area-${area.id}` : ''} ${
         isOver && !isBlocked ? 'grid-cell--drop-over' : ''
-      } ${isTargetHighlight ? 'grid-cell--target' : ''} ${
+      } ${isTargetHighlight ? 'grid-cell--target' : ''} ${isSelected ? 'grid-cell--selected' : ''} ${
         isBlocked ? 'grid-cell--blocked' : ''
       }`}
       onClick={handleClick}
@@ -129,7 +130,7 @@ export function Cell({
             aria-label="Excluded cell note"
             title="Marked impossible for selected character"
           >
-            ✕
+            <AssetIcon name="cell-excluded" size={24} />
           </div>
         )}
       </div>

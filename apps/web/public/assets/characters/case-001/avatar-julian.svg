@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Dr. Julian Sterling, in tweed with his medical bag strap</title>
+  <defs><clipPath id="portrait"><circle cx="40" cy="40" r="37"/></clipPath></defs>
+  <g clip-path="url(#portrait)" stroke="#1b2228" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path fill="#d1c9d7" stroke="none" d="M0 0h80v80H0z"/>
+    <path stroke="#b8b2c2" stroke-width="1" d="M10 21h59M6 26h68M8 58h65"/>
+    <path fill="#e8e0cb" d="m6 81 7-19 17-8 19 1 17 8 9 18"/>
+    <path fill="#b38d65" d="m32 42-1 15 12 11 10-12-6-16"/>
+    <path fill="#faf6ee" d="m29 53 13 10 10-11 4 6-11 21-17-21Z"/>
+    <path fill="#58436e" d="m38 63 9-1-2 7 5 12H38l3-12Z"/>
+    <path fill="#78745b" d="m22 58 8-4 11 21 3 5H20Zm32-3 8 5-1 21H43Z"/>
+    <path stroke="#b5ac84" stroke-width="1" d="m25 62 3 3 3-3m-6 8 3 3 3-3m-7 8 3 3 3-3m-4-23 3 3 3-3m23 5-3 3-3-3m7 7-3 3-3-3m6 7-3 3-3-3m-18-8 3 3m-3 4 3 3"/>
+    <path fill="#b98d66" d="M25 28q-6-4-5 5 1 6 6 7m29-14q6-3 5 5-1 5-5 7"/>
+    <path fill="#cfaa80" d="M26 21q3-12 16-11 13 2 14 14l-2 18-8 11-10-1-8-9Z"/>
+    <path fill="#ad805c" stroke="none" d="m47 17 7 5 2 2-2 18-8 11-10-1 5-5 7-4Z"/>
+    <path fill="#443c32" d="M23 32q-5-9 1-17 6-10 19-7 13-1 15 11l-2 14-4 6-3-8 3-9q-6 0-12-6-7 8-13 6l2 9-2 10-4-5Z"/>
+    <path stroke="#82705a" stroke-width="1" d="m27 17 12-7m-5 8 8-6m3 0 9 7m-28 9 1 7m26-10-1 8"/>
+    <path stroke-width="2" d="m29 29 7 2m8-1 7-2"/>
+    <path d="m30 34 6 1m9-1 5-1m-10-1-2 9 5 1m-8 5h10"/>
+    <circle cx="34" cy="35" r="1.2" fill="#1b2228" stroke="none"/>
+    <circle cx="47" cy="34" r="1.2" fill="#1b2228" stroke="none"/>
+    <path stroke="#9e7656" stroke-width="1" d="m29 39 4 2m14-1 4-3m-12 12h4"/>
+    <path fill="#48392e" d="m60 58 5 3-18 24-5-3Z"/>
+    <path stroke="#ad8654" stroke-width="1" d="m61 62-16 21"/>
+    <path fill="#cfaa80" d="m62 80-9-9-2-7q0-3 3-2l3 5 2-6q2-3 3 1l-1 8 8 6"/>
+    <path fill="#faf6ee" d="m59 78 7-6 9 9-8 7Z"/>
+    <path stroke="#aeac9b" stroke-width="1" d="m66 77 5 5M13 67l7 5m-9 2 6 3"/>
+    <circle cx="44" cy="77" r="1.2" fill="#b7a776" stroke="none"/>
+  </g>
+  <circle cx="40" cy="40" r="38" stroke="#58436e" stroke-width="2"/>
+  <circle cx="40" cy="40" r="35.4" stroke="#faf6ee" stroke-opacity=".7" stroke-width=".7"/>
+</svg>

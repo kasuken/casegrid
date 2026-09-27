@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { fetchPuzzleIndex } from '../services/puzzleLoader'
 import { loadProgress } from '../services/progressStorage'
-import { CaseGridMark } from '../components/CaseGridMark'
+import { AssetIcon } from '../components/AssetIcon'
 import type { PuzzleMetadata } from '@casegrid/puzzle-engine'
 
 interface CaseCardData extends PuzzleMetadata {
@@ -52,8 +52,7 @@ export function HomePage() {
     <main className="site-shell" data-testid="home-page">
       <header className="site-header">
         <Link className="brand" to="/" aria-label="CaseGrid home">
-          <CaseGridMark />
-          <span>CaseGrid</span>
+          <img className="brand__wordmark" src="/assets/brand/logo-casegrid.svg" width={320} height={80} alt="CaseGrid" />
         </Link>
         <span className="edition">Spatial Murder-Mystery Logic Game</span>
       </header>
@@ -108,9 +107,9 @@ export function HomePage() {
                     <div className="case-card__footer">
                       {isCompleted ? (
                         <div className="case-card__status case-card__status--solved">
-                          <span className="status-badge status-badge--solved">✓ Solved</span>
+                          <span className="status-badge status-badge--solved"><img className="asset-icon" src="/assets/brand/badge-solved-star.svg" width={20} height={20} alt="" /> Solved</span>
                           <span className="case-card__best-time" data-testid="card-best-time">
-                            ⏱ {formatBestTime(caseItem.bestTime)}
+                            <AssetIcon name="timer" /> {formatBestTime(caseItem.bestTime)}
                           </span>
                         </div>
                       ) : isInProgress ? (

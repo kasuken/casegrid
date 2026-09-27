@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGameStore } from '../../stores/gameStore'
+import { AssetIcon } from '../AssetIcon'
 
 export function CluePanel() {
   const { puzzle, solvedClueIds, toggleClueSolved } = useGameStore()
@@ -51,9 +52,7 @@ export function CluePanel() {
                     isSolved ? 'unresolved' : 'resolved'
                   }`}
                 >
-                  <span className="clue-item__checkbox" aria-hidden="true">
-                    {isSolved ? '✓' : ''}
-                  </span>
+                  <AssetIcon name={isSolved ? 'clue-resolved' : 'clue-unresolved'} />
                   <span className="clue-item__number">
                     {(idx + 1).toString().padStart(2, '0')}
                   </span>

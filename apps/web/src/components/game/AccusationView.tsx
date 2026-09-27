@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useGameStore } from '../../stores/gameStore'
+import { CharacterPortrait } from '../characters/CharacterPortrait'
 
 export function AccusationView() {
   const { puzzle, accuse, mistakes } = useGameStore()
@@ -29,6 +30,7 @@ export function AccusationView() {
     >
       <div className="accusation-card">
         <header className="accusation-card__header">
+          <img className="accusation-card__emblem" src="/assets/brand/badge-accused.svg" width={72} height={72} alt="" />
           <span className="accusation-card__badge">Deduction Verified</span>
           <h2 id="accusation-title" className="accusation-card__title">
             Everyone is in the right place.
@@ -40,7 +42,7 @@ export function AccusationView() {
 
         {errorMsg && (
           <div role="alert" className="feedback-banner feedback-banner--error">
-            <span aria-hidden="true">⚠️</span>
+            <img className="asset-icon" src="/assets/ui/badge-clue-conflict.svg" width={28} height={28} alt="" />
             <span>{errorMsg}</span>
           </div>
         )}
@@ -66,7 +68,7 @@ export function AccusationView() {
                 data-testid={`accuse-suspect-${suspect.id}`}
               >
                 <div className="suspect-card__avatar" aria-hidden="true">
-                  {suspect.name[0]}
+                  <CharacterPortrait character={suspect} />
                 </div>
                 <div className="suspect-card__info">
                   <strong className="suspect-card__name">{suspect.name}</strong>

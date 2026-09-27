@@ -19,7 +19,11 @@ export function FeedbackBanner({ feedback, onDismiss }: FeedbackBannerProps) {
       data-testid="feedback-banner"
     >
       <span className="feedback-banner__icon" aria-hidden="true">
-        {isError ? '⚠️' : isSuccess ? '✓' : 'ℹ️'}
+        {isError ? (
+          <img src="/assets/ui/badge-clue-conflict.svg" width={28} height={28} alt="" />
+        ) : isSuccess ? (
+          <img src="/assets/ui/icon-clue-resolved.svg" width={24} height={24} alt="" />
+        ) : 'i'}
       </span>
       <span className="feedback-banner__text">{feedback.message}</span>
       {onDismiss && (
