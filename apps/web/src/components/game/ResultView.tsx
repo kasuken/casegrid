@@ -4,6 +4,7 @@ import { getAreaForPosition } from '@casegrid/puzzle-engine'
 import { useGameStore } from '../../stores/gameStore'
 import { NextCaseCard } from './NextCaseCard'
 import { DeductionWalkthrough } from './DeductionWalkthrough'
+import { SharePanel } from './SharePanel'
 
 function formatTime(totalSeconds: number): string {
   const mins = Math.floor(totalSeconds / 60)
@@ -96,6 +97,13 @@ export function ResultView() {
             </div>
           )}
         </section>
+
+        <SharePanel
+          puzzle={puzzle}
+          elapsedSeconds={elapsedSeconds}
+          mistakes={mistakes}
+          nudgesUsed={(puzzle.helpPrompts?.length ?? 0) > 0 ? revealedHelpIds.length : undefined}
+        />
 
         <NextCaseCard currentCaseId={puzzle.id} />
 

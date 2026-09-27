@@ -66,6 +66,7 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 | Home entry point | New players see "Solve your first mystery". Players with an active investigation see "Resume investigation" for the most recently saved case. Players who have only finished cases see their next unsolved case. The full catalog stays below. |
 | Onboarding guide | Shown on the first case (authored `tutorial` steps) after Start Investigation. It advances as the player selects, places, takes notes, and marks clues, or with Next, and it never highlights answers. Skip or finish is remembered per case in `localStorage` (`casegrid_onboarding_v1`); corrupt data falls back to showing the skippable guide. Reopen it from Case File → "Show the guide again". |
 | Result screen | Shown only once the case is closed. It shows the CASE CLOSED stamp, the authored `resolution`, and "See the deductions" (the authored walkthrough with clue numbers). "Open the next case" picks the next unsolved published case in catalog order, or "Resume case NN" if that case is already in progress; nothing is overwritten. Replay, browsing, time, mistakes, and best time remain. A direct visit to `/case/:id/result` for an unsolved case reveals nothing. |
+| Challenge a friend | On a closed case, builds a spoiler-free share: case number and title, CASE CLOSED, time, mistakes, the nudge count when the case has nudges, "Can you solve this case?", and the canonical `/case/<id>` link with no parameters. A 1080×1080 card image is drawn on demand (the renderer is lazy-loaded) and has a text alternative. The Web Share API is used when available (with the image where supported). Copy and download are fallbacks. A cancelled share reports neither success nor error. A share is only a hand-off to the device's share sheet; it is **not** evidence of delivery, recipient play, or a verified score. |
 | Case File | Re-read the briefing and How to play at any time during an investigation. |
 | Keyboard | Tab to a portrait or cell. Enter selects a portrait or places the selected person. Space picks a portrait up for keyboard dragging (arrow keys, then Space or Enter to drop). |
 | Place | Select a person, then tap an open cell, or drag them. Placing on an occupied cell sends its occupant back to the tray. |
@@ -194,3 +195,10 @@ Direct route navigation (e.g. `/case/case-001` or `/case/case-001/result`) is ha
 To deploy via Azure CLI or GitHub Actions:
 - **App location**: `apps/web`
 - **Output location**: `dist`
+
+### Link previews for shared cases
+
+At build time, a Vite plugin (`apps/web/build/linkPreviews.ts`) writes a copy of `index.html` for every published case to `dist/case/<id>/index.html`, and to `dist/case/<id>.html` for the local preview server. Each copy has spoiler-free Open Graph and Twitter tags built only from catalog copy (title, subtitle, teaser). Static Web Apps serves those files for `/case/<id>` (keep `trailingSlash` unset), so crawlers get real metadata without a server. The app then boots as usual.
+
+- Set `CASEGRID_SITE_URL` (for example `https://casegrid.example`) in the build environment so `og:url`, `og:image`, and the canonical link are absolute. Without it, the build warns and emits relative URLs.
+- Preview images live in `apps/web/public/og/`. Regenerate them with `pnpm --filter @casegrid/web generate:og` after publishing a case or changing its title or subtitle.

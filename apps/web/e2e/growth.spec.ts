@@ -21,6 +21,108 @@ async function dragTo(page: Page, fromTestId: string, toTestId: string) {
   await page.mouse.up()
 }
 
+const CASE_001_SOLUTION: [string, string][] = [
+  ['reginald', 'cell-0-1'],
+  ['evelyn', 'cell-0-0'],
+  ['julian', 'cell-3-1'],
+  ['arthur', 'cell-1-3'],
+  ['clara', 'cell-0-4'],
+  ['beatrice', 'cell-4-4'],
+]
+const CASE_001_SUSPECTS = ['Evelyn Rosewood', 'Arthur Vance', 'Clara Mercer', 'Julian Sterling', 'Beatrice Finch']
+
+async function closeCase001(page: Page) {
+  await startCase(page)
+  await dismissGuideIfShown(page)
+  for (const [character, cell] of CASE_001_SOLUTION) {
+    await page.getByTestId(`character-token-${character}`).click()
+    await page.getByTestId(cell).click()
+  }
+  await page.getByTestId('check-solution-btn').click()
+  await page.getByTestId('accuse-suspect-evelyn').click()
+  await page.getByTestId('accuse-btn').click()
+  await expect(page.getByTestId('result-view')).toBeVisible()
+}
+
+test.describe('Sharing', () => {
+  test('a closed case shares a spoiler-free card and link that opens the exact case for a fresh recipient', async ({
+    page,
+    context,
+    browser,
+    browserName,
+  }) => {
+    test.skip(browserName !== 'chromium', 'Clipboard permissions are Chromium-specific')
+    await context.grantPermissions(['clipboard-read', 'clipboard-write'])
+    await closeCase001(page)
+
+    await page.getByTestId('open-share-btn').click()
+    const panel = page.getByTestId('share-panel')
+    await expect(panel.getByTestId('share-card-image')).toBeVisible()
+    const text = await panel.getByTestId('share-text').inputValue()
+    expect(text).toContain('Case 01: The Rosewood Parlor')
+    expect(text).toMatch(/CASE CLOSED in \d\d:\d\d · 0 mistakes · 0 nudges/)
+    for (const name of CASE_001_SUSPECTS) expect(text).not.toContain(name)
+    const shareUrl = text.trim().split('\n').at(-1) ?? ''
+    expect(new URL(shareUrl).pathname).toBe('/case/case-001')
+    expect(new URL(shareUrl).search).toBe('')
+
+    await panel.getByTestId('copy-share-btn').click()
+    await expect(panel.getByTestId('share-status')).toHaveText('Copied. Paste it anywhere to challenge a friend.')
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(text)
+
+    const download = page.waitForEvent('download')
+    await panel.getByTestId('download-card-btn').click()
+    expect((await download).suggestedFilename()).toBe('casegrid-case-01.png')
+
+    const recipient = await browser.newContext()
+    const friend = await recipient.newPage()
+    await friend.goto(shareUrl)
+    await expect(friend.locator('#case-intro-title')).toHaveText('The Rosewood Parlor')
+    await expect(friend.getByTestId('start-investigation-btn')).toBeVisible()
+    await expect(friend.getByTestId('result-view')).toHaveCount(0)
+    await recipient.close()
+  })
+
+  test('cancelling the native share sheet is neither an error nor a success', async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, 'share', {
+        configurable: true,
+        value: () => Promise.reject(new DOMException('Share canceled', 'AbortError')),
+      })
+    })
+    await closeCase001(page)
+    await page.getByTestId('open-share-btn').click()
+    await page.getByTestId('native-share-btn').click()
+    await expect(page.getByTestId('share-status')).toHaveText('Sharing cancelled.')
+  })
+
+  test('a recipient who already played keeps their own progress', async ({ page }) => {
+    await startCase(page)
+    await dismissGuideIfShown(page)
+    await page.getByTestId('character-token-julian').click()
+    await page.getByTestId('cell-3-1').click()
+
+    await page.goto('/case/case-001')
+    await expect(page.getByTestId('cell-3-1').getByTestId('character-token-julian')).toBeVisible()
+  })
+
+  test('shared case URLs serve spoiler-free link-preview HTML', async ({ request }) => {
+    const response = await request.get('/case/case-001')
+    expect(response.ok()).toBe(true)
+    const html = await response.text()
+    expect(html).toContain('<title>Case 01: The Rosewood Parlor · CaseGrid</title>')
+    expect(html).toContain('property="og:image" content="')
+    expect(html).toContain('/og/case-001.png"')
+    for (const name of CASE_001_SUSPECTS) expect(html).not.toContain(name)
+
+    const image = await request.get('/og/case-001.png')
+    expect(image.headers()['content-type']).toBe('image/png')
+
+    const unpublished = await (await request.get('/case/case-006')).text()
+    expect(unpublished).not.toContain('og/case-006.png')
+  })
+})
+
 test.describe('First visit onboarding', () => {
   test('a new player follows the guide on a phone, and refresh keeps both progress and dismissal', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 740 })

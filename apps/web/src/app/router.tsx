@@ -1,7 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { HomePage } from '../pages/HomePage'
-import { CasePage } from '../pages/CasePage'
-import { ResultPage } from '../pages/ResultPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 
 export const router = createBrowserRouter([
@@ -11,11 +9,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/case/:caseId',
-    element: <CasePage />,
+    lazy: async () => ({ Component: (await import('../pages/CasePage')).CasePage }),
   },
   {
     path: '/case/:caseId/result',
-    element: <ResultPage />,
+    lazy: async () => ({ Component: (await import('../pages/ResultPage')).ResultPage }),
   },
   {
     path: '*',

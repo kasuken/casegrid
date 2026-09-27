@@ -1346,6 +1346,79 @@ div[tabindex="0"]:focus-visible {
   color: var(--evidence);
 }
 
+/* Sharing */
+.share-launch {
+  margin: 0 0 1.5rem;
+}
+
+.share-panel {
+  margin: 0 0 2rem;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-left: 8px solid var(--evidence);
+}
+
+.share-panel__title {
+  margin: 0 0 0.35rem;
+  font-family: Georgia, serif;
+  font-size: 1.35rem;
+}
+
+.share-panel__note {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  color: rgb(24 39 45 / 78%);
+}
+
+.share-panel__card {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin: 0 auto 1rem;
+  border: 1px solid rgb(24 39 45 / 20%);
+}
+
+.share-panel__label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgb(24 39 45 / 70%);
+}
+
+.share-panel__text {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--paper-card);
+  border: 1px solid rgb(24 39 45 / 35%);
+  resize: vertical;
+}
+
+.share-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.share-panel__status {
+  min-height: 1.4em;
+  margin: 0.75rem 0 0;
+  font-size: 0.9rem;
+}
+
+.share-panel__status--warn {
+  color: #7d1c10;
+}
+
 /* Next case */
 .next-case {
   margin: 0 0 2rem;
