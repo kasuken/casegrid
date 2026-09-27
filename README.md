@@ -71,6 +71,7 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 | Place | Select a person, then tap an open cell, or drag them. Placing on an occupied cell sends its occupant back to the tray. |
 | Exclude Note | Marks cells where the selected person cannot be. Notes are for the player only. |
 | Clue marks | Tap a clue to tick it off. Also a note only. |
+| Nudges ("Need a nudge?") | Optional, hand-authored `helpPrompts` shown one at a time, general to specific, in the clue panel. Each names the clues worth combining and never checks the board, names a wrong placement, or reveals a cell. Revealed nudges stay listed. The distinct count is saved as `revealedHelpIds` on progress; older saves without the field load as zero. It appears on the result screen as "Nudges Used" and is cleared by reset or replay. Cases without authored nudges hide the panel. |
 | Undo (`Ctrl`/`⌘`+`Z`) | Reverts the last successful placement, move, removal, exclusion, or clue mark. Rejected actions (for example, placing on an object) are not recorded. Undo never touches submissions, accusations, mistakes, time, completion, or best times. History is **session-only**: it holds up to 100 steps, is cleared on case change, reset, replay, or a successful check, and is lost on refresh. The restored board itself is saved normally. The shortcut is ignored while typing in a text field. |
 
 ---

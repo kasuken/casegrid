@@ -95,6 +95,7 @@ describe('gameStore', () => {
       bestTime: undefined,
       feedback: null,
       history: [],
+      revealedHelpIds: [],
     })
   })
 
@@ -229,6 +230,88 @@ describe('gameStore', () => {
 
     // Best time remains 40, not replaced by 60
     expect(useGameStore.getState().bestTime).toBe(40)
+  })
+
+  describe('nudges', () => {
+    const helpPuzzle: Puzzle = {
+      ...mockPuzzle,
+      helpPrompts: [
+        { id: 'h1', text: 'Start with the exact cell.', clueIds: ['c1'] },
+        { id: 'h2', text: 'Who else fits room 1?', clueIds: ['c2'] },
+      ],
+    }
+    const s = () => useGameStore.getState()
+
+    it('reveals authored nudges in order, one distinct prompt at a time', () => {
+      s().loadCase(helpPuzzle)
+      s().startInvestigation()
+      s().revealNextHelp()
+      expect(s().revealedHelpIds).toEqual(['h1'])
+      s().revealNextHelp()
+      s().revealNextHelp()
+      s().revealNextHelp()
+      expect(s().revealedHelpIds).toEqual(['h1', 'h2'])
+    })
+
+    it('never alters placements, notes, clue marks, mistakes, or history', () => {
+      s().loadCase(helpPuzzle)
+      s().startInvestigation()
+      s().placeCharacter('sus1', { row: 1, column: 1 })
+      s().toggleExclusion('sus2', { row: 0, column: 0 })
+      s().toggleClueSolved('c3')
+      const before = s()
+
+      s().revealNextHelp()
+      const after = s()
+      expect(after.placements).toBe(before.placements)
+      expect(after.exclusions).toBe(before.exclusions)
+      expect(after.solvedClueIds).toBe(before.solvedClueIds)
+      expect(after.mistakes).toBe(before.mistakes)
+      expect(after.history).toBe(before.history)
+    })
+
+    it('persists the reveals and restores them, defaulting older saves to none', () => {
+      s().loadCase(helpPuzzle)
+      s().startInvestigation()
+      s().revealNextHelp()
+      const saved = JSON.parse(localStorage.getItem('casegrid_progress_v1_case-test') ?? '{}')
+      expect(saved.revealedHelpIds).toEqual(['h1'])
+
+      s().loadCase(helpPuzzle, saved)
+      expect(s().revealedHelpIds).toEqual(['h1'])
+
+      const { revealedHelpIds: _dropped, ...legacy } = saved
+      s().loadCase(helpPuzzle, legacy)
+      expect(s().revealedHelpIds).toEqual([])
+    })
+
+    it('keeps the count through completion and clears it on reset and replay', () => {
+      s().loadCase(helpPuzzle)
+      s().startInvestigation()
+      s().revealNextHelp()
+      s().placeCharacter('vic', { row: 0, column: 0 })
+      s().placeCharacter('sus1', { row: 0, column: 1 })
+      s().placeCharacter('sus2', { row: 1, column: 0 })
+      s().checkSolution()
+      s().accuse('sus1')
+      expect(s().stage).toBe('closed')
+      expect(s().revealedHelpIds).toEqual(['h1'])
+      s().revealNextHelp()
+      expect(s().revealedHelpIds).toEqual(['h1'])
+
+      s().replayCase()
+      expect(s().revealedHelpIds).toEqual([])
+      s().revealNextHelp()
+      s().resetCase()
+      expect(s().revealedHelpIds).toEqual([])
+    })
+
+    it('does nothing for cases without authored nudges', () => {
+      s().loadCase(mockPuzzle)
+      s().startInvestigation()
+      s().revealNextHelp()
+      expect(s().revealedHelpIds).toEqual([])
+    })
   })
 
   describe('undo', () => {

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGameStore } from '../../stores/gameStore'
 import { AssetIcon } from '../AssetIcon'
+import { HelpPanel } from './HelpPanel'
 
 export function CluePanel() {
   const { puzzle, solvedClueIds, toggleClueSolved } = useGameStore()
@@ -32,6 +33,8 @@ export function CluePanel() {
           {isCollapsed ? 'Show Clues ▼' : 'Hide Clues ▲'}
         </button>
       </div>
+
+      <HelpPanel />
 
       {!isCollapsed && (
         <ol id="clues-list" className="clue-panel__list">

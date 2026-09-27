@@ -38,6 +38,8 @@ interface GameState {
   readonly placements: Record<string, Position>
   readonly exclusions: Record<string, readonly Position[]>
   readonly solvedClueIds: string[]
+  /** Distinct authored nudges revealed; persisted and never inflated by repeats. */
+  readonly revealedHelpIds: string[]
   readonly selectedCharacterId: string | null
   readonly interactionMode: InteractionMode
   readonly elapsedSeconds: number
@@ -58,6 +60,7 @@ interface GameState {
   toggleExclusion: (characterId: string, position: Position) => void
   toggleClueSolved: (clueId: string) => void
   undo: () => void
+  revealNextHelp: () => void
   tickTimer: () => void
   setTimerRunning: (running: boolean) => void
   checkSolution: () => { success: boolean; conflicts: number }
@@ -83,6 +86,7 @@ function syncProgress(state: GameState): void {
     placements: state.placements,
     exclusions: state.exclusions,
     solvedClueIds: state.solvedClueIds,
+    revealedHelpIds: state.revealedHelpIds,
     elapsedSeconds: state.elapsedSeconds,
     mistakes: state.mistakes,
     bestTime: state.bestTime,
@@ -109,6 +113,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   placements: {},
   exclusions: {},
   solvedClueIds: [],
+  revealedHelpIds: [],
   selectedCharacterId: null,
   interactionMode: 'place',
   elapsedSeconds: 0,
@@ -126,6 +131,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         placements: { ...savedProgress.placements },
         exclusions: { ...savedProgress.exclusions },
         solvedClueIds: [...savedProgress.solvedClueIds],
+        revealedHelpIds: [...(savedProgress.revealedHelpIds ?? [])],
         selectedCharacterId: null,
         interactionMode: 'place',
         elapsedSeconds: savedProgress.elapsedSeconds,
@@ -142,6 +148,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         placements: { ...savedProgress.placements },
         exclusions: { ...savedProgress.exclusions },
         solvedClueIds: [...savedProgress.solvedClueIds],
+        revealedHelpIds: [...(savedProgress.revealedHelpIds ?? [])],
         selectedCharacterId: null,
         interactionMode: 'place',
         elapsedSeconds: savedProgress.elapsedSeconds,
@@ -158,6 +165,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         placements: {},
         exclusions: {},
         solvedClueIds: [],
+        revealedHelpIds: [],
         selectedCharacterId: null,
         interactionMode: 'place',
         elapsedSeconds: 0,
@@ -285,6 +293,15 @@ export const useGameStore = create<GameState>((set, get) => ({
     syncProgress(get())
   },
 
+  revealNextHelp: () => {
+    const { puzzle, revealedHelpIds, stage } = get()
+    if (!puzzle || stage !== 'investigating') return
+    const next = puzzle.helpPrompts?.find((prompt) => !revealedHelpIds.includes(prompt.id))
+    if (!next) return
+    set({ revealedHelpIds: [...revealedHelpIds, next.id] })
+    syncProgress(get())
+  },
+
   tickTimer: () => {
     const { isTimerRunning, stage, elapsedSeconds } = get()
     if (!isTimerRunning || stage !== 'investigating') return
@@ -407,6 +424,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       placements: {},
       exclusions: {},
       solvedClueIds: [],
+      revealedHelpIds: [],
       selectedCharacterId: null,
       interactionMode: 'place',
       elapsedSeconds: 0,
@@ -428,6 +446,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       placements: {},
       exclusions: {},
       solvedClueIds: [],
+      revealedHelpIds: [],
       selectedCharacterId: null,
       interactionMode: 'place',
       elapsedSeconds: 0,

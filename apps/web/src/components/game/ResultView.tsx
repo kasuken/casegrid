@@ -12,7 +12,7 @@ function formatTime(totalSeconds: number): string {
 }
 
 export function ResultView() {
-  const { puzzle, placements, elapsedSeconds, mistakes, bestTime, replayCase } =
+  const { puzzle, placements, elapsedSeconds, mistakes, bestTime, revealedHelpIds, replayCase } =
     useGameStore()
   const titleRef = useRef<HTMLHeadingElement>(null)
 
@@ -77,6 +77,15 @@ export function ResultView() {
               {mistakes}
             </strong>
           </div>
+
+          {((puzzle.helpPrompts?.length ?? 0) > 0 || revealedHelpIds.length > 0) && (
+            <div className="result-stats__item">
+              <span className="result-stats__label">Nudges Used</span>
+              <strong className="result-stats__value" data-testid="result-nudges">
+                {revealedHelpIds.length}
+              </strong>
+            </div>
+          )}
 
           {bestTime !== undefined && (
             <div className="result-stats__item">

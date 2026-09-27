@@ -1273,6 +1273,52 @@ div[tabindex="0"]:focus-visible {
   outline: none;
 }
 
+/* Optional nudges */
+.help-panel {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.9rem;
+  background: #fff8e6;
+  border: 1px dashed var(--brass);
+}
+
+.help-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.help-panel__title {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+}
+
+.help-panel__note {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: rgb(24 39 45 / 72%);
+}
+
+.help-panel__list {
+  margin: 0.6rem 0 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.help-panel__item + .help-panel__item {
+  margin-top: 0.5rem;
+}
+
+.help-panel__clues {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--evidence);
+}
+
 /* Deduction walkthrough */
 .walkthrough {
   margin: -1rem 0 2rem;

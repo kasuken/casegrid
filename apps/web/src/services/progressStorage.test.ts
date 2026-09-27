@@ -43,6 +43,38 @@ describe('progressStorage', () => {
     expect(loaded).toBeNull()
   })
 
+  it('loads older saves that predate nudges and timestamps', () => {
+    const legacy = {
+      puzzleId: 'case-001',
+      status: 'in-progress',
+      placements: {},
+      exclusions: {},
+      solvedClueIds: [],
+      elapsedSeconds: 12,
+      mistakes: 0,
+    }
+    localStorage.setItem('casegrid_progress_v1_case-001', JSON.stringify(legacy))
+    const loaded = loadProgress('case-001')
+    expect(loaded).toEqual(legacy)
+    expect(loaded?.revealedHelpIds).toBeUndefined()
+  })
+
+  it('round-trips revealed nudges and the last-updated time', () => {
+    const progress: PuzzleProgress = {
+      puzzleId: 'case-001',
+      status: 'completed',
+      placements: {},
+      exclusions: {},
+      solvedClueIds: [],
+      elapsedSeconds: 12,
+      mistakes: 0,
+      revealedHelpIds: ['nudge-1', 'nudge-2'],
+      updatedAt: 1_700_000_000_000,
+    }
+    saveProgress(progress)
+    expect(loadProgress('case-001')).toEqual(progress)
+  })
+
   it('clears progress correctly', () => {
     const progress: PuzzleProgress = {
       puzzleId: 'case-001',

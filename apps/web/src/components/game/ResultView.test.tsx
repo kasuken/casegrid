@@ -82,6 +82,19 @@ describe('ResultView', () => {
     await screen.findByTestId('next-case-card')
   })
 
+  it('reports the distinct nudges used in this solve', async () => {
+    stubFetch()
+    saveProgress(completed(puzzle.id))
+    useGameStore.getState().loadCase(puzzle, completed(puzzle.id, { revealedHelpIds: ['nudge-1', 'nudge-3'] }))
+    render(
+      <MemoryRouter>
+        <ResultView />
+      </MemoryRouter>,
+    )
+    expect(screen.getByTestId('result-nudges')).toHaveTextContent('2')
+    await screen.findByTestId('next-case-card')
+  })
+
   it('reveals the walkthrough with clue references on request', async () => {
     stubFetch()
     renderClosed()
