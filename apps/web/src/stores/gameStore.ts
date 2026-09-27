@@ -68,6 +68,7 @@ interface GameState {
   resetCase: () => void
   replayCase: () => void
   clearFeedback: () => void
+  setFeedback: (feedback: GameFeedback | null) => void
 }
 
 function syncProgress(state: GameState): void {
@@ -202,9 +203,12 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     // Cannot place on an object cell
     if (isCellBlockedByObject(position, puzzle.objects)) {
+      const obj = puzzle.objects.find((o) => isPositionEqual(o.position, position))
       set({
         feedback: {
-          message: 'That cell is blocked by an environmental object.',
+          message: obj?.label
+            ? `That cell is blocked by the ${obj.label}.`
+            : 'That cell is blocked by an environmental object.',
           type: 'error',
         },
       })
@@ -460,4 +464,5 @@ export const useGameStore = create<GameState>((set, get) => ({
   },
 
   clearFeedback: () => set({ feedback: null }),
+  setFeedback: (feedback) => set({ feedback }),
 }))

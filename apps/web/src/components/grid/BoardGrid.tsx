@@ -124,7 +124,7 @@ export function BoardGrid() {
             type="button"
             className="btn btn--primary btn--check"
             onClick={() => checkSolution()}
-            disabled={!allPlaced}
+            aria-disabled={!allPlaced}
             data-testid="check-solution-btn"
             title={allPlaced ? 'Check your solution' : 'Place all suspects first'}
           >

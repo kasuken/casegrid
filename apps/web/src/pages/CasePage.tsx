@@ -140,7 +140,7 @@ export function CasePage() {
       <GameHeader />
 
       <main className="game-content">
-        <FeedbackBanner feedback={feedback} onDismiss={clearFeedback} />
+        {stage !== 'accusing' && <FeedbackBanner feedback={feedback} onDismiss={clearFeedback} />}
 
         {stage === 'intro' && <CaseIntro />}
 

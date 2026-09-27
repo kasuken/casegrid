@@ -41,7 +41,7 @@ export function AccusationView() {
         </header>
 
         {errorMsg && (
-          <div role="alert" className="feedback-banner feedback-banner--error">
+          <div role="alert" className="feedback-banner feedback-banner--error" data-testid="accusation-error">
             <img className="asset-icon" src="/assets/ui/badge-clue-conflict.svg" width={28} height={28} alt="" />
             <span>{errorMsg}</span>
           </div>

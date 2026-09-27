@@ -132,15 +132,38 @@ describe('gameStore', () => {
     expect(state.bestTime).toBe(120)
   })
 
-  it('prevents placing characters on blocked object cells', () => {
+  it('prevents placing characters on blocked object cells and includes label if present', () => {
     const store = useGameStore.getState()
     store.loadCase(mockPuzzle)
     store.startInvestigation()
 
-    // Object is at (2, 2)
+    // Object is at (2, 2) without label
     store.placeCharacter('sus1', { row: 2, column: 2 })
     expect(useGameStore.getState().placements.sus1).toBeUndefined()
     expect(useGameStore.getState().feedback?.type).toBe('error')
+    expect(useGameStore.getState().feedback?.message).toBe(
+      'That cell is blocked by an environmental object.',
+    )
+
+    // With labeled object
+    const puzzleWithLabel: Puzzle = {
+      ...mockPuzzle,
+      objects: [{ id: 'desk', type: 'desk', label: 'Mahogany Desk', position: { row: 2, column: 2 } }],
+    }
+    store.loadCase(puzzleWithLabel)
+    store.startInvestigation()
+    store.placeCharacter('sus1', { row: 2, column: 2 })
+    expect(useGameStore.getState().feedback?.message).toBe(
+      'That cell is blocked by the Mahogany Desk.',
+    )
+  })
+
+  it('allows setting feedback explicitly via setFeedback', () => {
+    const store = useGameStore.getState()
+    store.setFeedback({ message: 'Custom info note', type: 'info' })
+    expect(useGameStore.getState().feedback).toEqual({ message: 'Custom info note', type: 'info' })
+    store.clearFeedback()
+    expect(useGameStore.getState().feedback).toBeNull()
   })
 
   it('toggles exclusions correctly without affecting placements', () => {

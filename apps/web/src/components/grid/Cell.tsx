@@ -41,6 +41,7 @@ export function Cell({
     placeCharacter,
     toggleExclusion,
     selectCharacter,
+    setFeedback,
   } = useGameStore()
 
   const cellId = `cell-${position.row}-${position.column}`
@@ -53,6 +54,14 @@ export function Cell({
 
   const handleClick = () => {
     if (mapObject) {
+      if (selectedCharacterId) {
+        placeCharacter(selectedCharacterId, position)
+      } else {
+        setFeedback({
+          message: `${mapObject.label ?? 'Environmental object'} blocks this cell. Characters cannot stand here.`,
+          type: 'info',
+        })
+      }
       return
     }
 
@@ -66,7 +75,7 @@ export function Cell({
     // Place mode
     if (selectedCharacterId) {
       placeCharacter(selectedCharacterId, position)
-      // Keep selection or deselect
+      selectCharacter(null)
     } else if (placedCharacter) {
       selectCharacter(placedCharacter.id)
     }
