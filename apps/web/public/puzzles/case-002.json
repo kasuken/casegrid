@@ -152,29 +152,29 @@
     },
     {
       "id": "c2-2",
-      "text": "Dr. Nadia Rostova was in the Fossil Hall.",
+      "text": "Nadia and Henry were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "nadia",
-        "areaId": "fossil_hall"
+        "targetCharacterId": "henry"
       }
     },
     {
       "id": "c2-3",
-      "text": "Nadia was standing directly adjacent to Professor Pembroke.",
+      "text": "Nadia was standing directly beside the T-Rex skull.",
       "constraint": {
-        "type": "character_adjacent_to_character",
+        "type": "character_adjacent_to_object",
         "characterId": "nadia",
-        "targetCharacterId": "alistair"
+        "objectId": "t_rex_skull"
       }
     },
     {
       "id": "c2-4",
-      "text": "Nadia was in column 1.",
+      "text": "Nadia was in row 3.",
       "constraint": {
-        "type": "character_in_column",
+        "type": "character_in_row",
         "characterId": "nadia",
-        "column": 0
+        "row": 2
       }
     },
     {
@@ -268,11 +268,11 @@
     },
     {
       "id": "c2-15",
-      "text": "Sylvia Chen was working in the Restoration Lab.",
+      "text": "Sylvia and Henry were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "sylvia",
-        "areaId": "restoration_lab"
+        "targetCharacterId": "henry"
       }
     },
     {
@@ -298,7 +298,7 @@
   "solution": {
     "placements": {
       "alistair": { "row": 0, "column": 1 },
-      "nadia": { "row": 0, "column": 0 },
+      "nadia": { "row": 2, "column": 1 },
       "henry": { "row": 3, "column": 1 },
       "marcus": { "row": 1, "column": 3 },
       "elena": { "row": 0, "column": 4 },
@@ -313,12 +313,12 @@
       "clueIds": ["c2-1"]
     },
     {
-      "text": "Nadia is in the Fossil Hall beside him. The T-Rex skull blocks the cell below him, leaving row 1, column 1 or row 1, column 3. Column 1 settles it.",
-      "clueIds": ["c2-2", "c2-3", "c2-4"]
+      "text": "Nadia stands beside the T-Rex skull. The professor has the cell above it, which leaves row 2, column 1, row 2, column 3, and row 3, column 2. Only row 3, column 2 is in row 3.",
+      "clueIds": ["c2-3", "c2-4"]
     },
     {
-      "text": "Henry is in the Relic Gallery beside the sarcophagus. Its only neighbour in row 4 is row 4, column 2, and he has the gallery to himself.",
-      "clueIds": ["c2-5", "c2-6", "c2-7", "c2-8"]
+      "text": "Henry is alone in the Relic Gallery beside the sarcophagus, and in row 4 that means row 4, column 2. He stands right below Nadia, but across a wall, so they are in different rooms.",
+      "clueIds": ["c2-2", "c2-5", "c2-6", "c2-7", "c2-8"]
     },
     {
       "text": "Marcus is in the Gem Vault beside the diamond showcase. Its neighbour in column 4 is row 2, column 4.",
@@ -329,7 +329,7 @@
       "clueIds": ["c2-9", "c2-13", "c2-14"]
     },
     {
-      "text": "Sylvia is in the Restoration Lab beside the microscope bench, in column 6: row 5, column 6.",
+      "text": "Sylvia stands beside the microscope bench in column 6: row 5, column 6, in the Restoration Lab, a different room from Henry.",
       "clueIds": ["c2-15", "c2-16", "c2-17"]
     },
     {

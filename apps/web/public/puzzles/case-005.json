@@ -159,20 +159,20 @@
     },
     {
       "id": "c5-2",
-      "text": "Camilla Fontaine was inside the Dressing Rooms.",
+      "text": "Camilla and Vivian were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "camilla",
-        "areaId": "dressing_rooms"
+        "targetCharacterId": "vivian"
       }
     },
     {
       "id": "c5-3",
-      "text": "Camilla stood directly beside Vincent.",
+      "text": "Camilla stood directly beside the illuminated vanity mirror.",
       "constraint": {
-        "type": "character_adjacent_to_character",
+        "type": "character_adjacent_to_object",
         "characterId": "camilla",
-        "targetCharacterId": "vincent"
+        "objectId": "vanity_mirror"
       }
     },
     {
@@ -294,11 +294,11 @@
     },
     {
       "id": "c5-17",
-      "text": "Vivian Cole was in Backstage.",
+      "text": "Vivian and Julian were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "vivian",
-        "areaId": "backstage"
+        "targetCharacterId": "julian_v"
       }
     },
     {
@@ -332,7 +332,7 @@
   "solution": {
     "placements": {
       "vincent": { "row": 4, "column": 5 },
-      "camilla": { "row": 3, "column": 5 },
+      "camilla": { "row": 3, "column": 4 },
       "julian_v": { "row": 0, "column": 1 },
       "rowan": { "row": 1, "column": 2 },
       "seraphina": { "row": 1, "column": 5 },
@@ -348,8 +348,8 @@
       "clueIds": ["c5-1"]
     },
     {
-      "text": "Camilla is beside him in the Dressing Rooms. The vanity mirror blocks the cell to his left, so she is directly above or below him. Row 4 settles it.",
-      "clueIds": ["c5-2", "c5-3", "c5-4"]
+      "text": "Camilla stands beside the vanity mirror. Vincent has the cell to its right, which leaves row 4, column 5, row 6, column 5, and row 5, column 4. Only row 4, column 5 is in row 4.",
+      "clueIds": ["c5-3", "c5-4"]
     },
     {
       "text": "Julian is on the Main Stage beside the trapdoor. Its only neighbour in row 1 is row 1, column 2.",
@@ -368,11 +368,11 @@
       "clueIds": ["c5-11", "c5-15", "c5-16"]
     },
     {
-      "text": "Vivian is alone backstage beside the costume trunk, in column 1: row 5, column 1.",
-      "clueIds": ["c5-17", "c5-18", "c5-19", "c5-20"]
+      "text": "Vivian is alone backstage beside the costume trunk, in column 1: row 5, column 1. That puts her in a different room from both Julian and Camilla.",
+      "clueIds": ["c5-2", "c5-17", "c5-18", "c5-19", "c5-20"]
     },
     {
-      "text": "With everyone placed, Camilla is the only suspect sharing the Dressing Rooms with Vincent.",
+      "text": "With everyone placed, Camilla is the only suspect sharing the Dressing Rooms with Vincent, although she was never directly beside him.",
       "clueIds": []
     }
   ],

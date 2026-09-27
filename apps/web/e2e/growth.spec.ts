@@ -19,11 +19,13 @@ async function dragTo(page: Page, fromTestId: string, toTestId: string) {
   await page.mouse.down()
   await page.mouse.move(to.x + to.width / 2, to.y + to.height / 2, { steps: 12 })
   await page.mouse.up()
+  // dnd-kit swallows every click for 50 ms after a drop; a person never clicks that fast.
+  await page.waitForTimeout(100)
 }
 
 const CASE_001_SOLUTION: [string, string][] = [
   ['reginald', 'cell-0-1'],
-  ['evelyn', 'cell-0-0'],
+  ['evelyn', 'cell-1-0'],
   ['julian', 'cell-3-1'],
   ['arthur', 'cell-1-3'],
   ['clara', 'cell-0-4'],

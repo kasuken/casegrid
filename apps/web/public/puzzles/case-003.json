@@ -152,20 +152,20 @@
     },
     {
       "id": "c3-2",
-      "text": "Dimitri Petrov was in the Sleeper Cabin.",
+      "text": "Dimitri and Charlotte were in different cars.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "dimitri",
-        "areaId": "sleeper_cabin"
+        "targetCharacterId": "charlotte"
       }
     },
     {
       "id": "c3-3",
-      "text": "Dimitri was standing directly adjacent to the Baroness.",
+      "text": "Dimitri was standing directly beside the velvet berth bed.",
       "constraint": {
-        "type": "character_adjacent_to_character",
+        "type": "character_adjacent_to_object",
         "characterId": "dimitri",
-        "targetCharacterId": "baroness"
+        "objectId": "berth_bed"
       }
     },
     {
@@ -268,11 +268,11 @@
     },
     {
       "id": "c3-15",
-      "text": "Otto Becker was working in the Baggage Car.",
+      "text": "Otto and Viktor were in different cars.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "otto",
-        "areaId": "baggage_car"
+        "targetCharacterId": "viktor"
       }
     },
     {
@@ -306,7 +306,7 @@
   "solution": {
     "placements": {
       "baroness": { "row": 4, "column": 0 },
-      "dimitri": { "row": 3, "column": 0 },
+      "dimitri": { "row": 3, "column": 1 },
       "viktor": { "row": 0, "column": 1 },
       "charlotte": { "row": 1, "column": 2 },
       "gwen": { "row": 1, "column": 5 },
@@ -321,23 +321,23 @@
       "clueIds": ["c3-1"]
     },
     {
-      "text": "Dimitri is in the Sleeper Cabin beside her. The berth bed blocks the cell to her right, so he is directly above or below her. Row 4 settles it.",
-      "clueIds": ["c3-2", "c3-3", "c3-4"]
+      "text": "Dimitri stands beside the velvet berth bed. The Baroness has the cell to its left, which leaves row 4, column 2, row 6, column 2, and row 5, column 3. Only row 4, column 2 is in row 4.",
+      "clueIds": ["c3-3", "c3-4"]
     },
     {
       "text": "Viktor stands beside the grand piano in the Saloon Car. Its only neighbour in row 1 is row 1, column 2.",
       "clueIds": ["c3-6", "c3-7", "c3-8"]
     },
     {
-      "text": "Charlotte shares the Saloon Car and is also beside the piano, in column 3: row 2, column 3.",
-      "clueIds": ["c3-5", "c3-9", "c3-10"]
+      "text": "Charlotte shares the Saloon Car with Viktor and is also beside the piano, in column 3: row 2, column 3. That is a different car from Dimitri’s, as the clue says.",
+      "clueIds": ["c3-2", "c3-5", "c3-9", "c3-10"]
     },
     {
       "text": "Gwen has the Dining Car to herself, beside the bar counter in column 6: row 2, column 6.",
       "clueIds": ["c3-11", "c3-12", "c3-13", "c3-14"]
     },
     {
-      "text": "Otto is alone in the Baggage Car beside the freight crate in column 6: row 5, column 6.",
+      "text": "Otto is alone beside the freight crate in column 6: row 5, column 6, in the Baggage Car, a different car from Viktor.",
       "clueIds": ["c3-15", "c3-16", "c3-17", "c3-18"]
     },
     {

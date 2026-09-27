@@ -159,20 +159,20 @@
     },
     {
       "id": "c4-2",
-      "text": "Mira Gable was in the Lantern Gallery.",
+      "text": "Mira and Lydia were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "mira",
-        "areaId": "lantern_gallery"
+        "targetCharacterId": "lydia"
       }
     },
     {
       "id": "c4-3",
-      "text": "Mira was standing directly beside Captain Ward.",
+      "text": "Mira was standing directly beside Caleb.",
       "constraint": {
         "type": "character_adjacent_to_character",
         "characterId": "mira",
-        "targetCharacterId": "thaddeus"
+        "targetCharacterId": "caleb"
       }
     },
     {
@@ -294,11 +294,11 @@
     },
     {
       "id": "c4-17",
-      "text": "Eleanor Ashby was in the Engine Room.",
+      "text": "Eleanor and Jonas were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "eleanor",
-        "areaId": "engine_room"
+        "targetCharacterId": "jonas"
       }
     },
     {
@@ -332,7 +332,7 @@
   "solution": {
     "placements": {
       "thaddeus": { "row": 0, "column": 1 },
-      "mira": { "row": 0, "column": 0 },
+      "mira": { "row": 1, "column": 0 },
       "lydia": { "row": 2, "column": 1 },
       "caleb": { "row": 2, "column": 0 },
       "jonas": { "row": 2, "column": 4 },
@@ -346,10 +346,6 @@
     {
       "text": "Captain Ward is fixed at row 1, column 2 on the lantern gallery.",
       "clueIds": ["c4-1"]
-    },
-    {
-      "text": "Mira is beside him on the gallery. The beacon lens blocks the cell to his right, leaving row 1, column 1 or row 2, column 2. Column 1 settles it.",
-      "clueIds": ["c4-2", "c4-3", "c4-4"]
     },
     {
       "text": "Lydia is in the Radio Shack beside the radio unit. The cell below the radio belongs to the Engine Room, so in row 3 she can only be at row 3, column 2.",
@@ -368,11 +364,15 @@
       "clueIds": ["c4-11", "c4-15", "c4-16"]
     },
     {
-      "text": "Eleanor is alone in the Engine Room beside the generator, in row 5: row 5, column 3.",
+      "text": "Eleanor is alone beside the generator in row 5: row 5, column 3, in the Engine Room, a different room from Jonas.",
       "clueIds": ["c4-17", "c4-18", "c4-19", "c4-20"]
     },
     {
-      "text": "With everyone placed, Mira is the only suspect sharing the lantern gallery with Captain Ward.",
+      "text": "Mira stands beside Caleb, in column 1. His neighbours in that column are row 2, column 1 and row 4, column 1. Row 4, column 1 is in the Radio Shack with Lydia, and Mira was in a different room from her, so Mira is at row 2, column 1 on the gallery.",
+      "clueIds": ["c4-2", "c4-3", "c4-4"]
+    },
+    {
+      "text": "With everyone placed, Mira is the only suspect on the lantern gallery with Captain Ward, although she was never directly beside him.",
       "clueIds": []
     }
   ],
@@ -385,7 +385,7 @@
     {
       "id": "nudge-2",
       "text": "Some clues put a person beside another person rather than an object. Settle the first person, then list the open cells around them.",
-      "clueIds": ["c4-9", "c4-15"]
+      "clueIds": ["c4-3", "c4-9", "c4-15"]
     },
     {
       "id": "nudge-3",

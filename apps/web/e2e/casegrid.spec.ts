@@ -49,9 +49,9 @@ test.describe('CaseGrid Critical Journeys', () => {
     await page.getByTestId('character-token-reginald').click()
     await page.getByTestId('cell-0-1').click()
 
-    // evelyn -> (0, 0)
+    // evelyn -> (1, 0)
     await page.getByTestId('character-token-evelyn').click()
-    await page.getByTestId('cell-0-0').click()
+    await page.getByTestId('cell-1-0').click()
 
     // julian -> (3, 1)
     await page.getByTestId('character-token-julian').click()

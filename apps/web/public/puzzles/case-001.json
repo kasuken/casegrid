@@ -164,11 +164,11 @@
     },
     {
       "id": "clue-2",
-      "text": "Evelyn was standing directly beside Lord Reginald.",
+      "text": "Evelyn was standing directly beside the stone fountain.",
       "constraint": {
-        "type": "character_adjacent_to_character",
+        "type": "character_adjacent_to_object",
         "characterId": "evelyn",
-        "targetCharacterId": "reginald"
+        "objectId": "fountain"
       }
     },
     {
@@ -292,7 +292,7 @@
   "solution": {
     "placements": {
       "reginald": { "row": 0, "column": 1 },
-      "evelyn": { "row": 0, "column": 0 },
+      "evelyn": { "row": 1, "column": 0 },
       "julian": { "row": 3, "column": 1 },
       "arthur": { "row": 1, "column": 3 },
       "clara": { "row": 0, "column": 4 },
@@ -307,7 +307,7 @@
       "clueIds": ["clue-1"]
     },
     {
-      "text": "Evelyn must share an edge with him. The stone fountain blocks the cell below him, leaving row 1, column 1 or row 1, column 3. Only the first is in column 1.",
+      "text": "Evelyn stands beside the stone fountain. Lord Reginald has the cell above it, which leaves row 2, column 1, row 2, column 3, and row 3, column 2. Only row 2, column 1 is in column 1.",
       "clueIds": ["clue-2", "clue-3"]
     },
     {
@@ -327,7 +327,7 @@
       "clueIds": ["clue-14", "clue-15"]
     },
     {
-      "text": "With everyone placed, Evelyn is the only suspect sharing the conservatory with Lord Reginald.",
+      "text": "With everyone placed, Evelyn is the only suspect in the conservatory with Lord Reginald. She was never directly beside him: their cells touch only at a corner.",
       "clueIds": []
     }
   ],
