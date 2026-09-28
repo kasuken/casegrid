@@ -198,9 +198,4 @@ To deploy via Azure CLI or GitHub Actions:
 - **App location**: `apps/web`
 - **Output location**: `dist`
 
-### Link previews for shared cases
-
-At build time, a Vite plugin (`apps/web/build/linkPreviews.ts`) writes a copy of `index.html` for every published case to `dist/case/<id>/index.html`, and to `dist/case/<id>.html` for the local preview server. Each copy has spoiler-free Open Graph and Twitter tags built only from catalog copy (title, subtitle, teaser). Static Web Apps serves those files for `/case/<id>` (keep `trailingSlash` unset), so crawlers get real metadata without a server. The app then boots as usual.
-
-- Set `CASEGRID_SITE_URL` (for example `https://casegrid.example`) in the build environment so `og:url`, `og:image`, and the canonical link are absolute. Without it, the build warns and emits relative URLs.
-- Preview images live in `apps/web/public/og/`. Regenerate them with `pnpm --filter @casegrid/web generate:og` after publishing a case or changing its title or subtitle.
+Production is the Free-tier Static Web App `swa-casegrid` (resource group `rg-casegrid`, West Europe). `.github/workflows/deploy.yml` validates puzzles, builds, and uploads `apps/web/dist` on every push to `main`, using the `AZURE_STATIC_WEB_APPS_API_TOKEN` repository secret.
