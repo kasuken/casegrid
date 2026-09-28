@@ -6,6 +6,7 @@ import {
 } from '@casegrid/puzzle-engine'
 import { useGameStore } from '../../stores/gameStore'
 import { Cell } from './Cell'
+import { UndoButton } from '../game/UndoButton'
 
 export function BoardGrid() {
   const {
@@ -48,6 +49,9 @@ export function BoardGrid() {
     for (let c = 0; c < width; c++) {
       const pos: Position = { row: r, column: c }
       const area = getAreaForPosition(pos, puzzle.areas)
+      const areaNumber = area ? puzzle.areas.findIndex((item) => item.id === area.id) + 1 : undefined
+      const startsAreaAbove = Boolean(area && getAreaForPosition({ row: r - 1, column: c }, puzzle.areas)?.id !== area.id)
+      const startsAreaLeft = Boolean(area && getAreaForPosition({ row: r, column: c - 1 }, puzzle.areas)?.id !== area.id)
       const isHeader =
         area &&
         areaHeaders.get(area.id) &&
@@ -74,6 +78,9 @@ export function BoardGrid() {
           key={`${r}-${c}`}
           position={pos}
           area={area}
+          areaNumber={areaNumber}
+          startsAreaAbove={startsAreaAbove}
+          startsAreaLeft={startsAreaLeft}
           isAreaHeader={Boolean(isHeader)}
           mapObject={mapObj}
           placedCharacter={placedChar}
@@ -98,20 +105,32 @@ export function BoardGrid() {
         </div>
       </div>
 
+      <ol className="board-room-key" aria-label="Map rooms">
+        {puzzle.areas.map((area, index) => (
+          <li key={area.id}>
+            <span className={`board-room-key__number grid-cell--zone-${index + 1}`}>{index + 1}</span>
+            {area.name}
+          </li>
+        ))}
+      </ol>
+
       <div className="board-actions">
         <span className="board-actions__count">
-          Placed: <strong>{placedCount}</strong> of <strong>{totalCount}</strong> suspects
+          Placed: <strong>{placedCount}</strong> of <strong>{totalCount}</strong> characters
         </span>
-        <button
-          type="button"
-          className="btn btn--primary btn--check"
-          onClick={() => checkSolution()}
-          disabled={!allPlaced}
-          data-testid="check-solution-btn"
-          title={allPlaced ? 'Check your solution' : 'Place all suspects first'}
-        >
-          Check Solution
-        </button>
+        <div className="board-actions__buttons">
+          <UndoButton />
+          <button
+            type="button"
+            className="btn btn--primary btn--check"
+            onClick={() => checkSolution()}
+            aria-disabled={!allPlaced}
+            data-testid="check-solution-btn"
+            title={allPlaced ? 'Check your solution' : 'Place all suspects first'}
+          >
+            Check Solution
+          </button>
+        </div>
       </div>
     </section>
   )

@@ -23,12 +23,23 @@ export interface GameFeedback {
   readonly type: 'info' | 'error' | 'success'
 }
 
+/** Player-authored board state that undo can restore. Never includes stats or stage. */
+export interface PlayerSnapshot {
+  readonly placements: Record<string, Position>
+  readonly exclusions: Record<string, readonly Position[]>
+  readonly solvedClueIds: string[]
+}
+
+export const MAX_UNDO_HISTORY = 100
+
 interface GameState {
   readonly puzzle: Puzzle | null
   readonly stage: GameStage
   readonly placements: Record<string, Position>
   readonly exclusions: Record<string, readonly Position[]>
   readonly solvedClueIds: string[]
+  /** Distinct authored nudges revealed; persisted and never inflated by repeats. */
+  readonly revealedHelpIds: string[]
   readonly selectedCharacterId: string | null
   readonly interactionMode: InteractionMode
   readonly elapsedSeconds: number
@@ -36,6 +47,8 @@ interface GameState {
   readonly mistakes: number
   readonly bestTime?: number
   readonly feedback: GameFeedback | null
+  /** Session-only; cleared on case change, reset, replay, and submission. */
+  readonly history: readonly PlayerSnapshot[]
 
   // Actions
   loadCase: (puzzle: Puzzle, savedProgress?: PuzzleProgress | null) => void
@@ -46,6 +59,8 @@ interface GameState {
   unplaceCharacter: (characterId: string) => void
   toggleExclusion: (characterId: string, position: Position) => void
   toggleClueSolved: (clueId: string) => void
+  undo: () => void
+  revealNextHelp: () => void
   tickTimer: () => void
   setTimerRunning: (running: boolean) => void
   checkSolution: () => { success: boolean; conflicts: number }
@@ -53,6 +68,7 @@ interface GameState {
   resetCase: () => void
   replayCase: () => void
   clearFeedback: () => void
+  setFeedback: (feedback: GameFeedback | null) => void
 }
 
 function syncProgress(state: GameState): void {
@@ -71,10 +87,25 @@ function syncProgress(state: GameState): void {
     placements: state.placements,
     exclusions: state.exclusions,
     solvedClueIds: state.solvedClueIds,
+    revealedHelpIds: state.revealedHelpIds,
     elapsedSeconds: state.elapsedSeconds,
     mistakes: state.mistakes,
     bestTime: state.bestTime,
+    updatedAt: Date.now(),
   })
+}
+
+function withSnapshot(state: GameState): readonly PlayerSnapshot[] {
+  const snapshot: PlayerSnapshot = {
+    placements: state.placements,
+    exclusions: state.exclusions,
+    solvedClueIds: state.solvedClueIds,
+  }
+  return [...state.history, snapshot].slice(-MAX_UNDO_HISTORY)
+}
+
+export function canUndo(state: Pick<GameState, 'stage' | 'history'>): boolean {
+  return state.stage === 'investigating' && state.history.length > 0
 }
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -83,6 +114,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   placements: {},
   exclusions: {},
   solvedClueIds: [],
+  revealedHelpIds: [],
   selectedCharacterId: null,
   interactionMode: 'place',
   elapsedSeconds: 0,
@@ -90,6 +122,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   mistakes: 0,
   bestTime: undefined,
   feedback: null,
+  history: [],
 
   loadCase: (puzzle, savedProgress) => {
     if (savedProgress && savedProgress.status === 'in-progress') {
@@ -99,6 +132,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         placements: { ...savedProgress.placements },
         exclusions: { ...savedProgress.exclusions },
         solvedClueIds: [...savedProgress.solvedClueIds],
+        revealedHelpIds: [...(savedProgress.revealedHelpIds ?? [])],
         selectedCharacterId: null,
         interactionMode: 'place',
         elapsedSeconds: savedProgress.elapsedSeconds,
@@ -106,6 +140,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         mistakes: savedProgress.mistakes,
         bestTime: savedProgress.bestTime,
         feedback: null,
+        history: [],
       })
     } else if (savedProgress && savedProgress.status === 'completed') {
       set({
@@ -114,6 +149,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         placements: { ...savedProgress.placements },
         exclusions: { ...savedProgress.exclusions },
         solvedClueIds: [...savedProgress.solvedClueIds],
+        revealedHelpIds: [...(savedProgress.revealedHelpIds ?? [])],
         selectedCharacterId: null,
         interactionMode: 'place',
         elapsedSeconds: savedProgress.elapsedSeconds,
@@ -121,6 +157,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         mistakes: savedProgress.mistakes,
         bestTime: savedProgress.bestTime,
         feedback: null,
+        history: [],
       })
     } else {
       set({
@@ -129,6 +166,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         placements: {},
         exclusions: {},
         solvedClueIds: [],
+        revealedHelpIds: [],
         selectedCharacterId: null,
         interactionMode: 'place',
         elapsedSeconds: 0,
@@ -136,6 +174,7 @@ export const useGameStore = create<GameState>((set, get) => ({
         mistakes: 0,
         bestTime: savedProgress?.bestTime,
         feedback: null,
+        history: [],
       })
     }
   },
@@ -145,6 +184,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       stage: 'investigating',
       isTimerRunning: true,
       feedback: null,
+      history: [],
     })
     syncProgress(get())
   },
@@ -163,18 +203,27 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     // Cannot place on an object cell
     if (isCellBlockedByObject(position, puzzle.objects)) {
+      const obj = puzzle.objects.find((o) => isPositionEqual(o.position, position))
       set({
         feedback: {
-          message: 'That cell is blocked by an environmental object.',
+          message: obj?.label
+            ? `That cell is blocked by the ${obj.label}.`
+            : 'That cell is blocked by an environmental object.',
           type: 'error',
         },
       })
       return
     }
 
+    const current = placements[characterId]
+    if (current && isPositionEqual(current, position)) {
+      set({ feedback: null })
+      return
+    }
+
     const nextPlacements = { ...placements }
 
-    // If another character is already in this cell, remove or swap them
+    // Placing onto an occupied cell sends its occupant back to the tray
     for (const [existingCharId, pos] of Object.entries(nextPlacements)) {
       if (existingCharId !== characterId && isPositionEqual(pos, position)) {
         delete nextPlacements[existingCharId]
@@ -184,6 +233,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     nextPlacements[characterId] = position
 
     set({
+      history: withSnapshot(get()),
       placements: nextPlacements,
       feedback: null,
     })
@@ -197,7 +247,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     const next = { ...placements }
     delete next[characterId]
 
-    set({ placements: next, feedback: null })
+    set({ history: withSnapshot(get()), placements: next, feedback: null })
     syncProgress(get())
   },
 
@@ -213,6 +263,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     }
 
     set({
+      history: withSnapshot(get()),
       exclusions: {
         ...exclusions,
         [characterId]: charExclusions,
@@ -227,7 +278,31 @@ export const useGameStore = create<GameState>((set, get) => ({
       ? solvedClueIds.filter((id) => id !== clueId)
       : [...solvedClueIds, clueId]
 
-    set({ solvedClueIds: next })
+    set({ history: withSnapshot(get()), solvedClueIds: next })
+    syncProgress(get())
+  },
+
+  undo: () => {
+    const state = get()
+    if (!canUndo(state)) return
+
+    const previous = state.history[state.history.length - 1]
+    set({
+      history: state.history.slice(0, -1),
+      placements: previous.placements,
+      exclusions: previous.exclusions,
+      solvedClueIds: previous.solvedClueIds,
+      feedback: { message: 'Last action undone.', type: 'info' },
+    })
+    syncProgress(get())
+  },
+
+  revealNextHelp: () => {
+    const { puzzle, revealedHelpIds, stage } = get()
+    if (!puzzle || stage !== 'investigating') return
+    const next = puzzle.helpPrompts?.find((prompt) => !revealedHelpIds.includes(prompt.id))
+    if (!next) return
+    set({ revealedHelpIds: [...revealedHelpIds, next.id] })
     syncProgress(get())
   },
 
@@ -272,6 +347,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (conflicts === 0) {
       set({
         stage: 'accusing',
+        history: [],
         feedback: {
           message: 'All characters are placed correctly! Now, identify the murderer.',
           type: 'success',
@@ -352,6 +428,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       placements: {},
       exclusions: {},
       solvedClueIds: [],
+      revealedHelpIds: [],
       selectedCharacterId: null,
       interactionMode: 'place',
       elapsedSeconds: 0,
@@ -359,6 +436,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       mistakes: 0,
       bestTime,
       feedback: null,
+      history: [],
     })
     syncProgress(get())
   },
@@ -372,6 +450,7 @@ export const useGameStore = create<GameState>((set, get) => ({
       placements: {},
       exclusions: {},
       solvedClueIds: [],
+      revealedHelpIds: [],
       selectedCharacterId: null,
       interactionMode: 'place',
       elapsedSeconds: 0,
@@ -379,9 +458,11 @@ export const useGameStore = create<GameState>((set, get) => ({
       mistakes: 0,
       bestTime,
       feedback: null,
+      history: [],
     })
     syncProgress(get())
   },
 
   clearFeedback: () => set({ feedback: null }),
+  setFeedback: (feedback) => set({ feedback }),
 }))

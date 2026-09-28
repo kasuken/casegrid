@@ -106,4 +106,10 @@ Direct route navigation must work with Azure Static Web Apps SPA fallback config
 - Playwright coverage for the full winning flow, persistence after refresh, and mobile tap placement
 - Successful lint, typecheck, test, puzzle validation, end-to-end test, and production build
 
+## Post-MVP growth scope (Epic 2)
+
+PRD section 62 authorizes a bounded second milestone. It covers first-case onboarding, a resume entry point, authored resolutions and walkthroughs after completion, next-case navigation, session-only undo, optional authored nudges, spoiler-free result sharing with static link previews, and a weekly Case of the Week from a checked-in schedule.
+
+It stays a static app with JSON content and `localStorage`. There is still no backend, accounts, analytics vendor, notifications, daily scheduling, or procedural content. Shared output never reveals the murderer, placements, or deductions. All other MVP exclusions remain.
+
 The complete requirements and Definition of Done remain in [PRD.md](PRD.md).

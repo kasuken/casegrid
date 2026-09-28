@@ -287,7 +287,7 @@
     },
     {
       "id": "c20-3",
-      "text": "Chancellor Marcus Vane was in row 0.",
+      "text": "Chancellor Marcus Vane was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "marcus_v",
@@ -314,7 +314,7 @@
     },
     {
       "id": "c20-6",
-      "text": "Lady Vespera was in column 0.",
+      "text": "Lady Vespera was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "vespera",
@@ -341,7 +341,7 @@
     },
     {
       "id": "c20-9",
-      "text": "General Kael was in row 0.",
+      "text": "General Kael was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "kael",
@@ -359,7 +359,7 @@
     },
     {
       "id": "c20-11",
-      "text": "Spymaster Lyanna was in column 5.",
+      "text": "Spymaster Lyanna was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "lyanna",
@@ -386,7 +386,7 @@
     },
     {
       "id": "c20-14",
-      "text": "Inquisitor Morath was in row 3.",
+      "text": "Inquisitor Morath was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "morath",
@@ -404,7 +404,7 @@
     },
     {
       "id": "c20-16",
-      "text": "Commander Silas was in column 0.",
+      "text": "Commander Silas was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "silas_guard",
@@ -431,7 +431,7 @@
     },
     {
       "id": "c20-19",
-      "text": "Envoy Zephyr was in row 3.",
+      "text": "Envoy Zephyr was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "zephyr",
@@ -449,7 +449,7 @@
     },
     {
       "id": "c20-21",
-      "text": "Archivist Theresa was in column 5.",
+      "text": "Archivist Theresa was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "theresa",

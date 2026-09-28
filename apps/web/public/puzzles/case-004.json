@@ -101,49 +101,56 @@
       "id": "thaddeus",
       "name": "Capt. Thaddeus Ward",
       "description": "Gruff veteran keeper of Saltmarsh Beacon.",
-      "role": "victim"
+      "role": "victim",
+      "avatar": "/assets/characters/case-004/avatar-thaddeus.svg"
     },
     {
       "id": "mira",
       "name": "Mira Gable",
       "description": "Apprentice keeper scheduled for relief.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-004/avatar-mira.svg"
     },
     {
       "id": "lydia",
       "name": "Lydia Cross",
       "description": "Radio operator attempting SOS contact.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-004/avatar-lydia.svg"
     },
     {
       "id": "caleb",
-      "name": "Caleb Finch",
+      "name": "Caleb Morrow",
       "description": "Lobster fisherman whose skiff broke mooring.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-004/avatar-caleb.svg"
     },
     {
       "id": "jonas",
       "name": "Jonas Vane",
       "description": "Naval surveyor updating marine tide charts.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-004/avatar-jonas.svg"
     },
     {
       "id": "samuel",
       "name": "Samuel Drake",
       "description": "Harbor inspector trapped by the squall.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-004/avatar-samuel.svg"
     },
     {
       "id": "eleanor",
-      "name": "Eleanor Rigby",
+      "name": "Eleanor Ashby",
       "description": "Naturalist studying migratory seabirds.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-004/avatar-eleanor.svg"
     }
   ],
   "clues": [
     {
       "id": "c4-1",
-      "text": "Captain Thaddeus Ward was at row 0, column 1 inspecting the lantern.",
+      "text": "Captain Thaddeus Ward was at row 1, column 2 inspecting the lantern.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "thaddeus",
@@ -152,25 +159,25 @@
     },
     {
       "id": "c4-2",
-      "text": "Mira Gable was in the Lantern Gallery.",
+      "text": "Mira and Lydia were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "mira",
-        "areaId": "lantern_gallery"
+        "targetCharacterId": "lydia"
       }
     },
     {
       "id": "c4-3",
-      "text": "Mira was standing directly beside Captain Ward.",
+      "text": "Mira was standing directly beside Caleb.",
       "constraint": {
         "type": "character_adjacent_to_character",
         "characterId": "mira",
-        "targetCharacterId": "thaddeus"
+        "targetCharacterId": "caleb"
       }
     },
     {
       "id": "c4-4",
-      "text": "Mira was standing in column 0.",
+      "text": "Mira was standing in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "mira",
@@ -179,7 +186,7 @@
     },
     {
       "id": "c4-5",
-      "text": "Lydia Cross and Caleb Finch were both inside the Radio Shack.",
+      "text": "Lydia Cross and Caleb Morrow were both inside the Radio Shack.",
       "constraint": {
         "type": "characters_same_area",
         "characterId": "lydia",
@@ -206,7 +213,7 @@
     },
     {
       "id": "c4-8",
-      "text": "Lydia was in row 2.",
+      "text": "Lydia was in row 3.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "lydia",
@@ -224,7 +231,7 @@
     },
     {
       "id": "c4-10",
-      "text": "Caleb was in column 0.",
+      "text": "Caleb was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "caleb",
@@ -260,7 +267,7 @@
     },
     {
       "id": "c4-14",
-      "text": "Jonas was in row 2.",
+      "text": "Jonas was in row 3.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "jonas",
@@ -278,7 +285,7 @@
     },
     {
       "id": "c4-16",
-      "text": "Samuel was in column 5.",
+      "text": "Samuel was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "samuel",
@@ -287,11 +294,11 @@
     },
     {
       "id": "c4-17",
-      "text": "Eleanor Rigby was the only person in the Engine Room.",
+      "text": "Eleanor and Jonas were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "eleanor",
-        "areaId": "engine_room"
+        "targetCharacterId": "jonas"
       }
     },
     {
@@ -313,7 +320,7 @@
     },
     {
       "id": "c4-20",
-      "text": "Eleanor was in row 4.",
+      "text": "Eleanor was in row 5.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "eleanor",
@@ -325,7 +332,7 @@
   "solution": {
     "placements": {
       "thaddeus": { "row": 0, "column": 1 },
-      "mira": { "row": 0, "column": 0 },
+      "mira": { "row": 1, "column": 0 },
       "lydia": { "row": 2, "column": 1 },
       "caleb": { "row": 2, "column": 0 },
       "jonas": { "row": 2, "column": 4 },
@@ -333,5 +340,62 @@
       "eleanor": { "row": 4, "column": 2 }
     },
     "murdererId": "mira"
-  }
+  },
+  "resolution": "Mira Gable was the only person on the lantern gallery with Captain Ward. Lydia and Caleb were huddled at the radio, Jonas and Samuel were by the stove, and Eleanor was alone with the generator. Her looming relief from duty gives the story its motive, but it was the storm-bound positions that left no one else on the gallery.",
+  "deductions": [
+    {
+      "text": "Captain Ward is fixed at row 1, column 2 on the lantern gallery.",
+      "clueIds": ["c4-1"]
+    },
+    {
+      "text": "Lydia is in the Radio Shack beside the radio unit. The cell below the radio belongs to the Engine Room, so in row 3 she can only be at row 3, column 2.",
+      "clueIds": ["c4-6", "c4-7", "c4-8"]
+    },
+    {
+      "text": "Caleb stands beside Lydia. The radio blocks the cell below her, and of her other neighbours only row 3, column 1 is in column 1.",
+      "clueIds": ["c4-5", "c4-9", "c4-10"]
+    },
+    {
+      "text": "Jonas is in the Living Quarters beside the stove, in row 3: row 3, column 5.",
+      "clueIds": ["c4-12", "c4-13", "c4-14"]
+    },
+    {
+      "text": "Samuel stands beside Jonas in column 6: row 3, column 6.",
+      "clueIds": ["c4-11", "c4-15", "c4-16"]
+    },
+    {
+      "text": "Eleanor is alone beside the generator in row 5: row 5, column 3, in the Engine Room, a different room from Jonas.",
+      "clueIds": ["c4-17", "c4-18", "c4-19", "c4-20"]
+    },
+    {
+      "text": "Mira stands beside Caleb, in column 1. His neighbours in that column are row 2, column 1 and row 4, column 1. Row 4, column 1 is in the Radio Shack with Lydia, and Mira was in a different room from her, so Mira is at row 2, column 1 on the gallery.",
+      "clueIds": ["c4-2", "c4-3", "c4-4"]
+    },
+    {
+      "text": "With everyone placed, Mira is the only suspect on the lantern gallery with Captain Ward, although she was never directly beside him.",
+      "clueIds": []
+    }
+  ],
+  "helpPrompts": [
+    {
+      "id": "nudge-1",
+      "text": "Begin with the person fixed to an exact cell.",
+      "clueIds": ["c4-1"]
+    },
+    {
+      "id": "nudge-2",
+      "text": "Some clues put a person beside another person rather than an object. Settle the first person, then list the open cells around them.",
+      "clueIds": ["c4-3", "c4-9", "c4-15"]
+    },
+    {
+      "id": "nudge-3",
+      "text": "Check which room each neighbouring cell belongs to. A cell beside an object can sit across a wall in a different room.",
+      "clueIds": ["c4-6", "c4-7"]
+    },
+    {
+      "id": "nudge-4",
+      "text": "Once everyone is placed, who else is on the gallery with the captain?",
+      "clueIds": []
+    }
+  ]
 }

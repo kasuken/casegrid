@@ -195,4 +195,50 @@ describe('puzzle validator', () => {
     expect(result.valid).toBe(false)
     expect(result.errors.some((e) => e.code === 'AMBIGUOUS_PUZZLE')).toBe(true)
   })
+
+  it('accepts authored resolution, deductions, help prompts, and tutorial steps', () => {
+    const result = validatePuzzle({
+      ...validPuzzle,
+      resolution: 'Sam was the only one who shared the office with Victor.',
+      deductions: [{ text: 'Victor and Sam are both fixed in the office.', clueIds: ['c1', 'c2'] }],
+      helpPrompts: [{ id: 'h1', text: 'Who else could be in the office?', clueIds: ['c3'] }],
+      tutorial: [{ id: 't1', title: 'Pick someone', text: 'Select a character.', advanceOn: 'select' }],
+    })
+    expect(result.valid).toBe(true)
+  })
+
+  it('rejects authored content that references unknown clues', () => {
+    const result = validatePuzzle({
+      ...validPuzzle,
+      deductions: [{ text: 'Uses a missing clue.', clueIds: ['c9'] }],
+      helpPrompts: [{ id: 'h1', text: 'Also missing.', clueIds: ['c8'] }],
+    })
+    expect(result.valid).toBe(false)
+    expect(result.errors.filter((e) => e.code === 'UNKNOWN_CLUE_REFERENCE')).toHaveLength(2)
+  })
+
+  it('rejects duplicate help prompt and tutorial step IDs', () => {
+    const result = validatePuzzle({
+      ...validPuzzle,
+      helpPrompts: [
+        { id: 'h1', text: 'First', clueIds: [] },
+        { id: 'h1', text: 'Second', clueIds: [] },
+      ],
+      tutorial: [
+        { id: 't1', title: 'A', text: 'A', advanceOn: 'manual' },
+        { id: 't1', title: 'B', text: 'B', advanceOn: 'manual' },
+      ],
+    })
+    expect(result.errors.some((e) => e.code === 'DUPLICATE_HELP_PROMPT_ID')).toBe(true)
+    expect(result.errors.some((e) => e.code === 'DUPLICATE_TUTORIAL_STEP_ID')).toBe(true)
+  })
+
+  it('rejects tutorial steps with an unknown trigger', () => {
+    const result = validatePuzzle({
+      ...validPuzzle,
+      tutorial: [{ id: 't1', title: 'A', text: 'A', advanceOn: 'drag' }],
+    })
+    expect(result.valid).toBe(false)
+    expect(result.errors[0]?.code).toBe('SCHEMA_ERROR')
+  })
 })

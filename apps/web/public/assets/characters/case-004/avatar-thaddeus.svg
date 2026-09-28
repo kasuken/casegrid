@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <title>Capt. Thaddeus Ward, the weathered lighthouse keeper in cable knit</title>
+  <defs>
+    <clipPath id="portrait">
+    <circle cx="40" cy="40" r="37"/>
+    </clipPath>
+    </defs>
+  <g clip-path="url(#portrait)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 0h80v80H0Z" fill="#d5d4c7" stroke="none" stroke-width="1.5"/>
+    <path d="M10 18v45m5-51v57m50-57v57m5-51v45" fill="none" stroke="#8f2d20" stroke-width="0.45"/>
+    
+    <path d="M6 82 13 63 29 54 52 54 68 66 76 84Z" fill="#606d70" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m32 44-1 14 9 8 10-9-3-14Z" fill="#af795b" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M26 30q-7-5-5 6 0 6 6 5m27-11q7-5 5 6 0 6-6 5" fill="#d7a27e" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M24 23Q25 10 40 11 55 10 56 24L55 42 49 51 31 51 25 43Z" fill="#d7a27e" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m47 17 7 9-2 13-6 10-7 4 2-7 6-5-2-8Z" fill="#af795b" stroke="none" stroke-width="1.5"/>
+    <path d="M25 35 20 29 21 23 16 20 23 16 22 9 30 10 35 4 40 9 48 4 51 10 59 10 57 17 63 22 57 27 56 35 51 31 52 23 43 20 38 15 32 22 26 24 28 34Z" fill="#d4d8cf" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="M26 19q4-7 11-7m8 1q6 1 9 8m-30 5 2 4m28-5-1 5" fill="none" stroke="#8d9b92" stroke-width="0.8"/>
+    <path d="m29 29 7 2m8 0 6-2" fill="none" stroke="#594737" stroke-width="2"/>
+    <path d="m29 34 6 1m9 0 6-1" fill="none" stroke="#1b2228" stroke-width="1.1"/>
+    <circle cx="33" cy="35" r="1.15" fill="#1b2228" stroke="none" stroke-width="1.5"/>
+    <circle cx="46" cy="34.7" r="1.15" fill="#1b2228" stroke="none" stroke-width="1.5"/>
+    <path d="m40 34-3 7 4 1" fill="none" stroke="#1b2228" stroke-width="1.1"/>
+    <path d="m35 47 9-1" fill="none" stroke="#793f36" stroke-width="1.3"/>
+    <path d="m30 24 7-1m6 0 5 1m-20 15 5 2m14-2 4-2m-20 6-1 3m15-4 2 3m-12 4 5 1" fill="none" stroke="#987b62" stroke-width="0.8"/>
+    <path d="M24 36 29 42 33 40 40 44 47 40 53 36 56 48 52 57 46 60 41 66 34 59 28 57 23 46Z" fill="#d4d8cf" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m39 41-5-3-7 4 5 3 7-2 6 2 8-4-9-3Z" fill="#edf0e4" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m27 46 4 6m2-7 3 11m4-9 1 12m5-14-1 9m7-10-3 9" fill="none" stroke="#8d9b92" stroke-width="1"/>
+    <path d="m27 57 11 9 15-9 3 7-15 10-16-9Z" fill="#81908c" stroke="#1b2228" stroke-width="1.5"/>
+    <path d="m28 60 1 5m4-2 1 5m4-3 2 5m4-4 1 4m4-7 1 5m4-8 1 5" fill="none" stroke="#c6c9b9" stroke-width="1.3"/>
+    <path d="M19 68q8 3 0 7t0 7m9-12q8 3 0 7m27-6q-8 3 0 7m8-11q-8 3 0 7t0 7" fill="none" stroke="#a7b2a8" stroke-width="1.4"/>
+  </g>
+  <circle cx="40" cy="40" r="37.5" stroke="#8f2d20" stroke-width="3"/>
+  <circle cx="40" cy="40" r="35" stroke="#faf6ee" stroke-opacity=".7" stroke-width=".7"/>
+</svg>

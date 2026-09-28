@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useGameStore } from '../../stores/gameStore'
 import { ConfirmModal } from './ConfirmModal'
+import { CaseBriefingModal } from './CaseBriefingModal'
 import { AssetIcon } from '../AssetIcon'
 
 function formatTime(totalSeconds: number): string {
@@ -23,14 +24,11 @@ export function GameHeader() {
   } = useGameStore()
 
   const [showResetConfirm, setShowResetConfirm] = useState(false)
+  const [showCaseBriefing, setShowCaseBriefing] = useState(false)
 
   // Timer interval with visibility handling
   useEffect(() => {
-    if (!isTimerRunning || stage !== 'investigating') return
-
-    const interval = setInterval(() => {
-      tickTimer()
-    }, 1000)
+    if (stage !== 'investigating') return
 
     const handleVisibility = () => {
       if (document.hidden) {
@@ -41,12 +39,18 @@ export function GameHeader() {
     }
 
     document.addEventListener('visibilitychange', handleVisibility)
+    handleVisibility()
 
     return () => {
-      clearInterval(interval)
       document.removeEventListener('visibilitychange', handleVisibility)
     }
-  }, [isTimerRunning, stage, tickTimer, setTimerRunning])
+  }, [stage, setTimerRunning])
+
+  useEffect(() => {
+    if (!isTimerRunning || stage !== 'investigating') return
+    const interval = setInterval(tickTimer, 1000)
+    return () => clearInterval(interval)
+  }, [isTimerRunning, stage, tickTimer])
 
   return (
     <>
@@ -80,6 +84,18 @@ export function GameHeader() {
             <button
               type="button"
               className="btn btn--subtle"
+              onClick={() => setShowCaseBriefing(true)}
+              aria-label="Re-read the case briefing"
+              data-testid="view-case-briefing-btn"
+            >
+              <AssetIcon name="hint" size={24} /> Case File
+            </button>
+          )}
+
+          {stage === 'investigating' && (
+            <button
+              type="button"
+              className="btn btn--subtle"
               onClick={() => setShowResetConfirm(true)}
               aria-label="Reset this investigation"
             >
@@ -99,6 +115,11 @@ export function GameHeader() {
           setShowResetConfirm(false)
         }}
         onCancel={() => setShowResetConfirm(false)}
+      />
+
+      <CaseBriefingModal
+        isOpen={showCaseBriefing}
+        onClose={() => setShowCaseBriefing(false)}
       />
     </>
   )

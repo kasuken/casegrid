@@ -1,0 +1,214 @@
+{
+  "id": "mini-2",
+  "linkedCaseId": "case-003",
+  "title": "The Night Ferry",
+  "subtitle": "A mini-mystery on a crossing in fog",
+  "description": "Cordelia Brisk was found at the rail on the open deck of the night ferry. Three passengers were aboard. Who was alone with her?",
+  "difficulty": "beginner",
+  "grid": {
+    "width": 4,
+    "height": 2
+  },
+  "areas": [
+    {
+      "id": "cabin",
+      "name": "Cabin",
+      "cells": [
+        {
+          "row": 0,
+          "column": 0
+        },
+        {
+          "row": 0,
+          "column": 1
+        },
+        {
+          "row": 1,
+          "column": 0
+        },
+        {
+          "row": 1,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "id": "deck",
+      "name": "Deck",
+      "cells": [
+        {
+          "row": 0,
+          "column": 2
+        },
+        {
+          "row": 0,
+          "column": 3
+        },
+        {
+          "row": 1,
+          "column": 2
+        },
+        {
+          "row": 1,
+          "column": 3
+        }
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "bench",
+      "type": "bench",
+      "label": "Wooden Bench",
+      "position": {
+        "row": 1,
+        "column": 1
+      }
+    },
+    {
+      "id": "lifebuoy",
+      "type": "lifebuoy",
+      "label": "Lifebuoy",
+      "position": {
+        "row": 0,
+        "column": 3
+      }
+    }
+  ],
+  "characters": [
+    {
+      "id": "cordelia",
+      "name": "Cordelia Brisk",
+      "description": "A retired shipping heiress.",
+      "role": "victim"
+    },
+    {
+      "id": "teddy",
+      "name": "Teddy Nkemelu",
+      "description": "A travelling violinist.",
+      "role": "suspect"
+    },
+    {
+      "id": "ines",
+      "name": "Ines Calder",
+      "description": "A night-shift nurse heading home.",
+      "role": "suspect"
+    },
+    {
+      "id": "rafe",
+      "name": "Rafe Dunmore",
+      "description": "A salesman with a sample case.",
+      "role": "suspect"
+    }
+  ],
+  "clues": [
+    {
+      "id": "m2-1",
+      "text": "Cordelia was at row 1, column 3.",
+      "constraint": {
+        "type": "character_at_position",
+        "characterId": "cordelia",
+        "position": {
+          "row": 0,
+          "column": 2
+        }
+      }
+    },
+    {
+      "id": "m2-2",
+      "text": "Teddy was in column 1.",
+      "constraint": {
+        "type": "character_in_column",
+        "characterId": "teddy",
+        "column": 0
+      }
+    },
+    {
+      "id": "m2-3",
+      "text": "Teddy was in row 2.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "teddy",
+        "row": 1
+      }
+    },
+    {
+      "id": "m2-4",
+      "text": "Ines sat beside the wooden bench.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "ines",
+        "objectId": "bench"
+      }
+    },
+    {
+      "id": "m2-5",
+      "text": "Ines was in row 1.",
+      "constraint": {
+        "type": "character_in_row",
+        "characterId": "ines",
+        "row": 0
+      }
+    },
+    {
+      "id": "m2-6",
+      "text": "Rafe stood beside the lifebuoy.",
+      "constraint": {
+        "type": "character_adjacent_to_object",
+        "characterId": "rafe",
+        "objectId": "lifebuoy"
+      }
+    }
+  ],
+  "victimId": "cordelia",
+  "solution": {
+    "placements": {
+      "cordelia": {
+        "row": 0,
+        "column": 2
+      },
+      "teddy": {
+        "row": 1,
+        "column": 0
+      },
+      "ines": {
+        "row": 0,
+        "column": 1
+      },
+      "rafe": {
+        "row": 1,
+        "column": 3
+      }
+    },
+    "murdererId": "rafe"
+  },
+  "deductions": [
+    {
+      "text": "Cordelia is fixed at row 1, column 3, on the deck.",
+      "clueIds": [
+        "m2-1"
+      ]
+    },
+    {
+      "text": "Teddy is in column 1 and row 2: row 2, column 1, in the cabin.",
+      "clueIds": [
+        "m2-2",
+        "m2-3"
+      ]
+    },
+    {
+      "text": "The bench touches row 1, column 2, row 2, column 1, and row 2, column 3. Teddy already fills row 2, column 1, and of the other two only row 1, column 2 is in row 1, so Ines is in the cabin.",
+      "clueIds": [
+        "m2-4",
+        "m2-5"
+      ]
+    },
+    {
+      "text": "The lifebuoy touches only Cordelia’s cell and row 2, column 4. Rafe stands there, on the deck.",
+      "clueIds": [
+        "m2-6"
+      ]
+    }
+  ],
+  "resolution": "Rafe Dunmore was the only other person on the deck. His cell touches Cordelia’s only at a corner, so he was never beside her, but he was alone with her."
+}

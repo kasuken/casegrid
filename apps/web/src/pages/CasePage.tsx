@@ -8,7 +8,8 @@ import {
   useSensors,
   type DragEndEvent,
 } from '@dnd-kit/core'
-import { fetchPuzzle } from '../services/puzzleLoader'
+import { CaseComingSoonError, fetchPuzzle } from '../services/puzzleLoader'
+import { ComingSoonView } from '../components/game/ComingSoonView'
 import { loadProgress } from '../services/progressStorage'
 import { useGameStore } from '../stores/gameStore'
 import { CaseGridMark } from '../components/CaseGridMark'
@@ -20,11 +21,15 @@ import { CluePanel } from '../components/clues/CluePanel'
 import { AccusationView } from '../components/game/AccusationView'
 import { ResultView } from '../components/game/ResultView'
 import { FeedbackBanner } from '../components/game/FeedbackBanner'
+import { useUndoShortcut } from '../hooks/useUndoShortcut'
+import { useGuideStore } from '../stores/guideStore'
+import { CaseGuide } from '../components/game/CaseGuide'
 
 export function CasePage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
-  const [loading, setLoading] = useState(true)
-  const [loadError, setLoadError] = useState<string | null>(null)
+  const [settled, setSettled] = useState<{ caseId: string; error: Error | null } | null>(null)
+  const loading = settled?.caseId !== caseId
+  const loadError = loading ? null : (settled?.error ?? null)
 
   const {
     stage,
@@ -32,7 +37,11 @@ export function CasePage() {
     loadCase,
     placeCharacter,
     clearFeedback,
+    undo,
   } = useGameStore()
+
+  const initGuide = useGuideStore((s) => s.init)
+  useUndoShortcut(stage === 'investigating', undo)
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -40,7 +49,10 @@ export function CasePage() {
         distance: 4, // Prevents accidental drag on click/tap
       },
     }),
-    useSensor(KeyboardSensor),
+    // Space picks up for keyboard dragging; Enter stays a normal button press that selects.
+    useSensor(KeyboardSensor, {
+      keyboardCodes: { start: ['Space'], cancel: ['Escape'], end: ['Space', 'Enter'] },
+    }),
   )
 
   useEffect(() => {
@@ -51,19 +63,19 @@ export function CasePage() {
         if (!mounted) return
         const saved = loadProgress(caseId)
         loadCase(puzzle, saved)
-        setLoading(false)
+        initGuide(puzzle.id, puzzle.tutorial ?? [])
+        setSettled({ caseId, error: null })
       })
       .catch((err) => {
         if (!mounted) return
-        console.error('Error loading case:', err)
-        setLoadError(err instanceof Error ? err.message : 'Failed to load case')
-        setLoading(false)
+        if (!(err instanceof CaseComingSoonError)) console.error('Error loading case:', err)
+        setSettled({ caseId, error: err instanceof Error ? err : new Error('Failed to load case') })
       })
 
     return () => {
       mounted = false
     }
-  }, [caseId, loadCase])
+  }, [caseId, loadCase, initGuide])
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event
@@ -95,6 +107,10 @@ export function CasePage() {
     )
   }
 
+  if (loadError instanceof CaseComingSoonError) {
+    return <ComingSoonView metadata={loadError.metadata} />
+  }
+
   if (loadError) {
     return (
       <main className="site-shell not-found" data-testid="case-page-error">
@@ -108,7 +124,7 @@ export function CasePage() {
         <section className="intro">
           <p className="intro__context">Case File Not Found</p>
           <h1>Unable to open file</h1>
-          <p className="intro__summary">{loadError}</p>
+          <p className="intro__summary">{loadError.message}</p>
           <div className="mt-8">
             <Link to="/" className="btn btn--primary">
               Return to Case Selection
@@ -124,7 +140,7 @@ export function CasePage() {
       <GameHeader />
 
       <main className="game-content">
-        <FeedbackBanner feedback={feedback} onDismiss={clearFeedback} />
+        {stage !== 'accusing' && <FeedbackBanner feedback={feedback} onDismiss={clearFeedback} />}
 
         {stage === 'intro' && <CaseIntro />}
 
@@ -132,6 +148,7 @@ export function CasePage() {
           <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
             <div className="investigation-layout">
               <div className="investigation-layout__main">
+                <CaseGuide />
                 <BoardGrid />
                 <CharacterTray />
               </div>

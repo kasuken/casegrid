@@ -18,9 +18,8 @@ test.describe('CaseGrid Critical Journeys', () => {
     await expect(page.getByTestId('cell-3-1').locator('.character-portrait')).toBeVisible()
 
     await page.goto('/case/case-006')
-    await page.getByTestId('start-investigation-btn').click()
-    await expect(page.getByTestId('character-token-beatrice')).toHaveAccessibleName('Sister Beatrice (suspect) unplaced')
-    await expect(page.getByTestId('character-token-beatrice').locator('img')).toHaveCount(0)
+    await expect(page.getByTestId('case-coming-soon')).toBeVisible()
+    await expect(page.getByTestId('start-investigation-btn')).toHaveCount(0)
   })
 
   test('Flow 1: Complete Case 1, submit solution, accuse murderer, and reach CASE CLOSED', async ({
@@ -50,9 +49,9 @@ test.describe('CaseGrid Critical Journeys', () => {
     await page.getByTestId('character-token-reginald').click()
     await page.getByTestId('cell-0-1').click()
 
-    // evelyn -> (0, 0)
+    // evelyn -> (1, 0)
     await page.getByTestId('character-token-evelyn').click()
-    await page.getByTestId('cell-0-0').click()
+    await page.getByTestId('cell-1-0').click()
 
     // julian -> (3, 1)
     await page.getByTestId('character-token-julian').click()
@@ -87,8 +86,22 @@ test.describe('CaseGrid Critical Journeys', () => {
     await expect(resultView).toBeVisible()
     await expect(resultView.getByText('CASE CLOSED')).toBeVisible()
     await expect(resultView.getByText(/Evelyn Rosewood was alone with Lord Reginald/i)).toBeVisible()
+    await expect(page.getByTestId('result-resolution')).toBeVisible()
     await expect(page.getByTestId('replay-btn')).toBeVisible()
     await expect(page.getByTestId('back-to-cases-btn')).toBeVisible()
+
+    // 8. The walkthrough is available on request
+    await page.getByTestId('see-deductions-btn').click()
+    await expect(page.getByTestId('deduction-steps')).toBeVisible()
+
+    // 9. Continue straight into the next case
+    const next = page.getByTestId('open-next-case-btn')
+    await expect(next).toHaveText('Open the next case')
+    await next.click()
+    await expect(page).toHaveURL(/\/case\/case-002$/)
+    await expect(page.locator('#case-intro-title')).toHaveText('The Grand Antiquary')
+    await expect(page.getByTestId('start-investigation-btn')).toBeVisible()
+    await expect(page.getByTestId('result-view')).toHaveCount(0)
   })
 
   test('Flow 2: Active investigation state persists across page refresh', async ({

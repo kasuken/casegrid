@@ -36,7 +36,8 @@ casegrid/
 │       │   ├── grid.ts       # Orthogonal adjacency, bounds, area lookups
 │       │   ├── constraints.ts# Constraint evaluation & partial pruning
 │       │   ├── solver.ts     # Deterministic backtracking solver with MRV
-│       │   └── validator.ts  # Rigorous schema, domain, and uniqueness validator
+│       │   ├── validator.ts  # Rigorous schema, domain, and uniqueness validator
+│       │   └── deduction.ts  # Authoring aid: step-by-step deduction path analysis
 │       ├── scripts/          # CLI puzzle validation tool
 │       └── tests/            # Vitest unit & integration tests
 │
@@ -55,6 +56,25 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 4. **Orthogonal Adjacency**: Adjacency is strictly horizontal or vertical (diagonals never count).
 5. **Murderer Derivation**: The murderer is the suspect alone in the victim's area.
 6. **No Spoilers**: Solution verification occurs upon explicit submission, never after every move.
+
+---
+
+## Player Controls
+
+| Control | Behaviour |
+|---|---|
+| Home entry point | New players see "Solve your first mystery". Players with an active investigation see "Resume investigation" for the most recently saved case. Players who have only finished cases see their next unsolved case. The full catalog stays below. |
+| Onboarding guide | Shown on the first case (authored `tutorial` steps) after Start Investigation. It advances as the player selects, places, takes notes, and marks clues, or with Next, and it never highlights answers. Skip or finish is remembered per case in `localStorage` (`casegrid_onboarding_v1`); corrupt data falls back to showing the skippable guide. Reopen it from Case File → "Show the guide again". |
+| Result screen | Shown only once the case is closed. It shows the CASE CLOSED stamp, the authored `resolution`, and "See the deductions" (the authored walkthrough with clue numbers). "Open the next case" picks the next unsolved published case in catalog order, or "Resume case NN" if that case is already in progress; nothing is overwritten. Replay, browsing, time, mistakes, and best time remain. A direct visit to `/case/:id/result` for an unsolved case reveals nothing. |
+| Case of the Week | Home shows the case scheduled in `public/puzzles/schedule.json` for the current week. Weeks switch at Monday 00:00 UTC. It uses the normal `/case/<id>` link and progress, and shows a fallback message when nothing is scheduled. See `docs/content/weekly-schedule.md` for the format, validation, and editorial checklist. |
+| Challenge a friend | On a closed case, builds a spoiler-free share: case number and title, CASE CLOSED, time, mistakes, the nudge count when the case has nudges, "Can you solve this case?", and the canonical `/case/<id>` link with no parameters. A 1080×1080 card image is drawn on demand (the renderer is lazy-loaded) and has a text alternative. The Web Share API is used when available (with the image where supported). Copy and download are fallbacks. A cancelled share reports neither success nor error. A share is only a hand-off to the device's share sheet; it is **not** evidence of delivery, recipient play, or a verified score. |
+| Case File | Re-read the briefing and How to play at any time during an investigation. |
+| Keyboard | Tab to a portrait or cell. Enter selects a portrait or places the selected person. Space picks a portrait up for keyboard dragging (arrow keys, then Space or Enter to drop). |
+| Place | Select a person, then tap an open cell, or drag them. Placing on an occupied cell sends its occupant back to the tray. |
+| Exclude Note | Marks cells where the selected person cannot be. Notes are for the player only. |
+| Clue marks | Tap a clue to tick it off. Also a note only. |
+| Nudges ("Need a nudge?") | Optional, hand-authored `helpPrompts` shown one at a time, general to specific, in the clue panel. Each names the clues worth combining and never checks the board, names a wrong placement, or reveals a cell. Revealed nudges stay listed. The distinct count is saved as `revealedHelpIds` on progress; older saves without the field load as zero. It appears on the result screen as "Nudges Used" and is cleared by reset or replay. Cases without authored nudges hide the panel. |
+| Undo (`Ctrl`/`⌘`+`Z`) | Reverts the last successful placement, move, removal, exclusion, or clue mark. Rejected actions (for example, placing on an object) are not recorded. Undo never touches submissions, accusations, mistakes, time, completion, or best times. History is **session-only**: it holds up to 100 steps, is cleared on case change, reset, replay, or a successful check, and is lost on refresh. The restored board itself is saved normally. The shortcut is ignored while typing in a text field. |
 
 ---
 
@@ -91,6 +111,7 @@ The puzzle engine has **zero dependencies** on React, Zustand, Tailwind, the DOM
 | `pnpm test` | Runs Vitest unit & component test suites |
 | `pnpm test:e2e` | Runs Playwright critical journeys (desktop & mobile) |
 | `pnpm validate:puzzles` | Validates all bundled case JSON files and proves unique solutions |
+| `pnpm audit:cases` | Prints per-case metrics and whether each case yields to step-by-step deduction (`-- --trace case-001` for one case) |
 
 ---
 
@@ -108,6 +129,23 @@ Case files are stored under `apps/web/public/puzzles/case-*.json`. Each case spe
 - `clues`: Structured clues with display `text` and engine `constraint`
 - `victimId`: ID of the victim
 - `solution`: Declared placements and `murdererId`
+
+Optional authored content (PRD section 62), validated by the engine:
+
+- `resolution`: Ending text shown only after CASE CLOSED
+- `deductions`: Ordered walkthrough steps (`text`, `clueIds`) shown behind "See the deductions" after completion
+- `helpPrompts`: Ordered nudges (`id`, `text`, `clueIds`). They explain what evidence to combine and never name an answer cell
+- `tutorial`: Onboarding steps (`id`, `title`, `text`, `advanceOn`), where `advanceOn` is `manual`, `select`, `place`, `exclude`, or `clue`
+
+Clue text is presentation only, but it must quote coordinates 1-based (row 1 is the top row) to match what players see. A test enforces this.
+
+### Authoring workflow
+
+1. Edit or add `apps/web/public/puzzles/case-*.json` and its `index.json` entry.
+2. Run `pnpm validate:puzzles` for schema, references, and uniqueness.
+3. Run `pnpm audit:cases -- --trace <case-id>` to confirm the case yields to step-by-step deduction, then write its `deductions` walkthrough from the trace.
+4. Run `pnpm test` to check deduction, uniqueness, and clue-text consistency for every case.
+5. Record the case in `docs/content/case-audit.md` and playtest it before publishing.
 
 ### Supported Constraint Types
 
@@ -135,7 +173,9 @@ The validator checks:
 4. Area cell exclusivity (no overlapping rooms)
 5. Satisfaction of every clue by the declared solution
 6. Murderer logic rule (alone with the victim in the victim's area)
-7. Independent backtracking solver verification proving **exactly 1 unique solution** matching the declared solution.
+7. Authored walkthroughs and nudges reference real clue IDs; nudge and tutorial IDs are unique
+8. Independent backtracking solver verification proving **exactly 1 unique solution** matching the declared solution.
+9. `schedule.json`: Monday-aligned, ascending weeks that feature only published cases.
 
 ---
 
@@ -157,3 +197,10 @@ Direct route navigation (e.g. `/case/case-001` or `/case/case-001/result`) is ha
 To deploy via Azure CLI or GitHub Actions:
 - **App location**: `apps/web`
 - **Output location**: `dist`
+
+### Link previews for shared cases
+
+At build time, a Vite plugin (`apps/web/build/linkPreviews.ts`) writes a copy of `index.html` for every published case to `dist/case/<id>/index.html`, and to `dist/case/<id>.html` for the local preview server. Each copy has spoiler-free Open Graph and Twitter tags built only from catalog copy (title, subtitle, teaser). Static Web Apps serves those files for `/case/<id>` (keep `trailingSlash` unset), so crawlers get real metadata without a server. The app then boots as usual.
+
+- Set `CASEGRID_SITE_URL` (for example `https://casegrid.example`) in the build environment so `og:url`, `og:image`, and the canonical link are absolute. Without it, the build warns and emits relative URLs.
+- Preview images live in `apps/web/public/og/`. Regenerate them with `pnpm --filter @casegrid/web generate:og` after publishing a case or changing its title or subtitle.

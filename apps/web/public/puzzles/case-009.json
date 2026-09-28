@@ -257,7 +257,7 @@
   "clues": [
     {
       "id": "c9-1",
-      "text": "Elias Vance was inspecting gears at row 0, column 1.",
+      "text": "Elias Vance was inspecting gears at row 1, column 2.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "elias",
@@ -287,7 +287,7 @@
     },
     {
       "id": "c9-4",
-      "text": "Tobias was in column 0.",
+      "text": "Tobias was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "tobias",
@@ -323,7 +323,7 @@
     },
     {
       "id": "c9-8",
-      "text": "Nora was in row 0.",
+      "text": "Nora was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "nora",
@@ -350,7 +350,7 @@
     },
     {
       "id": "c9-11",
-      "text": "Leo was in column 5.",
+      "text": "Leo was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "leo",
@@ -385,7 +385,7 @@
     },
     {
       "id": "c9-15",
-      "text": "Inspector Croft was in row 3.",
+      "text": "Inspector Croft was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "croft",
@@ -420,7 +420,7 @@
     },
     {
       "id": "c9-19",
-      "text": "Madame Brigitte was in column 3.",
+      "text": "Madame Brigitte was in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "brigitte",

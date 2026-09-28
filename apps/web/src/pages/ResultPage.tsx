@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { fetchPuzzle } from '../services/puzzleLoader'
+import { CaseComingSoonError, fetchPuzzle } from '../services/puzzleLoader'
+import { ComingSoonView } from '../components/game/ComingSoonView'
 import { loadProgress } from '../services/progressStorage'
 import { useGameStore } from '../stores/gameStore'
 import { CaseGridMark } from '../components/CaseGridMark'
@@ -9,8 +10,9 @@ import { ResultView } from '../components/game/ResultView'
 
 export function ResultPage() {
   const { caseId = 'case-001' } = useParams<{ caseId: string }>()
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [settled, setSettled] = useState<{ caseId: string; error: Error | null } | null>(null)
+  const loading = settled?.caseId !== caseId
+  const error = loading ? null : (settled?.error ?? null)
   const { stage, loadCase } = useGameStore()
 
   useEffect(() => {
@@ -20,12 +22,11 @@ export function ResultPage() {
         if (!mounted) return
         const saved = loadProgress(caseId)
         loadCase(puzzle, saved)
-        setLoading(false)
+        setSettled({ caseId, error: null })
       })
       .catch((err) => {
         if (!mounted) return
-        setError(err instanceof Error ? err.message : 'Failed to load case')
-        setLoading(false)
+        setSettled({ caseId, error: err instanceof Error ? err : new Error('Failed to load case') })
       })
 
     return () => {
@@ -50,6 +51,10 @@ export function ResultPage() {
     )
   }
 
+  if (error instanceof CaseComingSoonError) {
+    return <ComingSoonView metadata={error.metadata} />
+  }
+
   if (error) {
     return (
       <main className="site-shell not-found">
@@ -62,7 +67,7 @@ export function ResultPage() {
         </header>
         <section className="intro">
           <h1>Case not found</h1>
-          <p className="intro__summary">{error}</p>
+          <p className="intro__summary">{error.message}</p>
           <div className="mt-8">
             <Link to="/" className="btn btn--primary">
               Return to Case Selection

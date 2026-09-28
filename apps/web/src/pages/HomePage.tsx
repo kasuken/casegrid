@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchPuzzleIndex } from '../services/puzzleLoader'
-import { loadProgress } from '../services/progressStorage'
+import { selectFeaturedCase, type FeaturedCaseResult } from '@casegrid/puzzle-engine'
+import { fetchPuzzleIndex, fetchWeeklySchedule } from '../services/puzzleLoader'
+import { withProgress, type CatalogEntry } from '../services/caseProgress'
 import { AssetIcon } from '../components/AssetIcon'
-import type { PuzzleMetadata } from '@casegrid/puzzle-engine'
-
-interface CaseCardData extends PuzzleMetadata {
-  readonly status: 'not-started' | 'in-progress' | 'completed'
-  readonly bestTime?: number
-}
+import { StartPanel } from '../components/home/StartPanel'
+import { WeeklyCasePanel } from '../components/home/WeeklyCasePanel'
 
 function formatBestTime(secs?: number): string {
   if (secs === undefined) return '--:--'
@@ -18,24 +15,20 @@ function formatBestTime(secs?: number): string {
 }
 
 export function HomePage() {
-  const [cases, setCases] = useState<CaseCardData[]>([])
+  const [cases, setCases] = useState<CatalogEntry[]>([])
   const [loading, setLoading] = useState(true)
+  const [featured, setFeatured] = useState<FeaturedCaseResult | null>(null)
 
   useEffect(() => {
     let mounted = true
     fetchPuzzleIndex()
       .then((index) => {
         if (!mounted) return
-        const withProgress: CaseCardData[] = index.map((item) => {
-          const progress = loadProgress(item.id)
-          return {
-            ...item,
-            status: progress?.status ?? 'not-started',
-            bestTime: progress?.bestTime,
-          }
-        })
-        setCases(withProgress)
+        setCases(withProgress(index))
         setLoading(false)
+        return fetchWeeklySchedule(index).then((schedule) => {
+          if (mounted && schedule) setFeatured(selectFeaturedCase(schedule, Date.now()))
+        })
       })
       .catch((err) => {
         if (!mounted) return
@@ -69,8 +62,12 @@ export function HomePage() {
           and discover who was alone with the victim.
         </p>
 
+        {!loading && <StartPanel entries={cases} />}
+        {!loading && cases.length > 0 && <WeeklyCasePanel entries={cases} featured={featured} />}
+
         <div className="cases-section">
           <h2 className="cases-section__title">Case Files</h2>
+          <p>Start with the first five cases. More investigations are coming soon.</p>
 
           {loading ? (
             <p className="loading-note">Gathering case records...</p>
@@ -80,6 +77,28 @@ export function HomePage() {
                 const caseNum = (idx + 1).toString().padStart(2, '0')
                 const isCompleted = caseItem.status === 'completed'
                 const isInProgress = caseItem.status === 'in-progress'
+                const isFeatured = featured?.kind === 'featured' && featured.week.caseId === caseItem.id
+
+                if (caseItem.availability === 'coming-soon') {
+                  return (
+                    <article
+                      key={caseItem.id}
+                      className="case-card case-card--coming-soon"
+                      role="listitem"
+                      aria-label={`Case ${caseNum}: ${caseItem.title}. Coming soon`}
+                      data-testid={`case-card-${caseItem.id}`}
+                    >
+                      <div className="case-card__header">
+                        <span className="case-card__number">CASE {caseNum}</span>
+                      </div>
+                      <h3 className="case-card__title">{caseItem.title}</h3>
+                      <p className="case-card__subtitle">{caseItem.subtitle}</p>
+                      <div className="case-card__footer">
+                        <span className="status-badge">Coming soon</span>
+                      </div>
+                    </article>
+                  )
+                }
 
                 return (
                   <Link
@@ -87,7 +106,7 @@ export function HomePage() {
                     to={`/case/${caseItem.id}`}
                     className={`case-card ${isCompleted ? 'case-card--completed' : ''}`}
                     role="listitem"
-                    aria-label={`Case ${caseNum}: ${caseItem.title}. Difficulty: ${
+                    aria-label={`Case ${caseNum}: ${caseItem.title}.${isFeatured ? ' Case of the Week.' : ''} Difficulty: ${
                       caseItem.difficulty
                     }. Status: ${
                       isCompleted ? `Solved in ${formatBestTime(caseItem.bestTime)}` : isInProgress ? 'In Progress' : 'Unopened'
@@ -99,6 +118,7 @@ export function HomePage() {
                       <span className="case-card__difficulty">{caseItem.difficulty}</span>
                     </div>
 
+                    {isFeatured && <span className="case-card__weekly">Case of the Week</span>}
                     <h3 className="case-card__title">{caseItem.title}</h3>
                     {caseItem.subtitle && (
                       <p className="case-card__subtitle">{caseItem.subtitle}</p>

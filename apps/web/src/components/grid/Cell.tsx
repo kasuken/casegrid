@@ -13,6 +13,9 @@ import { AssetIcon } from '../AssetIcon'
 interface CellProps {
   readonly position: Position
   readonly area?: Area
+  readonly areaNumber?: number
+  readonly startsAreaAbove?: boolean
+  readonly startsAreaLeft?: boolean
   readonly isAreaHeader?: boolean
   readonly mapObject?: MapObject
   readonly placedCharacter?: Character
@@ -23,6 +26,9 @@ interface CellProps {
 export function Cell({
   position,
   area,
+  areaNumber,
+  startsAreaAbove = false,
+  startsAreaLeft = false,
   isAreaHeader = false,
   mapObject,
   placedCharacter,
@@ -35,6 +41,7 @@ export function Cell({
     placeCharacter,
     toggleExclusion,
     selectCharacter,
+    setFeedback,
   } = useGameStore()
 
   const cellId = `cell-${position.row}-${position.column}`
@@ -47,6 +54,14 @@ export function Cell({
 
   const handleClick = () => {
     if (mapObject) {
+      if (selectedCharacterId) {
+        placeCharacter(selectedCharacterId, position)
+      } else {
+        setFeedback({
+          message: `${mapObject.label ?? 'Environmental object'} blocks this cell. Characters cannot stand here.`,
+          type: 'info',
+        })
+      }
       return
     }
 
@@ -60,13 +75,14 @@ export function Cell({
     // Place mode
     if (selectedCharacterId) {
       placeCharacter(selectedCharacterId, position)
-      // Keep selection or deselect
+      selectCharacter(null)
     } else if (placedCharacter) {
       selectCharacter(placedCharacter.id)
     }
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.target !== e.currentTarget) return
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleClick()
@@ -79,12 +95,16 @@ export function Cell({
   return (
     <div
       ref={setNodeRef}
-      className={`grid-cell ${area ? `grid-cell--area-${area.id}` : ''} ${
+      className={`grid-cell ${areaNumber ? `grid-cell--zone-${areaNumber}` : ''} ${
+        startsAreaAbove ? 'grid-cell--area-top' : ''
+      } ${startsAreaLeft ? 'grid-cell--area-left' : ''} ${
         isOver && !isBlocked ? 'grid-cell--drop-over' : ''
       } ${isTargetHighlight ? 'grid-cell--target' : ''} ${isSelected ? 'grid-cell--selected' : ''} ${
         isBlocked ? 'grid-cell--blocked' : ''
       }`}
-      onClick={handleClick}
+      onClick={(event) => {
+        if (!(event.target instanceof Element && event.target.closest('.character-token'))) handleClick()
+      }}
       onKeyDown={handleKeyDown}
       tabIndex={isBlocked ? -1 : 0}
       role="button"
@@ -97,7 +117,8 @@ export function Cell({
     >
       {isAreaHeader && area && (
         <span className="grid-cell__area-label" aria-hidden="true">
-          {area.name}
+          <span className="grid-cell__area-number">{areaNumber}</span>
+          <span className="grid-cell__area-name">{area.name}</span>
         </span>
       )}
 

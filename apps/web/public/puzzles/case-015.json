@@ -281,7 +281,7 @@
     },
     {
       "id": "c15-3",
-      "text": "Percival was in row 0.",
+      "text": "Percival was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "percival",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c15-6",
-      "text": "Morgan was in column 0.",
+      "text": "Morgan was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "morgan",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c15-9",
-      "text": "Maeve was in row 0.",
+      "text": "Maeve was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "maeve",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c15-11",
-      "text": "Lady Vivienne was in column 5.",
+      "text": "Lady Vivienne was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "vivienne",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c15-14",
-      "text": "Kenneth was in row 3.",
+      "text": "Kenneth was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "kenneth",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c15-16",
-      "text": "Silas Vance was in column 0.",
+      "text": "Silas Vance was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "silas_j",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c15-20",
-      "text": "Drake was in column 5.",
+      "text": "Drake was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "drake_sec",

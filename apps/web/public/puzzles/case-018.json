@@ -281,7 +281,7 @@
     },
     {
       "id": "c18-3",
-      "text": "Dr. Victor Klaus was in row 0.",
+      "text": "Dr. Victor Klaus was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "victor",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c18-6",
-      "text": "Nurse Gretchen was in column 0.",
+      "text": "Nurse Gretchen was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "gretchen",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c18-9",
-      "text": "Dr. Hans Meyer was in row 0.",
+      "text": "Dr. Hans Meyer was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "hans",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c18-11",
-      "text": "Baroness Sonja was in column 5.",
+      "text": "Baroness Sonja was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "sonja",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c18-14",
-      "text": "Karl was in row 3.",
+      "text": "Karl was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "karl",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c18-16",
-      "text": "Lucas Vance was in column 0.",
+      "text": "Lucas Vance was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "lucas",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c18-20",
-      "text": "Bruno was in column 5.",
+      "text": "Bruno was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "bruno",

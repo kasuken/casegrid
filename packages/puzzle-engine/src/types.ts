@@ -162,6 +162,26 @@ export interface PuzzleSolution {
   readonly murdererId: string
 }
 
+export interface DeductionStep {
+  readonly text: string
+  readonly clueIds: readonly string[]
+}
+
+export interface HelpPrompt {
+  readonly id: string
+  readonly text: string
+  readonly clueIds: readonly string[]
+}
+
+export type TutorialTrigger = 'manual' | 'select' | 'place' | 'exclude' | 'clue'
+
+export interface TutorialStep {
+  readonly id: string
+  readonly title: string
+  readonly text: string
+  readonly advanceOn: TutorialTrigger
+}
+
 export interface Puzzle {
   readonly id: string
   readonly title: string
@@ -175,6 +195,10 @@ export interface Puzzle {
   readonly clues: readonly Clue[]
   readonly victimId: string
   readonly solution: PuzzleSolution
+  readonly resolution?: string
+  readonly deductions?: readonly DeductionStep[]
+  readonly helpPrompts?: readonly HelpPrompt[]
+  readonly tutorial?: readonly TutorialStep[]
 }
 
 export interface PuzzleMetadata {
@@ -185,6 +209,17 @@ export interface PuzzleMetadata {
   readonly difficulty: PuzzleDifficulty
   readonly suspectCount: number
   readonly victimName?: string
+  readonly availability?: 'available' | 'coming-soon'
+}
+
+export interface ScheduledWeek {
+  /** Monday of the week, as YYYY-MM-DD. The week runs from 00:00 UTC that Monday for seven days. */
+  readonly weekStart: string
+  readonly caseId: string
+}
+
+export interface WeeklySchedule {
+  readonly weeks: readonly ScheduledWeek[]
 }
 
 export type PuzzleStatus = 'not-started' | 'in-progress' | 'completed'
@@ -198,6 +233,8 @@ export interface PuzzleProgress {
   readonly elapsedSeconds: number
   readonly mistakes: number
   readonly bestTime?: number
+  readonly revealedHelpIds?: readonly string[]
+  readonly updatedAt?: number
 }
 
 export interface SolveResult {

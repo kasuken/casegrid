@@ -281,7 +281,7 @@
     },
     {
       "id": "c14-3",
-      "text": "Captain Hawke was in row 0.",
+      "text": "Captain Hawke was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "hawke_capt",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c14-6",
-      "text": "Mateo Cruz was in column 0.",
+      "text": "Mateo Cruz was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "mateo",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c14-9",
-      "text": "Silas Drake was in row 0.",
+      "text": "Silas Drake was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "silas_q",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c14-11",
-      "text": "Eleanor Vance was in column 5.",
+      "text": "Eleanor Vance was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "eleanor",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c14-14",
-      "text": "Greta Lind was in row 3.",
+      "text": "Greta Lind was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "greta",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c14-16",
-      "text": "Rory Quinn was in column 0.",
+      "text": "Rory Quinn was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "rory",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c14-20",
-      "text": "Bram Thorne was in column 5.",
+      "text": "Bram Thorne was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "bram",

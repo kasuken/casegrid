@@ -2,7 +2,7 @@
   "id": "case-002",
   "title": "The Grand Antiquary",
   "subtitle": "A silent museum exhibition turned crime scene",
-  "description": "Curator Professor Alistair Finch was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Finch.",
+  "description": "Curator Professor Alistair Pembroke was discovered poisoned beside the centerpiece fossil in the museum's east wing. Five colleagues and patrons remained locked inside after closing. Deduce where everyone was standing and identify who was alone with Professor Pembroke.",
   "difficulty": "easy",
   "grid": {
     "width": 6,
@@ -99,45 +99,51 @@
   "characters": [
     {
       "id": "alistair",
-      "name": "Prof. Alistair Finch",
+      "name": "Prof. Alistair Pembroke",
       "description": "Chief curator of antiquities.",
-      "role": "victim"
+      "role": "victim",
+      "avatar": "/assets/characters/case-002/avatar-alistair.svg"
     },
     {
       "id": "nadia",
       "name": "Dr. Nadia Rostova",
       "description": "Visiting paleontologist with disputed claims.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-nadia.svg"
     },
     {
       "id": "marcus",
       "name": "Marcus Bennett",
       "description": "Head of museum nocturnal security.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-marcus.svg"
     },
     {
       "id": "elena",
       "name": "Elena Cruz",
       "description": "Private antiquities broker seeking appraisal.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-elena.svg"
     },
     {
       "id": "henry",
       "name": "Henry Thorpe",
       "description": "Board trustee reviewing museum finances.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-henry.svg"
     },
     {
       "id": "sylvia",
       "name": "Sylvia Chen",
       "description": "Master conservator working late on restorations.",
-      "role": "suspect"
+      "role": "suspect",
+      "avatar": "/assets/characters/case-002/avatar-sylvia.svg"
     }
   ],
   "clues": [
     {
       "id": "c2-1",
-      "text": "Professor Alistair Finch was at row 0, column 1 inspecting the fossil display.",
+      "text": "Professor Alistair Pembroke was at row 1, column 2 inspecting the fossil display.",
       "constraint": {
         "type": "character_at_position",
         "characterId": "alistair",
@@ -146,29 +152,29 @@
     },
     {
       "id": "c2-2",
-      "text": "Dr. Nadia Rostova was in the Fossil Hall.",
+      "text": "Nadia and Henry were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "nadia",
-        "areaId": "fossil_hall"
+        "targetCharacterId": "henry"
       }
     },
     {
       "id": "c2-3",
-      "text": "Nadia was standing directly adjacent to Professor Finch.",
+      "text": "Nadia was standing directly beside the T-Rex skull.",
       "constraint": {
-        "type": "character_adjacent_to_character",
+        "type": "character_adjacent_to_object",
         "characterId": "nadia",
-        "targetCharacterId": "alistair"
+        "objectId": "t_rex_skull"
       }
     },
     {
       "id": "c2-4",
-      "text": "Nadia was in column 0.",
+      "text": "Nadia was in row 3.",
       "constraint": {
-        "type": "character_in_column",
+        "type": "character_in_row",
         "characterId": "nadia",
-        "column": 0
+        "row": 2
       }
     },
     {
@@ -199,7 +205,7 @@
     },
     {
       "id": "c2-8",
-      "text": "Henry was standing in row 3.",
+      "text": "Henry was standing in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "henry",
@@ -235,7 +241,7 @@
     },
     {
       "id": "c2-12",
-      "text": "Marcus was in column 3.",
+      "text": "Marcus was in column 4.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "marcus",
@@ -244,7 +250,7 @@
     },
     {
       "id": "c2-13",
-      "text": "Elena Cruz was in row 0.",
+      "text": "Elena Cruz was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "elena",
@@ -262,11 +268,11 @@
     },
     {
       "id": "c2-15",
-      "text": "Sylvia Chen was working alone in the Restoration Lab.",
+      "text": "Sylvia and Henry were in different rooms.",
       "constraint": {
-        "type": "character_in_area",
+        "type": "characters_different_area",
         "characterId": "sylvia",
-        "areaId": "restoration_lab"
+        "targetCharacterId": "henry"
       }
     },
     {
@@ -280,7 +286,7 @@
     },
     {
       "id": "c2-17",
-      "text": "Sylvia stood in column 5.",
+      "text": "Sylvia stood in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "sylvia",
@@ -292,12 +298,65 @@
   "solution": {
     "placements": {
       "alistair": { "row": 0, "column": 1 },
-      "nadia": { "row": 0, "column": 0 },
+      "nadia": { "row": 2, "column": 1 },
       "henry": { "row": 3, "column": 1 },
       "marcus": { "row": 1, "column": 3 },
       "elena": { "row": 0, "column": 4 },
       "sylvia": { "row": 4, "column": 5 }
     },
     "murdererId": "nadia"
-  }
+  },
+  "resolution": "Dr. Nadia Rostova was the only person in the Fossil Hall with Professor Pembroke. Marcus and Elena were together at the diamond showcase, Henry was alone with the sarcophagus, and Sylvia never left her microscope bench. Her disputed fossil claims give the story its motive, but it was the placements that proved she was alone with him.",
+  "deductions": [
+    {
+      "text": "Professor Pembroke is fixed at row 1, column 2 in the Fossil Hall.",
+      "clueIds": ["c2-1"]
+    },
+    {
+      "text": "Nadia stands beside the T-Rex skull. The professor has the cell above it, which leaves row 2, column 1, row 2, column 3, and row 3, column 2. Only row 3, column 2 is in row 3.",
+      "clueIds": ["c2-3", "c2-4"]
+    },
+    {
+      "text": "Henry is alone in the Relic Gallery beside the sarcophagus, and in row 4 that means row 4, column 2. He stands right below Nadia, but across a wall, so they are in different rooms.",
+      "clueIds": ["c2-2", "c2-5", "c2-6", "c2-7", "c2-8"]
+    },
+    {
+      "text": "Marcus is in the Gem Vault beside the diamond showcase. Its neighbour in column 4 is row 2, column 4.",
+      "clueIds": ["c2-10", "c2-11", "c2-12"]
+    },
+    {
+      "text": "Elena shares the Gem Vault with Marcus and also stands beside the showcase. The only such cell in row 1 is row 1, column 5.",
+      "clueIds": ["c2-9", "c2-13", "c2-14"]
+    },
+    {
+      "text": "Sylvia stands beside the microscope bench in column 6: row 5, column 6, in the Restoration Lab, a different room from Henry.",
+      "clueIds": ["c2-15", "c2-16", "c2-17"]
+    },
+    {
+      "text": "With everyone placed, Nadia is the only suspect sharing the Fossil Hall with the professor.",
+      "clueIds": []
+    }
+  ],
+  "helpPrompts": [
+    {
+      "id": "nudge-1",
+      "text": "Begin with the clue that pins someone to an exact cell, then work outward from them.",
+      "clueIds": ["c2-1"]
+    },
+    {
+      "id": "nudge-2",
+      "text": "Each “beside” clue allows only the open cells directly above, below, left, or right. Cross that list with the same person’s row or column clue.",
+      "clueIds": ["c2-3", "c2-4"]
+    },
+    {
+      "id": "nudge-3",
+      "text": "Two people share the Gem Vault. Place the one with a column clue first; the other’s row clue then chooses between the remaining showcase neighbours.",
+      "clueIds": ["c2-9", "c2-12", "c2-13"]
+    },
+    {
+      "id": "nudge-4",
+      "text": "When everyone is placed, count the suspects in the professor’s room.",
+      "clueIds": []
+    }
+  ]
 }

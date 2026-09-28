@@ -8,6 +8,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { validatePuzzle } from '../src/validator.ts'
 import { puzzleIndexSchema } from '../src/schemas.ts'
+import { validateWeeklySchedule } from '../src/schedule.ts'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -41,6 +42,26 @@ if (fs.existsSync(indexPath)) {
     }
   } catch (err) {
     console.error('❌ Error parsing index.json:', err)
+    totalErrors++
+  }
+}
+
+// 1b. Validate the Case of the Week schedule against the published catalog
+const schedulePath = path.join(puzzlesDir, 'schedule.json')
+if (fs.existsSync(schedulePath) && fs.existsSync(indexPath)) {
+  try {
+    const catalog = puzzleIndexSchema.parse(JSON.parse(fs.readFileSync(indexPath, 'utf-8')))
+    const schedule = JSON.parse(fs.readFileSync(schedulePath, 'utf-8'))
+    const issues = validateWeeklySchedule(schedule, catalog)
+    if (issues.length > 0) {
+      console.error('❌ schedule.json validation failed:')
+      for (const issue of issues) console.error(`  - [${issue.code}] ${issue.message}`)
+      totalErrors++
+    } else {
+      console.log(`schedule.json ✓ ${schedule.weeks.length} week(s), Monday 00:00 UTC boundaries, published cases only`)
+    }
+  } catch (err) {
+    console.error('❌ Error reading schedule.json:', err)
     totalErrors++
   }
 }

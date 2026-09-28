@@ -281,7 +281,7 @@
     },
     {
       "id": "c16-3",
-      "text": "Duca Bernardo was in row 0.",
+      "text": "Duca Bernardo was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "bernardo",
@@ -308,7 +308,7 @@
     },
     {
       "id": "c16-6",
-      "text": "Contessa Francesca was in column 0.",
+      "text": "Contessa Francesca was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "francesca",
@@ -335,7 +335,7 @@
     },
     {
       "id": "c16-9",
-      "text": "Diplomat Armand was in row 0.",
+      "text": "Diplomat Armand was in row 1.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "armand",
@@ -353,7 +353,7 @@
     },
     {
       "id": "c16-11",
-      "text": "Cosima Bellini was in column 5.",
+      "text": "Cosima Bellini was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "cosima",
@@ -380,7 +380,7 @@
     },
     {
       "id": "c16-14",
-      "text": "Gondolier Matteo was in row 3.",
+      "text": "Gondolier Matteo was in row 4.",
       "constraint": {
         "type": "character_in_row",
         "characterId": "matteo_g",
@@ -398,7 +398,7 @@
     },
     {
       "id": "c16-16",
-      "text": "Lucia the Maskmaker was in column 0.",
+      "text": "Lucia the Maskmaker was in column 1.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "lucia",
@@ -433,7 +433,7 @@
     },
     {
       "id": "c16-20",
-      "text": "Silvio Moretti was in column 5.",
+      "text": "Silvio Moretti was in column 6.",
       "constraint": {
         "type": "character_in_column",
         "characterId": "silvio",
